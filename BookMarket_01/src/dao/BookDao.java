@@ -19,7 +19,7 @@ public class BookDao implements IBookDao{
 	private BookDao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/book_db", "root", "mysql");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:8080/bookmarket_db", "root", "mysql");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
