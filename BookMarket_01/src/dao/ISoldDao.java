@@ -5,7 +5,7 @@ import java.util.List;
 import dto.Sold;
 
 public interface ISoldDao {
-	public int insertSold(Sold sold); // 찜내역 추가하는 메소드
+	public int insertSold(Sold sold); // 거래내역 추가하는 메소드
 	public List<Sold> selectSoldListBySeller(int seller_id); // 판매자가 불러오는 판매내역 
 	public  List<Sold> selectSoldListByBuyer(int buyer_id); //구매자가 불러오는 판매내역 
 
