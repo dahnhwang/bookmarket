@@ -70,7 +70,7 @@ public class Book {
 	public void setBook_condition(int book_condition) {
 		this.book_condition = book_condition;
 	}
-	public boolean isSold() {
+	public void getisSold(boolean isSold) {
 		return isSold;
 	}
 	public void setSold(boolean isSold) {
