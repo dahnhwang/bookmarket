@@ -3,7 +3,7 @@ package dao;
 import dto.Member;
 
 public interface IMemberDao {
-	
+	 
 	public int memberCheck(String email, String pwd); //멤버정보가 존재하는지 확인하는 메소드
 	public Member getMember(int mem_id); //멤버번호로 회원정보 가져오는 메소드
 	public int confirmEmail(String email); //아이디 중복체크 하는 메소드
