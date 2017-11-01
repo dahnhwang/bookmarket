@@ -20,7 +20,8 @@ import controller.action.DropMemberAction;
 import controller.action.JoinAction;
 import controller.action.JoinFormAction;
 import controller.action.KeepBookAddAction;
-import controller.action.LoginCheckAction;
+import controller.action.LoginAction;
+import controller.action.EmailCheckAction;
 import controller.action.LoginFormAction;
 import controller.action.LogoutAction;
 import controller.action.MainAction;
@@ -65,6 +66,7 @@ public class ActionFactory {
 		Action action = null;
 
 		if (command.equals("main")) {
+			System.out.println("메인!");
 			action = new MainAction();
 		} else if (command.equals("navigation")) {
 			action = new NavigationAction();
@@ -74,8 +76,10 @@ public class ActionFactory {
 			action = new JoinAction();
 		} else if (command.equals("login_form")) {
 			action = new LoginFormAction();
-		} else if (command.equals("login_check")) {
-			action = new LoginCheckAction();
+		} else if (command.equals("login")) {
+			action = new LoginAction();
+		} else if (command.equals("email_check")) {
+			action = new EmailCheckAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
 		} else if (command.equals("cart")) {
