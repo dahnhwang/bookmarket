@@ -5,6 +5,30 @@ import java.util.List;
 import dto.Book;
 
 public class BookDao implements IBookDao{
+	
+		private Connection conn;
+
+	private static BookDao instance;
+
+	public static BookDao getInstance() {
+		if (instance == null)
+			instance = new BookDao();
+		return instance;
+	}
+
+	private BookDao() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/book_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
 	public List<Book> selectAllBookList() {
@@ -72,6 +96,10 @@ public class BookDao implements IBookDao{
 			pstmt.setBoolean(8, b.getisSold());
 			pstmt.setInt(9, b.getPrice());
 			pstmt.setInt(10, b.getSeller());
+			pstmt.setBoolean(11, b.getisSold));
+			pstmt.setInt(12, b.getprice));
+			pstmt.setInt(13, b.getseller));
+			pstmt.setboolean(14, b.getimage));
 		
 		return null;
 	}
