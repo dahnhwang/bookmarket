@@ -12,8 +12,8 @@
     
 <script>
 function openwin() {
-window.open('about:blank','LoginC','width=400,height=300');
-f1.submit();
+	window.open('about:blank','LoginC','width=400,height=300');
+	f1.submit();
 }
 </script>
     
