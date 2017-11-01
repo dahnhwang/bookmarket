@@ -15,7 +15,9 @@
 		<div id="contents">
 			<div id="contents">콘텐츠영역</div>
 		</div>
-		<div id="footer">푸터영역</div>
+		<div id="footer">
+			<jsp:include page="footer.jsp" />
+		</div>
 	</div>
 </body>
 </html>
