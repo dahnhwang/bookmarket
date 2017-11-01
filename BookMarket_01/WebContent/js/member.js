@@ -10,7 +10,7 @@ function joinCheck(){
  if(document.joinForm.name.value.length ==0) {
 	 alert("이름을 입력해주세요");
 	 joinForm.name.focus();
-	 return false;
+	 return false; 
  } 
  
  
