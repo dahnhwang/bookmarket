@@ -11,7 +11,7 @@ public class Book {
 	private String publisher;
 	private String published_date;
 	private int genre;
-	private int condition;
+	private int book_condition;
 	private boolean isSold;
 	private int price;
 	private int seller;
@@ -63,11 +63,12 @@ public class Book {
 	public void setGenre(int genre) {
 		this.genre = genre;
 	}
-	public int getCondition() {
-		return condition;
+	
+	public int getBook_condition() {
+		return book_condition;
 	}
-	public void setCondition(int condition) {
-		this.condition = condition;
+	public void setBook_condition(int book_condition) {
+		this.book_condition = book_condition;
 	}
 	public boolean isSold() {
 		return isSold;
@@ -121,7 +122,7 @@ public class Book {
 	public String toString() {
 		return "Book [book_id=" + book_id + ", isbn=" + isbn + ", author=" + author + ", title=" + title
 				+ ", publisher=" + publisher + ", published_date=" + published_date + ", genre=" + genre
-				+ ", condition=" + condition + ", isSold=" + isSold + ", price=" + price + ", seller=" + seller
+				+ ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price + ", seller=" + seller
 				+ ", image=" + image + ", submit_date=" + submit_date + ", price_type=" + price_type + ", comment="
 				+ comment + ", comment_img=" + comment_img + "]";
 	}
