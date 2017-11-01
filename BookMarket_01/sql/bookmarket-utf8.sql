@@ -46,6 +46,7 @@ PRIMARY KEY (order_id)
 DROP TABLE IF EXISTS deal;
 CREATE TABLE deal(
 deal_idx INT AUTO_INCREMENT, 
+book_id INT, 
 participant_id INT,
 deal_date DATE,
 deal_price INT,
