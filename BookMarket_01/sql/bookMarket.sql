@@ -61,7 +61,7 @@ keepBook_id	int AUTO_INCREMENT,
 book_id	int,
 mem_id	int,
 keep_date DATE,
-PRIMARY KEY (keepBook)
+PRIMARY KEY (keepBook_id)
 );
 
 CREATE TABLE money(
@@ -69,4 +69,6 @@ money_idx INT AUTO_INCREMENT,
 mem_id	int,
 money	int,
 money_update_day DATE
+PRIMARY KEY (money_idx)
 );
+
