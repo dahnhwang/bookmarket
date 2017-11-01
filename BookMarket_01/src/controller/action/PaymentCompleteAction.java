@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class KeepBookAddAction implements Action {
+public class PaymentCompleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -14,4 +14,5 @@ public class KeepBookAddAction implements Action {
 		
 	}
 
+	
 }
