@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head> 
+<head>
 <meta charset="EUC-KR">
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -27,7 +28,6 @@
 	crossorigin="anonymous"></script>
 
 <style type="text/css">
-
 body {
 	margin-top: 100px;
 }
@@ -85,33 +85,29 @@ body {
 							<li class="divider"></li>
 							<li><a href="#">해외도서</a></li>
 						</ul></li>
-					<li><a href="#">판매하기</a>
-					</li>
-					
+					<li><a href="#">판매하기</a></li>
+
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-				   <li><a href="#">장바구니</a>
-				   </li>
-					<li><a href="#">로그인</a>
-					</li>
-					<li><a href="#">회원가입</a>
-					</li>
-					
+					<li><a href="#">장바구니</a></li>
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
+
 				</ul>
 
 
 				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search" />
-					<input type="submit" class="form-control" placeholder="Submit"  value="검색"/>
+					<input type="text" class="form-control" placeholder="Search" /> <input
+						type="submit" class="form-control" placeholder="Submit" value="검색" />
 				</form>
-				
+
 			</div>
 		</div>
 	</div>
 
 
-	
+
 
 </body>
 </html>
