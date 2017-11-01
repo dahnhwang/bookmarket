@@ -12,7 +12,7 @@ import controller.action.Action;
 /**
  * Servlet implementation class MainServlet
  */
-@WebServlet("/MainServlet")
+@WebServlet("/bookmarket")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
