@@ -1,0 +1,22 @@
+@charset "EUC-KR";
+body {
+	margin-top: 100px;
+}
+
+#content {
+	width: 1000px;
+	height: 800px;
+	margin: 0 auto;
+}
+
+#joinForm {
+	width: 500px;
+	height: 700px;
+	margin: 200px auto;
+}
+
+
+#joinFormBtn {
+padding : 30px;
+text-align :center;
+}
