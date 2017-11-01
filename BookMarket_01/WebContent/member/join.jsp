@@ -6,6 +6,7 @@
 <meta charset="EUC-KR">
 
 <title>회원가입</title>
+<script type="text/javascript" src="../js/member.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/join.css">
 </head>
 
@@ -42,7 +43,7 @@
 				<div class="form-group">
 					<label for="inputPassword4">Re-Password</label> <input
 						type="password" class="form-control" id="inputPassword4"
-						placeholder="비밀번호를 다시 입력하세요">
+						placeholder="비밀번호를 다시 입력하세요" name="pwd_check">
 				</div>
 
   			   <div id="joinFormBtn">
@@ -52,5 +53,5 @@
 		</form>
 	</div>
 
-</body>
+</body> 
 </html>
