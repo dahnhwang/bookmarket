@@ -10,13 +10,13 @@
 <body>
 	<div id="wrap">
 		<div id="navigation">
-			<jsp:include page="navigation.jsp" />
+			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div id="contents">
 			<div id="contents">콘텐츠영역</div>
 		</div>
 		<div id="footer">
-			<jsp:include page="footer.jsp" />
+			<jsp:include page="../footer.jsp" />
 		</div>
 	</div>
 </body>
