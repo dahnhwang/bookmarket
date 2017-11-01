@@ -37,31 +37,31 @@ public class BookDao implements IBookDao{
 	}
 
 	@Override
-	public List<Book> selectBookGenre(int genre) {
+	public List<Book> selectBookByGenre(int genre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> selectBookTitle(String title) {
+	public List<Book> selectBookByTitle(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> selectBookAuthor(String author) {
+	public List<Book> selectBookByAuthor(String author) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> selectBookPublisher(String publisher) {
+	public List<Book> selectBookByPublisher(String publisher) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> selectBookSeller(int seller) {
+	public List<Book> selectBookBySeller(int seller) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -73,9 +73,16 @@ public class BookDao implements IBookDao{
 	}
 
 	@Override
-	public List<Book> selectBookPriceType(int genre, int price_type) {
+	public List<Book> selectBookByPriceType(int genre, int price_type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Book> selectBookByCondition(int genre, int book_condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
