@@ -80,7 +80,7 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("email_check")) {
 			action = new EmailCheckAction();
-		} else if (command.equals("logout")) {
+		} else if (command.equals("logout")) { 
 			action = new LogoutAction();
 		} else if (command.equals("cart")) {
 			action = new CartAction();
