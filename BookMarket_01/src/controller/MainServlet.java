@@ -12,7 +12,7 @@ import controller.action.Action;
 /**
  * Servlet implementation class MainServlet
  */
-@WebServlet("/MainServlet")
+@WebServlet("/bookmarket")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +22,7 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("MainServlet");
 		String command = request.getParameter("command");
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);

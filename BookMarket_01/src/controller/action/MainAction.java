@@ -12,7 +12,7 @@ public class MainAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String url = "main.jsp";
 	
-	response.sendRedirect(url);
+	request.getRequestDispatcher(url).forward(request, response);
 	
 	}
 
