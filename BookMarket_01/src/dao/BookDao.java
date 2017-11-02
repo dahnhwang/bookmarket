@@ -111,8 +111,20 @@ public class BookDao implements IBookDao{
 			pstmt.setString(16. b.getprice_type());
 			pstmt.setString(17. b.getcomment());
 			pstmt.setString(18. b.getcommne_img());
+                        result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return result;
 	}
 
 	@Override
