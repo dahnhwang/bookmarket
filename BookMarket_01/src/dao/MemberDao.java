@@ -36,7 +36,7 @@ public class MemberDao implements IMemberDao {
 	public int memberCheck(String email, String pwd) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String sql = "SELECT * FROM member WHERE email=?";
+		String sql = "SELECT * FROM member WHERE email=? AND pwd = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -46,7 +46,7 @@ public class MemberDao implements IMemberDao {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("pwd") != null && rs.getString("pwd").equals(pwd)) {
-					result = 1; // 회원정보도 존재하고 패스워드도 일치함. 성공값
+					result = rs.getInt("mem_id"); // 회원정보도 존재하고 패스워드도 일치함. 성공값
 				} else if (rs.getString("pwd") != null) {
 					result = -1; // 패스워드 불일치
 				} else {
