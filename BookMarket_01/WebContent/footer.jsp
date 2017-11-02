@@ -15,6 +15,7 @@ html {
 body {
 	margin-bottom: 60px;
 }
+
 .footer {
 	position: absolute;
 	bottom: 0;
