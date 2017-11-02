@@ -9,6 +9,7 @@ mem_id INT NOT NULL AUTO_INCREMENT,
 email varchar(18) default null,
 pwd varchar(18),
 name varchar(18),
+money INT default 10000,
 join_date DATE,
 PRIMARY KEY (mem_id)
 );
@@ -74,14 +75,14 @@ money_update_day DATE,
 PRIMARY KEY (money_idx)
 );
 
-INSERT INTO member VALUES ('0','a1@gmail.com','111','a1A1','1980-12-17');
-INSERT INTO member VALUES ('0','a2@gmail.com','222','a2A2','1980-12-17');
-INSERT INTO member VALUES ('0','a3@gmail.com','333','a3A3','1980-12-17');
-INSERT INTO member VALUES ('0','a4@gmail.com','444','a4A4','1980-12-17');
-INSERT INTO member VALUES ('0','a5@gmail.com','555','a5A5','1980-12-17');
-INSERT INTO member VALUES ('0','a6@gmail.com','666','a6A6','1980-12-17');
-INSERT INTO member VALUES ('0','a7@gmail.com','777','a7A7','1980-12-17');
-INSERT INTO member VALUES ('0','a8@gmail.com','888','a8A8','1980-12-17');
+INSERT INTO member VALUES ('0','a1@gmail.com','111','a1A1',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a2@gmail.com','222','a2A2',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a3@gmail.com','333','a3A3',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a4@gmail.com','444','a4A4',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a5@gmail.com','555','a5A5',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a6@gmail.com','666','a6A6',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a7@gmail.com','777','a7A7',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a8@gmail.com','888','a8A8',10000,'1980-12-17');
 
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('9791187165286','Carol Dweck', 'Mind Set', 5, 9900);
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('9791187165286','Carol Dweck', 'Mind Set', 4, 5900);
