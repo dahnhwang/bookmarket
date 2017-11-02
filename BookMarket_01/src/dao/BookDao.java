@@ -89,25 +89,29 @@ public class BookDao implements IBookDao{
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO books VALUES(0,?,?,?,?)";
 //		이 부분 에러있어요.
-//		int result = 0;
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, b.getBook_id());
-//			pstmt.setString(2, b.getIsbn());
-//			pstmt.setString(3, b.getAuthor());
-//			pstmt.setString(4, b.getTitle());
-//			pstmt.setString(5, b.getPublisher());
-//			pstmt.setString(6, b.getPublished_date());
-//			pstmt.setInt(6, b.getGenre());
-//			pstmt.setInt(7, b.getCondition());
-//			pstmt.setBoolean(8, b.getisSold());
-//			pstmt.setInt(9, b.getPrice());
-//			pstmt.setInt(10, b.getSeller());
-//			pstmt.setBoolean(11, b.getisSold));
-//			pstmt.setInt(12, b.getprice));
-//			pstmt.setInt(13, b.getseller));
-//			pstmt.setboolean(14, b.getimage));
-//		}
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, b.getBook_id());
+			pstmt.setString(2, b.getIsbn());
+			pstmt.setString(3, b.getAuthor());
+			pstmt.setString(4, b.getTitle());
+			pstmt.setString(5, b.getPublisher());
+			pstmt.setString(6, b.getPublished_date());
+			pstmt.setInt(6, b.getGenre());
+			pstmt.setInt(7, b.getCondition());
+			pstmt.setBoolean(8, b.getisSold());
+			pstmt.setInt(9, b.getPrice());
+			pstmt.setInt(10, b.getSeller());
+			pstmt.setBoolean(11, b.getisSold());
+			pstmt.setInt(12, b.getprice());
+			pstmt.setInt(13, b.getseller());
+			pstmt.setboolean(14, b.getimage());
+			pstmt.setInt(15, b.getsubmit_date());
+			pstmt.setString(16. b.getprice_type());
+			pstmt.setString(17. b.getcomment());
+			pstmt.setString(18. b.getcommne_img());
+		}
 		return null;
 	}
 
