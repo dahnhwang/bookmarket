@@ -1,5 +1,11 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dto.Book;
@@ -48,7 +54,7 @@ public class BookDao implements IBookDao{
 				b.setPublisher(rs.getString("publisher"));
 				b.setPublished_date(rs.getString("published_date"));	
 				b.setGenre(rs.getInt("genre"));
-				b.setCondition(rs.getInt("conditon"));
+				b.setBook_condition(rs.getInt("conditon"));
 				b.setSold(rs.getBoolean("isSold"));
 				b.setPrice(rs.getInt("price"));
 				b.setSeller(rs.getInt("seller"));
@@ -82,25 +88,26 @@ public class BookDao implements IBookDao{
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO books VALUES(0,?,?,?,?)";
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, b.getBook_id());
-			pstmt.setString(2, b.getIsbn());
-			pstmt.setString(3, b.getAuthor());
-			pstmt.setString(4, b.getTitle());
-			pstmt.setString(5, b.getPublisher());
-			pstmt.setString(6, b.getPublished_date());
-			pstmt.setInt(6, b.getGenre());
-			pstmt.setInt(7, b.getCondition());
-			pstmt.setBoolean(8, b.getisSold());
-			pstmt.setInt(9, b.getPrice());
-			pstmt.setInt(10, b.getSeller());
-			pstmt.setBoolean(11, b.getisSold));
-			pstmt.setInt(12, b.getprice));
-			pstmt.setInt(13, b.getseller));
-			pstmt.setboolean(14, b.getimage));
-		
+//		이 부분 에러있어요.
+//		int result = 0;
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, b.getBook_id());
+//			pstmt.setString(2, b.getIsbn());
+//			pstmt.setString(3, b.getAuthor());
+//			pstmt.setString(4, b.getTitle());
+//			pstmt.setString(5, b.getPublisher());
+//			pstmt.setString(6, b.getPublished_date());
+//			pstmt.setInt(6, b.getGenre());
+//			pstmt.setInt(7, b.getCondition());
+//			pstmt.setBoolean(8, b.getisSold());
+//			pstmt.setInt(9, b.getPrice());
+//			pstmt.setInt(10, b.getSeller());
+//			pstmt.setBoolean(11, b.getisSold));
+//			pstmt.setInt(12, b.getprice));
+//			pstmt.setInt(13, b.getseller));
+//			pstmt.setboolean(14, b.getimage));
+//		}
 		return null;
 	}
 
