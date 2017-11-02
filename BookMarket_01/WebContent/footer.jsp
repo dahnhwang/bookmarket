@@ -8,13 +8,20 @@
 <style type="text/css">
 .footer{
 height: 100px;
-margin: 10 auto 0;
+margin: 0 auto;
 background-color: gray;
-font-color: white;
+padding: 25px;
+}
+.footage{
+text-align: center;
+color: white;
 }
 </style>
 </head>
 <body>
-<div class="footer">푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다</div>
+<div class="footer">
+<div class="footage">BOOKMARKET PROJECT 2017 OCT-NOV<br>
+MADE BY 강지훈 김경석 문진용 최현정 황다현</div>
+</div>
 </body>
 </html>

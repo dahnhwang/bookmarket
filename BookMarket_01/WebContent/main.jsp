@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-#wrap {
-	height: 500px;
+#contents {
+	height: 450px;
 	margin: 0 auto;
 	margin-top: 50px;
 }
