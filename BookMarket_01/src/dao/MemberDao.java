@@ -133,6 +133,7 @@ public class MemberDao implements IMemberDao {
 		return result;
 	}
 
+
 	@Override
 	public int updateMember(Member member) {
 		String sql = "UPDATE member SET email=?, pwd=?, name=?, money=? WHERE mem_id=?";

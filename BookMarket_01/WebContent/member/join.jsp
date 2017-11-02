@@ -17,7 +17,7 @@
 
 	<div id="content"> 
   
-		<form id="joinForm" method="post" action="MemberServlet" name="joinForm">
+		<form id="joinForm" method="post" action="bookmarket" name="joinForm">
 			<input type="hidden" name="command" value="join">
 			<div class="form-row">
 				<div class="form-group">
@@ -55,4 +55,3 @@
 	</div>
 
 </body>
-</html>
