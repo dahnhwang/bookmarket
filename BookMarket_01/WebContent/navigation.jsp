@@ -91,9 +91,17 @@ body {
 
 				<ul class="nav navbar-nav navbar-right">  
 					<li><a href="#">장바구니</a></li>
-					<li><a href="bookmarket?command=login_form">로그인</a></li>
-					<li><a href="bookmarket?command=join_form">회원가입</a></li>
-  
+					<c:choose>
+						<c:when test="${empty session.loginUser }">
+							<li><a href="bookmarket?command=login_form">로그인</a></li>
+							<li><a href="bookmarket?command=join_form">회원가입</a></li>
+						 </c:when>  
+						<c:otherwise>
+							<li><a href="bookmarket?command=logout">로그아웃</a></li>
+							<li><a href="bookmarket?command=mypage">마이페이지</a></li>
+						 </c:otherwise>  
+					</c:choose>
+					 
 				</ul> 
 
 
