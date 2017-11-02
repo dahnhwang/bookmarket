@@ -89,12 +89,12 @@ body {
 
 				</ul>
 
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right">  
 					<li><a href="#">장바구니</a></li>
 					<li><a href="bookmarket?command=login_form">로그인</a></li>
-					<li><a href="#">회원가입</a></li>
-
-				</ul>
+					<li><a href="bookmarket?command=join_form">회원가입</a></li>
+  
+				</ul> 
 
 
 				<form class="navbar-form navbar-right">
