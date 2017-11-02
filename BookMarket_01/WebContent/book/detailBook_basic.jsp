@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <title>Insert title here</title>
 <style>
 body {
 	margin: 0 auto;
 }
+
 .basic_info {
 	height: 300px;
 	background-color: yellow;
@@ -16,6 +18,8 @@ body {
 </style>
 </head>
 <body>
-	<div class="basic_info">여기는 도서 기본정보 들어가는 영역입니다.</div>
+	<div class="basic_info">
+		<div class="container">여기는 도서 기본정보 들어가는 영역입니다.</div>
+	</div>
 </body>
 </html>
