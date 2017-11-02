@@ -168,7 +168,7 @@ public class BookDao implements IBookDao{
 
 
 	@Override
-	public int updateBook(Book b) {
+	public int updateBook(Book book) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE books SET author=? "
