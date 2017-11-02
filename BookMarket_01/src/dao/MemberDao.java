@@ -212,5 +212,6 @@ public class MemberDao implements IMemberDao {
 		}
 		return money;
 	}
+	
 
 }
