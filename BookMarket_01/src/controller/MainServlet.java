@@ -29,7 +29,7 @@ public class MainServlet extends HttpServlet {
 		
 		if(request.getParameter("command") != null) {
 			command = request.getParameter("command");   
-			action = af.getAction(command);
+			action = af.getAction(command);   
 		}
 		else {
 			action = af.getAction(command);
