@@ -5,8 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.footer{
+height: 100px;
+margin: 10 auto 0;
+background-color: gray;
+font-color: white;
+}
+</style>
 </head>
 <body>
-footer...
+<div class="footer">푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다푸터영역입니다</div>
 </body>
 </html>

@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+#contents{
+margin-top: 50px; /* 네비게이션 높이만큼 띄움  */
+}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -13,7 +18,15 @@
 			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div id="contents">
-			<div id="contents">콘텐츠영역</div>
+			<div class="basic_info">
+				<jsp:include page="./detailBook_basic.jsp" />
+			</div>
+			<div class="condition_info">
+				<jsp:include page="./detailBook_condition.jsp" />
+			</div>
+			<div class="price_info">
+				<jsp:include page="./detailBook_price.jsp" />
+			</div>
 		</div>
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
