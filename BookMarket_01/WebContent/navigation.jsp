@@ -38,7 +38,7 @@ body {
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#">BOOK MARKET</a>
+			<a class="navbar-brand" href="bookmarket?command=main">BOOK MARKET</a>
 			<div class="navbar-header">
 				<button class="navbar-toggle collapsed" data-toggle="collapse"
 					data-target="#target">
