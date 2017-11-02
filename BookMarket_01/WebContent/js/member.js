@@ -20,6 +20,15 @@ function joinCheck(){
 	 return false;
  }
  
+ 
+ if(document.joinForm.pwd.value.length <4) {
+	 alert("비밀번호는 4자리 이상이여야 합니다");
+	 joinForm.pwd.focus();
+	 return false; 
+ } 
+ 
+ 
+ 
  if(document.joinForm.pwd.value != document.joinForm.pwd_check.value){
 	 alert("암호가 일치하지 않습니다");
 	 joinForm.pwd.focus();

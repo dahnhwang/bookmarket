@@ -7,18 +7,17 @@
 <meta charset="EUC-KR">
 
 <title>회원가입</title>
-<script type="text/javascript" src="../js/member.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/join.css">
+<script type="text/javascript" src="js/member.js"></script>
+<link rel="stylesheet" type="text/css" href="css/join.css">
 </head>
 
 <body>
 	<header> <!-- import navigation --> <jsp:include
 		page="../navigation.jsp" /> </header>
 
-	<div id="content">
-
-
-		<form id="joinForm" method="post" action="MemberServlet">
+	<div id="content"> 
+  
+		<form id="joinForm" method="post" action="MemberServlet" name="joinForm">
 			<input type="hidden" name="command" value="join">
 			<div class="form-row">
 				<div class="form-group">
@@ -31,14 +30,13 @@
 					<label for="inputEmail4">Name</label> <input type="name"
 						class="form-control" id="inputEmail4" placeholder="이름을 입력하세요"
 						name="name">
-
+ 
 				</div>
 
 
 				<div class="form-group">
 					<label for="inputPassword4">Password</label> <input type="password"
-						class="form-control" id="inputPassword4" placeholder="비밀번호를 입력하세요"
-						name="pwd">
+						class="form-control" id="inputPassword4" placeholder="비밀번호를 입력하세요" name="pwd">
 				</div>
 
 
