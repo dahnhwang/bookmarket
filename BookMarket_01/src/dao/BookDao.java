@@ -88,7 +88,7 @@ public class BookDao implements IBookDao{
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO books VALUES(0,?,?,?,?)";
-//		이 부분 에러있어요.
+
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -142,8 +142,29 @@ public class BookDao implements IBookDao{
 	@Override
 	public int deleteBook(int book_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM books WHERE book_id = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
+
 
 	@Override
 	public List<Book> selectBookByGenre(int genre) {
