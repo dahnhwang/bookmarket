@@ -6,13 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-.condition_info {
+.condition_inf {
 	height: 300px;
 	background-color: pink;
 }
 </style>
 </head>
 <body>
-	<div class="condition_info">여기는 책에 대한 상태 정보가 들어가는 곳입니다.</div>
+	<div class="container">
+		<div class="condition_inf">여기는 책에 대한 상태 정보가 들어가는 곳입니다.</div>
+	</div>
+
 </body>
 </html>

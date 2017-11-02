@@ -13,7 +13,8 @@
 </style>
 </head>
 <body>
-	<div class="price_info">여기는 책에 대한 가격 정보가 들어가는 곳입니다.</div>
-
+	<div class="container">
+		<div class="price_info">여기는 책에 대한 가격 정보가 들어가는 곳입니다.</div>
+	</div>
 </body>
 </html>

@@ -9,6 +9,7 @@
 body {
 	margin: 0 auto;
 }
+
 .basic_info {
 	height: 300px;
 	background-color: yellow;
@@ -16,6 +17,16 @@ body {
 </style>
 </head>
 <body>
-	<div class="basic_info">여기는 도서 기본정보 들어가는 영역입니다.</div>
+
+	<div class="container">
+		<div class="basic_info">
+			<div class="row">
+				<div class="col-sm-4">
+					<img src="http://via.placeholder.com/198x297">
+				</div>
+				<div class="col-sm-8">col-sm-8</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
