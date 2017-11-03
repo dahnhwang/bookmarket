@@ -37,6 +37,7 @@ import controller.action.MyMoneyChargeFormAction;
 import controller.action.MyPageAction;
 import controller.action.MyPurchaseListAction;
 import controller.action.MyPwdCheckAction;
+import controller.action.MyPwdCheckFormAction;
 import controller.action.MySellListAction;
 import controller.action.NaverApiAction;
 import controller.action.NavigationAction;
@@ -133,8 +134,6 @@ public class ActionFactory {
 			action = new MyKeepBookDeleteAction();
 		} else if (command.equals("myPwd_check")) {
 			action = new MyPwdCheckAction();
-		} else if (command.equals("myPwd_check_form")) {
-			action = new MyPwdCheckFormAction();
 		} else if (command.equals("drop_member")) {
 			action = new DropMemberAction();
 		} else if (command.equals("payment")) {
