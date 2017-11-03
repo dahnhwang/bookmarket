@@ -10,6 +10,7 @@ public class Book {
 	private String title;
 	private String publisher;
 	private String published_date;
+	private String description;
 	private int genre;
 	private int book_condition;
 	private int isSold;
@@ -141,8 +142,6 @@ public class Book {
 		this.comment_img = comment_img;
 	}
 
-	
-
 	public int getIsSold() {
 		return isSold;
 	}
@@ -151,15 +150,21 @@ public class Book {
 		this.isSold = isSold;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [book_id=" + book_id + ", isbn=" + isbn + ", author=" + author + ", title=" + title
-				+ ", publisher=" + publisher + ", published_date=" + published_date + ", genre=" + genre
-				+ ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price + ", seller="
-				+ seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type=" + price_type
-				+ ", comment=" + comment + ", comment_img=" + comment_img + "]";
+				+ ", publisher=" + publisher + ", published_date=" + published_date + ", description=" + description
+				+ ", genre=" + genre + ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price
+				+ ", seller=" + seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type="
+				+ price_type + ", comment=" + comment + ", comment_img=" + comment_img + "]";
 	}
-	
-	
 
 }
