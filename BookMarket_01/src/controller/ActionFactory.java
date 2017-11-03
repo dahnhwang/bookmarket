@@ -37,7 +37,6 @@ import controller.action.MyMoneyChargeFormAction;
 import controller.action.MyPageAction;
 import controller.action.MyPurchaseListAction;
 import controller.action.MyPwdCheckAction;
-import controller.action.MyPwdCheckFormAction;
 import controller.action.MySellListAction;
 import controller.action.NaverApiAction;
 import controller.action.NavigationAction;
