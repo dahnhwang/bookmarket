@@ -16,7 +16,7 @@ public class Book {
 	private int isSold;
 	private int price;
 	private int seller;
-	private boolean image;
+	private int image;
 	private Date submit_date;
 	private int price_type;
 	private String comment;
@@ -102,11 +102,13 @@ public class Book {
 		this.seller = seller;
 	}
 
-	public boolean isImage() {
+	
+
+	public int getImage() {
 		return image;
 	}
 
-	public void setImage(boolean image) {
+	public void setImage(int image) {
 		this.image = image;
 	}
 
