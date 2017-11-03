@@ -9,7 +9,7 @@ public interface IMemberDao {
 	public boolean confirmEmail(String email); //아이디 중복체크 하는 메소드
 	
 	public int insertMember(Member member); //멤버 추가하는 메소드
-	public int updateMember(Member member); //멤버 정보를 수정하는 메소드
+	public int updateMember(Member member); //멤버 정보를 수정하는 메소드 
 	public int deleteMember(int mem_id); //멤버  정보를 삭제하는 메소드
 	public int getMoney(int mem_id); //적립금 가져오는 메소드 
 	

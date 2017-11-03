@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/join.css">
 <script type="text/javascript">
 
-	$(document).ready(function() {
+	$(document).ready(function() { 
 
 
 		$('#inputEmail4').on('blur', function() {

@@ -23,7 +23,7 @@ public class JoinAction implements Action {
 		member.setName(name);
 		member.setPwd(pwd);
 		member.setMoney(10000);
-  
+   
 	   int result = mDao.insertMember(member);
 	  
 	   System.out.println(result);

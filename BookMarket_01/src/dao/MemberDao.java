@@ -147,7 +147,7 @@ public class MemberDao implements IMemberDao {
 			pstmt.setInt(4, member.getMoney());
 			pstmt.setInt(5, member.getMem_id());
 			result = pstmt.executeUpdate();
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			e.printStackTrace();
 		} finally {
 			try {
