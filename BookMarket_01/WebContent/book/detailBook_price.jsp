@@ -6,9 +6,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-
+.basic_info_wrapper {
+	margin-left: 30px;
+}
 </style>
 </head>
-<body>여기는 책에 대한 가격 정보가 들어가는 곳입니다.
+<body>
+
+	<section class="row placeholders basic_info_wrapper">
+	<div class="col-sm-3 placeholder">
+		<img src="http://via.placeholder.com/135x194">
+	</div>
+	<div class="col-sm-9 placeholder">
+
+		<table>
+			<tr>
+				<h3>[시/에세이] 일단 오늘은 나한테 잘합시다</h3>
+			</tr>
+			<br>
+			<tr>
+				<td>저자 : 도대체</td>
+			</tr>
+			<tr>
+				<td>출판사 : 예담</td>
+			</tr>
+			<tr>
+				<td>출간일자 : 2017.09.25</td>
+			</tr>
+			<tr>
+				<td>ISBN : 9788959135592</td>
+			</tr>
+
+		</table>
+	</div>
+	</section>
 </body>
 </html>
