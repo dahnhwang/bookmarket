@@ -49,7 +49,7 @@ public class Member {
 	}
 	@Override
 	public String toString() {
-		return "ddd [mem_id=" + mem_id + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", money=" + money
+		return "loginUser [mem_id=" + mem_id + ", email=" + email + ", pwd=" + pwd + ", name=" + name + ", money=" + money
 				+ ", join_date=" + join_date + "]";
 	}
 	
