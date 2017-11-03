@@ -92,7 +92,7 @@ body {
 				<ul class="nav navbar-nav navbar-right">  
 					<li><a href="#">장바구니</a></li>
 					<c:choose>
-						<c:when test="${empty session.loginUser }">
+						<c:when test="${empty loginUser}">
 							<li><a href="bookmarket?command=login_form">로그인</a></li>
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
 						 </c:when>  
