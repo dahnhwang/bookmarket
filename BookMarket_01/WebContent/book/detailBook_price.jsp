@@ -6,15 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-.price_info {
-	height: 300px;
-	background-color: blue;
-}
+
 </style>
 </head>
-<body>
-	<div class="container">
-		<div class="price_info">여기는 책에 대한 가격 정보가 들어가는 곳입니다.</div>
-	</div>
+<body>여기는 책에 대한 가격 정보가 들어가는 곳입니다.
 </body>
 </html>

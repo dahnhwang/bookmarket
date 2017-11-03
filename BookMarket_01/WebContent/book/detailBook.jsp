@@ -7,9 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-#contents {
-	margin-top: 100px; /* 네비게이션 높이(50px)+a 만큼 띄움  */
-}
 </style>
 </head>
 <body>
@@ -17,17 +14,27 @@
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div id="contents">
-			<div>
-				<jsp:include page="./detailBook_basic.jsp" />
+		<div class="container">
+			<div class="row">
+				<div class="side-menu">
+					<jsp:include page="book_navigation.jsp" />
+				</div>
+				<div class="col-md-9">
+					<div class="book_basic_info">
+						<jsp:include page="detailBook_basic.jsp" />
+					</div>
+					<div class="book_condition_info">
+						<jsp:include page="detailBook_condition.jsp" />
+					</div>
+					<div class="book_price_info">
+						<jsp:include page="detailBook_price.jsp" />
+					</div>
+				</div>
 			</div>
-			<div>
-				<jsp:include page="./detailBook_condition.jsp" />
-			</div>
-			<div>
-				<jsp:include page="./detailBook_price.jsp" />
-			</div>
+
 		</div>
+
+
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>

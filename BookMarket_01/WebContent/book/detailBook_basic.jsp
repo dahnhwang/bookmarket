@@ -6,27 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-body {
-	margin: 0 auto;
-}
-
-.basic_info {
-	height: 300px;
-	background-color: yellow;
-}
 </style>
 </head>
 <body>
-
-	<div class="container">
-		<div class="basic_info">
-			<div class="row">
-				<div class="col-sm-4">
-					<img src="http://via.placeholder.com/198x297">
-				</div>
-				<div class="col-sm-8">col-sm-8</div>
-			</div>
-		</div>
-	</div>
+베이직 북 인포
 </body>
 </html>

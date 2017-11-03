@@ -147,7 +147,7 @@ public class MemberDao implements IMemberDao {
 			pstmt.setInt(4, member.getMoney());
 			pstmt.setInt(5, member.getMem_id());
 			result = pstmt.executeUpdate();
-		} catch (Exception e) {
+		} catch (Exception e) { 
 			e.printStackTrace();
 		} finally {
 			try {
@@ -212,6 +212,40 @@ public class MemberDao implements IMemberDao {
 			}
 		}
 		return money;
+	}
+
+	@Override
+	public boolean confirmEmail(String email) {
+		String sql = "SELECT COUNT(*) as result"
+				+ " FROM member WHERE email = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int result = rs.getInt("result");
+			if( result > 0 )
+				return true;
+			else
+				 return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
 	}
 	
 
