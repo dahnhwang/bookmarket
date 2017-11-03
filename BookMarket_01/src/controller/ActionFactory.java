@@ -17,11 +17,11 @@ import controller.action.CartAction;
 import controller.action.CartAddAction;
 import controller.action.DetailBookAction;
 import controller.action.DropMemberAction;
+import controller.action.EmailCheckAction;
 import controller.action.JoinAction;
 import controller.action.JoinFormAction;
 import controller.action.KeepBookAddAction;
 import controller.action.LoginAction;
-import controller.action.EmailCheckAction;
 import controller.action.LoginFormAction;
 import controller.action.LogoutAction;
 import controller.action.MainAction;
@@ -35,7 +35,6 @@ import controller.action.MyMoneyAction;
 import controller.action.MyMoneyChargeAction;
 import controller.action.MyMoneyChargeFormAction;
 import controller.action.MyPageAction;
-import controller.action.MyPageNavigationAction;
 import controller.action.MyPurchaseListAction;
 import controller.action.MyPwdCheckAction;
 import controller.action.MySellListAction;
@@ -110,8 +109,6 @@ public class ActionFactory {
 			action = new CartAddAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
-		} else if (command.equals("mypage_navigation")) {
-			action = new MyPageNavigationAction();
 		} else if (command.equals("myInfo")) {
 			action = new MyInfoAction();
 		} else if (command.equals("myInfo_update_form")) {
