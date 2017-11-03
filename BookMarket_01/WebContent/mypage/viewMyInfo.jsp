@@ -12,15 +12,19 @@
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div id="contents">
-			<div id="contents">콘텐츠영역
-				<form id="my-info-modify" action="bookmarket" method="post">
-					<table>
-						<tr>
-							
-						</tr>					
-					</table>
-				</form>
+		<div id="container">
+			<div id="mypage side-menu" class="side-menu">
+				<ul id="mypage side-menu-list" class="side-menu"><span>마이페이지</span>
+					<li><ahref="bookmarket?command=myInfo_update_form">회원정보수정</a></li>
+					<li><ahref="bookmarket?command=myPurchase_list">판매내역조회</a></li>
+					<li><ahref="bookmarket?command=myPurchase_list">구매내역조회</a></li>
+					<li><ahref="bookmarket?command=myKeep_list">찜내역조회</a></li>
+					<li><ahref="bookmarket?command=myBookMoney">북머니조회</a></li>
+					<li><ahref="bookmarket?command=drop_member">회원탈퇴</a></li>
+				</ul> 			
+			</div>
+			<div id="contents">
+				마이페이지
 			</div>
 		</div>
 		<div id="footer">
