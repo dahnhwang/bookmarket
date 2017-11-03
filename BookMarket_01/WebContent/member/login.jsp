@@ -11,16 +11,6 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <link href="css/login.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script>
-	$(document).ready(function() {
-		var id = $(session).attr('loginUser');
-		if (id != null) {
-			if (id == "true") {
-				alert('로그인 상태입니다.');
-			}
-		}
-	});
-</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -29,7 +19,7 @@
 			<h2 class="form-signin-heading">Please login</h2>
 			<input type="text" class="form-control" id="email" name="email" placeholder="ID" required="" autofocus="" /> 
 			<input type="password"	class="form-control" id="password" name="password" placeholder="Password"	required="" /> 
-			<label for="rememberMe" class="checkbox"> Remember me </label>
+			<label for="rememberMe" class="checkbox"> Remember me</label>
 				<input id="rememberMe"	name="rememberMe" type="checkbox" value="remember-me">
 			<button id="btn-login-submit" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 		</form>
