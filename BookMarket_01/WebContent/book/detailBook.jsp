@@ -7,6 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+.book_info_parents {
+	position: absolute;
+	overflow: hidden;
+} 
 </style>
 </head>
 <body>
@@ -16,20 +20,22 @@
 		</div>
 		<div class="container">
 			<div class="row">
+
 				<div class="side-menu">
 					<jsp:include page="book_navigation.jsp" />
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9 book_info_parents">
 					<div class="book_basic_info">
 						<jsp:include page="detailBook_basic.jsp" />
-					</div>
+					</div><br>
 					<div class="book_condition_info">
 						<jsp:include page="detailBook_condition.jsp" />
-					</div>
+					</div><br>
 					<div class="book_price_info">
 						<jsp:include page="detailBook_price.jsp" />
 					</div>
 				</div>
+
 			</div>
 
 		</div>
