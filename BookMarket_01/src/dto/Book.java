@@ -12,7 +12,7 @@ public class Book {
 	private String published_date;
 	private int genre;
 	private int book_condition;
-	private boolean isSold;
+	private int isSold;
 	private int price;
 	private int seller;
 	private boolean image;
@@ -141,11 +141,13 @@ public class Book {
 		this.comment_img = comment_img;
 	}
 
-	public boolean isSold() {
+	
+
+	public int getIsSold() {
 		return isSold;
 	}
 
-	public void setSold(boolean isSold) {
+	public void setIsSold(int isSold) {
 		this.isSold = isSold;
 	}
 
