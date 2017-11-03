@@ -133,6 +133,8 @@ public class ActionFactory {
 			action = new MyKeepBookDeleteAction();
 		} else if (command.equals("myPwd_check")) {
 			action = new MyPwdCheckAction();
+		} else if (command.equals("myPwd_check_form")) {
+			action = new MyPwdCheckFormAction();
 		} else if (command.equals("drop_member")) {
 			action = new DropMemberAction();
 		} else if (command.equals("payment")) {
