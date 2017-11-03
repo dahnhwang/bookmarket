@@ -10,12 +10,13 @@ public class Book {
 	private String title;
 	private String publisher;
 	private String published_date;
+	private String description;
 	private int genre;
 	private int book_condition;
-	private boolean isSold;
+	private int isSold;
 	private int price;
 	private int seller;
-	private boolean image;
+	private int image;
 	private Date submit_date;
 	private int price_type;
 	private String comment;
@@ -101,11 +102,13 @@ public class Book {
 		this.seller = seller;
 	}
 
-	public boolean isImage() {
+	
+
+	public int getImage() {
 		return image;
 	}
 
-	public void setImage(boolean image) {
+	public void setImage(int image) {
 		this.image = image;
 	}
 
@@ -141,23 +144,30 @@ public class Book {
 		this.comment_img = comment_img;
 	}
 
-	public boolean isSold() {
+	public int getIsSold() {
 		return isSold;
 	}
 
-	public void setSold(boolean isSold) {
+	public void setIsSold(int isSold) {
 		this.isSold = isSold;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "Book [book_id=" + book_id + ", isbn=" + isbn + ", author=" + author + ", title=" + title
-				+ ", publisher=" + publisher + ", published_date=" + published_date + ", genre=" + genre
-				+ ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price + ", seller="
-				+ seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type=" + price_type
-				+ ", comment=" + comment + ", comment_img=" + comment_img + "]";
+				+ ", publisher=" + publisher + ", published_date=" + published_date + ", description=" + description
+				+ ", genre=" + genre + ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price
+				+ ", seller=" + seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type="
+				+ price_type + ", comment=" + comment + ", comment_img=" + comment_img + "]";
 	}
-	
-	
 
 }
