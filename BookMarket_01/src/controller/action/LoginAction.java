@@ -17,7 +17,6 @@ public class LoginAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		new MainAction().execute(request, response);
 		HttpSession session = request.getSession();
 		String url = null;
 		String email = request.getParameter("email");
@@ -28,6 +27,8 @@ public class LoginAction implements Action {
 		if(mem_id>0) { // 성공 
 			member = mDao.getMember(mem_id);
 			session.setAttribute("loginUser", member);
+			boolean checkPass = false;
+			session.setAttribute("checkPass", checkPass);
 			url="main.jsp";
 			
 		}else if (mem_id == 0) {
