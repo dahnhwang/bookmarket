@@ -18,10 +18,11 @@ DROP TABLE IF EXISTS book;
 CREATE TABLE book(
 book_id INT NOT NULL AUTO_INCREMENT,
 isbn VARCHAR(20) NOT NULL,
-author VARCHAR(20),
+author VARCHAR(20) NOT NULL,
 title VARCHAR(100) NOT NULL,
 publisher VARCHAR(20),
 published_date DATE,
+description VARCHAR(500),
 genre INT,
 book_condition INT DEFAULT 0,
 isSold INT DEFAULT 0,
