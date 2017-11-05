@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Book;
+import dto.Member;
 
 public class BookDao implements IBookDao{
 	
@@ -34,39 +35,44 @@ public class BookDao implements IBookDao{
 			e.printStackTrace();
 		}
 	}
-	
 
 	@Override
 	public List<Book> selectAllBookList() {
 		// TODO Auto-generated method stub
-		List<dto.Book> list = new ArrayList<>();
+		
+	    List<Book> bookList = new ArrayList<Book>();
+	    Book book = null;
+		String sql = "SELECT * FROM book";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM books";
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				dto.Book b = new dto.Book();
-				b.setBook_id(rs.getInt("book_id"));
-				b.setIsbn(rs.getString("isbn"));
-				b.setPublisher(rs.getString("publisher"));
-				b.setPublished_date(rs.getString("published_date"));	
-				b.setGenre(rs.getInt("genre"));
-				b.setBook_condition(rs.getInt("conditon"));
-				b.setSold(rs.getBoolean("isSold"));
-				b.setPrice(rs.getInt("price"));
-				b.setSeller(rs.getInt("seller"));
-				b.setImage(rs.getBoolean("image"));
-				b.setSubmit_date(rs.getDate("submit_date"));
-				b.setPrice_type(rs.getInt("price_type"));
-				b.setComment(rs.getString("comment"));
-				b.setComment_img(rs.getString("comment_img"));
-				list.add(b);
+			if (rs.next()) {
+				
+				book = new Book();
+				book.setBook_id(rs.getInt("book_id"));
+				book.setIsbn(rs.getString("isbn"));
+				book.setAuthor(rs.getString("author"));
+				book.setTitle(rs.getString("title"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublished_date(rs.getString("published_date"));
+				book.setDescription(rs.getString("description"));
+				book.setGenre(rs.getInt("genre"));
+				book.setBook_condition(rs.getInt("book_condition"));
+				book.setIsSold(rs.getInt("isSold"));
+				book.setPrice(rs.getInt("price"));
+				book.setSeller(rs.getInt("seller_id"));
+				book.setImage(rs.getInt("image"));
+				book.setSubmit_date(rs.getDate("submit_date"));
+				book.setPrice_type(rs.getInt("price_type"));
+				book.setComment(rs.getString("comment"));
+				book.setComment_img(rs.getString("comment_img"));
+				
+				bookList.add(book);
+				
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -74,162 +80,79 @@ public class BookDao implements IBookDao{
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		return list;
+		return bookList;
 	}
 
 	@Override
 	public Book getBook(int book_id) {
-		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO books VALUES(0,?,?,?,?)";
 
-		int result = 0;
+	    Book book = null;
+		String sql = "select * from book where book_id=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, b.getBook_id());
-			pstmt.setString(2, b.getIsbn());
-			pstmt.setString(3, b.getAuthor());
-			pstmt.setString(4, b.getTitle());
-			pstmt.setString(5, b.getPublisher());
-			pstmt.setString(6, b.getPublished_date());
-			pstmt.setInt(6, b.getGenre());
-			pstmt.setInt(7, b.getCondition());
-			pstmt.setBoolean(8, b.getisSold());
-			pstmt.setInt(9, b.getPrice());
-			pstmt.setInt(10, b.getSeller());
-			pstmt.setBoolean(11, b.getisSold());
-			pstmt.setInt(12, b.getprice());
-			pstmt.setInt(13, b.getseller());
-			pstmt.setboolean(14, b.getimage());
-			pstmt.setInt(15, b.getsubmit_date());
-			pstmt.setString(16. b.getprice_type());
-			pstmt.setString(17. b.getcomment());
-			pstmt.setString(18. b.getcommne_img());
-                        result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				
+				book = new Book();
+				book.setBook_id(rs.getInt("book_id"));
+				book.setIsbn(rs.getString("isbn"));
+				book.setAuthor(rs.getString("author"));
+				book.setTitle(rs.getString("title"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublished_date(rs.getString("published_date"));
+				book.setDescription(rs.getString("description"));
+				book.setGenre(rs.getInt("genre"));
+				book.setBook_condition(rs.getInt("book_condition"));
+				book.setIsSold(rs.getInt("isSold"));
+				book.setPrice(rs.getInt("price"));
+				book.setSeller(rs.getInt("seller_id"));
+				book.setImage(rs.getInt("image"));
+				book.setSubmit_date(rs.getDate("submit_date"));
+				book.setPrice_type(rs.getInt("price_type"));
+				book.setComment(rs.getString("comment"));
+				book.setComment_img(rs.getString("comment_img"));
+				
+				
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
+				if (rs != null)
+					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return book;
 	}
 
 	@Override
-	public int insertBook(Book b) {
-		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO books VALUES(?,?,?,?,?)";
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, b.getIsbn());
-			pstmt.setString(2, b.getAuthor());
-			pstmt.setString(3, b.getTitle());
-			pstmt.setString(4, b.getPublisher());
-			pstmt.setString(5, b.getPublished_date());
-			pstmt.setInt(6, b.getGenre());
-			pstmt.setInt(7, b.getBook_condition());
-			pstmt.setBoolean(8, b.getIssold);
-			pstmt.setInt(9, b.getPrice());
-			pstmt.setInt(10, b.getSeller());
-			pstmt.setBoolean(11, b.getImage());
-			pstmt.setdate(12,b.getSubmit_date());
-			pstmt.setInt(13, b.getPrice_type());
-			pstmt.setString(14,  b.getComment());
-			pstmt.setString(15, b.getComment_img());
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
+	public int insertBook(Book book) {
+		
 
+		return 0;
+	}
 
 	@Override
 	public int updateBook(Book book) {
 		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		String sql = "UPDATE books SET author=? "
-				+ "title =?, publisher=?, published_date=?,"
-				+ "genre =?, book_conditon=?, price=? "
-				+ "comment =? commmnet_img=?" 
-				"WHERE book_id = ?";
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, b.getAuthor());
-			pstmt.setString(2, b.getTitle());
-			pstmt.setString(3, b.getPublisher());
-			pstmt.setString(4, b.getpublished_date());
-			pstmt.setInt(5, b.getgenre());
-			pstmt.setInt(6, getBook_condition()));
-			pstmt.setInt(7, b.getPrice());
-			pstmt.setString(8, b.getComment());
-			pstmt.setString(9, b.getComment_img());
-			result = pstmt.executeUpdate());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return result;
+		return 0;
 	}
 
 	@Override
 	public int deleteBook(int book_id) {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM books WHERE book_id = ?";
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bookId);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return result;
+		return 0;
 	}
-
 
 	@Override
 	public List<Book> selectBookByGenre(int genre) {
@@ -278,5 +201,6 @@ public class BookDao implements IBookDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
