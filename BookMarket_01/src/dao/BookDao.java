@@ -57,7 +57,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -107,7 +107,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -148,7 +148,7 @@ public class BookDao implements IBookDao{
 			pstmt.setString(2, book.getAuthor());
 			pstmt.setString(3, book.getTitle());
 			pstmt.setString(4,book.getPublisher());
-			pstmt.setDate(5,(Date) book.getPublished_date());
+			pstmt.setString(5,book.getPublished_date());
 			pstmt.setString(6,book.getDescription());
 			pstmt.setInt(7, book.getGenre());
 			pstmt.setInt(8, book.getBook_condition());
@@ -248,7 +248,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -299,7 +299,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -350,7 +350,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -401,7 +401,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -452,7 +452,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -513,7 +513,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));
@@ -564,7 +564,7 @@ public class BookDao implements IBookDao{
 				book.setAuthor(rs.getString("author"));
 				book.setTitle(rs.getString("title"));
 				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getDate("published_date"));
+				book.setPublished_date(rs.getString("published_date"));
 				book.setDescription(rs.getString("description"));
 				book.setGenre(rs.getInt("genre"));
 				book.setBook_condition(rs.getInt("book_condition"));

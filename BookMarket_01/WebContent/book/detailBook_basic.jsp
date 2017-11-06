@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${ book.title }</title>
+<title></title>
 <style>
 .basic_info_wrapper {
 	margin-left: 30px;
@@ -30,15 +30,15 @@ td {
 			</tr>
 			<tr>
 				<td width="15%"><b>저자</b></td>
-				<td width="35%">윤인성</td>
+				<td width="35%">${book.author }</td>
 				<td width="15%"><b>출판사</b></td>
-				<td width="35%">예담</td>
+				<td width="35%">${book.publisher }</td>
 			</tr>
 			<tr>
 				<td width="15%"><b>출간일자</b></td>
-				<td width="35%">2017.09.25</td>
+				<td width="35%">${book.published_date }</td>
 				<td width="15%"><b>ISBN</b></td>
-				<td width="35%">9788959135592</td>
+				<td width="35%">${book.isbn }</td>
 			</tr>
 			<tr>
 				<td valign="top"><b>소개</b></td>

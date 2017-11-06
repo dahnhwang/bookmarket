@@ -9,7 +9,7 @@ public class Book {
 	private String author;
 	private String title;
 	private String publisher;
-	private Date published_date;
+	private String published_date;
 	private String description;
 	private int genre;
 	private int book_condition;
@@ -63,11 +63,11 @@ public class Book {
 	}
 
 
-	public Date getPublished_date() {
+	public String getPublished_date() {
 		return published_date;
 	}
 
-	public void setPublished_date(Date published_date) {
+	public void setPublished_date(String published_date) {
 		this.published_date = published_date;
 	}
 
