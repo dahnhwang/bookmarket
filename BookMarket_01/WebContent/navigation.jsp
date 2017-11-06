@@ -34,7 +34,7 @@ body {
 }
 </style>
 
-</head>
+</head> 
 
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">

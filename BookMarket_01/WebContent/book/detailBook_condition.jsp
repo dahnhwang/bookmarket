@@ -71,7 +71,7 @@ button.accordion.active:after {
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<button class="accordion ">
-		도서상태 (판매자 작성) <i class="fa fa-star" aria-hidden="true"></i>
+		도서상태 (판매자 작성) <i class="fa fa-star" aria-hidden="true"></i> 
 	</button>
 	<div class="panel">
 		<p>도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해
