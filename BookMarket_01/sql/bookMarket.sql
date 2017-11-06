@@ -3,7 +3,7 @@ SET CHARACTER SET 'EUCKR';
 
 DROP TABLE IF EXISTS member, book, sold, deal, keepBook, money;
 
-DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS member; 
 CREATE TABLE member(
 mem_id INT NOT NULL AUTO_INCREMENT,
 email varchar(25) default null,
