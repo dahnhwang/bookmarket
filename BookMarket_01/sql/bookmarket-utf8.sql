@@ -99,4 +99,22 @@ INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('978898437
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('9780062464316','HARARI, YUVAL NOAH', 'Homo Deus A History of Tomorrow', 5, 30000);
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('0070856133','Rudin', 'Principles of Mathematical Analysis, 3/E International Series in Pure & Applied Mathematics', 5, 30000);
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('0684853949','Sacks, Oliver W.', 'The Man Who Mistook His Wife for a Hat And Other Clinical Tales', 3, 3000);
-
+INSERT INTO book VALUES(
+0,
+'9788937473135',
+'조남주',
+'82년생 김지영',
+'민음사',
+'2016.10.14',
+'공포, 피로, 당황, 놀람, 혼란, 좌절의 연속에 대한 한국 여자의 인생 현장 보고서! 문학성과 다양성, 참신성을 기치로 한국문학의 미래를 이끌어 갈 신예들의 작품을 엄선한 「오늘의 젊은 작가」의 열세 번째 작품 『82년생 김지영』. 서민들의 일상 속 비극을 사실적이면서 공감대...',
+100,
+5,
+0,
+10000,
+1,
+0,
+sysdate(),
+0,
+'not yet',
+'not yet'
+);
