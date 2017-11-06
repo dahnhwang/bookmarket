@@ -34,7 +34,7 @@ body {
 <body>
 	<footer class="footer">
 	<div class="container">
-		<span class="text-muted">BOOKMARKET PROJECT 2017 OCT-NOV | MADE
+		<span class="text-muted">BOOKMARKET PROJECT 2017 OCT-NOV |
 			BY 강지훈 김경석 문진용 최현정 황다현 </span>
 
 	</div>

@@ -5,41 +5,72 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+	<script>
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+		acc[i].onclick = function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight) {
+				panel.style.maxHeight = null;
+			} else {
+				panel.style.maxHeight = panel.scrollHeight + "px";
+			}
+		}
+	}
+</script>
+
 <style>
-.test {
-	height: 300px;
-	background-color: red;
-	width: 600px;
+button.accordion {
+	background-color: white;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+	background-color: #eee;
+}
+
+div.panel {
+	padding: 0 18px;
+	background-color: white;
+	display: none;
+	margin-left: 30px;
+}
+
+button.accordion:after {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	font-size: 13px;
+	color: #777;
+	float: right;
+	margin-left: 5px;
+}
+
+button.accordion.active:after {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.condition_info_wrapper {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin-left:40px;
 }
 </style>
 </head>
 <body>
-
-	<section class="row placeholders basic_info_wrapper">
-	<div class="col-sm-3 placeholder">
-		<img src="http://via.placeholder.com/135x194">
-	</div>
-	<div class="col-sm-9 placeholder">
-
-		<table>
-			<tr>
-				<h3>[시/에세이] 일단 오늘은 나한테 잘합시다</h3>
-			</tr>
-			<br>
-			<tr>
-				<td>저자 : 도대체</td>
-			</tr>
-			<tr>
-				<td>출판사 : 예담</td>
-			</tr>
-			<tr>
-				<td>출간일자 : 2017.09.25</td>
-			</tr>
-			<tr>
-				<td>ISBN : 9788959135592</td>
-			</tr>
-
-		</table>
+	<section class="condition_info_wrapper row placeholders">
+	<button class="accordion ">도서상태 (판매자 작성)</button>
+	<div class="panel">
+		<p>Lorem ipsum...</p>
 	</div>
 	</section>
 </body>

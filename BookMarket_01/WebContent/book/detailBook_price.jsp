@@ -6,9 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-.basic_info_wrapper {
-	margin-left: 30px;
-}
 </style>
 </head>
 <body>
