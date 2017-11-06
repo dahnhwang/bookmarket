@@ -15,14 +15,14 @@
 </style>
 </head>
 <body>
-	<div id="wrap">
-		<div id="navigation">
+	<div class="wrap">
+		<div class="navigation">
 			<jsp:include page="navigation.jsp" />
 		</div>
-		<div id="contents">
+		<div class="contents">
 			<div id="contents">콘텐츠영역</div>
 		</div>
-		<div id="footer">
+		<div class="footer">
 			<jsp:include page="footer.jsp" />
 		</div>
 	</div>

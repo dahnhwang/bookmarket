@@ -17,8 +17,8 @@
 </style>
 </head>
 <body>
-	<div id="wrap">
-		<div id="navigation">
+	<div class="wrap">
+		<div class="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div class="container">
@@ -46,7 +46,7 @@
 		</div>
 
 
-		<div id="footer">
+		<div class="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>
 	</div>

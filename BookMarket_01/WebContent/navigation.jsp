@@ -34,7 +34,7 @@ body {
 }
 </style>
 
-</head> 
+</head>
 
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -88,7 +88,6 @@ body {
 							<li><a href="#">해외도서</a></li>
 						</ul></li>
 					<li><a href="#">판매하기</a></li>
-
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

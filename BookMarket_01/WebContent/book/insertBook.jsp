@@ -8,14 +8,42 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
-		<div id="navigation">
-			<jsp:include page="../navigation.jsp" />
+<body>
+	<div class="wrap">
+		<div class="navigation">
+			<div class="col-md-2">
+				<ul class="list-group">
+					<li class="list-group-item"><a href="#">전체상품(2)</a></li>
+					<li class="list-group-item"><a href="#">동일상품(1)</a></li>
+				</ul>
+			</div>
 		</div>
-		<div id="contents">
-			<div id="contents">콘텐츠영역</div>
+		<div class="container">
+			<div class="row">
+
+				<div class="side-menu">
+					<jsp:include page="book_navigation.jsp" />
+				</div>
+				<div class="col-md-9 book_info_parents">
+					<div class="book_basic_info">
+						<jsp:include page="detailBook_basic.jsp" />
+					</div>
+					<br>
+					<div class="book_condition_info">
+						<jsp:include page="detailBook_condition.jsp" />
+					</div>
+					<br>
+					<div class="book_price_info">
+						<jsp:include page="detailBook_price.jsp" />
+					</div>
+				</div>
+
+			</div>
+
 		</div>
-		<div id="footer">
+
+
+		<div class="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>
 	</div>

@@ -39,13 +39,13 @@ import controller.action.MyPageAction;
 import controller.action.MyPurchaseListAction;
 import controller.action.MyPwdCheckAction;
 import controller.action.MySellListAction;
-import controller.action.NaverApiAction;
 import controller.action.NavigationAction;
 import controller.action.PaymentAction;
 import controller.action.PaymentCheckPassAction;
 import controller.action.PaymentCompleteAction;
 import controller.action.PaymentSuccessAction;
 import controller.action.SearchAction;
+import util.NaverApi;
 
 public class ActionFactory {
 
@@ -80,7 +80,7 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("email_check")) {
 			action = new EmailCheckAction();
-		} else if (command.equals("logout")) { 
+		} else if (command.equals("logout")) {
 			action = new LogoutAction();
 		} else if (command.equals("cart")) {
 			action = new CartAction();
@@ -98,8 +98,6 @@ public class ActionFactory {
 			action = new BookUpdateAction();
 		} else if (command.equals("book_Insert_form")) {
 			action = new BookInsertFormAction();
-		} else if (command.equals("book_api")) {
-			action = new NaverApiAction();
 		} else if (command.equals("book_insert")) {
 			action = new BookInsertAction();
 		} else if (command.equals("book_delete")) {
@@ -140,21 +138,21 @@ public class ActionFactory {
 			action = new DropMemberFormAction();
 		} else if (command.equals("payment")) {
 			action = new PaymentAction();
-		}else if (command.equals("bookMoney_check")) {
+		} else if (command.equals("bookMoney_check")) {
 			action = new BookMoneyCheckAction();
-		}else if (command.equals("payment_check_ pass")) {
+		} else if (command.equals("payment_check_ pass")) {
 			action = new PaymentCheckPassAction();
-		}else if (command.equals("bidding_form")) {
+		} else if (command.equals("bidding_form")) {
 			action = new BiddingFormAction();
-		}else if (command.equals("bidding")) {
+		} else if (command.equals("bidding")) {
 			action = new BiddingAction();
-		}else if (command.equals("bidding_choice_form")) {
+		} else if (command.equals("bidding_choice_form")) {
 			action = new BiddingChoiceFormAction();
-		}else if (command.equals("bidding_choice")) {
+		} else if (command.equals("bidding_choice")) {
 			action = new BiddingChoiceAction();
-		}else if (command.equals("payment_success")) {
+		} else if (command.equals("payment_success")) {
 			action = new PaymentSuccessAction();
-		}else if (command.equals("payment_complete")) {
+		} else if (command.equals("payment_complete")) {
 			action = new PaymentCompleteAction();
 		}
 
