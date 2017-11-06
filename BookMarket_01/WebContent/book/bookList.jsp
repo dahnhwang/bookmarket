@@ -65,7 +65,7 @@ $(document).ready(function() {
                 <th>장르</th>
                 <th>저자 / 출판사 </th>
                 <th>상태</th>
-                <th>판매자 이메일</th>
+                <th>판매자 이메일</th> 
                 <th>업데이트 날짜</th>
                 <th>가격</th>
                 <th>구매 버튼</th>

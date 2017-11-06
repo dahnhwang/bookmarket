@@ -21,7 +21,7 @@
 			<li class="list-group-item"><a href="#">과학/공학</a></li>
 			<li class="list-group-item"><a href="#">예술/대중문화</a></li>
 			<li class="list-group-item"><a href="#">종교</a></li>
-			<li class="list-group-item"><a href="#">유아</a></li>
+			<li class="list-group-item"><a href="#">유아</a></li> 
 			<li class="list-group-item"><a href="#">어린이</a></li>
 			<li class="list-group-item"><a href="#">가정/생활/요리</a></li>
 			<li class="list-group-item"><a href="#">건강</a></li>

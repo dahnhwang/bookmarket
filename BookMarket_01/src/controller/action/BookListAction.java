@@ -21,5 +21,5 @@ public class BookListAction implements Action {
 		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher(url).forward(request, response);		
 	} 
-
+ 
 } 
