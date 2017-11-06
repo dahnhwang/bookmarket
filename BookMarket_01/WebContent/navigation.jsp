@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<script src="https://use.fontawesome.com/a37a2f4835.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
@@ -33,12 +34,13 @@ body {
 }
 </style>
 
-</head>
+</head> 
 
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="bookmarket?command=main">BOOK MARKET</a>
+			<a class="navbar-brand" href="bookmarket?command=main">BOOK
+				MARKET</a>
 			<div class="navbar-header">
 				<button class="navbar-toggle collapsed" data-toggle="collapse"
 					data-target="#target">
@@ -89,20 +91,20 @@ body {
 
 				</ul>
 
-				<ul class="nav navbar-nav navbar-right">  
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">장바구니</a></li>
 					<c:choose>
 						<c:when test="${empty loginUser}">
 							<li><a href="bookmarket?command=login_form">로그인</a></li>
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
-						 </c:when>  
+						</c:when>
 						<c:otherwise>
 							<li><a href="bookmarket?command=logout">로그아웃</a></li>
 							<li><a href="bookmarket?command=mypage">마이페이지</a></li>
-						 </c:otherwise>  
+						</c:otherwise>
 					</c:choose>
-					 
-				</ul> 
+
+				</ul>
 
 
 				<form class="navbar-form navbar-right">

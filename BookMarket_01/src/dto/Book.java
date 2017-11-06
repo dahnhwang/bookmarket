@@ -16,7 +16,7 @@ public class Book {
 	private int isSold;
 	private int price;
 	private int seller;
-	private int image;
+	private String image;
 	private Date submit_date;
 	private int price_type;
 	private String comment;
@@ -105,11 +105,11 @@ public class Book {
 
 	
 
-	public int getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(int image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
