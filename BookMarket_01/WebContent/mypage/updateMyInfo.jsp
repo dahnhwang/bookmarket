@@ -9,17 +9,20 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
 function passCheck(){
-	if($('#password').val().length == 0){
+	if($('#pwd-mypwd-check').val().length == 0){
 		alert('비밀번호를 입력하세요.');
-		$('#password').focus();
+		$('#pwd-mypwd-check').focus();
 		return false;
 	}
 	return true;
 }
 	$(document).ready(function(){
-		$('#btn-myPwdCheck').on('click', function(){
+		$('#div-myInfo-update').hide();
+		
+		$('#btn-mypwd-check').on('click', function(){
+			alert('클릭')
 			if(passCheck()){
-				var password = $('#pwd-myPwdCheck').val();
+				var password = $('#pwd-mypwd-check').val();
 				var params = "command=myPwd_check&password=" + password;
 
 				$.ajax({
@@ -28,9 +31,14 @@ function passCheck(){
 					data : params,
 					dataType : 'json',
 					success : function(data) {
-						if (data.result == 'false') {
-							$('<span>').text("비밀번호가 틀렸습니다.").appnedTo('#frm-myPwdCheck');
-						} 
+						if (data.result == false) {							
+							$('<br>').text("비밀번호가 틀렸습니다.").appnedTo('#frm-mypwd-check');
+						}
+						else if(data.result == true){
+							alert('비밀번호 확인!')
+							$('#div-mypwd-check').hide();
+							$('#div-myInfo-update').show();
+						}
 					}
 				});
 			}
@@ -54,39 +62,41 @@ function passCheck(){
 					<li><a href="bookmarket?command=myPwd_check">회원탈퇴</a></li>
 				</ul> 			
 			</div>
-			<c:if test="${checkPass == 'false' }">
-				<div id="mypage contents mypwd-check" class="contents">
-					<h1> 비밀번호 확인</h1>
-					<form id="frm-myPwdCheck" action="bookmarket" name="mypwd-check-frm">
-						<input type="hidden" name="command" value="myPwd_check">
-						<table id="table-myPwdCheck" style="width: 80%">
-							<tr>
-								<th>비밀번호</th>
-								<td><input type="password" id="pwd-myPwdCheck" size="21"></td>
-							</tr>
-						</table>
-						<br>
-						<input type="button" id="btn-myPwdCheck" value="확 인">
-					</form>
-				</div>
-			</c:if>
-			<c:if test="${checkPass == 'true' }">
-				<div id="mypage contents mypwd-check" class="contents">
-					<h1> 회원정보 수정 </h1>
-					<form action="bookmarket" name="mypwd-check-frm">
-						<input type="hidden" name="command" value="myPwd_check">
-						<table style="width: 80%">
-							<tr>
-								<th>비밀번호</th>
-								<td><input type="password" name="password" size="21"></td>
-							</tr>
-						</table>
-						<br>
-						<input type="submit" name="확 인" onclick="return passCheck()">
-						<br><br>${message }
-					</form>
-				</div>
-			</c:if>
+			<div id="div-mypwd-check" class="contents">
+				<h1> 비밀번호 확인</h1>
+				<form id="frm-mypwd-check" action="bookmarket" name="frm-mypwd-check">
+					<input type="hidden" name="command" value="myPwd_check">
+					<table id="table-mypwd-check" style="width: 80%">
+						<tr>
+							<th>비밀번호</th>
+							<td><input type="password" id="pwd-mypwd-check" size="21"></td>
+						</tr>
+					</table>
+					<input type="button" id="btn-mypwd-check" value="확 인">
+				</form>
+			</div>
+			<div id="div-myInfo-update" class="contents">
+				<h1> 회원정보 수정 </h1>
+				<form action="bookmarket" method="post" name=myInfo-update>
+				<input type="hidden" name="command" value="myInfo_update">
+				<table style="width: 80%">
+					<tr>
+						<th>Email</th>
+						<td><input type="text" id="update-email" name="email"></td>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td><input type="password" id="update-name" name="name"></td>
+					</tr>
+					<tr>
+						<th>Password</th>
+						<td><input type="password" id="update-pwd" name="pwd"></td>
+					</tr>
+				</table>
+				<br>
+				<input type="submit" name="verify">
+			</form>
+		</div>
 		</div>
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
