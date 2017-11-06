@@ -1,27 +1,10 @@
-package controller.action;
+package util;
 
-import java.io.IOException;
+public class GenreParser {
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import dao.BookDao;
-import dto.Book;
-
-public class DetailBookAction implements Action {
-
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String url = "book/detailBook.jsp?book_id=";
-		int book_id = Integer.parseInt(request.getParameter("book_id"));
-		System.out.println(url + book_id);
-		BookDao dao = BookDao.getInstance();
-		Book book = dao.getBook(book_id);
+	public String getGenreStr(int genreInt) {
 
 		// 가져온 책의 카테고리 정보를 int로 받아 String으로 알려주는 category parser 입니다.
-		int genreInt = book.getGenre();
 		String genreStr = null;
 		if (genreInt == 100) {
 			genreStr = "소설";
@@ -67,16 +50,15 @@ public class DetailBookAction implements Action {
 			genreStr = "학습/참고서";
 		} else if (genreInt == 260) {
 			genreStr = "취업/수험서";
-		}else if (genreInt == 330) {
+		} else if (genreInt == 330) {
 			genreStr = "만화";
-		}else if (genreInt == 290) {
+		} else if (genreInt == 290) {
 			genreStr = "잡지";
-		}else if (genreInt == 340) {
+		} else if (genreInt == 340) {
 			genreStr = "해외도서";
 		}
 
-		request.setAttribute("book", book);
-		request.getRequestDispatcher(url + book_id).forward(request, response);
-	}
+		return genreStr;
 
+	}
 }

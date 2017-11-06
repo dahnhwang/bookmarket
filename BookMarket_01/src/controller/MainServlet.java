@@ -22,9 +22,8 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("MainServlet");
 		ActionFactory af = ActionFactory.getInstance();
-		String command = "main";
+		String command = null;
 		Action action = null;
 		
 		if(request.getParameter("command") != null) {
