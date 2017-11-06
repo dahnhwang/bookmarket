@@ -28,7 +28,7 @@ book_condition INT DEFAULT 0,
 isSold INT DEFAULT 0,
 price INT DEFAULT 0,
 seller_id INT,
-image INT default 0,
+image VARCHAR(1000) INT default 0,
 submit_date DATE, 
 price_type INT default 0,
 comment VARCHAR(1000),
@@ -68,6 +68,7 @@ PRIMARY KEY (keepBook_id)
 );
 
 DROP TABLE IF EXISTS money;
+
 CREATE TABLE money(
 money_idx INT AUTO_INCREMENT,
 mem_id	int,
@@ -100,7 +101,6 @@ INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('978898437
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('9780062464316','HARARI, YUVAL NOAH', 'Homo Deus A History of Tomorrow', 5, 30000);
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('0070856133','Rudin', 'Principles of Mathematical Analysis, 3/E International Series in Pure & Applied Mathematics', 5, 30000);
 INSERT INTO book (isbn, author, title, book_condition, price) VALUES ('0684853949','Sacks, Oliver W.', 'The Man Who Mistook His Wife for a Hat And Other Clinical Tales', 3, 3000);
-
 INSERT INTO book VALUES(
 0,
 '9788937473135',
@@ -114,7 +114,7 @@ INSERT INTO book VALUES(
 0,
 10000,
 1,
-0,
+'http://bookthumb.phinf.naver.net/cover/112/111/11211133.jpg?type=m140&amp;udate=20170921',
 sysdate(),
 0,
 'not yet',

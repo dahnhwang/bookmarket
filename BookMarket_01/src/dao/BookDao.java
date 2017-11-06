@@ -66,7 +66,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -115,7 +115,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -156,7 +156,7 @@ public class BookDao implements IBookDao{
 			pstmt.setInt(9, book.getIsSold());
 			pstmt.setInt(10, book.getPrice());
 			pstmt.setInt(11,book.getSeller());
-			pstmt.setInt(12, book.getImage());
+			pstmt.setString(12, book.getImage());
 			pstmt.setInt(13, book.getPrice_type());
 			pstmt.setString(14, book.getComment());
 			pstmt.setString(15, book.getComment_img());
@@ -256,7 +256,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -307,7 +307,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -358,7 +358,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -409,7 +409,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -460,7 +460,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -521,7 +521,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
@@ -572,7 +572,7 @@ public class BookDao implements IBookDao{
 				book.setIsSold(rs.getInt("isSold"));
 				book.setPrice(rs.getInt("price"));
 				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getInt("image"));
+				book.setImage(rs.getString("image"));
 				book.setSubmit_date(rs.getDate("submit_date"));
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
