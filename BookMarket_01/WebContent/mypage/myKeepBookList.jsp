@@ -13,6 +13,9 @@
 			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div id="contents">
+			<div id="div-mypage-side-menu" class="side-menu">
+				<jsp:include page="myPage_navigation.jsp" />
+			</div>
 			<div id="contents">콘텐츠영역</div>
 		</div>
 		<div id="footer">
