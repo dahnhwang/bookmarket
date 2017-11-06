@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>[${genre}] ${book.title }</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
 <style>
 .book_info_parents {
 	position: absolute;
 	overflow: hidden;
-} 
+}
 </style>
 </head>
 <body>
@@ -27,10 +30,12 @@
 				<div class="col-md-9 book_info_parents">
 					<div class="book_basic_info">
 						<jsp:include page="detailBook_basic.jsp" />
-					</div><br>
+					</div>
+					<br>
 					<div class="book_condition_info">
 						<jsp:include page="detailBook_condition.jsp" />
-					</div><br>
+					</div>
+					<br>
 					<div class="book_price_info">
 						<jsp:include page="detailBook_price.jsp" />
 					</div>
