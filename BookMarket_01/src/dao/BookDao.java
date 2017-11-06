@@ -44,7 +44,8 @@ public class BookDao implements IBookDao{
 		
 	    List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book";
+	
+		String sql = "SELECT * from book;";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -70,7 +71,6 @@ public class BookDao implements IBookDao{
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setComment_img(rs.getString("comment_img"));
-				
 				bookList.add(book);
 				
 			}
