@@ -27,8 +27,6 @@ public class LoginAction implements Action {
 		if(mem_id>0) { // 성공 
 			member = mDao.getMember(mem_id);
 			session.setAttribute("loginUser", member);
-			boolean checkPass = false;
-			session.setAttribute("checkPass", checkPass);
 			url="main.jsp";
 			
 		}else if (mem_id == 0) {

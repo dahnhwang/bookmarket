@@ -2,10 +2,10 @@ SET CHARACTER SET 'UTF8';
 
 
 
-DROP TABLE IF EXISTS member;
+DROP TABLE IF EXISTS member; 
 CREATE TABLE member(
 mem_id INT NOT NULL AUTO_INCREMENT,
-email varchar(18) default null,
+email varchar(25) default null,
 pwd varchar(18),
 name varchar(18),
 money INT default 10000,

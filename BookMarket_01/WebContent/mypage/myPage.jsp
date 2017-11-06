@@ -13,15 +13,8 @@
 			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div id="container">
-			<div id="mypage side-menu" class="side-menu">
-				<ul id="mypage side-menu-list" class="side-menu"><span>마이페이지</span>
-					<li><a href="bookmarket?command=myInfo_update_form">회원정보수정</a></li>
-					<li><a href="bookmarket?command=myPurchase_list">판매내역조회</a></li>
-					<li><a href="bookmarket?command=myPurchase_list">구매내역조회</a></li>
-					<li><a href="bookmarket?command=myKeep_list">찜내역조회</a></li>
-					<li><a href="bookmarket?command=myBookMoney">북머니조회</a></li>
-					<li><a href="bookmarket?command=drop_member">회원탈퇴</a></li>
-				</ul> 			
+			<div id="div-mypage-side-menu" class="side-menu">
+				<jsp:include page="myPage_navigation.jsp" />
 			</div>
 			<div id="contents">
 				마이페이지

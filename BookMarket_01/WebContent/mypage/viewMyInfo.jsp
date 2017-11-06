@@ -12,15 +12,12 @@
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div id="contents">
-			<div id="contents">콘텐츠영역
-				<form id="my-info-modify" action="bookmarket" method="post">
-					<table>
-						<tr>
-							
-						</tr>					
-					</table>
-				</form>
+		<div id="container">
+			<div id="div-mypage-side-menu" class="side-menu">
+				<jsp:include page="myPage_navigation.jsp" />
+			</div>
+			<div id="contents">
+				마이페이지
 			</div>
 		</div>
 		<div id="footer">
