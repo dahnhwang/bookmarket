@@ -21,7 +21,7 @@ td {
 
 	<section class="row placeholders basic_info_wrapper">
 	<div class="col-sm-3 placeholder">
-		<img src="http://via.placeholder.com/135x194">
+		<img src="${book.image}">
 	</div>
 	<div class="col-sm-9 placeholder">
 		<table>
