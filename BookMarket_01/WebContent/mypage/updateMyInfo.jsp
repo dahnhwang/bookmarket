@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Book Market</title>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
 <script type="text/javascript">
 function passCheck(){
 	if($('#pwd-mypwd-check').val().length == 0){
@@ -33,7 +32,7 @@ function passCheck(){
 					dataType : 'json',
 					success : function(data) {
 						if (data.result == false) {							
-							$('<br>').text("비밀번호가 틀렸습니다.").appendTo('#table-mypwd-check > td');
+							$('<br>').text("비밀번호가 틀렸습니다.").appnedTo('#frm-mypwd-check');
 						}
 						else if(data.result == true){
 							alert('비밀번호 확인!')
@@ -71,26 +70,26 @@ function passCheck(){
 			</div>
 			<div id="div-myInfo-update" class="contents">
 				<h1> 회원정보 수정 </h1>
-				<form action="bookmarket" method="post" name="frm-myInfo-update">
-					<input type="hidden" name="command" value="myInfo_update">
-					<table style="width: 80%">
-						<tr>
-							<th>Email</th>
-							<td><input type="text" id="update-email" name="email"></td>
-						</tr>
-						<tr>
-							<th>Name</th>
-							<td><input type="password" id="update-name" name="name"></td>
-						</tr>
-						<tr>
-							<th>Password</th>
-							<td><input type="password" id="update-pwd" name="pwd"></td>
-						</tr>
-					</table>
-					<br>
-					<input type="submit" name="verify">
-				</form>
-			</div>
+				<form action="bookmarket" method="post" name=myInfo-update>
+				<input type="hidden" name="command" value="myInfo_update">
+				<table style="width: 80%">
+					<tr>
+						<th>Email</th>
+						<td><input type="text" id="update-email" name="email"></td>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td><input type="password" id="update-name" name="name"></td>
+					</tr>
+					<tr>
+						<th>Password</th>
+						<td><input type="password" id="update-pwd" name="pwd"></td>
+					</tr>
+				</table>
+				<br>
+				<input type="submit" name="verify">
+			</form>
+		</div>
 		</div>
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />

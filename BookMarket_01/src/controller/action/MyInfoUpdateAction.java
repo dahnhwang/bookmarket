@@ -16,18 +16,18 @@ public class MyInfoUpdateAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		System.out.println("updateAction/loginUser: "+loginUser);
+		Member member = (Member)session.getAttribute("loginUser");
+		System.out.println("updateAction/loginUser: "+member);
 	    MemberDao mDao = MemberDao.getInstance();
 	    
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
-		loginUser.setEmail(email); 
-		loginUser.setName(name);
-		loginUser.setPwd(pwd);
+		member.setEmail(email); 
+		member.setName(name);
+		member.setPwd(pwd);
 		
-		int result = mDao.updateMember(loginUser);
+		int result = mDao.updateMember(member);
 		  
 		System.out.println("updateAction/result: "+result);
 		new MyPageAction().execute(request, response);

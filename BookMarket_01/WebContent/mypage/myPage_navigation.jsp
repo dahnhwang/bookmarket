@@ -15,7 +15,7 @@
 			<li class="list-group-item"><a href="bookmarket?command=myPurchase_list">구매내역조회</a></li>    
 			<li class="list-group-item"><a href="bookmarket?command=myKeep_list">찜내역조회</a></li>         
 			<li class="list-group-item"><a href="bookmarket?command=myBookMoney">북머니조회</a></li>         
-			<li class="list-group-item"><a href="bookmarket?command=drop_member_from">회원탈퇴</a></li>          
+			<li class="list-group-item"><a href="bookmarket?command=drop_member">회원탈퇴</a></li>          
 		</div>
 	</div>
 </body>
