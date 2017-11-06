@@ -26,7 +26,7 @@ td {
 	<div class="col-sm-9 placeholder">
 		<table>
 			<tr>
-				<td colspan="4"><h3>[${book. }] 일단 오늘은 나한테 잘합시다</h3></td>
+				<td colspan="4"><h3>[${genre}] ${book.title }</h3></td>
 			</tr>
 			<tr>
 				<td width="15%"><b>저자</b></td>

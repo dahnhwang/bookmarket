@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActionFactory af = ActionFactory.getInstance();
-		String command = null;
+		String command = "main";
 		Action action = null;
 		
 		if(request.getParameter("command") != null) {

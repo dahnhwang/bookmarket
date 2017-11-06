@@ -4,7 +4,7 @@ public class GenreParser {
 
 	public String getGenreStr(int genreInt) {
 
-		// 가져온 책의 카테고리 정보를 int로 받아 String으로 알려주는 category parser 입니다.
+		// 가져온 책의 카테고리 정보를 int로 받아 String으로 알려주는 genre parser 입니다.
 		String genreStr = null;
 		if (genreInt == 100) {
 			genreStr = "소설";
