@@ -17,6 +17,7 @@ import controller.action.CartAction;
 import controller.action.CartAddAction;
 import controller.action.DetailBookAction;
 import controller.action.DropMemberAction;
+import controller.action.DropMemberFormAction;
 import controller.action.EmailCheckAction;
 import controller.action.JoinAction;
 import controller.action.JoinFormAction;
@@ -135,6 +136,8 @@ public class ActionFactory {
 			action = new MyPwdCheckAction();
 		} else if (command.equals("drop_member")) {
 			action = new DropMemberAction();
+		} else if (command.equals("drop_member_from")) {
+			action = new DropMemberFormAction();
 		} else if (command.equals("payment")) {
 			action = new PaymentAction();
 		}else if (command.equals("bookMoney_check")) {
