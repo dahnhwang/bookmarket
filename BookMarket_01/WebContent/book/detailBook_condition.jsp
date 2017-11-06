@@ -6,23 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-	<script>
-	var acc = document.getElementsByClassName("accordion");
-	var i;
+	$(document).ready(function() {
+		var acc = document.getElementsByClassName("accordion");
+		var i;
 
-	for (i = 0; i < acc.length; i++) {
-		acc[i].onclick = function() {
-			this.classList.toggle("active");
-			var panel = this.nextElementSibling;
-			if (panel.style.maxHeight) {
-				panel.style.maxHeight = null;
-			} else {
-				panel.style.maxHeight = panel.scrollHeight + "px";
+		for (i = 0; i < acc.length; i++) {
+			acc[i].onclick = function() {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
 			}
 		}
-	}
-</script>
 
+	});
+</script>
 <style>
 button.accordion {
 	background-color: white;
@@ -44,7 +45,8 @@ div.panel {
 	padding: 0 18px;
 	background-color: white;
 	display: none;
-	margin-left: 30px;
+	margin-left: 10px;
+	margin-top: 30px;
 }
 
 button.accordion:after {
@@ -62,7 +64,7 @@ button.accordion.active:after {
 .condition_info_wrapper {
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	margin-left:40px;
+	margin-left: 40px;
 }
 </style>
 </head>
@@ -70,7 +72,9 @@ button.accordion.active:after {
 	<section class="condition_info_wrapper row placeholders">
 	<button class="accordion ">도서상태 (판매자 작성)</button>
 	<div class="panel">
-		<p>Lorem ipsum...</p>
+		<p>도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해
+			알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에 대해 알려드리겠습니다 도서상태에
+			대해 알려드리겠습니다</p>
 	</div>
 	</section>
 </body>
