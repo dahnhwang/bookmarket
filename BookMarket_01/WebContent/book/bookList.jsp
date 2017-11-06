@@ -85,7 +85,7 @@ $(document).ready(function() {
                 <td>${book.price}</td>
                 <td><button class="btn btn-primary">Purchase!</button></td>
             </tr>
-           
+            
          </c:forEach> 
            
         </tbody>

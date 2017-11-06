@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 
-<body>
+<body> 
 
 	<div class="col-md-2">
      	<ul class="list-group">

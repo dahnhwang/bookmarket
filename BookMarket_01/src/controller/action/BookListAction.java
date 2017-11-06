@@ -20,6 +20,6 @@ public class BookListAction implements Action {
 		List<Book> bookList =  bdo.selectAllBookList();
 		request.setAttribute("bookList", bookList);
 		request.getRequestDispatcher(url).forward(request, response);		
-	}
+	} 
 
 } 
