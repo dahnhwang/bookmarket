@@ -19,7 +19,7 @@ public class BookSearchAction implements Action {
 		  
 		String selectSel = request.getParameter("searchSel");
 		String searchInput = request.getParameter("searchInput");
-		
+		 
 		
 		BookDao bdo =BookDao.getInstance();
 		List<Book>bookList = new ArrayList<Book>();
