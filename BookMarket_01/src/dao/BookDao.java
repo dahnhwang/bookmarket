@@ -136,9 +136,9 @@ public class BookDao implements IBookDao{
 			}
 		}
 		return book;
-	}
-
-	@Override
+	} 
+ //ddddff
+	@Override 
 	public int insertBook(Book book) {
 		String sql = "INSERT INTO BOOK VALUES(0,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?)";
 		PreparedStatement pstmt = null;
@@ -201,7 +201,7 @@ public class BookDao implements IBookDao{
 		}
 		return result;
 	}
-	
+	 
 
 	@Override
 	public int deleteBook(int book_id) {
@@ -228,7 +228,7 @@ public class BookDao implements IBookDao{
 		return result;
 	}
 
-
+    
 	@Override 
 	public List<Book> selectBookByGenre(int genre) {
 		List<Book> bookList = new ArrayList<Book>();
@@ -264,7 +264,7 @@ public class BookDao implements IBookDao{
 				
 				bookList.add(book);
 				
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -279,12 +279,12 @@ public class BookDao implements IBookDao{
 		}
 		return bookList;
 	}
-
+     
 	@Override
 	public List<Book> selectBookByTitle(String title) {
 		List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book where title= ?";
+		String sql = "SELECT * FROM book where title like %?%";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
