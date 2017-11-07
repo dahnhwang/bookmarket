@@ -55,6 +55,8 @@ body {
 						data-toggle="dropdown"> <span>구매하기</span> <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
+					    	<li><a href="bookmarket?command=book_list">전체보기</a></li>
+							<li class="divider"></li>
 							<li><a href="#">소설</a></li>
 							<li><a href="#">시/에세이</a></li>
 							<li class="divider"></li>
