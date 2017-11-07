@@ -64,7 +64,8 @@
 		<div class="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div class="container myInfo_parents">
+		<div class="container myInfo_parents">지
+		
 			<div class="row">
 				<div id="div-mypage-side-menu" class="side-menu">
 					<jsp:include page="myPage_navigation.jsp" />
