@@ -8,14 +8,6 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-<script>
-	$(document).ready(function() {
-		$('#isbn_search').on('click', function() {
-			var url = "bookmarket?command=book_insert_form";
-			$(location).attr('href', url);
-		});
-	});
-</script>
 <style>
 .search_body {
 	border: 10px solid #eaeaea;
@@ -87,9 +79,12 @@ button:focus {
 			<div class="search_body_inner">
 				<h2 class="title">판매도서 ISBN으로 검색하기</h2>
 				<div class="search-input">
-					<input type="text" placeholder="예) 9788937473135" id="isbn"
-						name="isbn">
-					<button class="btn-search" id="isbn_search">검색</button>
+					<form method="post" action="bookmarket">
+					<input type="hidden" name="command" value="book_insert_form">
+						<input type="text" placeholder="예) 9788937473135" id="isbn"
+							name="isbn">
+						<button class="btn-search" id="isbn_search" type="submit">검색</button>
+					</form>
 				</div>
 			</div>
 		</div>
