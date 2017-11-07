@@ -6,17 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
 </head>
-<body>
 <body>
 	<div class="wrap">
 		<div class="navigation">
-			<div class="col-md-2">
-				<ul class="list-group">
-					<li class="list-group-item"><a href="#">전체상품(2)</a></li>
-					<li class="list-group-item"><a href="#">동일상품(1)</a></li>
-				</ul>
-			</div>
+			<jsp:include page="../navigation.jsp" />
 		</div>
 		<div class="container">
 			<div class="row">

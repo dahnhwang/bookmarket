@@ -18,7 +18,6 @@ public class BookInsertFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="book/insertBook.jsp?isbn=";
-		System.out.println("where are you");
 		String isbn = request.getParameter("isbn");
 		NaverApi api = new NaverApi();
 		List<HashMap<String, Object>> list = api.getJson(isbn);
