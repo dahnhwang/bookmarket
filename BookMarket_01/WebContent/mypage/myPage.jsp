@@ -13,12 +13,42 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-
-	});
+	function load(){
+// 		console.log('load')
+		$.ajax({
+			url: 'myInfo.do',
+			type: 'get',
+			dataType: 'json',
+			success: function(data){
+				$.each(data.bookList, function(index, item){
+					var tr = $('<tr>').appendTo('#bookTable > tbody');
+					var book_id = item.book_id;
+					var title = item.title;
+					var publisher = item.publisher;
+					var year = item.year;
+					var price = item.price;
+					$('<td>').text(book_id).appendTo(tr);
+					$('<td>').text(title).appendTo(tr);
+					$('<td>').text(publisher).appendTo(tr);
+					$('<td>').text(year).appendTo(tr);
+					$('<td>').text(price).appendTo(tr);
+					var del_btn = $('<td>').appendTo(tr);
+					$('<input>').attr({			
+						type : 'button',
+						id : book_id
+						}).val('del').addClass('btn_del').appendTo(del_btn);
+				})
+			},
+			error: function(xhr, status,error){
+				alert('error')
+			}
+		
+		});
+		
+	}
 </script>
 <style type="text/css">
-	
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -36,26 +66,26 @@
 				<div id="div-myInfo" class="panel panel-default">
 					<!-- Default panel contents -->
 					 <div class="panel-heading">Membership Info</div>
-					 <div class="panel-body">
-				  		<p></p>
-				  	 </div>
+<!-- 					 <div class="panel-body"> -->
+<!-- 				  		<p></p> -->
+<!-- 				  	 </div> -->
 				 	 <!-- Table -->
 					<table id="table-myInfo" class="table">
 						<tr>
 							<th>회원 ID</th>
-							<td></td>
+							<td>${loginUser.mem_id}</td>
 						</tr>
 						<tr>
 							<th>Email</th>
-							<td></td>
+							<td>${loginUser.email}</td>
 						</tr>
 						<tr>
 							<th>Name</th>
-							<td></td>
+							<td>${loginUser.name}</td>
 						</tr>
 						<tr>
 							<th>Book Money</th>
-							<td></td>
+							<td>${loginUser.money}</td>
 						</tr>
 					</table>
 				</div>
@@ -85,7 +115,7 @@
 				  		<p>구매한 도서상품</p>
 				  	 </div>
 				 	 <!-- Table -->
-					<table id="table-myPurchase" style="text-align :center" id="example" class="display table" cellspacing="0" width="100%"  data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
+					<table id="table-myPurchase" id="example" class="display table" cellspacing="0" width="100%"  data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
 						<tr>
 							<th>상품번호</th>
 							<th>Image</th>
