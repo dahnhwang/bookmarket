@@ -87,7 +87,7 @@ body {
 							<li class="divider"></li>
 							<li><a href="#">해외도서</a></li>
 						</ul></li>
-					<li><a href="#">판매하기</a></li>
+					<li><a href="bookmarket?command=book_insert_search">판매하기</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

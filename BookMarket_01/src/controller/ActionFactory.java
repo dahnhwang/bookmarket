@@ -8,6 +8,7 @@ import controller.action.BiddingFormAction;
 import controller.action.BookDeleteAction;
 import controller.action.BookInsertAction;
 import controller.action.BookInsertFormAction;
+import controller.action.BookInsertSearchAction;
 import controller.action.BookListAction;
 import controller.action.BookMoneyCheckAction;
 import controller.action.BookNavigationAction;
@@ -96,10 +97,12 @@ public class ActionFactory {
 			action = new BookUpdateFormAction();
 		} else if (command.equals("book_update")) {
 			action = new BookUpdateAction();
-		} else if (command.equals("book_Insert_form")) {
-			action = new BookInsertFormAction();
+		} else if (command.equals("book_insert_form")) {
+			action = new BookInsertFormAction(); // 2. 사용자 추가 입력하게 하고
 		} else if (command.equals("book_insert")) {
-			action = new BookInsertAction();
+			action = new BookInsertAction(); // 3. 해당 정보 DB에 보냄
+		} else if (command.equals("book_insert_search")) {
+			action = new BookInsertSearchAction(); // 1. 검색한 후
 		} else if (command.equals("book_delete")) {
 			action = new BookDeleteAction();
 		} else if (command.equals("keepBook_add")) {
