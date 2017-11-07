@@ -30,7 +30,7 @@ public class BookSearchAction implements Action {
 			for(Book b: bookList) {
 				System.out.println(b.toString());
 			}
-			
+			 
 		}
 		else if(selectSel.equals("author")) {
 			
