@@ -35,19 +35,16 @@
 #search {
 	width: 100%;
 	height: 50%;
-	text-align :center;
-	border :1px solid #cccccc;
+	text-align: center;
+	border: 1px solid #cccccc;
 }
-
-
- 
 
 #option {
 	width: 100%;
 	height: 50%;
-	text-align :left;
-    margin-top : 20px;
-    margin-right :20px;
+	text-align: left;
+	margin-top: 20px;
+	margin-right: 20px;
 }
 
 #example th {
@@ -60,71 +57,87 @@
 	vertical-align: middle;
 }
 
-#searchInput{
-  border: 1px solid #968d8d;
-  border-radius: 5px;
+#searchInput {
+	border: 1px solid #968d8d;
+	border-radius: 5px;
 }
 </style>
 
 <script>
 
-function listUpload(list){
-	
-	$.each(list, function(index, item) {
-
-		var title = item.title;
-		var genre = item.genre;
-		var author =item.author;
-		var publisher = item.publisher;
-		var condition = item.book_condition;
-		var seller = item.seller;
-		var submit_date = item.submit_date;
-		var price = item.price;
-		var price_type = item.price_type;
-	
-
-		var tr = $('<tr>').appendTo('#listTable tbody');
-	
-		$('<td>').text(title).appendTo(tr);
-		$('<td>').text(genre).appendTo(tr);
-		$('<td>').text(author).appendTo(tr);
-		$('<td>').text(publisher).appendTo(tr);
-		$('<td>').text(condition).appendTo(tr);
-		$('<td>').text(seller).appendTo(tr);
-		$('<td>').text(submit_date).appendTo(tr);
-		$('<td>').text(price).appendTo(tr);
-		$('<td>').text(price_type).appendTo(tr);
-
-		var btnTd = $('<td>').appendTo(tr);
-		$('<input>').attr('type', 'button')
-			.attr('data-id', book_id)
-			.addClass('del_btn')
-			.val('삭제').appendTo(btnTd);
-	})
-	
-}	//<td><button type="button" class="btn btn-primary btn-sm">Purchase!</button></td>
-
-
+	function listUpload(list) {
+	    
+		 $.each(list, function(index, item){
+			 var tr = $('<tr>').appendTo('#listTable tbody');
+			
+				var title = item.title;
+				var genre = item.genre;
+				var author = item.author;
+				var publisher = item.publisher;
+				var condition = item.book_condition;
+				var seller = item.seller;
+				var submit_date = item.submit_date;
+				var price = item.price;
+				var price_type = item.price_type;
+          
+				console.log(title);
+				$('<td>').
+				$('<td>').text(title).appendTo(tr);
+				$('<td>').text(genre).appendTo(tr);
+				$('<td>').text(author).appendTo(tr);
+				$('<td>').text(publisher).appendTo(tr);
+				$('<td>').text(condition).appendTo(tr);
+				$('<td>').text(seller).appendTo(tr);
+				$('<td>').text(submit_date).appendTo(tr);
+				$('<td>').text(price).appendTo(tr);
+				$('<td>').text(price_type).appendTo(tr);
+			
+		 
+		 });
+		 }
+   
 
 	$(document).ready(function() {
 
-	/*	$('#searchBtn').on('click', function() {
-			  $.ajax({
+		$('#optionSel').on('change', function() {
+			var params = "option=" + this.value + "&command=book_option&genre=1";
+			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
-				data : $('#searchForm').serialize(),
+				data : params,
 				dataType : 'json',
 				success : function(data) {
-					if(data.bookList){
+					if (data.bookList) {
+
 						$('#listTable tbody').empty();
 						var list = data.bookList;
 						listUpload(list);
-					}
-					else {
+
 					}
 				}
-			}); 
-		});*/
+			});
+
+
+
+		});
+
+		/*	$('#searchBtn').on('click', function() {
+				  $.ajax({
+					url : 'bookmarket',
+					type : 'get',
+					data : $('#searchForm').serialize(),
+					dataType : 'json',
+					success : function(data) {
+						if(data.bookList){
+							$('#listTable tbody').empty();
+							var list = data.bookList;
+							listUpload(list);
+						}
+						else {
+						}
+					}
+				}); 
+			});*/
 
 	});
 </script>
@@ -134,41 +147,39 @@ function listUpload(list){
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div id="contents"> 
+		<div id="contents">
 			<div id="bookList_naviation">
 				<jsp:include page="book_navigation.jsp" />
 			</div>
 			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
-					<div id="search"> 
-						<form id="searchForm" action="bookmarket"> 
-						<span>결과 내 검색&nbsp;</span>
-						<select size=1 name="searchSel">
-							<option value="title">도서명 </option>
-							<option value="author" >저자명 </option>
-							<option value="publisher" >출판사명</option>
-							<option value="seller_email">판매자 이메일 </option>
-						</select>
-					<input type="hidden" name="command" value="book_search">
-						<input type="text" size ="40" id="searchInput" name="searchInput">
-						<input type="submit" id="searchBtn" class="btn btn-dark" value="검색">
-     					</form>
+					<div id="search">
+						<form id="searchForm" action="bookmarket">
+							<span>결과 내 검색&nbsp;</span> <select size=1 name="searchSel">
+								<option value="title">도서명 </option>
+								<option value="author">저자명 </option>
+								<option value="publisher">출판사명</option>
+								<option value="seller_email">판매자 이메일 </option>
+							</select> <input type="hidden" name="command" value="book_search">
+							<input type="text" size="40" id="searchInput" name="searchInput">
+							<input type="submit" id="searchBtn" class="btn btn-dark"
+								value="검색">
+						</form>
 					</div>
 
 					<div id="option">
-					<span>책보기 옵션&nbsp;</span>
-						<select size=1>
-							<option value="title" name="title">지정판매 </option>
-							<option value="author" name="author">경매판매 </option>
-							<option value="seller_email" name="seller_email">책상태</option>
-							<option value="publisher" name="publisher">낮은 가격순</option>
-							<option value="seller_email" name="seller_email">최근 등록 순 </option>
+						<span>책보기 옵션&nbsp;</span> <select size=1 id="optionSel">
+							<option value="fixedPrice" name="fixedPrice">지정판매 </option>
+							<option value="biddingPrice" name="biddingPrice">경매판매 </option>
+							<option value="Condition" name="Condition">책상태</option>
+							<option value="lower" name="lower">낮은 가격순</option>
+							<option value="lately" name="lately">최근 등록 순 </option>
 						</select>
-						
+
 					</div>
 				</div>
-				<table id="listTable" style="text-align: center" id="example" class="display"
-					cellspacing="0" width="100%" data-toggle="table"
+				<table id="listTable" style="text-align: center" id="example"
+					class="display" cellspacing="0" width="100%" data-toggle="table"
 					data-show-refresh="true" data-show-toggle="true"
 					data-show-columns="true" data-search="true"
 					data-select-item-name="toolbar1" data-pagination="true">
@@ -182,7 +193,7 @@ function listUpload(list){
 							<th>판매자 이메일</th>
 							<th>업데이트 날짜</th>
 							<th>가격</th>
-							<th>지정/판매 </th>
+							<th>지정/판매</th>
 							<th>구매 버튼</th>
 						</tr>
 					</thead>
@@ -193,8 +204,7 @@ function listUpload(list){
 								<td><img src="http://placehold.it/70x92" /></td>
 								<td>${book.title}</td>
 								<td>${book.genre}</td>
-								<td>${book.author}<br>
-								<br>${book.publisher}</td>
+								<td>${book.author}<br> <br>${book.publisher}</td>
 								<td>${book.book_condition}</td>
 								<td>${memberList[status.index].email}</td>
 								<td>${book.submit_date}</td>
