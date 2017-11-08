@@ -76,28 +76,30 @@
 					<div id="div-myInfo" class="panel panel-default">
 						<!-- Default panel contents -->
 						<div class="panel-heading">Membership Info</div>
-						<!-- 					 <div class="panel-body"> -->
-						<!-- 				  		<p></p> -->
-						<!-- 				  	 </div> -->
-						<!-- Table -->
-						<table id="table-myInfo" class="table">
-							<tr>
-								<th>회원 ID</th>
-								<td>${loginUser.mem_id}</td>
-							</tr>
-							<tr>
-								<th>Email</th>
-								<td>${loginUser.email}</td>
-							</tr>
-							<tr>
-								<th>Name</th>
-								<td>${loginUser.name}</td>
-							</tr>
-							<tr>
-								<th>Book Money</th>
-								<td>${loginUser.money}</td>
-							</tr>
-						</table>
+						<div class="panel-body" align="right" style="padding-bottom: 0px">
+							<!-- Table -->
+							<table id="table-myInfo" class="table">
+								<tr>
+									<th>회원 ID</th>
+									<td>${loginUser.mem_id}</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td>${loginUser.email}</td>
+								</tr>
+								<tr>
+									<th>Name</th>
+									<td>${loginUser.name}</td>
+								</tr>
+								<tr>
+									<th style="border-bottom: 1px solid #dddddd">Book Money</th>
+									<td style="border-bottom: 1px solid #dddddd">${loginUser.money}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="panel-footer" align="right">
+								<p><button class="btn btn-secondary btn-sm" onclick="location.href='bookmarket?command=myInfo_update_form'">수정하기</button></p>
+						</div>
 					</div>
 					<div id="div-mySell-list" class="panel panel-default">
 						<!-- Default panel contents -->
