@@ -12,6 +12,7 @@ import controller.action.BookInsertSearchAction;
 import controller.action.BookListAction;
 import controller.action.BookMoneyCheckAction;
 import controller.action.BookNavigationAction;
+import controller.action.BookOptionAction;
 import controller.action.BookSearchAction;
 import controller.action.BookUpdateAction;
 import controller.action.BookUpdateFormAction;
@@ -96,7 +97,9 @@ public class ActionFactory {
 			action = new BookNavigationAction();
 		} else if (command.equals("book_search")) {
 			action = new BookSearchAction();
-		}  else if (command.equals("book_update_form")) {
+		} else if (command.equals("book_option")) {
+			action = new BookOptionAction();
+		} else if (command.equals("book_update_form")) {
 			action = new BookUpdateFormAction();
 		} else if (command.equals("book_update")) {
 			action = new BookUpdateAction();
