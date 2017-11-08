@@ -68,20 +68,63 @@
 
 <script>
 
+function listUpload(list){
+	
+	$.each(list, function(index, item) {
+
+		var title = item.title;
+		var genre = item.genre;
+		var author =item.author;
+		var publisher = item.publisher;
+		var condition = item.book_condition;
+		var seller = item.seller;
+		var submit_date = item.submit_date;
+		var price = item.price;
+		var price_type = item.price_type;
+	
+
+		var tr = $('<tr>').appendTo('#listTable tbody');
+	
+		$('<td>').text(title).appendTo(tr);
+		$('<td>').text(genre).appendTo(tr);
+		$('<td>').text(author).appendTo(tr);
+		$('<td>').text(publisher).appendTo(tr);
+		$('<td>').text(condition).appendTo(tr);
+		$('<td>').text(seller).appendTo(tr);
+		$('<td>').text(submit_date).appendTo(tr);
+		$('<td>').text(price).appendTo(tr);
+		$('<td>').text(price_type).appendTo(tr);
+
+		var btnTd = $('<td>').appendTo(tr);
+		$('<input>').attr('type', 'button')
+			.attr('data-id', book_id)
+			.addClass('del_btn')
+			.val('삭제').appendTo(btnTd);
+	})
+	
+}	//<td><button type="button" class="btn btn-primary btn-sm">Purchase!</button></td>
+
+
+
 	$(document).ready(function() {
 
-		$('#searchBtn').on('click', function() {
-		   alert( $('#searchForm').serialize());
-
+	/*	$('#searchBtn').on('click', function() {
 			  $.ajax({
 				url : 'bookmarket',
 				type : 'get',
 				data : $('#searchForm').serialize(),
+				dataType : 'json',
 				success : function(data) {
-				
+					if(data.bookList){
+						$('#listTable tbody').empty();
+						var list = data.bookList;
+						listUpload(list);
+					}
+					else {
+					}
 				}
 			}); 
-		});
+		});*/
 
 	});
 </script>
@@ -95,10 +138,10 @@
 			<div id="bookList_naviation">
 				<jsp:include page="book_navigation.jsp" />
 			</div>
-			<div id="bookListTable" class="col-md-10">
+			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
 					<div id="search">
-						<form id="searchForm">
+						<form id="searchForm" action="bookmarket"> 
 						<span>결과 내 검색&nbsp;</span>
 						<select size=1 name="searchSel">
 							<option value="title">도서명 </option>
@@ -106,9 +149,9 @@
 							<option value="publisher" >출판사명</option>
 							<option value="seller_email">판매자 이메일 </option>
 						</select>
-						<input type="hidden" name="command" value="book_search">
+					<input type="hidden" name="command" value="book_search">
 						<input type="text" size ="40" id="searchInput" name="searchInput">
-						<input type="button" id="searchBtn" class="btn btn-dark" value="검색">
+						<input type="submit" id="searchBtn" class="btn btn-dark" value="검색">
      					</form>
 					</div>
 
@@ -124,7 +167,7 @@
 						
 					</div>
 				</div>
-				<table style="text-align: center" id="example" class="display"
+				<table id="listTable" style="text-align: center" id="example" class="display"
 					cellspacing="0" width="100%" data-toggle="table"
 					data-show-refresh="true" data-show-toggle="true"
 					data-show-columns="true" data-search="true"

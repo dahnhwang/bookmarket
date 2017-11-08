@@ -284,13 +284,11 @@ public class BookDao implements IBookDao{
 	public List<Book> selectBookByTitle(String title) {
 		List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book where title like %?%";
+		String sql = "SELECT * FROM book where title like '%"+title+"%'";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-		
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,title);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				
@@ -335,13 +333,11 @@ public class BookDao implements IBookDao{
 	public List<Book> selectBookByAuthor(String author) {
 		List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book where author= ?";
+		String sql = "SELECT * FROM book where author like '%"+author+"%'";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-		
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, author);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				
@@ -386,13 +382,11 @@ public class BookDao implements IBookDao{
 	public List<Book> selectBookByPublisher(String publisher) {
 		List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book where publisher= ?";
+		String sql = "SELECT * FROM book where publisher like '%"+publisher+"%'";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-		
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, publisher);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				
@@ -434,16 +428,16 @@ public class BookDao implements IBookDao{
 	}
 
 	@Override
-	public List<Book> selectBookBySeller(int seller) {
+	public List<Book> selectBookBySellerEmail(String email) {
 		List<Book> bookList = new ArrayList<Book>();
 	    Book book = null;
-		String sql = "SELECT * FROM book where seller_id= ?";
+		String sql = "select * from book b, member m "
+				+ "where b.seller_id = m.mem_id and m.email like '"+email+"'";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 		
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, seller);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				
@@ -467,8 +461,8 @@ public class BookDao implements IBookDao{
 				book.setComment_img(rs.getString("comment_img"));
 				
 				bookList.add(book);
-				
-			}
+				 
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
