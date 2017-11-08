@@ -198,7 +198,7 @@
 						</tr>
 					</thead>
 
-					<tbody>
+		  			<tbody>
 						<c:forEach var="book" items="${bookList}" varStatus="status">
 							<tr>
 								<td><img src="http://placehold.it/70x92" /></td>
