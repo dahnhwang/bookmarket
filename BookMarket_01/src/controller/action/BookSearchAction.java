@@ -56,7 +56,7 @@ public class BookSearchAction implements Action {
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
 		}
-
+ 
 		request.setAttribute("bookList", bookList);
 		request.setAttribute("memberList", memberList);
 		request.getRequestDispatcher(url).forward(request, response);

@@ -476,7 +476,7 @@ public class BookDao implements IBookDao{
 			}
 		}
 		return bookList;
-	}
+	} 
 
 	@Override
 	//genre 내에서 order 기준으로  seq(desc, asc)로 정렬되는 메소드 

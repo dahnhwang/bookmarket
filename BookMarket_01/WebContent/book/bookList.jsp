@@ -140,7 +140,7 @@ function listUpload(list){
 			</div>
 			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
-					<div id="search">
+					<div id="search"> 
 						<form id="searchForm" action="bookmarket"> 
 						<span>결과 내 검색&nbsp;</span>
 						<select size=1 name="searchSel">
