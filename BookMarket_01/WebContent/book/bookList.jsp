@@ -36,7 +36,7 @@
 	width: 100%;
 	height: 50%;
 	text-align: center;
-	border: 1px solid #cccccc;
+
 }
 
 #option {
@@ -47,12 +47,12 @@
 	margin-right: 20px;
 }
 
-#example th {
+#listTable th {
 	text-align: center;
 	vertical-align: middle;
 }
 
-#example td {
+#listTable td {
 	text-align: center;
 	vertical-align: middle;
 }
@@ -66,36 +66,40 @@
 <script>
 
 	function listUpload(list) {
-	    
-		 $.each(list, function(index, item){
-			 var tr = $('<tr>').appendTo('#listTable tbody');
+		$.each(list, function(index, item) {
+			var tr = $('<tr>').appendTo('#listTable tbody');
+			var td = $('<td>');
+
+
+
+			var title = item.title;
+			var genre = item.genre;
+			var author = item.author;
+			var publisher = item.publisher;
+			var condition = item.book_condition;
+			var seller = item.seller;
+			var submit_date = item.submit_date;
+			var price = item.price;
+			var price_type = item.price_type;
 			
-				var title = item.title;
-				var genre = item.genre;
-				var author = item.author;
-				var publisher = item.publisher;
-				var condition = item.book_condition;
-				var seller = item.seller;
-				var submit_date = item.submit_date;
-				var price = item.price;
-				var price_type = item.price_type;
-          
-				console.log(title);
-				$('<td>').
-				$('<td>').text(title).appendTo(tr);
-				$('<td>').text(genre).appendTo(tr);
-				$('<td>').text(author).appendTo(tr);
-				$('<td>').text(publisher).appendTo(tr);
-				$('<td>').text(condition).appendTo(tr);
-				$('<td>').text(seller).appendTo(tr);
-				$('<td>').text(submit_date).appendTo(tr);
-				$('<td>').text(price).appendTo(tr);
-				$('<td>').text(price_type).appendTo(tr);
 			
-		 
-		 });
-		 }
-   
+			var button="<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
+			var img = "<img src='http://placehold.it/70x92' />";
+			
+			$('<td>').html(img).appendTo(tr);
+			$('<td>').text(title).appendTo(tr);
+			$('<td>').text(genre).appendTo(tr);
+			$('<td>').text(author + "  " + publisher).appendTo(tr);
+			$('<td>').text(condition).appendTo(tr);
+			$('<td>').text(seller+"@gmail.com").appendTo(tr);
+			$('<td>').text(submit_date).appendTo(tr);
+			$('<td>').text(price).appendTo(tr);
+			$('<td>').text(price_type).appendTo(tr);
+			$('<td>').html(button).appendTo(tr);
+
+		});
+	}
+
 
 	$(document).ready(function() {
 
@@ -118,26 +122,10 @@
 			});
 
 
-
+  
 		});
 
-		/*	$('#searchBtn').on('click', function() {
-				  $.ajax({
-					url : 'bookmarket',
-					type : 'get',
-					data : $('#searchForm').serialize(),
-					dataType : 'json',
-					success : function(data) {
-						if(data.bookList){
-							$('#listTable tbody').empty();
-							var list = data.bookList;
-							listUpload(list);
-						}
-						else {
-						}
-					}
-				}); 
-			});*/
+		
 
 	});
 </script>
@@ -178,7 +166,7 @@
 
 					</div>
 				</div>
-				<table id="listTable" style="text-align: center" id="example"
+				<table id="listTable" style="text-align: center" 
 					class="display" cellspacing="0" width="100%" data-toggle="table"
 					data-show-refresh="true" data-show-toggle="true"
 					data-show-columns="true" data-search="true"
@@ -198,7 +186,7 @@
 						</tr>
 					</thead>
 
-		  			<tbody>
+					<tbody>
 						<c:forEach var="book" items="${bookList}" varStatus="status">
 							<tr>
 								<td><img src="http://placehold.it/70x92" /></td>

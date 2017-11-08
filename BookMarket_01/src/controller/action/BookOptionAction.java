@@ -51,7 +51,7 @@ public class BookOptionAction implements Action {
 
 		}
   
-		
+		 
 
 		for (int i = 0; i < bookList.size(); i++) {
 
