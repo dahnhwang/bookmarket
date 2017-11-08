@@ -146,7 +146,7 @@ button:clicked {
 							</form>
 						</div>
 					</div>
-					<div class="panel panel-footer"></div>
+					<div class="panel panel-footer"></div>  
 				</div>
 			</div>
 		</div>
