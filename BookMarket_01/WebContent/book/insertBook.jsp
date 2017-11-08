@@ -27,11 +27,14 @@
 					</div>
 					<br>
 					<div class="book_condition_info">
-						<jsp:include page="detailBook_condition.jsp" />
+						<jsp:include page="insertBook_condition.jsp" />
 					</div>
 					<br>
 					<div class="book_price_info">
-						<jsp:include page="detailBook_price.jsp" />
+						<jsp:include page="insertBook_price.jsp" />
+					</div>
+					<div class="book_button">
+						<jsp:include page="insertBook_button.jsp" />
 					</div>
 				</div>
 
