@@ -46,7 +46,7 @@ public static BookMoneyDao getInstance() {
 		return result;
 	}
 
-	@Override
+	@Override 	// 아직 날짜순으로 정렬 하진 못함.
 	public List<BookMoney> selectBookMoneyList(int mem_id) {
 		// TODO Auto-generated method stub
 		List<BookMoney> MoneyList = new ArrayList<BookMoney>();
