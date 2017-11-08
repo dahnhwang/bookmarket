@@ -48,13 +48,14 @@
 	}
 </script>
 <style type="text/css">
-.myInfo_parents {
+.contents {
 	position: absolute;
 	overflow: hidden;
 }
 
-.myInfo_child {
-	margin-left: 20px;
+.content_wrapper {
+	padding-bottom: 30px;
+	padding-left: 70px;
 }
 </style>
 <title>Insert title here</title>
@@ -64,13 +65,13 @@
 		<div class="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div class="container myInfo_parents">지
-		
+		<div class="container">
 			<div class="row">
 				<div id="div-mypage-side-menu" class="side-menu">
 					<jsp:include page="myPage_navigation.jsp" />
 				</div>
-				<div class="contents myInfo_child col-md-6">
+				<div class="contents col-md-9">
+					<section class="content_wrapper row placeholders ">
 					<h3>마이페이지</h3>
 					<div id="div-myInfo" class="panel panel-default">
 						<!-- Default panel contents -->
@@ -145,6 +146,7 @@
 							</tr>
 						</table>
 					</div>
+					</section>
 				</div>
 			</div>
 		</div>

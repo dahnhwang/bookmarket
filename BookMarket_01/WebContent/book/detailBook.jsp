@@ -10,7 +10,7 @@
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 <style>
-.book_info_parents {
+.contents {
 	position: absolute;
 	overflow: hidden;
 }
@@ -27,7 +27,7 @@
 				<div class="side-menu">
 					<jsp:include page="book_navigation.jsp" />
 				</div>
-				<div class="col-md-9 book_info_parents">
+				<div class="col-md-9 contents">
 					<div class="book_basic_info">
 						<jsp:include page="detailBook_basic.jsp" />
 					</div>

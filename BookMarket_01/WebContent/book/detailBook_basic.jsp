@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style>
-.basic_info_wrapper {
+.contents_wrapper {
 	margin-left: 30px;
 	padding-bottom: 30px;
 }
@@ -19,7 +19,7 @@ td {
 </head>
 <body>
 
-	<section class="row placeholders basic_info_wrapper">
+	<section class="row placeholders contents_wrapper">
 	<div class="col-sm-3 placeholder">
 		<img src="${book.image}">
 	</div>

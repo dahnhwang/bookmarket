@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<div class="list-group">
 			<h2>마이페이지</h2>
 			<li class="list-group-item"><a href="bookmarket?command=myInfo_update_form">회원정보수정</a></li> 
