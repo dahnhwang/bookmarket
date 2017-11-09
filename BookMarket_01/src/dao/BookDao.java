@@ -538,57 +538,7 @@ public class BookDao implements IBookDao{
 		}
 		return bookList;
 	}
-	@Override
-	public List<Book> selectBookByCondition(int genre, int book_condition) {
-		List<Book> bookList = new ArrayList<Book>();
-	    Book book = null;
-		String sql = "SELECT * FROM book where genre= ? and book_condition = ? ";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-		
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, genre);
-			pstmt.setInt(2, book_condition);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				
-				book = new Book();
-				book.setBook_id(rs.getInt("book_id"));
-				book.setIsbn(rs.getString("isbn"));
-				book.setAuthor(rs.getString("author"));
-				book.setTitle(rs.getString("title"));
-				book.setPublisher(rs.getString("publisher"));
-				book.setPublished_date(rs.getString("published_date"));
-				book.setDescription(rs.getString("description"));
-				book.setGenre(rs.getInt("genre"));
-				book.setBook_condition(rs.getInt("book_condition"));
-				book.setIsSold(rs.getInt("isSold"));
-				book.setPrice(rs.getInt("price"));
-				book.setSeller(rs.getInt("seller_id"));
-				book.setImage(rs.getString("image"));
-				book.setSubmit_date(rs.getDate("submit_date"));
-				book.setPrice_type(rs.getInt("price_type"));
-				book.setComment(rs.getString("comment"));
-				book.setComment_img(rs.getString("comment_img"));
-				
-				bookList.add(book);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return bookList;
-	}
+	
 	
 
 }
