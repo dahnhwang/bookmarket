@@ -7,10 +7,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Book Market</title>
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	list-style: none;
+}
+
+.wrap {
+	width: 100%;
+}
+
 #contents {
-	height: 450px;
-	margin: 0 auto;
-	margin-top: 50px;
+	width: 80%;
+	height: 700px;
+	margin: 20px 0 0 20px;
+	border: 1px solid #cccccc;
+}
+
+#contents div ul li {
+	display: inline-block;
+	float: left;
+	margin: 0 12px 0 0;
+	box-sizing: border-box;
 }
 </style>
 </head>
@@ -19,9 +41,36 @@
 		<div class="navigation">
 			<jsp:include page="navigation.jsp" />
 		</div>
-		<div class="contents">
-			<div id="contents">콘텐츠영역</div>
+		<div id="contents">
+
+			<div>
+				<ul>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+					<li><a href="#" alt=""><img
+							src='http://placehold.it/100x127' /></a></li>
+
+				</ul>
+			</div>
+
+
+
 		</div>
+
 		<div class="footer">
 			<jsp:include page="footer.jsp" />
 		</div>
