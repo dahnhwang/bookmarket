@@ -13,9 +13,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="css/join.css">
 <script type="text/javascript">
-
-	$(document).ready(function() { 
-
+	$(document).ready(function() {
 
 		$('#inputEmail4').on('blur', function() {
 
@@ -37,11 +35,9 @@
 			});
 		});
 
-
-
-
 	});
 </script>
+
 
 </head>
 
@@ -49,11 +45,16 @@
 	<header> <!-- import navigation --> <jsp:include
 		page="../navigation.jsp" /> </header>
 
-	<div id="content">
 
+	<div id="content">
+	 <div class="strapline">
+			<div class="title">회 원 가 입</div>
+			<div class="divider"></div>
+		 </div>
+		 
 		<form id="joinForm" method="post" action="bookmarket" name="joinForm">
 			<input type="hidden" name="command" value="join">
-			<div class="form-row">
+		
 				<div class="form-group">
 					<label for="inputEmail4">Email</label> <input type="email"
 						class="form-control" id="inputEmail4" placeholder="이메일을 입력하세요"

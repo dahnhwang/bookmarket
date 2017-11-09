@@ -1,18 +1,48 @@
 @charset "EUC-KR";
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 body {
-	margin-top: 100px;
+	
 }
 
+
+.strapline {
+    margin-left : 10px;
+    width : 90%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.title {
+	margin: 0 5PX 5px 35px; 
+	font-weight: bold;
+	font-size: 25px;
+	color: #3c3c3c;
+	flex-grow: 0;
+    background-color: #cfe0e8;
+}
+
+.divider {
+	flex-grow: 1;
+	height: 1px;
+	background-color: #9f9f9f;
+}
+
+
+
 #content {
-	width: 1000px;
+	width: 700px;
 	height: 800px;
 	margin: 0 auto;
+	align :center;
 }
 
 #joinForm {
 	width: 500px;
 	height: 700px;
-	margin: 200px auto;
+	margin : 20px auto;
 }
 
 
