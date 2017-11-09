@@ -27,17 +27,18 @@ public static Deal getInstance() {
 		String sql = "INSERT INTO DEAL VALUES(?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
+		int getdeal_idx = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, deal.getDeal_idx());
-			pstmt.setInt(2, deal.getBook_id());
-			pstmt.setInt(3, deal.getParticipant_id());
-			pstmt.setDate(4, deal.getDeal_date());
-			pstmt.setInt(5, deal.getDeal_price());
-			pstmt.setInt(6, deal.getSold_state());
-			
+			pstmt.setInt(1, deal.getBook_id());
+			pstmt.setInt(2, deal.getDeal_price());
+
 			result = pstmt.executeUpdate();
+			
+			// seller_id는 book_id로 받아온다고 생각하고
+			// deal_date는 한번한번 입찰시간이니 뺴고, 낙찰마감시간 정보는?
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +60,7 @@ public static Deal getInstance() {
 		List<Deal> deallist = new ArrayList<Deal>();
 		Deal deal = null;
 		
-		String sql = "SELECT * FROM DEAL";
+		String sql = "SELECT * FROM DEAL where ??";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
@@ -71,15 +72,11 @@ public static Deal getInstance() {
 					deal = new Deal();
 					deal.setBook_id(rs.getInt("book_id"));
 					deal.setParticipant_id(rs.getInt("participant_id"));
-					deal.setDeal_price(rs.getDate("deal_price"));
+					//참여한 본인에 대한 참가자정보인지, 타인까지 포함한 정본지?
+					deal.setDeal_price(rs.getInt("deal_price"));
 					deal.setSold_state(rs.getInt("sold_state"));
 					deallist.add(deal);
-// 변수가 뭐가 들어가야하는지 확실치 않다.
-// 일단 dealidx boodid particpantid, dealdate, deal price, sold state중 
-// 인덱스는 줄세우기위한 수단이라 생각하고 뺴고, 책아아디와 경매참가자계정
-// 경매를 참가자기 입찰했던 시간들이라생각할수도?  마김시간이라 생각할수도 있
-// soldstate는 완료되서 판매완료된 여부인가 싶어 일단 인풋
-		
+
 	}
 } catch (Exception e) {
 	e.printStackTrace();
@@ -101,9 +98,9 @@ return deallist;
 	public List<Deal> selectDealListbyBookId(int book_id) {
 		// TODO Auto-generated method stub
 		List<Deal> deallist = new ArrayList<Deal>();
-		Deal deal = null;
+		Deal deal = new Deal();
 		
-		String sql = "SELECT * FROM DEAL";
+		String sql = "SELECT * FROM DEAL order by deal_date";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
@@ -112,25 +109,14 @@ return deallist;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				List<Deal> deallist = new ArrayList<Deal>();
-				Deal deal = null;
-				
-				String sql = "SELECT * FROM DEAL";
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-			
-				try { 
-					
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					while (rs.next()) {
 							deal = new Deal();
 							deal.setBook_id(rs.getInt("book_id"));
 							deal.setParticipant_id(rs.getInt("participant_id"));
-							deal.setDeal_price(rs.getDate("deal_price"));
-							deal.setSold_state(rs.getInt("sold_state"));
-							deallist.add(deal);
-							// 역시나 변수를 뭐 넣어야할지 명확하지 않음				
+							// action단에서 출력때 id일부를 **처리하겠지...
+							deal.setDeal_date(rs.getDate("deal_date"));
+							deal.setDeal_price(rs.getInt("deal_price"));
+							deal.setSold_state(rs.getBoolean("sold_state"));
+							deallist.add(deal);		
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -153,9 +139,9 @@ return deallist;
 		// TODO Auto-generated method stub
 		
 		List<Deal> deallist = new ArrayList<Deal>();
-		Deal deal = null;
+		Deal deal = new Deal();
 		
-		String sql = "SELECT * FROM DEAL";
+		String sql = "SELECT * FROM DEAL group by ??";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int deal_max = 0;
@@ -170,28 +156,24 @@ return deallist;
 			while (rs.next()) {
 				deal = new Deal();
 				deal.setBook_id(rs.getInt("book_id"));
-				deal.setParticipant_id(rs.getInt("participant_id"));
 				deal.setDeal_price(rs.getInt("deal_price"));
-				deal.setSold_state(rs.getInt("sold_state"));
 				deallist.add(deal);
-// 무슨값을 넣어주지...?
-	}
+			}
 		} catch (Exception e) {
-	e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return deallist;
-		
-		// deal price가 어떤 값인지 모르겠다라는 게 크다.
-		// 그리고 dao 단에서 최소,최대, 평균값을 구해야하나?
-		// service단이나 servlet단에서 한걸 가져와야하나...?
-}
+		}
 	
+	
+	
+}
