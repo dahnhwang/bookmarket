@@ -1,6 +1,7 @@
 SET CHARACTER SET 'UTF8';
 SET CHARACTER SET 'EUCKR';
 
+
 DROP TABLE IF EXISTS member, book, sold, deal, keepBook, money;
 
 DROP TABLE IF EXISTS member; 
