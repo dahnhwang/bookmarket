@@ -32,7 +32,6 @@ image VARCHAR(1000),
 submit_date DATE, 
 price_type INT default 0,
 comment VARCHAR(1000),
-comment_img VARCHAR(1000),
 PRIMARY KEY (book_id)
 );
 
@@ -117,6 +116,5 @@ INSERT INTO book VALUES(
 'http://bookthumb.phinf.naver.net/cover/112/111/11211133.jpg?type=m140&amp;udate=20170921',
 sysdate(),
 0,
-'not yet',
 'not yet'
 );

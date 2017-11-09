@@ -20,7 +20,6 @@ public class Book {
 	private Date submit_date;
 	private int price_type;
 	private String comment;
-	private String comment_img;
 
 	public int getBook_id() {
 		return book_id;
@@ -62,7 +61,6 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-
 	public String getPublished_date() {
 		return published_date;
 	}
@@ -103,8 +101,6 @@ public class Book {
 		this.seller = seller;
 	}
 
-	
-
 	public String getImage() {
 		return image;
 	}
@@ -137,14 +133,6 @@ public class Book {
 		this.comment = comment;
 	}
 
-	public String getComment_img() {
-		return comment_img;
-	}
-
-	public void setComment_img(String comment_img) {
-		this.comment_img = comment_img;
-	}
-
 	public int getIsSold() {
 		return isSold;
 	}
@@ -160,7 +148,6 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 
 	@Override
 	public String toString() {
@@ -168,7 +155,7 @@ public class Book {
 				+ ", publisher=" + publisher + ", published_date=" + published_date + ", description=" + description
 				+ ", genre=" + genre + ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price
 				+ ", seller=" + seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type="
-				+ price_type + ", comment=" + comment + ", comment_img=" + comment_img + "]";
+				+ price_type + ", comment=" + comment + "]";
 	}
 
 }
