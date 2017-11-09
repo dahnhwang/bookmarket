@@ -5,7 +5,7 @@ import java.util.List;
 import dto.Book; 
 
 public interface IBookDao {
-  
+   
 	public List<Book> selectAllBookList(); //도서 전체목록 가져오기
 	public Book getBook(int book_id); //도서 번호로 도서정보 가져오는 메소드
 	public int insertBook(Book book); //도서 추가하는 메소드

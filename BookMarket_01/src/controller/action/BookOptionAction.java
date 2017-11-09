@@ -22,6 +22,7 @@ public class BookOptionAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		String option = request.getParameter("option");
+	  
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		MemberDao mdo = MemberDao.getInstance();
 		BookDao bdo = BookDao.getInstance();
@@ -29,26 +30,26 @@ public class BookOptionAction implements Action {
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
 		if (option.equals("fixedPrice")) {
-
-			bookList = bdo.selectBookByPriceType(1, 0);
-
+			bookList = bdo.selectBookByPriceType(genre, 0);
+    
 		}
 
 		else if (option.equals("biddingPrice")) {
-			bookList = bdo.selectBookByPriceType(1, 1);
+			bookList = bdo.selectBookByPriceType(genre, 1);
 
 		}
 
 		else if (option.equals("Condition")) {
-
+          bookList = bdo.selectBookOrderBy(genre, "book_condition", "asc");
 		}
 
 		else if (option.equals("lower")) {
-
+			bookList = bdo.selectBookOrderBy(genre, "price", "asc");
 		}
 
 		else if (option.equals("lately")) {
 
+			bookList = bdo.selectBookOrderBy(genre, "submit_date", "desc");
 		}
   
 		 
@@ -59,10 +60,10 @@ public class BookOptionAction implements Action {
 			memberList.add(member);
 		}
 		
-		
 		Gson gson = new Gson();
-		String result = gson.toJson(bookList);
-		result = "{\"bookList\":" + result + "}";
+		String send_bookLIst= gson.toJson(bookList);
+		String send_memberList = gson.toJson(memberList);
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+"}";
 		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.println(result);

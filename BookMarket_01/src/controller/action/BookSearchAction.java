@@ -34,7 +34,11 @@ public class BookSearchAction implements Action {
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
 
-		if (selectSel.equals("title")) {
+		if(selectSel.equals("all")) {
+			bookList = bdo.selectAllBookList();
+		}
+		
+		else if  (selectSel.equals("title")) {
 			bookList = bdo.selectBookByTitle(searchInput);
 
 		} else if (selectSel.equals("author")) {
@@ -51,22 +55,23 @@ public class BookSearchAction implements Action {
 
 		}
 
+
 		for (int i = 0; i < bookList.size(); i++) {
 
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
 		}
- 
-		request.setAttribute("bookList", bookList);
-		request.setAttribute("memberList", memberList);
-		request.getRequestDispatcher(url).forward(request, response);
-
-		/*
-		 * Gson gson = new Gson(); String json = gson.toJson(bookList); json =
-		 * "{\"bookList\":"+json+"}"; System.out.println(json);
-		 * 
-		 * PrintWriter pw = response.getWriter(); pw.println(json); pw.flush(); return;
-		 */
+		
+		
+		Gson gson = new Gson();
+		String send_bookLIst= gson.toJson(bookList);
+		String send_memberList = gson.toJson(memberList);
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+"}";
+		System.out.println(result);
+		PrintWriter pw = response.getWriter();
+		pw.println(result);
+		pw.flush();
+		return;
 
 	}
 

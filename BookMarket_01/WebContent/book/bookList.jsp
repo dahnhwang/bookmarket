@@ -36,7 +36,6 @@
 	width: 100%;
 	height: 50%;
 	text-align: center;
-
 }
 
 #option {
@@ -66,34 +65,56 @@
 <script>
 
 	function listUpload(list) {
-		$.each(list, function(index, item) {
+		var bookList = list.bookList;
+		var memberList = list.memberList;
+		$.each(bookList, function(index, item) {
 			var tr = $('<tr>').appendTo('#listTable tbody');
 			var td = $('<td>');
-
-
 
 			var title = item.title;
 			var genre = item.genre;
 			var author = item.author;
 			var publisher = item.publisher;
-			var condition = item.book_condition;
-			var seller = item.seller;
+			var seller = memberList[index].email;
 			var submit_date = item.submit_date;
 			var price = item.price;
-			var price_type = item.price_type;
 			
 			
-			var button="<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
+			var condition = '';
+			if(item.book_condition===1){
+				condition="A";
+			}
+			
+			else if(item.book_condition===2){
+				condition="B";
+			}
+			
+			else if(item.book_condition===3){
+				condition="C";
+			}
+			
+			else if(item.book_condition===4){
+				condition="D";
+			}
+			
+			var price_type ='';
+			if(item.price_type===0){price_type = '지정';}
+			else if(item.price_type===1){price_type= '경매';}
+			
+	   
+
+
+			var button = "<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
 			var img = "<img src='http://placehold.it/70x92' />";
-			
+
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').text(title).appendTo(tr);
 			$('<td>').text(genre).appendTo(tr);
-			$('<td>').text(author + "  " + publisher).appendTo(tr);
+			$('<td>').text(author +"  "+ publisher).appendTo(tr);
 			$('<td>').text(condition).appendTo(tr);
-			$('<td>').text(seller+"@gmail.com").appendTo(tr);
+			$('<td>').text(seller).appendTo(tr);
 			$('<td>').text(submit_date).appendTo(tr);
-			$('<td>').text(price).appendTo(tr);
+			$('<td>').text(price+'원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
 			$('<td>').html(button).appendTo(tr);
 
@@ -103,6 +124,25 @@
 
 	$(document).ready(function() {
 
+
+		var params = "searchSel=all&command=book_search";
+		$.ajax({
+			url : 'bookmarket',
+			type : 'get',
+			data : params,
+			dataType : 'json',
+			success : function(data) {
+				if (data) {
+
+					$('#listTable tbody').empty();
+					listUpload(data);
+
+				}
+			}
+		});
+
+
+
 		$('#optionSel').on('change', function() {
 			var params = "option=" + this.value + "&command=book_option&genre=1";
 			$.ajax({
@@ -111,21 +151,38 @@
 				data : params,
 				dataType : 'json',
 				success : function(data) {
-					if (data.bookList) {
+					if (data) {
 
 						$('#listTable tbody').empty();
-						var list = data.bookList;
-						listUpload(list);
+						listUpload(data);
 
 					}
 				}
 			});
 
-
-  
 		});
 
-		
+
+
+		$('#searchBtn').on('click', function() {
+
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : $('#searchForm').serialize(),
+				dataType : 'json',
+				success : function(data) {
+					if (data) {
+
+						$('#listTable tbody').empty();
+						listUpload(data);
+
+					}
+				}
+			});
+
+		});
+
 
 	});
 </script>
@@ -142,7 +199,7 @@
 			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
 					<div id="search">
-						<form id="searchForm" action="bookmarket">
+						<form id="searchForm">
 							<span>결과 내 검색&nbsp;</span> <select size=1 name="searchSel">
 								<option value="title">도서명 </option>
 								<option value="author">저자명 </option>
@@ -150,7 +207,7 @@
 								<option value="seller_email">판매자 이메일 </option>
 							</select> <input type="hidden" name="command" value="book_search">
 							<input type="text" size="40" id="searchInput" name="searchInput">
-							<input type="submit" id="searchBtn" class="btn btn-dark"
+							<input type="button" id="searchBtn" class="btn btn-dark"
 								value="검색">
 						</form>
 					</div>
@@ -166,8 +223,8 @@
 
 					</div>
 				</div>
-				<table id="listTable" style="text-align: center" 
-					class="display" cellspacing="0" width="100%" data-toggle="table"
+				<table id="listTable" style="text-align: center" class="display"
+					cellspacing="0" width="100%" data-toggle="table"
 					data-show-refresh="true" data-show-toggle="true"
 					data-show-columns="true" data-search="true"
 					data-select-item-name="toolbar1" data-pagination="true">
@@ -187,22 +244,7 @@
 					</thead>
 
 					<tbody>
-						<c:forEach var="book" items="${bookList}" varStatus="status">
-							<tr>
-								<td><img src="http://placehold.it/70x92" /></td>
-								<td>${book.title}</td>
-								<td>${book.genre}</td>
-								<td>${book.author}<br> <br>${book.publisher}</td>
-								<td>${book.book_condition}</td>
-								<td>${memberList[status.index].email}</td>
-								<td>${book.submit_date}</td>
-								<td>${book.price}</td>
-								<td>${book.price_type}</td>
-								<td><button type="button" class="btn btn-primary btn-sm">Purchase!</button></td>
 
-							</tr>
-
-						</c:forEach>
 
 					</tbody>
 				</table>

@@ -481,10 +481,58 @@ public class BookDao implements IBookDao{
 	@Override
 	//genre 내에서 order 기준으로  seq(desc, asc)로 정렬되는 메소드 
 	public List<Book> selectBookOrderBy(int genre, String order, String seq) {
-		//book_list만들고 채울게요
-		return null;
+		List<Book> bookList = new ArrayList<Book>();
+	    Book book = null;
+		String sql = "SELECT * FROM book where genre= ? order by "+order+" "+seq ;
+		System.out.println(sql);
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
 		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, genre);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				
+				book = new Book();
+				book.setBook_id(rs.getInt("book_id"));
+				book.setIsbn(rs.getString("isbn"));
+				book.setAuthor(rs.getString("author"));
+				book.setTitle(rs.getString("title"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublished_date(rs.getString("published_date"));
+				book.setDescription(rs.getString("description"));
+				book.setGenre(rs.getInt("genre"));
+				book.setBook_condition(rs.getInt("book_condition"));
+				book.setIsSold(rs.getInt("isSold"));
+				book.setPrice(rs.getInt("price"));
+				book.setSeller(rs.getInt("seller_id"));
+				book.setImage(rs.getString("image"));
+				book.setSubmit_date(rs.getDate("submit_date"));
+				book.setPrice_type(rs.getInt("price_type"));
+				book.setComment(rs.getString("comment"));
+				book.setComment_img(rs.getString("comment_img"));
+				
+				bookList.add(book);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;
 	}
+	
+		
+	
 
 	@Override
 	//genre 내에서 price_type으로 정렬
