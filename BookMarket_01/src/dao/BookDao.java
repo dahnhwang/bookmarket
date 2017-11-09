@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,7 +139,7 @@ public class BookDao implements IBookDao{
  //ddddff
 	@Override 
 	public int insertBook(Book book) {
-		String sql = "INSERT INTO BOOK VALUES(0,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?)";
+		String sql = "INSERT INTO book VALUES(0,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
@@ -177,7 +176,7 @@ public class BookDao implements IBookDao{
 
 	@Override
 	public int updateBook(Book book) {
-		String sql = "UPDATE BOOK SET isSold = ?, price= ?, comment= ?, comment_img= ? where book_id = ? ";
+		String sql = "UPDATE book SET isSold = ?, price= ?, comment= ?, comment_img= ? where book_id = ? ";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {

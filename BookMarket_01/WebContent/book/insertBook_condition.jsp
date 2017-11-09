@@ -19,7 +19,7 @@
 			minHeight : null,
 			maxHeight : null,
 			focus : true,
-			placeholder: '책의 상태를 자세하게 알려주세요'
+			placeholder : '책의 상태를 자세하게 알려주세요'
 		});
 
 	});
@@ -48,9 +48,11 @@ div.panel {
 </head>
 <body>
 	<section class="condition_info_wrapper row placeholders">
-	<div class="accordion "><b>STEP 1</b> &nbsp; 도서상태를 별점과 글 또는 사진으로 알려주세요.</div>
+	<div class="accordion ">
+		<b>STEP 1</b> &nbsp; 도서상태를 별점과 글 또는 사진으로 알려주세요.
+	</div>
 	<div class="panel">
-	<br>
+		<br>
 		<div class="stars">
 			<i class="fa fa-star"></i><i class="fa fa-star"></i><i
 				class="fa fa-star"></i><i class="fa fa-star"></i><i

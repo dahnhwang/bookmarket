@@ -32,7 +32,7 @@ div.panel {
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<div class="accordion ">
-		<b>STEP 2</b> &nbsp; 원하시는 도서판매가격을 입력해 주세요.
+		<b>STEP 2</b> &nbsp; 원하는 도서판매가격을 입력해 주세요.
 	</div>
 	<div class="panel">
 		<br>얼마면 되겠니

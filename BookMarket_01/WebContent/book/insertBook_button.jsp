@@ -5,6 +5,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert Book Button</title>
+<script>
+	$(document).ready(function() {
+
+		$('#btn_fin').on('click', function() {
+			$.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "bookmarket?command=book_insert",
+				data : {
+					comment : $('#summernote').summernote('code')
+				},
+				success : function(data) {
+					if (data.result == "0") {
+						alert('fail');
+					} else {
+						alert('success');
+					}
+				}
+			});
+		});
+	});
+</script>
 <style>
 .condition_info_wrapper {
 	border-top: 1px solid #ddd;
@@ -13,9 +35,8 @@
 
 .button_div {
 	width: 50%;
-	float:left;
+	float: left;
 }
-
 </style>
 </head>
 <body>
@@ -26,9 +47,10 @@
 	</div>
 	<div class="button_div">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half">판매준비 완료!</button>
+			class="btn btn-primary btn-lg btn-block btn-half" id="btn_fin">판매준비
+			완료!</button>
+		<!-- book_insert 여기로 보내야 함!! -->
 	</div>
-
 	</section>
 </body>
 </html>
