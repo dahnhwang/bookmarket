@@ -25,6 +25,18 @@
 
 
 <style type="text/css">
+
+#wrap{
+
+width : 100%;
+height : 900px;
+
+}
+
+#contents{
+height : 700px;
+}
+
 #searchBar {
 	width: 100%;
 	height: 100px;

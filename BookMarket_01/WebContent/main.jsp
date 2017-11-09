@@ -7,14 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Book Market</title>
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+1
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 	list-style: none;
+	font-family : 'Noto Sans KR';
+	
 }
 
 .wrap {
@@ -22,17 +26,82 @@
 }
 
 #contents {
-	width: 80%;
-	height: 700px;
-	margin: 20px 0 0 20px;
-	border: 1px solid #cccccc;
+	width: 70%;
+	height: 1000px;
+    margin-left : 20px;
+
 }
 
-#contents div ul li {
+#contents .section {
+	width: 100%;
+	height: 30%;
+	margin: 10px 0;
+	
+}
+
+#contents .section ul {
+	margin: 20px 0;
+}
+
+#contents .section ul li {
 	display: inline-block;
 	float: left;
-	margin: 0 12px 0 0;
+	margin: 0 27px 0 0;
 	box-sizing: border-box;
+}
+
+#contents .section ul li img {
+ width : 110px;
+ height : 147px;
+ box-shadow: 7px 7px 3px #cccccc;
+}
+
+
+
+#contents .section ul li p{
+ margin : 20px 0 0 2px;
+ line-height :130%;
+
+}
+
+
+.book_title{
+ font-size : 13px;
+ font-weight: bold;
+  color :#454140;
+  
+}
+
+.book_price{
+ font-size : 12px;
+  color :#9896A4;
+}
+
+.strapline {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.title {
+	margin: 0 5PX 5px 35px; 
+	font-weight: bold;
+	font-size: 25px;
+	color: #3c3c3c;
+	flex-grow: 0;
+    background-color: #cfe0e8;
+}
+
+.divider {
+	flex-grow: 1;
+	height: 1px;
+	background-color: #9f9f9f;
+}
+
+#some{
+width : 100%;
+height : 30px;
+
 }
 </style>
 </head>
@@ -42,31 +111,64 @@
 			<jsp:include page="navigation.jsp" />
 		</div>
 		<div id="contents">
+         <div id="some">
+         
+         </div>
 
-			<div>
-				<ul>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-					<li><a href="#" alt=""><img
-							src='http://placehold.it/100x127' /></a></li>
-
+			<div class="section">
+				<div class="strapline">
+					<div class="title">오늘의 신간 도서 TOP 5</div>
+					<div class="divider"></div>
+				</div>
+				<ul >
+					<c:forEach begin="0" end="5">
+						<li>
+						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
+					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
+					       <span class="book_price">33000원</span>
+					       </p>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 
+
+			<div class="section">
+				<div class="strapline">
+					<div class="title">오늘의 입찰 도서 TOP 5</div>
+					<div class="divider"></div>
+				</div>
+				<ul>
+					<c:forEach begin="0" end="5">
+						<li>
+						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
+					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
+					       <span class="book_price">33000원</span>
+					       </p>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+
+
+
+
+			<div class="section">
+				<div class="strapline">
+					<div class="title"> 마감임박 도서 TOP 5</div>
+					<div class="divider"></div>
+				</div>
+				<ul>
+					<c:forEach begin="0" end="5">
+						<li>
+						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
+					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
+					       <span class="book_price">33000원</span>
+					       </p>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
 
 
 		</div>
