@@ -104,7 +104,8 @@
 	   
 
 
-			var button = "<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
+			var purchase_button = "<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
+			var keep_button = "<button type='button' class='btn btn-warning btn-sm'>Keep!</button>";
 			var img = "<img src='http://placehold.it/70x92' />";
 
 			$('<td>').html(img).appendTo(tr);
@@ -116,15 +117,17 @@
 			$('<td>').text(submit_date).appendTo(tr);
 			$('<td>').text(price+'원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
-			$('<td>').html(button).appendTo(tr);
+			$('<td>').html(purchase_button+'<br><br>'+keep_button).appendTo(tr);
 
 		});
 	}
 
 
 	$(document).ready(function() {
-
-
+		$('#searchForm').submit(function(){
+			return false;
+		})
+		
 		var params = "searchSel=all&command=book_search";
 		$.ajax({
 			url : 'bookmarket',
