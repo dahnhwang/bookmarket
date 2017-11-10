@@ -22,16 +22,17 @@ public class BookInsertAction implements Action {
 
 		String comment = request.getParameter("comment");
 		System.out.println(comment);
+		int book_condition = Integer.parseInt(request.getParameter("condition"));
+		System.out.println(book_condition);
 		Book book = new Book();
 		HttpSession session = request.getSession();
 		book = (Book) session.getAttribute("book");
-		System.out.println("잘 넘어왔수"+book.toString());
 		book.setComment(comment);
-		book.setPrice(8888); //더미 데이터
+		book.setBook_condition(book_condition);
+		book.setPrice(8888); // 더미 데이터
 
 		BookDao dao = BookDao.getInstance();
 		int result = dao.insertBook(book);
-		System.out.println("저장 성공(1) : "+result);
 		JsonObject jo = new JsonObject();
 		jo.addProperty("result", result);
 		Gson gson = new Gson();
