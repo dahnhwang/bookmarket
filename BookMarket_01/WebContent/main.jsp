@@ -100,7 +100,7 @@
 }
 
 #sideBar {
-    margin : 120px 0 0 30px;
+    margin : 0 0 0 30px;
 	width : 250px;
 	height: 400px;
 	border :1px solid #282828;
