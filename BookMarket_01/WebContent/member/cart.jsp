@@ -24,6 +24,11 @@ text-align: center;
 vertical-align: middle;
 }
 
+#cartList th{
+text-align: center;
+vertical-align: middle;
+}
+
 </style>
 </head>
 <body>

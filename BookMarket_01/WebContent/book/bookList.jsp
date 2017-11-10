@@ -118,6 +118,7 @@ height : 700px;
 
 			var purchase_button = "<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
 			var keep_button = "<button type='button' class='btn btn-warning btn-sm'>Keep!</button>";
+			var cart_button = "<button type='button' class='btn btn-success btn-sm'>Cart!</button>";
 			var img = "<img src='http://placehold.it/70x92' />";
 
 			$('<td>').html(img).appendTo(tr);
@@ -129,7 +130,7 @@ height : 700px;
 			$('<td>').text(submit_date).appendTo(tr);
 			$('<td>').text(price+'원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
-			$('<td>').html(purchase_button+'<br><br>'+keep_button).appendTo(tr);
+			$('<td>').html(purchase_button+'<br><br>'+keep_button+' &nbsp;'+cart_button).appendTo(tr);
 
 		});
 	}
