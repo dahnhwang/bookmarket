@@ -57,20 +57,26 @@
 	padding-bottom: 30px;
 	padding-left: 70px;
 }
+/* body{ */
+/* 	margin-top: 100px; */
+/* } */
 </style>
-<title>Insert title here</title>
+<title>Book Market</title>
 </head>
 <body>
 	<div class="wrap">
 		<div class="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
+		<!-- 컨테이너 -->
 		<div class="container">
 			<div class="row">
+			<!-- 사이드 바 -->
 				<div id="div-mypage-side-menu" class="side-menu">
 					<jsp:include page="myPage_navigation.jsp" />
 				</div>
-				<div class="contents col-md-9">
+			<!-- content 영역 -->
+				<div id="contents-mypage" class="contents col-md-9">
 					<section class="content_wrapper row placeholders ">
 					<h3>마이페이지</h3>
 					<div id="div-myInfo" class="panel panel-default">
