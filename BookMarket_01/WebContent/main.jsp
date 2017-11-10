@@ -121,7 +121,7 @@ height : 30px;
 					<div class="divider"></div>
 				</div>
 				<ul >
-					<c:forEach begin="0" end="5">
+					<c:forEach begin="0" end="4">
 						<li>
 						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
 					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
@@ -139,7 +139,7 @@ height : 30px;
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach begin="0" end="5">
+					<c:forEach begin="0" end="4">
 						<li>
 						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
 					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
@@ -159,7 +159,7 @@ height : 30px;
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach begin="0" end="5">
+					<c:forEach begin="0" end="4">
 						<li>
 						<a href="#"><img src='https://misc.ridibooks.com/cover/593000426/xxlarge'/></a>
 					    <p><span class="book_title">나미야 잡화점의 기적</span><br>
