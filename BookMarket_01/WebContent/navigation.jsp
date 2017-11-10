@@ -33,7 +33,7 @@ body {
 	margin-top: 100px;
 	
 }
-*:focus  {   
+.cartBtn:focus  {   
 outline:none!important
  }
 
@@ -105,7 +105,7 @@ outline:none!important
 			 	</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="cartLI"><a href="#" data-toggle="modal" data-target="#cart">장바구니</a></li>
+					<li><a class="cartBtn" href="#" data-toggle="modal" data-target="#cart">장바구니</a></li>
 
 					<c:choose>
 						<c:when test="${empty loginUser}">
