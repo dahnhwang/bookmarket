@@ -129,7 +129,7 @@ outline:none!important
 		    
 	</div>
 
-
+<jsp:include page="member/cart.jsp"/>
   
 
 
