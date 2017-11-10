@@ -92,7 +92,7 @@ height : 700px;
 			var price = item.price;
 			
 			
-			var condition = '';
+			var condition = ''; 
 			if(item.book_condition===1){
 				condition="A";
 			}
