@@ -18,7 +18,7 @@
 	list-style: none;
 	font-family: 'Noto Sans KR';
 }
-
+ 
 #cartList td{
 text-align: center;
 vertical-align: middle;
