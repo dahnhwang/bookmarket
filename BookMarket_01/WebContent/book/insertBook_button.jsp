@@ -6,26 +6,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert Book Button</title>
 <script>
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		$('#btn_fin').on('click', function() {
-			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "bookmarket?command=book_insert",
-				data : {
-					comment : $('#summernote').summernote('code')
-				},
-				success : function(data) {
-					if (data.result == "0") {
-						alert('fail');
-					} else {
-						alert('success');
-					}
-				}
-			});
-		});
-	});
+						$('#btn_reset').on('click', function() {
+							$('#summernote').summernote('reset');
+						});
+
+						$('#btn_fin')
+								.on(
+										'click',
+										function() {
+											$
+													.ajax({
+														type : "POST",
+														dataType : "json",
+														url : "bookmarket?command=book_insert",
+														data : {
+															comment : $(
+																	'#summernote')
+																	.summernote(
+																			'code'),
+															condition : parseInt(
+																	$(
+																			'#stars li.selected')
+																			.last()
+																			.data(
+																					'value'),
+																	10)
+														},
+														success : function(data) {
+															if (data.result == "0") {
+																alert('정보가 제대로 저장되지 못했습니다. 개발자를 불러주세요....--;');
+															} else {
+																alert('판매를 개시합니다!');
+															}
+														}
+													});
+										});
+					});
 </script>
 <style>
 .condition_info_wrapper {
@@ -43,7 +63,8 @@
 	<section class="condition_info_wrapper row placeholders">
 	<div class="button_div">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half">다시 입력하기</button>
+			class="btn btn-primary btn-lg btn-block btn-half" id="btn_reset">다시
+			입력하기</button>
 	</div>
 	<div class="button_div">
 		<button type="button"
