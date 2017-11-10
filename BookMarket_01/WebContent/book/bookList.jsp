@@ -15,7 +15,7 @@
 <link href="css/bootstrap-table.min.css" rel="stylesheet">
 
 <!-- jQuery -->
-
+ 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
