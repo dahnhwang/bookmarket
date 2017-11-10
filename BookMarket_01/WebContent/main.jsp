@@ -76,7 +76,7 @@
 }
 
 .title {
-	margin: 0 5PX 5px 35px;
+	margin: 0 5PX 5px 0;
 	font-weight: bold;
 	font-size: 25px;
 	color: #3c3c3c;
@@ -91,19 +91,19 @@
 }
 
 #banner {
-	width: 95%;
+	width: 100%;
 	height: 120px;
 	background-color: #e6e2d3;
-    margin : 0 0 30px 35px;
+    margin : 0 0 30px 0;
     font-size: 24px;
     font-weight: bold;
 }
 
 #sideBar {
-    margin : 0 0 0 30px;
+    margin-left : 40px;
 	width : 250px;
 	height: 400px;
-	border :1px solid #282828;
+	border :1px solid #cccccc;
 
 }
 
@@ -113,7 +113,7 @@
 <body>
 	<div class="wrap">
 		<div class="navigation">
-			<jsp:include page="navigation.jsp" />
+			<jsp:include page="navigation.jsp" />	
 		</div>
 
 		<div id="contents" class="col-md-10">
@@ -182,7 +182,7 @@
 		
 		
 	    </div>
-
+           <jsp:include page="member/cart.jsp"/>
 		<div class="footer">
 			<jsp:include page="footer.jsp" />
 		</div>

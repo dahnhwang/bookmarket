@@ -31,8 +31,20 @@
 <style type="text/css">
 body {
 	margin-top: 100px;
+	
 }
+*:focus  {   
+outline:none!important
+ }
+
+   
+ 
 </style>
+
+
+<script type="text/javascript">
+
+</script>
 
 </head>
 
@@ -55,7 +67,7 @@ body {
 						data-toggle="dropdown"> <span>구매하기</span> <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-					    	<li><a href="bookmarket?command=book_list">전체보기</a></li>
+							<li><a href="bookmarket?command=book_list">전체보기</a></li>
 							<li class="divider"></li>
 							<li><a href="#">소설</a></li>
 							<li><a href="#">시/에세이</a></li>
@@ -93,7 +105,8 @@ body {
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">장바구니</a></li>
+					<li class="cartLI"><a href="#" data-toggle="modal" data-target="#cart">장바구니</a></li>
+
 					<c:choose>
 						<c:when test="${empty loginUser}">
 							<li><a href="bookmarket?command=login_form">로그인</a></li>
@@ -104,9 +117,7 @@ body {
 							<li><a href="bookmarket?command=mypage">마이페이지</a></li>
 						</c:otherwise>
 					</c:choose>
-
-				</ul>
-
+	</ul>
 
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search" /> <input
@@ -115,9 +126,11 @@ body {
 
 			</div>
 		</div>
+		    
 	</div>
 
 
+  
 
 
 </body>
