@@ -14,7 +14,7 @@ PRIMARY KEY (mem_id)
 DROP TABLE IF EXISTS book;
 CREATE TABLE book(
 book_id INT NOT NULL AUTO_INCREMENT,
-isbn VARCHAR(20) NOT NULL,
+isbn VARCHAR(100) NOT NULL,
 author VARCHAR(20) NOT NULL,
 title VARCHAR(100) NOT NULL,
 publisher VARCHAR(20),
@@ -28,7 +28,7 @@ seller_id INT,
 image VARCHAR(1000),
 submit_date DATE, 
 price_type INT default 0,
-comment VARCHAR(1000),
+comment VARCHAR(5000),
 PRIMARY KEY (book_id)
 );
 

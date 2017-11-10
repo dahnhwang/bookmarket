@@ -8,6 +8,10 @@
 <script>
 	$(document).ready(function() {
 
+		$('#btn_reset').on('click', function() {
+			$('#summernote').summernote('reset');
+		});
+
 		$('#btn_fin').on('click', function() {
 			$.ajax({
 				type : "POST",
@@ -18,9 +22,9 @@
 				},
 				success : function(data) {
 					if (data.result == "0") {
-						alert('fail');
+						alert('정보가 제대로 저장되지 못했습니다. 개발자를 불러주세요....--;');
 					} else {
-						alert('success');
+						alert('판매를 개시합니다!');
 					}
 				}
 			});
@@ -43,7 +47,8 @@
 	<section class="condition_info_wrapper row placeholders">
 	<div class="button_div">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half">다시 입력하기</button>
+			class="btn btn-primary btn-lg btn-block btn-half" id="btn_reset">다시
+			입력하기</button>
 	</div>
 	<div class="button_div">
 		<button type="button"

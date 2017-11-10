@@ -14,11 +14,12 @@
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
+			lang : 'ko_KR',
 			height : 200,
 			width : '100%',
 			minHeight : null,
 			maxHeight : null,
-			focus : true,
+			focus : false,
 			placeholder : '책의 상태를 자세하게 알려주세요'
 		});
 

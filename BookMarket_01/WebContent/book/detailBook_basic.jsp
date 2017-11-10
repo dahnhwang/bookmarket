@@ -1,3 +1,4 @@
+<%@page import="dto.Book"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -18,7 +19,6 @@ td {
 </style>
 </head>
 <body>
-
 	<section class="row placeholders contents_wrapper">
 	<div class="col-sm-3 placeholder">
 		<img src="${book.image}">
@@ -44,6 +44,7 @@ td {
 				<td valign="top"><b>소개</b></td>
 				<td colspan="3">${book.description }</td>
 			</tr>
+
 		</table>
 	</div>
 	</section>

@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -136,25 +135,27 @@ public class BookDao implements IBookDao {
 	// ddddff
 	@Override
 	public int insertBook(Book book) {
-		String sql = "INSERT INTO book VALUES(0,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?)";
+		String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, book.getIsbn());
-			pstmt.setString(2, book.getAuthor());
-			pstmt.setString(3, book.getTitle());
-			pstmt.setString(4, book.getPublisher());
-			pstmt.setString(5, book.getPublished_date());
-			pstmt.setString(6, book.getDescription());
-			pstmt.setInt(7, book.getGenre());
-			pstmt.setInt(8, book.getBook_condition());
-			pstmt.setInt(9, book.getIsSold());
-			pstmt.setInt(10, book.getPrice());
-			pstmt.setInt(11, book.getSeller());
-			pstmt.setString(12, book.getImage());
-			pstmt.setInt(13, book.getPrice_type());
-			pstmt.setString(14, book.getComment());
+			pstmt = conn.prepareStatement(sql); 
+			pstmt.setInt(1, book.getBook_id());
+			pstmt.setString(2, book.getIsbn());
+			pstmt.setString(3, book.getAuthor());
+			pstmt.setString(4, book.getTitle());
+			pstmt.setString(5, book.getPublisher());
+			pstmt.setString(6, book.getPublished_date());
+			pstmt.setString(7, book.getDescription());
+			pstmt.setInt(8, book.getGenre());
+			pstmt.setInt(9, book.getBook_condition());
+			pstmt.setInt(10, book.getIsSold());
+			pstmt.setInt(11, book.getPrice());
+			pstmt.setInt(12, book.getSeller());
+			pstmt.setString(13, book.getImage());
+			// 요 담에 sysdate
+			pstmt.setInt(14, book.getPrice_type());
+			pstmt.setString(15, book.getComment());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -567,6 +568,34 @@ public class BookDao implements IBookDao {
 			}
 		}
 		return bookList;
+	}
+
+	@Override
+	public int getNewBookId() {
+		int result = 0;
+		String sql = "SELECT MAX(book_id) FROM book";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("book_id") + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
 }

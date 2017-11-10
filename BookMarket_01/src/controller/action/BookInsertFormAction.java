@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dao.BookDao;
 import dto.Book;
 import util.NaverApi;
 
@@ -19,6 +21,10 @@ public class BookInsertFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="book/insertBook.jsp?isbn=";
 		String isbn = request.getParameter("isbn");
+		
+		BookDao dao = BookDao.getInstance();
+		int book_id = dao.getNewBookId();
+		
 		NaverApi api = new NaverApi();
 		List<HashMap<String, Object>> list = api.getJson(isbn);
 		Iterator iter = list.iterator();
@@ -33,9 +39,13 @@ public class BookInsertFormAction implements Action {
 			book.setPublisher((String)map.get("publisher"));
 			book.setPublished_date((String)map.get("pubdate"));
 			book.setDescription((String)map.get("description"));
+			book.setBook_id(book_id);
+			book.setPrice_type(0);
 		}
 		System.out.println(book.toString());
-		request.setAttribute("book", book);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("book", book);
 		request.getRequestDispatcher(url+isbn).forward(request, response);
 	}
 
