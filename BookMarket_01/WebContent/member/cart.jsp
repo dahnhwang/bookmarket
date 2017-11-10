@@ -41,7 +41,7 @@ vertical-align: middle;
 						<thead>
 							<tr>
 								<th>이미지</th>
-								<th>제목</th>
+						 		<th>제목</th>
 								<th>판매자 이메일</th>
 								<th>가격</th>
 								<th>구매하기</th>
