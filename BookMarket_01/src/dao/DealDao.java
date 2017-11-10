@@ -60,7 +60,7 @@
 //		List<Deal> deallist = new ArrayList<Deal>();
 //		Deal deal = null;
 //		
-//		String sql = "SELECT * FROM DEAL where ??";
+//		String sql = "SELECT * FROM DEAL where participant_id= ";
 //		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 //	
@@ -100,7 +100,7 @@
 //		List<Deal> deallist = new ArrayList<Deal>();
 //		Deal deal = new Deal();
 //		
-//		String sql = "SELECT * FROM DEAL order by deal_date";
+//		String sql = "SELECT book_id FROM DEAL where deal_date order by deal_date";
 //		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 //	
@@ -141,7 +141,10 @@
 //		List<Deal> deallist = new ArrayList<Deal>();
 //		Deal deal = new Deal();
 //		
-//		String sql = "SELECT * FROM DEAL group by ??";
+//		String sql = "alter table ?? add (min, max, avg generated always) ",
+//						"SELECT * FROM DEAL group by ?? order by book_id";
+//		
+//		
 //		PreparedStatement pstmt = null;
 //		ResultSet rs = null;
 //		int deal_max = 0;
@@ -174,6 +177,5 @@
 //		return deallist;
 //		}
 //	
-//	
-//	
+//
 //}
