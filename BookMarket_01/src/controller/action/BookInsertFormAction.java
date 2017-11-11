@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.BookDao;
 import dto.Book;
 import util.NaverApi;
+import util.WebPageParser;
 
 public class BookInsertFormAction implements Action {
 
@@ -31,6 +32,9 @@ public class BookInsertFormAction implements Action {
 		Book book = null;
 		while(iter.hasNext()) {
 			Map<String, Object> map = (HashMap<String, Object>)iter.next();
+			String address = (String)map.get("link");
+			WebPageParser pageParser = new WebPageParser();
+			int genre = pageParser.getBookGenre(address);
 			book = new Book();
 			book.setTitle((String)map.get("title"));
 			book.setIsbn((String)map.get("isbn"));
@@ -41,6 +45,9 @@ public class BookInsertFormAction implements Action {
 			book.setDescription((String)map.get("description"));
 			book.setBook_id(book_id);
 			book.setPrice_type(0);
+			book.setGenre(genre);
+			
+			System.out.println(genre);
 		}
 		System.out.println(book.toString());
 		
