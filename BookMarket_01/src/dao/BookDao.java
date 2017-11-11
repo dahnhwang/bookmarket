@@ -570,6 +570,7 @@ public class BookDao implements IBookDao {
 		return bookList;
 	}
 
+	
 	@Override
 	public int getNewBookId() {
 		int result = 0;

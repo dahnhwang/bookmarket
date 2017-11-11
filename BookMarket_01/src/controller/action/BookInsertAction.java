@@ -37,6 +37,7 @@ public class BookInsertAction implements Action {
 		book.setPrice(price);
 		book.setPrice_type(price_type);
 		book.setSeller(mem_id);
+		
 
 		BookDao dao = BookDao.getInstance();
 		int result = dao.insertBook(book);

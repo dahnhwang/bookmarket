@@ -12,7 +12,6 @@
 	margin-left: 30px;
 	padding-bottom: 30px;
 }
-
 td {
 	padding: 5px;
 }

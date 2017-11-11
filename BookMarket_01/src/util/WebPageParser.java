@@ -20,7 +20,6 @@ public class WebPageParser {
 			url = new URL(address);
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod(protocol);
-
 			br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
 			String line;

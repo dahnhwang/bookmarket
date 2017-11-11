@@ -48,6 +48,7 @@ public class BookInsertFormAction implements Action {
 			book.setIsSold(0);
 			book.setGenre(genre);
 		}
+		
 		System.out.println(book.toString());
 
 		GenreParser parser = new GenreParser();
