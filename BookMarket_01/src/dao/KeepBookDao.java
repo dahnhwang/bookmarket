@@ -38,14 +38,13 @@ public class KeepBookDao implements IKeepBookDao {
 	@Override
 	public int insertKeepBook(KeepBook keepBook) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO keepbook VALUES(0,?,?,?)";
+		String sql = "INSERT INTO keepbook VALUES(0,?,?,sysdate())";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, keepBook.getBook_id());
 			pstmt.setInt(2, keepBook.getMem_id());
-			pstmt.setDate(3, new java.sql.Date(keepBook.getKeep_date().getTime()));
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {

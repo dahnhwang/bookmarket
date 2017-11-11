@@ -245,6 +245,22 @@ height : 700px;
 		}) 
 		
 		
+		$(document).on('click', '.keep_btn', function(){
+		
+			
+			var book_id = $(this).attr('data-id');
+			var params ="command=keepBook_add&book_id="+book_id;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+					alert(data);
+				}
+			});
+
+		}) 
+		
 
 	});
 </script>
