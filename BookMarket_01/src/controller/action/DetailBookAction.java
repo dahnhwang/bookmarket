@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.BookDao;
 import dto.Book;
 import util.GenreParser;
+
 public class DetailBookAction implements Action {
 
 	@Override
@@ -19,12 +20,12 @@ public class DetailBookAction implements Action {
 		BookDao dao = BookDao.getInstance();
 		Book book = dao.getBook(book_id);
 		request.setAttribute("book", book);
-		
-//		GenreParser parser = new GenreParser();
-////		String genre = parser.getGenreStr(book.getGenre());
-//		System.out.println(genre);
-//		request.setAttribute("genre", genre);
-		
+
+		GenreParser parser = new GenreParser();
+		String genre = parser.getGenreStr(book.getGenre());
+		System.out.println(genre);
+		request.setAttribute("genre", genre);
+
 		request.getRequestDispatcher(url + book_id).forward(request, response);
 	}
 

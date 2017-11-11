@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
 import dto.Book;
+import util.GenreParser;
 import util.NaverApi;
 import util.WebPageParser;
 
@@ -20,40 +21,42 @@ public class BookInsertFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="book/insertBook.jsp?isbn=";
+		String url = "book/insertBook.jsp?isbn=";
 		String isbn = request.getParameter("isbn");
-		
+
 		BookDao dao = BookDao.getInstance();
 		int book_id = dao.getNewBookId();
-		
+
 		NaverApi api = new NaverApi();
 		List<HashMap<String, Object>> list = api.getJson(isbn);
 		Iterator iter = list.iterator();
 		Book book = null;
-		while(iter.hasNext()) {
-			Map<String, Object> map = (HashMap<String, Object>)iter.next();
-			String address = (String)map.get("link");
+		while (iter.hasNext()) {
+			Map<String, Object> map = (HashMap<String, Object>) iter.next();
+			String address = (String) map.get("link");
 			WebPageParser pageParser = new WebPageParser();
 			int genre = pageParser.getBookGenre(address);
 			book = new Book();
-			book.setTitle((String)map.get("title"));
-			book.setIsbn((String)map.get("isbn"));
-			book.setImage((String)map.get("image"));
-			book.setAuthor((String)map.get("author"));
-			book.setPublisher((String)map.get("publisher"));
-			book.setPublished_date((String)map.get("pubdate"));
-			book.setDescription((String)map.get("description"));
+			book.setTitle((String) map.get("title"));
+			book.setIsbn((String) map.get("isbn"));
+			book.setImage((String) map.get("image"));
+			book.setAuthor((String) map.get("author"));
+			book.setPublisher((String) map.get("publisher"));
+			book.setPublished_date((String) map.get("pubdate"));
+			book.setDescription((String) map.get("description"));
 			book.setBook_id(book_id);
-			book.setPrice_type(0);
+			book.setIsSold(0);
 			book.setGenre(genre);
-			
-			System.out.println(genre);
 		}
 		System.out.println(book.toString());
-		
+
+		GenreParser parser = new GenreParser();
+		String genre = parser.getGenreStr(book.getGenre());
+		request.setAttribute("genre", genre);
+
 		HttpSession session = request.getSession();
 		session.setAttribute("book", book);
-		request.getRequestDispatcher(url+isbn).forward(request, response);
+		request.getRequestDispatcher(url + isbn).forward(request, response);
 	}
 
 }

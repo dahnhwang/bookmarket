@@ -580,7 +580,7 @@ public class BookDao implements IBookDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				result = rs.getInt("book_id") + 1;
+				result = rs.getInt("MAX(book_id)") + 1;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

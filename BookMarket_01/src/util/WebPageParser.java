@@ -25,14 +25,11 @@ public class WebPageParser {
 
 			String line;
 			while ((line = br.readLine()) != null) {
-				if (line.startsWith("category,r:1,i:")) {
-					String category = line.replace("category,r:1,i:", "");
-					
-					// substring 함수든... 뭐든 써서 위 부분 다음 3글자를 잘라내야 함
-					
-					genre = Integer.parseInt(category);
+				if (line.contains("<li><a href=\"/category/index.nhn?cate_code=") && !line.contains("r:2")) {
+					int startNum = line.indexOf("_");
+					String subStr = line.substring(startNum + 6, startNum + 9);
+					genre = Integer.parseInt(subStr);
 				}
-				System.out.println(line);
 			}
 
 		} catch (MalformedURLException e) {

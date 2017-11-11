@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import dao.BookDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class BookInsertAction implements Action {
 
