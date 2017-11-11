@@ -18,18 +18,43 @@
 	list-style: none;
 	font-family: 'Noto Sans KR';
 }
- 
-#cartList td{
-text-align: center;
-vertical-align: middle;
+
+#cartList td {
+	text-align: center;
+	vertical-align: middle;
 }
 
-#cartList th{
-text-align: center;
-vertical-align: middle;
+#cartList th {
+	text-align: center;
+	vertical-align: middle;
 }
-
 </style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('#cartList').on('click', '.cart_delete', function() {
+
+			var book_id = $(this).attr('data-id');
+			var params ="command=cart&book_id="+book_id;
+			 $(this).closest('tr').remove();
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+			
+					
+				}
+			});
+// 			
+
+		})
+
+	});
+</script>
+
+
 </head>
 <body>
 	<!-- Modal -->
@@ -45,22 +70,25 @@ vertical-align: middle;
 					<table class="table table-striped" id="cartList">
 						<thead>
 							<tr>
+								<th>번호</th>
 								<th>이미지</th>
-						 		<th>제목</th>
-								<th>판매자 이메일</th>
+								<th>제목</th>
 								<th>가격</th>
 								<th>구매하기</th>
+								<th>삭제하기</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach begin="0" end="4">
+							<c:forEach var="book" items="${cartList }" varStatus="status">
 								<tr>
-									<td><img id="book_image" src='http://placehold.it/70x92' /></td>
-									<td>나미야 잡화점의 기적</td>
-									<td>slokang@naver.com</td>
-									<td>300000원</td>
-									<td><button type='button' class='btn btn-primary btn-sm'>Purchase!
+									<td>${status.count }</td>
+									<td><img id="book_image" src=${book.image } /></td>
+									<td>${book.title }</td>
+									<td>${book.price }</td>
+									<td><button type='button' class='btn btn-primary btn-sm'>구매하기
 										</button></td>
+									<td><button type='button'
+											class='btn btn-danger btn-sm cart_delete' data-id=${book.book_id }>삭제하기</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

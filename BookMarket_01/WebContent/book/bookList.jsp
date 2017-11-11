@@ -15,16 +15,20 @@
 <link href="css/bootstrap-table.min.css" rel="stylesheet">
 
 <!-- jQuery -->
- 
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/bootstrap.min.js"></script> 이걸지우자-->
 
 <script src="js/bootstrap-table.min.js"></script>
 
-
 <style type="text/css">
+
+.bookTitle{
+color : #282828;
+
+}
 
 #wrap{
 
@@ -80,9 +84,11 @@ height : 700px;
 		var bookList = list.bookList;
 		var memberList = list.memberList;
 		$.each(bookList, function(index, item) {
+			
 			var tr = $('<tr>').appendTo('#listTable tbody');
 			var td = $('<td>');
-
+			var book_id = item.book_id;
+            var image = item.image;
 			var title = item.title;
 			var genre = item.genre;
 			var author = item.author;
@@ -93,11 +99,11 @@ height : 700px;
 			
 			
 			var condition = ''; 
-			if(item.book_condition===1){
+			if(item.book_condition===5){
 				condition="A";
 			}
 			
-			else if(item.book_condition===2){
+			else if(item.book_condition===4){
 				condition="B";
 			}
 			
@@ -105,7 +111,11 @@ height : 700px;
 				condition="C";
 			}
 			
-			else if(item.book_condition===4){
+			else if(item.book_condition===2){
+				condition="D";
+			}
+			
+			else if(item.book_condition===1){
 				condition="D";
 			}
 			
@@ -114,15 +124,12 @@ height : 700px;
 			else if(item.price_type===1){price_type= '경매';}
 			
 	   
-
-
-			var purchase_button = "<button type='button' class='btn btn-primary btn-sm'>Purchase!</button>";
-			var keep_button = "<button type='button' class='btn btn-warning btn-sm'>Keep!</button>";
-			var cart_button = "<button type='button' class='btn btn-success btn-sm'>Cart!</button>";
-			var img = "<img src='http://placehold.it/70x92' />";
+            var titleTag =$('<a>').attr('href', 'bookmarket?command=detail_book&book_id='+book_id)
+            .addClass("bookTitle").text(title);
+			var img = "<img src="+image+" />";
 
 			$('<td>').html(img).appendTo(tr);
-			$('<td>').text(title).appendTo(tr);
+			$('<td>').append(titleTag).appendTo(tr);
 			$('<td>').text(genre).appendTo(tr);
 			$('<td>').text(author +"  "+ publisher).appendTo(tr);
 			$('<td>').text(condition).appendTo(tr);
@@ -130,17 +137,35 @@ height : 700px;
 			$('<td>').text(submit_date).appendTo(tr);
 			$('<td>').text(price+'원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
-			$('<td>').html(purchase_button+'<br><br>'+keep_button+' &nbsp;'+cart_button).appendTo(tr);
+			
+			
+			var cartBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('cart_btn').css({
+			'margin' : '5px'
+		}).val('Cart');
 
+		var keepBtn = $('<input>').attr('type', 'button')
+           .attr('data-id',book_id).addClass('keep_btn').css({
+			'margin' : '5px'
+		}).val('Keep');
+
+		var purchaseBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('purchase_btn').css('margin', '5px')
+			.val('Purchase!');
+
+
+		$('<td>').append(purchaseBtn)
+			.append(keepBtn)
+			.append(cartBtn).appendTo(tr);
+
+			
 		});
 	}
 
 
 	$(document).ready(function() {
-		$('#searchForm').submit(function(){
-			return false;
-		})
-		
+	
+	
 		var params = "searchSel=all&command=book_search";
 		$.ajax({
 			url : 'bookmarket',
@@ -157,6 +182,10 @@ height : 700px;
 			}
 		});
 
+		
+		$('#searchForm').submit(function(){
+			return false;
+		})
 
 
 		$('#optionSel').on('change', function() {
@@ -199,6 +228,23 @@ height : 700px;
 
 		});
 
+		
+		
+		$(document).on('click', '.cart_btn', function(){
+			var book_id = $(this).attr('data-id');
+			var params ="command=cart_add&book_id="+book_id;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+					alert(data);
+				}
+			});
+
+		}) 
+		
+		
 
 	});
 </script>
