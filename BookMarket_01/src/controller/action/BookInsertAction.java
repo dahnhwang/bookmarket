@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 
 import dao.BookDao;
 import dto.Book;
+import dto.Member;
 
 public class BookInsertAction implements Action {
 
@@ -28,11 +29,14 @@ public class BookInsertAction implements Action {
 		System.out.println("price_type: " + price_type);
 		Book book = new Book();
 		HttpSession session = request.getSession();
+		Member mb = (Member) session.getAttribute("loginUser");
+		int mem_id = mb.getMem_id();
 		book = (Book) session.getAttribute("book");
 		book.setComment(comment);
 		book.setBook_condition(book_condition);
 		book.setPrice(price);
 		book.setPrice_type(price_type);
+		book.setSeller(mem_id);
 
 		BookDao dao = BookDao.getInstance();
 		int result = dao.insertBook(book);
