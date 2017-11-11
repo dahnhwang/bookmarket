@@ -112,6 +112,7 @@ div.panel {
 	background-color: white;
 }
 
+
 .condition_info_wrapper {
 	border-top: 1px solid #ddd;
 	margin-left: 40px;
@@ -162,10 +163,11 @@ div.panel {
 
 /* Selected state of the stars */
 .rating-stars ul>li.star.selected>i.fa {
-	color: #FF912C;	
+	color: #FF912C;
 }
-.star_condition{
-text-align: center;
+
+.star_condition {
+	text-align: center;
 }
 </style>
 </head>
@@ -179,18 +181,19 @@ text-align: center;
 		<div class="star_condition">
 			<h4>책의 상태는 5점 만점에 몇 점인가요?</h4>
 			북마켓이 제시하는 별점기준을 보시려면 별에 마우스를 올려주세요
-					</div><br>
+		</div>
+		<br>
 		<section class='rating-widget'> <!-- Rating Stars Box -->
 		<div class='rating-stars text-center'>
 			<ul id='stars'>
-				<li class='star' title='일부 페이지가 없고 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.' data-value='1'><i
-					class='fa fa-star fa-fw'></i></li>
-				<li class='star' title='페이지 소실은 없지만 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.' data-value='2'><i
-					class='fa fa-star fa-fw'></i></li>
-				<li class='star' title='5군데 이상의 얼룩, 필기 등의 흔적이 남아있습니다.' data-value='3'><i
-					class='fa fa-star fa-fw'></i></li>
-				<li class='star' title='5군데 이하의 얼룩, 필기 등의 흔적이 남아있고 전체적으로 깨끗합니다.' data-value='4'><i
-					class='fa fa-star fa-fw'></i></li>
+				<li class='star' title='일부 페이지가 없고 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.'
+					data-value='1'><i class='fa fa-star fa-fw'></i></li>
+				<li class='star' title='페이지 소실은 없지만 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.'
+					data-value='2'><i class='fa fa-star fa-fw'></i></li>
+				<li class='star' title='5군데 이상의 얼룩, 필기 등의 흔적이 남아있습니다.'
+					data-value='3'><i class='fa fa-star fa-fw'></i></li>
+				<li class='star' title='5군데 이하의 얼룩, 필기 등의 흔적이 남아있고 전체적으로 깨끗합니다.'
+					data-value='4'><i class='fa fa-star fa-fw'></i></li>
 				<li class='star' title='사용흔적이 거의 없어 새 책에 가깝습니다.' data-value='5'><i
 					class='fa fa-star fa-fw'></i></li>
 			</ul>

@@ -34,7 +34,12 @@
 																			.last()
 																			.data(
 																					'value'),
-																	10)
+																	10),
+															price_type : $(
+																	'input[name=price_type]:checked',
+																	'#price_frm')
+																	.val(),
+															price : $('input[name=price]','#price_input').val()
 														},
 														success : function(data) {
 															if (data.result == "0") {

@@ -21,15 +21,18 @@ public class BookInsertAction implements Action {
 		// TODO Auto-generated method stub
 
 		String comment = request.getParameter("comment");
-		System.out.println(comment);
 		int book_condition = Integer.parseInt(request.getParameter("condition"));
-		System.out.println(book_condition);
+		int price = Integer.parseInt(request.getParameter("price"));
+		System.out.println("price: " + price);
+		int price_type = Integer.parseInt(request.getParameter("price_type"));
+		System.out.println("price_type: " + price_type);
 		Book book = new Book();
 		HttpSession session = request.getSession();
 		book = (Book) session.getAttribute("book");
 		book.setComment(comment);
 		book.setBook_condition(book_condition);
-		book.setPrice(8888); // 더미 데이터
+		book.setPrice(price);
+		book.setPrice_type(price_type);
 
 		BookDao dao = BookDao.getInstance();
 		int result = dao.insertBook(book);

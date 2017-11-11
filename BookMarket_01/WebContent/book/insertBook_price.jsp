@@ -6,7 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-	
+	$(document).ready(
+			function() {
+
+				$('#price_frm input').on(
+						'click',
+						function() {
+							var priceType = $('input[name=price_type]:checked',
+									'#price_frm').val();
+							if (priceType == 0) {
+								$('#price_input').html("<div>원하는 판매가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>");
+							} else {
+
+							}
+						});
+
+			});
 </script>
 <style>
 .accordion {
@@ -27,6 +42,10 @@ div.panel {
 	border-top: 1px solid #ddd;
 	margin-left: 40px;
 }
+
+.price_input {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -35,9 +54,14 @@ div.panel {
 		<b>STEP 2</b> &nbsp; 원하는 도서판매가격을 입력해 주세요.
 	</div>
 	<div class="panel">
-		<br>얼마면 되겠니
-
-	</div>
+		<form id="price_frm">
+			<label class="container"> <input type="radio"
+				name="price_type" value="0"> 지정가격
+			</label> <label class="container"> <input type="radio"
+				name="price_type" value="1"> 경매가격
+			</label>
+		</form>
+		<div id="price_input"></div>
 	</section>
 </body>
 </html>
