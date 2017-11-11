@@ -39,13 +39,23 @@
 																	'input[name=price_type]:checked',
 																	'#price_frm')
 																	.val(),
-															price : $('input[name=price]','#price_input').val()
+															price : $(
+																	'input[name=price]',
+																	'#price_input')
+																	.val()
 														},
 														success : function(data) {
 															if (data.result == "0") {
 																alert('정보가 제대로 저장되지 못했습니다. 개발자를 불러주세요....--;');
 															} else {
 																alert('판매를 개시합니다!');
+																var book_id = data.book_id;
+																var url = "bookmarket?command=detail_book&book_id=";
+																$(location)
+																		.attr(
+																				'href',
+																				url
+																						+ book_id);
 															}
 														}
 													});
