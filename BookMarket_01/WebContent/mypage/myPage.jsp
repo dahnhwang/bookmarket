@@ -5,13 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- jQuery-min -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<!-- jQuery-UI-min -->
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+
+
 <script type="text/javascript">
 	function load() {
 		// 		console.log('load')
@@ -163,5 +158,6 @@
 		</div>
 
 	</div>
+	
 </body>
 </html>

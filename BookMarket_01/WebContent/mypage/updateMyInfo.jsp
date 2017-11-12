@@ -21,6 +21,9 @@
 	padding-bottom: 30px;
 	padding-left: 70px;
 }
+#btn-mypwd-check{
+	margin-top: 10px; 
+}
 </style>
 </head>
 <body>

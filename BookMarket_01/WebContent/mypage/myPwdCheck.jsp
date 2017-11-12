@@ -13,9 +13,9 @@
 			<input type="hidden" name="command" value="myPwd_check">
 			<table id="table-mypwd-check" style="width: 80%">
 				<tr>
-					<th style="text-align:right">비밀번호</th>
-					<td><input type="password" id="pwd-mypwd-check" 
-					title="WRONG" data-content="비밀번호가 틀렸습니다." size="21" ></td>
+					<th style="text-align:right; padding: 10px">비밀번호</th>
+					<td><input type="password" name="password" id="pwd-mypwd-check" class="form-control" placeholder="Password"	
+					required="" size="10" ></td>
 				</tr>
 			</table>
 			<input id="btn-mypwd-check" class="btn" type="button" value="확 인">
