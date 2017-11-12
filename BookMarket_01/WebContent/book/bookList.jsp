@@ -24,21 +24,17 @@
 <script src="js/bootstrap-table.min.js"></script>
 
 <style type="text/css">
-
-.bookTitle{
-color : #282828;
-
+.bookTitle {
+	color: #282828;
 }
 
-#wrap{
-
-width : 100%;
-height : 900px;
-
+#wrap {
+	width: 100%;
+	height: 900px;
 }
 
-#contents{
-height : 700px;
+#contents {
+	height: 700px;
 }
 
 #searchBar {
@@ -79,16 +75,15 @@ height : 700px;
 </style>
 
 <script>
-
 	function listUpload(list) {
 		var bookList = list.bookList;
 		var memberList = list.memberList;
 		$.each(bookList, function(index, item) {
-			
+
 			var tr = $('<tr>').appendTo('#listTable tbody');
 			var td = $('<td>');
 			var book_id = item.book_id;
-            var image = item.image;
+			var image = item.image;
 			var title = item.title;
 			var genre = item.genre;
 			var author = item.author;
@@ -96,176 +91,181 @@ height : 700px;
 			var seller = memberList[index].email;
 			var submit_date = item.submit_date;
 			var price = item.price;
-			
-			
-			var condition = ''; 
-			if(item.book_condition===5){
-				condition="A";
+
+			var condition = '';
+			if (item.book_condition === 5) {
+				condition = "A";
 			}
-			
-			else if(item.book_condition===4){
-				condition="B";
+
+			else if (item.book_condition === 4) {
+				condition = "B";
 			}
-			
-			else if(item.book_condition===3){
-				condition="C";
+
+			else if (item.book_condition === 3) {
+				condition = "C";
 			}
-			
-			else if(item.book_condition===2){
-				condition="D";
+
+			else if (item.book_condition === 2) {
+				condition = "D";
 			}
-			
-			else if(item.book_condition===1){
-				condition="D";
+
+			else if (item.book_condition === 1) {
+				condition = "D";
 			}
-			
-			var price_type ='';
-			if(item.price_type===0){price_type = '지정';}
-			else if(item.price_type===1){price_type= '경매';}
-			
-	   
-            var titleTag =$('<a>').attr('href', 'bookmarket?command=detail_book&book_id='+book_id)
-            .addClass("bookTitle").text(title);
+
+			var price_type = '';
+			if (item.price_type === 0) {
+				price_type = '지정';
+			} else if (item.price_type === 1) {
+				price_type = '경매';
+			}
+
+			var titleTag = $('<a>').attr('href',
+					'bookmarket?command=detail_book&book_id=' + book_id)
+					.addClass("bookTitle").text(title);
 			var img = "<img src="+image+" />";
 
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').append(titleTag).appendTo(tr);
 			$('<td>').text(genre).appendTo(tr);
-			$('<td>').text(author +"  "+ publisher).appendTo(tr);
+			$('<td>').text(author + "  " + publisher).appendTo(tr);
 			$('<td>').text(condition).appendTo(tr);
 			$('<td>').text(seller).appendTo(tr);
 			$('<td>').text(submit_date).appendTo(tr);
-			$('<td>').text(price+'원').appendTo(tr);
+			$('<td>').text(price + '원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
-			
-			
-			var cartBtn = $('<input>').attr('type', 'button')
-			.attr('data-id',book_id).addClass('cart_btn').css({
-			'margin' : '5px'
-		}).val('Cart');
 
-		var keepBtn = $('<input>').attr('type', 'button')
-           .attr('data-id',book_id).addClass('keep_btn').css({
-			'margin' : '5px'
-		}).val('Keep');
+			var cartBtn = $('<input>').attr('type', 'button').attr('data-id',
+					book_id).addClass('cart_btn').css({
+				'margin' : '5px'
+			}).val('Cart');
 
-		var purchaseBtn = $('<input>').attr('type', 'button')
-			.attr('data-id',book_id).addClass('purchase_btn').css('margin', '5px')
-			.val('Purchase!');
+			var keepBtn = $('<input>').attr('type', 'button').attr('data-id',
+					book_id).addClass('keep_btn').css({
+				'margin' : '5px'
+			}).val('Keep');
 
+			var purchaseBtn = $('<input>').attr('type', 'button').attr(
+					'data-id', book_id).attr("email",seller).addClass('purchase_btn').css('margin',
+					'5px').val('Purchase!');
 
-		$('<td>').append(purchaseBtn)
-			.append(keepBtn)
-			.append(cartBtn).appendTo(tr);
+			$('<td>').append(purchaseBtn).append(keepBtn).append(cartBtn)
+					.appendTo(tr);
 
-			
 		});
 	}
 
+	$(document).ready(
+			function() {
 
-	$(document).ready(function() {
-	
-	
-		var params = "searchSel=all&command=book_search";
-		$.ajax({
-			url : 'bookmarket',
-			type : 'get',
-			data : params,
-			dataType : 'json',
-			success : function(data) {
-				if (data) {
+				var params = "searchSel=all&command=book_search";
+				$.ajax({
+					url : 'bookmarket',
+					type : 'get',
+					data : params,
+					dataType : 'json',
+					success : function(data) {
+						if (data) {
 
-					$('#listTable tbody').empty();
-					listUpload(data);
+							$('#listTable tbody').empty();
+							listUpload(data);
 
-				}
-			}
-		});
-
-		
-		$('#searchForm').submit(function(){
-			return false;
-		})
-
-
-		$('#optionSel').on('change', function() {
-			var params = "option=" + this.value + "&command=book_option&genre=1";
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : params,
-				dataType : 'json',
-				success : function(data) {
-					if (data) {
-
-						$('#listTable tbody').empty();
-						listUpload(data);
-
+						}
 					}
-				}
-			});
+				});
 
-		});
+				$('#searchForm').submit(function() {
+					return false;
+				})
 
+				$('#optionSel').on(
+						'change',
+						function() {
+							var params = "option=" + this.value
+									+ "&command=book_option&genre=1";
+							$.ajax({
+								url : 'bookmarket',
+								type : 'get',
+								data : params,
+								dataType : 'json',
+								success : function(data) {
+									if (data) {
 
+										$('#listTable tbody').empty();
+										listUpload(data);
 
-		$('#searchBtn').on('click', function() {
+									}
+								}
+							});
 
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : $('#searchForm').serialize(),
-				dataType : 'json',
-				success : function(data) {
-					if (data) {
+						});
 
-						$('#listTable tbody').empty();
-						listUpload(data);
+				$('#searchBtn').on('click', function() {
 
+					$.ajax({
+						url : 'bookmarket',
+						type : 'get',
+						data : $('#searchForm').serialize(),
+						dataType : 'json',
+						success : function(data) {
+							if (data) {
+
+								$('#listTable tbody').empty();
+								listUpload(data);
+
+							}
+						}
+					});
+
+				});
+
+				$(document).on('click', '.cart_btn', function() {
+					var book_id = $(this).attr('data-id');
+					var params = "command=cart_add&book_id=" + book_id;
+					$.ajax({
+						url : 'bookmarket',
+						type : 'get',
+						data : params,
+						success : function(data) {
+							alert(data);
+						}
+					});
+
+				})
+
+				$(document).on('click', '.keep_btn', function() {
+
+					var book_id = $(this).attr('data-id');
+					var params = "command=keepBook_add&book_id=" + book_id;
+					$.ajax({
+						url : 'bookmarket',
+						type : 'get',
+						data : params,
+						success : function(data) {
+							alert(data);
+						}
+					});
+
+				})
+
+				
+				$(document).on('click', '.purchase_btn', function() {
+					var seller_email= $(this).attr('email');
+					var buyer_email =$('#loginUser').attr('email');
+					if(seller_email===buyer_email) {
+						alert('본인이 판매하는 책은 구매할 수 없습니다!');
 					}
-				}
+					else{
+					var book_id = $(this).attr('data-id');
+					window.location.href = 'bookmarket?command=payment&book_id='+book_id; }
+
+				});
+
 			});
-
-		});
-
-		
-		
-		$(document).on('click', '.cart_btn', function(){
-			var book_id = $(this).attr('data-id');
-			var params ="command=cart_add&book_id="+book_id;
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : params,
-				success : function(data) {
-					alert(data);
-				}
-			});
-
-		}) 
-		
-		
-		$(document).on('click', '.keep_btn', function(){
-		
-			
-			var book_id = $(this).attr('data-id');
-			var params ="command=keepBook_add&book_id="+book_id;
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : params,
-				success : function(data) {
-					alert(data);
-				}
-			});
-
-		}) 
-		
-
-	});
 </script>
 </head>
 <body>
+<input id="loginUser" type="hidden" email= "${loginUser.email}"/>
 	<div id="wrap">
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
