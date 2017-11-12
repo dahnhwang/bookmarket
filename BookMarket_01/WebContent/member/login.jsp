@@ -8,19 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>로그인</title>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-<script>
-	$(document).ready(function(){
-// 		$('#btn-close').on('click', function(){
-// 			history.back();
-// 		});
-	});
-</script>
+	<link href="css/login.css" rel="stylesheet">	
 </head>
 <body>
-	<link href="css/login.css" rel="stylesheet">	
 	<!-- Modal -->	     
 	<div id="login" class="modal fade" role="dialog">                                                                               
 		<div id="modal-login" class="modal-dialog " role="document">                                 
