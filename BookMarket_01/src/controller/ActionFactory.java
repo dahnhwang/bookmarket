@@ -26,7 +26,6 @@ import controller.action.JoinAction;
 import controller.action.JoinFormAction;
 import controller.action.KeepBookAddAction;
 import controller.action.LoginAction;
-import controller.action.LoginFormAction;
 import controller.action.LogoutAction;
 import controller.action.MainAction;
 import controller.action.MyInfoAction;
@@ -48,7 +47,6 @@ import controller.action.PaymentCheckPassAction;
 import controller.action.PaymentCompleteAction;
 import controller.action.PaymentSuccessAction;
 import controller.action.SearchAction;
-import util.NaverApi;
 
 public class ActionFactory {
 
@@ -77,8 +75,6 @@ public class ActionFactory {
 			action = new JoinFormAction();
 		} else if (command.equals("join")) {
 			action = new JoinAction();
-		} else if (command.equals("login_form")) {
-			action = new LoginFormAction();
 		} else if (command.equals("login")) {
 			action = new LoginAction();
 		} else if (command.equals("email_check")) {
