@@ -109,7 +109,8 @@ outline:none!important
 
 					<c:choose>
 						<c:when test="${empty loginUser}">
-							<li><a href="bookmarket?command=login_form">로그인</a></li>
+							<li><a class="loginBtn" data-toggle="modal" data-target="#login">로그인</a></li>
+<!-- 							<li><a href="bookmarket?command=login_form">로그인</a></li> -->
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
@@ -130,6 +131,7 @@ outline:none!important
 	</div>
 
 <jsp:include page="member/cart.jsp"/>
+<jsp:include page="member/login.jsp"/>
   
 
 
