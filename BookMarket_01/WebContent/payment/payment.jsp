@@ -111,6 +111,7 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+	
 		$('#purchase_btn').on('click', function() {
 			var buyer_money = $('.bookmoney').attr('money');
 			var book_price = $('.bprice').attr('money');
