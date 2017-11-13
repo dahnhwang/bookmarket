@@ -71,9 +71,15 @@ CREATE TABLE money(
 money_idx INT AUTO_INCREMENT,
 mem_id	int,
 money	int,
+money_type int,
+trans_money int,
 money_update_day DATE,
 PRIMARY KEY (money_idx)
 );
+
+
+
+	
 
 INSERT INTO member VALUES ('0','a1@gmail.com','111','a1A1',10000,'1980-12-17');
 INSERT INTO member VALUES ('0','a2@gmail.com','222','a2A2',10000,'1980-12-17');
