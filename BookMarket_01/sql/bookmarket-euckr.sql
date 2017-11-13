@@ -33,6 +33,7 @@ due_date DATE,
 PRIMARY KEY (book_id)
 );
 
+
 DROP TABLE IF EXISTS sold;
 CREATE TABLE sold(
 order_id INT AUTO_INCREMENT,
