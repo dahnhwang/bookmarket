@@ -118,5 +118,5 @@ sysdate(),
 'not yet'
 );
 # KeepBook DATA
-insert into keepbook values(0, 16, 2, '2017-11-12');
-insert into keepbook values(0, 16, 3, '2017-11-12');
+insert into keepBook values(0, 16, 2, '2017-11-12');
+insert into keepBook values(0, 16, 3, '2017-11-12');
