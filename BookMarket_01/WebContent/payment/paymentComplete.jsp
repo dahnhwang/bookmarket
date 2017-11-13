@@ -14,6 +14,7 @@
 		</div>
 		<div id="contents">
 			<div id="contents">콘텐츠영역</div>
+			결제된거임
 		</div>
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
