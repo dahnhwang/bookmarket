@@ -1,6 +1,5 @@
 package dto;
 
-
 import java.util.Date;
 
 public class Book {
@@ -21,9 +20,18 @@ public class Book {
 	private Date submit_date;
 	private int price_type;
 	private String comment;
+	private Date due_date;
 
 	public int getBook_id() {
 		return book_id;
+	}
+
+	public Date getDue_date() {
+		return due_date;
+	}
+
+	public void setDue_date(Date due_date) {
+		this.due_date = due_date;
 	}
 
 	public void setBook_id(int book_id) {
@@ -156,7 +164,7 @@ public class Book {
 				+ ", publisher=" + publisher + ", published_date=" + published_date + ", description=" + description
 				+ ", genre=" + genre + ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price
 				+ ", seller=" + seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type="
-				+ price_type + ", comment=" + comment + "]";
+				+ price_type + ", comment=" + comment + ", due_date=" + due_date + "]";
 	}
 
 }
