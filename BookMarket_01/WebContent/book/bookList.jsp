@@ -91,7 +91,8 @@
 			var seller = memberList[index].email;
 			var submit_date = item.submit_date;
 			var price = item.price;
-
+            var isSold = item.isSold;
+            
 			var condition = '';
 			if (item.book_condition === 5) {
 				condition = "A";
@@ -123,7 +124,7 @@
 			var titleTag = $('<a>').attr('href',
 					'bookmarket?command=detail_book&book_id=' + book_id)
 					.addClass("bookTitle").text(title);
-			var img = "<img src="+image+" />";
+			var img = "<img src="+image+" width='100' height ='137' style ='border : 1px solid #cccccc'/>";
 
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').append(titleTag).appendTo(tr);
@@ -148,9 +149,21 @@
 			var purchaseBtn = $('<input>').attr('type', 'button').attr(
 					'data-id', book_id).attr("email",seller).addClass('purchase_btn').css('margin',
 					'5px').val('Purchase!');
+			
+			var soldOutBtn = $('<input>').attr('type', 'button')
+			.addClass('soldOut_btn').css('margin','5px').val('SoldOut!').attr("disabled", 'disabled');
+			
 
+		
+			if(isSold===0) {
 			$('<td>').append(purchaseBtn).append(keepBtn).append(cartBtn)
-					.appendTo(tr);
+					.appendTo(tr);  }
+			
+		     
+			else if(isSold===1) {
+				$('<td>').append(soldOutBtn).appendTo(tr);  }
+		
+		
 
 		});
 	}
