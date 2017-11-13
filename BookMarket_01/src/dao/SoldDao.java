@@ -37,17 +37,16 @@ public class SoldDao implements ISoldDao{
 	@Override
 	public int insertSold(Sold sold) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO sold VALUES(0,?,?,?,?,?)";
+		String sql = "INSERT INTO sold VALUES(0,?,?,sysdate(),?,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sold.getSeller_id());
 			pstmt.setInt(2, sold.getBook_id());
-			pstmt.setDate(3, new java.sql.Date(sold.getSold_date().getTime()));
-			// 선생님께서 작성해주신 코드 (Date객체를 sql안에 넣을 때 사용)  
-			pstmt.setInt(4, sold.getSold_price());
-			pstmt.setInt(5	, sold.getBuyer_id());
+			//sold.getSold_date().getTime())
+			pstmt.setInt(3, sold.getSold_price());
+			pstmt.setInt(4, sold.getBuyer_id());
 			result = pstmt.executeUpdate();
 			
 			

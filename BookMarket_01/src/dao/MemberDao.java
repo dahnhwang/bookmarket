@@ -253,5 +253,31 @@ public class MemberDao implements IMemberDao {
 		return false;
 	}
 	
+	@Override
+	public int updateMoney(int mem_id, int money) {
+		String sql = "UPDATE member SET money = ? where mem_id = ? ";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, money);
+			pstmt.setInt(2, mem_id);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) { 
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+
+
+	
 
 }
