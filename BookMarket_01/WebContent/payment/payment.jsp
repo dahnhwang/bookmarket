@@ -117,8 +117,7 @@
 			var book_price = $('.bprice').attr('money');
            alert("판매자 적림금:"+buyer_money+"\n책가격 :"+book_price);
 			
-           
-           if (buyer_money < book_price)  {
+           if (Number(buyer_money) < Number(book_price))  {
 				alert("적립금이 부족하여 구매할 수 없습니다!");
 			} 
            
