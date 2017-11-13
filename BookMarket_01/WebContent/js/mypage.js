@@ -1,10 +1,3 @@
-/**
- * 		마이페이지
- */
-$(document).ready(function() {
-		
-		
-});
 /* myPage*/
 function load() {
 	// 		console.log('load')
@@ -137,7 +130,7 @@ function myKeepBook_listUpload(list) {
 			}).val('delete');
 			$('<td>').text(keep_date).appendTo(tr);
 			$('<td>').append(purchaseBtn).append(deleteBtn).appendTo(tr);
-			
+			   
 		}
 		
 		

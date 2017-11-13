@@ -38,7 +38,7 @@ public class MyBookMoneyAction implements Action {
 		List<Member> memberList = new ArrayList<Member>();
 		List<BookMoney> bmList = new ArrayList<BookMoney>();
 		
-		bmList = bmDao.selectBookMoneyList(mem_id);
+		bmList = bmDao.selectBookMoneyList(mem_id);   
 		
 		Gson gson = new Gson();
 		String send_bookMoneyList= gson.toJson(bmList);

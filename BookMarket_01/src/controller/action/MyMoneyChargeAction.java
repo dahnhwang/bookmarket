@@ -40,7 +40,7 @@ public class MyMoneyChargeAction implements Action {
 		
 		System.out.println("MyMoneyChargeAction/result: "+result);
 		if(result >0) {
-			loginUser.setMoney(bm.getBookMoney());
+			loginUser.setMoney(bm.getBookMoney());   
 			mDao.updateMember(loginUser);
 			PrintWriter pw = response.getWriter();
 			pw.println(result);

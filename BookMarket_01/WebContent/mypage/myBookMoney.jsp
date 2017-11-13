@@ -103,10 +103,7 @@
 										error: function(xhr, status, error){
 											alert('실패')
 										}
-									});
 								}
-							});
-						})
 					</script>
 					<div id="div-myBookMoneyTable" class="panel panel-default">
 						<!-- 북머니기록조회 -->
@@ -137,9 +134,9 @@
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>
-	</div>
-	
-<div  id="modal-charge" class="modal fade">
+	</div>     
+	      
+<div  id="modal-charge" class="modal fade">   
 	<div class="modal-dialog" role="dialog">                                 
 		<div class="modal-content">                                                            
 	      	<div class="modal-body">                                                              
