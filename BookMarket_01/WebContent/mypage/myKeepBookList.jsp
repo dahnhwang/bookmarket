@@ -18,15 +18,33 @@
 				<div id="div-mypage-side-menu" class="side-menu">
 					<jsp:include page="myPage_navigation.jsp" />
 				</div>
-				<!-- 컨텐츠 영역 -->
+				<!-- 스크립트 영역 -->
 				<script type="text/javascript">
-// 					$(document).ready(function(){
-// 						// 관심목록
-// // 						$('#table-myKeepBookList')
-// 					})
-				
+					$(document).ready(function() {
+						// 찜상품
+						
+						$.ajax({
+							url : 'bookmarket',
+							type : 'get',
+							dataType: 'json',
+							data : "bookmarket?command=myKeep_list",
+							dataType : 'json',
+							success : function(data) {
+								alert(data.result.text())
+								if (data) {
+									$('#table-myKeepBookList tbody').empty();
+									myKeepBook_listUpload(data);
+								}
+							},
+							error: function(xhr, status, error){
+								alert('error')
+							}
+						
+						});
+					});
 				</script>
-				<div id="contents-mypage" class="contents col-md-9">
+				<!-- 컨텐츠 영역 -->
+				<div id="contents-myKeepBook" class="contents col-md-9">
 					<section class="content_wrapper row placeholders ">
 						<h1> 내가 찜한 도서 </h1>
 						<!-- Default panel contents1 -->
@@ -50,22 +68,6 @@
 											<th>구매/삭제</th>
 									</thead>
 									<tbody>
-<%-- 										<c:forEach var="myKeepBook" items="${KeepBookList }" varStatus="status"> --%>
-<%-- 											<c:set var="book_id" value="${myKeepBook.book_id }" /> --%>
-<%-- 											<c:forEach var="Book" items="${Book }" varStatus="status"> --%>
-<%-- 											<c:if test="${book_id  }  > --%>
-<%-- 												<tr> --%>
-<%-- 													<td>${status.count }</td> --%>
-<%-- 													<td><img id="book_image" src=${book.image } /></td> --%>
-<%-- 													<td>${book.title }</td> --%>
-<%-- 													<td>${book.price }</td> --%>
-<%-- 													<td><button type='button' class='btn btn-primary btn-sm'>구매하기 --%>
-<%-- 														</button></td> --%>
-<%-- 													<td><button type='button' --%>
-<%-- 															class='btn btn-danger btn-sm cart_delete' data-id=${book.book_id }>삭제하기</button></td> --%>
-<%-- 												</tr> --%>
-<%-- 											</c:forEach> --%>
-<%-- 										</c:forEach> --%>
 									</tbody>
 								</table>
 							</div>

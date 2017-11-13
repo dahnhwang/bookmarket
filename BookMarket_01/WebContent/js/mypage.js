@@ -2,27 +2,6 @@
  * 		마이페이지
  */
 $(document).ready(function() {
-		$('#div-myInfo-delete').hide();
-		$('#div-myInfo-update').hide();
-		$('#btn-mypwd-check').on('click', function(){
-			// 	alert('클릭')
-			var current= $('.current-div')
-			myPwdCheck(current);
-		});
-		// 찜상품
-		$.ajax({
-			url : 'bookmarket',
-			type : 'get',
-			data : "command=myKeep_List",
-			dataType : 'json',
-			success : function(data) {
-				if (data) {
-					alert(true)
-					$('#table-myKeepBookList tbody').empty();
-					myKeepBook_listUpload(data);
-				}
-			}
-		});
 		// 북머니
 		$('#btn-charge-submit').on('click', function(event){
 			event.preventDefault();
@@ -89,6 +68,7 @@ function load() {
 }
 /* PWD CHECK */
 function inputPWDCheck(){
+//	alert('여기')
 	if($('#btn-mypwd-check').val().length == 0){
 		alert('비밀번호를 입력하세요.');
 		$('#btn-mypwd-check').focus();
@@ -96,7 +76,7 @@ function inputPWDCheck(){
 	}
 	return true;
 }
-function myPwdCheck(current){
+function myPwdCheck(){
 //	alert($('#pwd-mypwd-check').val())
 	if(inputPWDCheck()){
 		var password = $('#pwd-mypwd-check').val();
@@ -106,23 +86,23 @@ function myPwdCheck(current){
 			url : 'bookmarket',
 			type : 'post',
 			data : params,
-			async: true,
+//			async: true,
 			success : function(data) {
-//					alert(data.result);
-				if (data.result == false) {							
+//				alert(data);	//false
+				if(data == 1){
+					alert('비밀번호 확인!')
+					$('#div-mypwd-check').hide();
+					
+					$('.current-div').show();
+//					return true;
+				}
+				else if(data == 0) {
 					$('#pwd-mypwd-check').attr({
 						'title':"WRONG",
 						'data-content':
 							"비밀번호가 틀렸습니다."
 					});
 					$('#pwd-mypwd-check').popover('show');
-				}
-				else if(data.result == true){
-					alert('비밀번호 확인!')
-					$('#div-mypwd-check').hide();
-					
-					current.show();
-					return true;
 				}
 			}
 		});

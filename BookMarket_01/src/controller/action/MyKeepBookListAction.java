@@ -33,7 +33,7 @@ public class MyKeepBookListAction implements Action {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		int mem_id = loginUser.getMem_id();
-		
+		System.out.println("MyKeepBookListAction/mem_id"+ mem_id);
 		IKeepBookDao kbDao = KeepBookDao.getInstance();
 		IMemberDao mDao = MemberDao.getInstance();
 		IBookDao bDao = BookDao.getInstance();

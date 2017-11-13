@@ -5,6 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#div-myInfo-delete').hide();
+	$('#div-myInfo-update').hide();
+	$('#btn-mypwd-check').on('click', function(){
+// 		 	alert('클릭');
+		myPwdCheck();
+	});
+});
+</script>
 </head>
 <body>
 	<div id="div-mypwd-check" class="">
