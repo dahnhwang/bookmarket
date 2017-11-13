@@ -19,6 +19,7 @@ public interface IBookDao {
     public List<Book> selectBookOrderBy(int genre, String order, String seq); //genre 내에서 order 기준으로  seq(desc, asc)로 정렬되는 메소드 
     public List<Book> selectBookByPriceType(int genre, int price_type);//genre 내에서 price_type으로 정렬
     public int getNewBookId(); //새롭게 저장될 데이터의 book_id를 알려줌
+    public int updateSoldType(int book_id); //판매된 도서 isSold-> 1 값으로  수정하는 메소드 
    
 }
 

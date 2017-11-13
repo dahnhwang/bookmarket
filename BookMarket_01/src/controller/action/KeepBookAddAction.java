@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
+import dao.BookDao;
 import dao.KeepBookDao;
+import dto.Book;
 import dto.KeepBook;
 import dto.Member;
 
@@ -24,20 +26,34 @@ public class KeepBookAddAction implements Action {
 		response.setCharacterEncoding("UTF-8");
 		String text = null;
 		PrintWriter pw = response.getWriter();
-
+		int book_id = Integer.parseInt(request.getParameter("book_id"));
+        BookDao bdo =BookDao.getInstance();
+        Book book = bdo.getBook(book_id);
+        
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginUser");
+	
+		
 		if (member == null) {
 			text = "로그인 후 이용가능합니다!";
 			pw.println(text);
 			pw.flush();
 			return;
 		}
+		
+		
+		else if(member.getMem_id()==book.getSeller()) {
+			
+			text = "본인이 판매하는 책은 찜할 수 없습니다!";
+			pw.println(text);
+			pw.flush();
+			return;
+		}
+		
 
-		int book_id = Integer.parseInt(request.getParameter("book_id"));
-		int mem_id = member.getMem_id();
+
 		KeepBookDao kbd = KeepBookDao.getInstance();
-
+		int mem_id = member.getMem_id();
 		List<KeepBook> keepBookList = new ArrayList<>();
 		keepBookList = kbd.selectKeepBookList(mem_id);
 

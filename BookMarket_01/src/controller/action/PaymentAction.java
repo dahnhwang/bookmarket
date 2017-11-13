@@ -29,7 +29,9 @@ public class PaymentAction implements Action {
 			Book book = bdo.getBook(book_id);
 			
 			MemberDao  mdo = MemberDao.getInstance();
+			
 			Member seller = mdo.getMember(book.getSeller());
+			Member buyer = mdo.getMember(member.getMem_id());
 			
 		    int book_condition = book.getBook_condition();
 		    String condition = "";
@@ -51,7 +53,7 @@ public class PaymentAction implements Action {
 		    }
 			
 			request.setAttribute("purchaseBook", book);
-			request.setAttribute("buyer", member);
+			request.setAttribute("buyer", buyer);
 			request.setAttribute("seller", seller);
 			request.setAttribute("book_condition",condition);
 			

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title>  
 </head>
 <body>
 <div class="wrap">
@@ -24,13 +24,11 @@
 						// 찜상품
 						
 						$.ajax({
-							url : 'bookmarket',
+							url : 'bookmarket?command=myKeep_list',
 							type : 'get',
 							dataType: 'json',
-							data : "bookmarket?command=myKeep_list",
-							dataType : 'json',
 							success : function(data) {
-								alert(data.result.text())
+// 								alert(data)
 								if (data) {
 									$('#table-myKeepBookList tbody').empty();
 									myKeepBook_listUpload(data);
@@ -52,14 +50,14 @@
 							<!-- 찜 도서 table -->
 							<div class="panel-heading">[ALL]My KeepBook List</div>
 							<div class="panel-body" align="right" style="padding-bottom: 0px">
-								<table id="table-myKeepBookList" style="text-align: center" class="display"
+								<table id="table-myKeepBookList" class="table" style="text-align: center" class="display"
 									cellspacing="0" width="100%" data-toggle="table"
 									data-show-refresh="true" data-show-toggle="true"
 									data-show-columns="true" data-search="true"
 									data-select-item-name="toolbar1" data-pagination="true">
-									<thead align="center">
-											<th></th>
-											<th>[상품ID/ISBN]</th>
+									<thead style="text-align:center">
+											<th>#</th>
+											<th>[ISBN]</th>
 											<th>title</th>
 											<th>판매자</th>
 											<th>가격</th>
@@ -67,7 +65,7 @@
 											<th>찜 추가 날짜</th>
 											<th>구매/삭제</th>
 									</thead>
-									<tbody>
+									<tbody style="text-align:center">
 									</tbody>
 								</table>
 							</div>

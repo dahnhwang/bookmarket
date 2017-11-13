@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dto.Member;
 
-public class MyMoneyAction implements Action {
+public class MyBookMoneyFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

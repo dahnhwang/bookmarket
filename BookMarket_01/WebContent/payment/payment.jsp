@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,8 +19,9 @@
 	vertical-align: baseline;
 	list-style: none;
 	font-family: 'Noto Sans KR';
-	color :  #484f4f;
+	color: #484f4f;
 }
+
 #content {
 	width: 800px;
 	height: 1000px;
@@ -62,86 +63,76 @@
 }
 
 .bookImg {
-    text-align : center;
+	text-align: center;
 	height: 160x;
 	vertical-align: middle;
-	
 }
 
 .bookDesc {
-
 	height: 160px;
-	
 }
 
-.buyerDescc{
-
-   height : 160px;
-
+.buyerDescc {
+	height: 160px;
 }
 
-.purchaseDescc{
-
-height : 120px;
-
+.purchaseDescc {
+	height: 120px;
 }
 
 .purchaseBtn {
-text-align : center;
-line-height : 70px;
- height : 120px;
- 
+	text-align: center;
+	line-height: 70px;
+	height: 120px;
 }
 
-.bimg{
- width : 107px;
- height : 147px;
- border :1px solid #cccccc;
+.bimg {
+	width: 107px;
+	height: 147px;
+	border: 1px solid #cccccc;
 }
 
-.btitle{ 
- font-size : 22px;
+.btitle {
+	font-size: 22px;
 }
 
-.author_pub, .condition, .seller_email, .price, .date, .bookmoney,.buyer_email {
- font-size : 17px;
- color : #66757F;
+.author_pub, .condition, .seller_email, .price, .date, .bookmoney,
+	.buyer_email {
+	font-size: 17px;
+	color: #66757F;
 }
 
- 
-.divider{ 
- margin : 20px 0;
+.divider {
+	margin: 20px 0;
 }
-
-
-
 </style>
 
 
 <script type="text/javascript">
 
-$(document).ready(function () {
-	$('#purchase_btn').on('click',function(){
-		var buyer_money = $('.bookmoney').attr('money');
-		var book_price = $('.bprice').attr('money');
+	$(document).ready(function() {
 	
-		if(buyer_money<book_price) {
-		alert("적립금이 부족하여 구매할 수 없습니다!");
-		}
-		
-		else{
-			//구매action넘어가기
-		}
-	})
+		$('#purchase_btn').on('click', function() {
+			var buyer_money = $('.bookmoney').attr('money');
+			var book_price = $('.bprice').attr('money');
+           alert("판매자 적림금:"+buyer_money+"\n책가격 :"+book_price);
+			
+           if (Number(buyer_money) < Number(book_price))  {
+				alert("적립금이 부족하여 구매할 수 없습니다!");
+			} 
+           
+           else {
+				
+				var params =  $('#paymentFrm').serialize();
+	        window.location.href = 'bookmarket?'+params;
+			}
+		})
 	});
-
-
-
 </script>
 
 </head>
 <body>
-<c:set var = "now" value = "<%= new java.util.Date()%>" />
+	<c:set var="now" value="<%=new java.util.Date()%>" />
 	<div id="wrap">
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />
@@ -152,50 +143,59 @@ $(document).ready(function () {
 				<div class="title">&nbsp;구 매 하 기&nbsp;</div>
 				<div class="divider"></div>
 			</div>
+
 			<div class="formDiv">
-				<form>
+				
 					<div class="col-md-3 bookImg">
 						<img class="bimg" src=${purchaseBook.image}>
 					</div>
 					<div class="col-md-9 bookDesc">
 						<p>
-							<span class ="btitle">${purchaseBook.title}</span><br> 
-							<span class="author_pub">${purchaseBook.author} / ${purchaseBook.publisher}</span><br><br> 
-							<span class="condition">책상태 : ${book_condition}</span><br>
-							<span class="seller_email">판매자 이메일 : ${seller.email} </span><br> 
+							<span class="btitle">${purchaseBook.title}</span><br> <span
+								class="author_pub">${purchaseBook.author} /
+								${purchaseBook.publisher}</span><br> <br> <span
+								class="condition">책상태 : ${book_condition}</span><br> <span
+								class="seller_email">판매자 이메일 : ${seller.email} </span><br>
 							<span class="price"> 가격 : ${purchaseBook.price} 원</span><br>
-							
+
 						</p>
 					</div>
-				
+
 					<div class="col-md-12 buyerDescc">
 						<div class="divider"></div>
 						<p>
-							<span class="buyer_email">구매자 이메일 : ${buyer.email }</span><br> 
-							 <span class="bookmoney" money="${buyer.money }"> 보유 적립금 : ${buyer.money }원 </span><br>
+							<span class="buyer_email">구매자 이메일 : ${buyer.email }</span><br>
+							<span class="bookmoney" money="${buyer.money }"> 보유 적립금 :
+								${buyer.money }원 </span><br>
 						</p>
 					</div>
-					
+
 					<div class="col-md-12 purchaseDescc">
 						<div class="divider"></div>
 						<p>
-							<span class="price bprice" money="${purchaseBook.price}" >도서 가격 : ${purchaseBook.price}원</span><br>
-						
-							<span class="date"> 구매 날짜 :  
-							<fmt:formatDate pattern = "yyyy년 MM월 dd일 hh시 mm분" value = "${now}"></fmt:formatDate>
-								</span><br>
+							<span class="price bprice" money="${purchaseBook.price}">도서
+								가격 : ${purchaseBook.price}원</span><br> <span class="date">
+								구매 날짜 : <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분"
+									value="${now}"></fmt:formatDate>
+							</span><br>
 						</p>
 					</div>
-					
+					<form id="paymentFrm">
+					<input name="seller_id" type="hidden" value="${seller.mem_id }">
+					<input name="buyer_id" type="hidden" value="${buyer.mem_id }">
+					<input name="book_id" type="hidden"value="${purchaseBook.book_id}">
+				    <input name="book_price" type="hidden" value="${purchaseBook.price}">
+				    <input name="command" type="hidden" value="payment_success">
+				    
 					<div class="col-md-12 purchaseBtn">
 						<div class="divider"></div>
-					<button type="button" class="btn btn-primary" id="purchase_btn">구매하기</button>
-					<button type="button" class="btn btn-danger" onclick="window.history.go(-1); return false;">취소하기</button>
+						<button type="button" class="btn btn-primary" id="purchase_btn">구매하기</button>
+						<button type="button" class="btn btn-danger"
+							onclick="window.history.go(-1); return false;">취소하기</button>
 					</div>
-					
+
 				</form>
 			</div>
-
 
 		</div>
 		<div id="footer">

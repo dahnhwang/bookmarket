@@ -26,6 +26,7 @@
 #btn-mypwd-check{
 	margin-top: 10px; 
 }
+
 </style>
 </head>
 <body>
@@ -61,18 +62,62 @@
 						</div>
 					</div>
 					<!-- Default panel contents2 -->
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$.ajax({
+								url : 'bookmarket?command=myBookMoney',
+								type : 'get',
+								dataType : 'json',
+								success : function(data) {
+									if (data) {
+										$('#table-myBookMoney tbody').empty();
+										myBookMoney_listUpload(data);
+
+									}
+								}
+							});
+							// 북머니
+							$('#btn-charge-submit').on('click', function(event){
+								event.preventDefault();
+								if(checkChargeBookMoney()){
+									var charge = $('#charge').val();
+									var params = "command="+$('#frm-charge #hidden-command').val()+"&charge=" + charge;
+									alert(params)
+									$.ajax({
+										url : 'bookmarket',
+										type : 'post',
+										data : params,
+										async: true,
+										success: function(data){
+											alert(data)
+											if(data > 0){
+												alert('북머니 충전 성공! 충전 금액: '+charge+'원');
+												$('#charge-btn-close').click();
+												location.reload();
+											}
+											else{
+												alert('충전에 실패하였습니다. 다시 시도해 주세요')
+												$('#charge').focus();
+											}
+										},
+										error: function(xhr, status, error){
+											alert('실패')
+										}
+								}
+					</script>
 					<div id="div-myBookMoneyTable" class="panel panel-default">
 						<!-- 북머니기록조회 -->
 <!-- 						<div class="panel-heading">BookMoney Info</div> -->
 						<div class="panel-body" align="right" style="padding-bottom: 0px">
 							<table id="table-myBookMoney" class="table">
-								<thead style="text-align:center">
-									<td>#</td><td>DATE</td><td>충전금액</td><td>사용금액</td>
+								<thead style="text-align:center;">
+									<td>#</td><td>DATE</td><td>[입금/출금/충전]</td><td>사용금액</td><td>북머니</td>
 								</thead>
 								<tbody style="text-align:center">
 									<tr>
-										<td>-</td>
+										<td>(test)</td>
 										<td>2017/11/10</td>
+										<td>-</td>
 										<td>-</td>
 										<td>-</td>
 									</tr>
@@ -89,15 +134,15 @@
 		<div id="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>
-	</div>
-	
-<div  id="modal-charge" class="modal fade">
+	</div>     
+	      
+<div  id="modal-charge" class="modal fade">   
 	<div class="modal-dialog" role="dialog">                                 
 		<div class="modal-content">                                                            
 	      	<div class="modal-body">                                                              
 		        <form id="frm-charge" class="frm" method="post" action="bookmarket">
 					<input id="hidden-command" type="hidden" name="command" value="myBookMoney_charge">
-			        <button id="btn-close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                                        
+			        <button id="charge-btn-close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                                        
 					<h2 class="form-signin-heading">BOOKMONEY 충전</h2>
 					<table class="table" style="margin: 0 auto">
 						<thead><th colspan="2">현재 ${loginUser.money } 원</th><th></th></thead> 

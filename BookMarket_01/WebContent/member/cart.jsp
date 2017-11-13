@@ -85,8 +85,14 @@
 									<td><img id="book_image" src=${book.image } /></td>
 									<td>${book.title }</td>
 									<td>${book.price }</td>
-									<td><button type='button' class='btn btn-primary btn-sm'>구매하기
-										</button></td>
+									<c:choose>
+									<c:when test="${book.isSold==0 }">
+									<td><button type='button' class='btn btn-primary btn-sm'>구매하기</button></td>
+									</c:when>
+									<c:otherwise>
+									<td><button type='button' class='btn btn-danger btn-sm' disabled="disabled">판매완료 </button></td>
+									</c:otherwise>
+									</c:choose>
 									<td><button type='button'
 											class='btn btn-danger btn-sm cart_delete' data-id=${book.book_id }>삭제하기</button></td>
 								</tr>

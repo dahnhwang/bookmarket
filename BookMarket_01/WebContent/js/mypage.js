@@ -1,37 +1,3 @@
-/**
- * 		마이페이지
- */
-$(document).ready(function() {
-		// 북머니
-		$('#btn-charge-submit').on('click', function(event){
-			event.preventDefault();
-			if(checkChargeBookMoney()){
-				var charge = $('#charge').val();
-				var params = "command="+$('#hidden').val()+"&charge=" + charge;
-				alert(params)
-				$.ajax({
-					url : 'bookmarket',
-					type : 'post',
-					data : params,
-					async: true,
-					success: function(data){
-						if(data.result == true){
-							alert('북머니 충전 성공: ${loginUser.money}');
-							document.reload();
-						}
-						else{
-							alert('충전에 실패하였습니다. 다시 시도해 주세요')
-							$('#charge').focus();
-						}
-					},
-					error: function(xhr, status, error){
-						alert('실패')
-					}
-				});
-			}
-		});
-		
-});
 /* myPage*/
 function load() {
 	// 		console.log('load')
@@ -132,26 +98,42 @@ function myKeepBook_listUpload(list) {
         .addClass("bookTitle").text(title);
 		
 		$('<td>').text(i+1).appendTo(tr);
-		$('<td>').text("["+book_id+"/"+ISBN+"]").appendTo(tr);
+		$('<td>').text("["+ISBN+"]").appendTo(tr);
 		$('<td>').append(titleTag).appendTo(tr);
+		$('<td>').text(seller_email).appendTo(tr);
+		
 		if(price_type == '1')
-			$('<td>').text('[일반] \\'+price).appendTo(tr);
+			$('<td>').text('[경매] '+price+'원').appendTo(tr);
 		else if(price_type=='0')
-			$('<td>').text('[경매] \\'+price).appendTo(tr);
-		if(sold_state == '1')
+			$('<td>').text('[일반] '+price+'원').appendTo(tr);
+		
+		
+		
+		if(sold_state == '1'){
 			$('<td>').text('판매완료').appendTo(tr);
-		else if(sold_state == '0')
+			tr.css('background', 'pink');
+			var deleteBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('delete_btn').css({
+				'margin' : '5px'
+			}).val('delete');
+			$('<td>').text(keep_date).appendTo(tr);
+			$('<td>').append(deleteBtn).appendTo(tr);
+		}
+		else if(sold_state == '0'){
 			$('<td>').text('판매중').appendTo(tr);
-		$('<td>').text(keep_date).appendTo(tr);
-		var purchaseBtn = $('<input>').attr('type', 'button')
+			var purchaseBtn = $('<input>').attr('type', 'button')
 			.attr('data-id',book_id).addClass('purchase_btn').css('margin', '5px')
 			.val('purchase');
-		var deleteBtn = $('<input>').attr('type', 'button')
-		.attr('data-id',book_id).addClass('delete_btn').css({
-			'margin' : '5px'
-		}).val('delete');
-	
-		$('<td>').append(purchaseBtn).append(deleteBtn).appendTo(tr);
+			var deleteBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('delete_btn').css({
+				'margin' : '5px'
+			}).val('delete');
+			$('<td>').text(keep_date).appendTo(tr);
+			$('<td>').append(purchaseBtn).append(deleteBtn).appendTo(tr);
+			   
+		}
+		
+		
 	}
 }
 /* myBookMoney	*/
@@ -179,3 +161,33 @@ function checkChargeBookMoney(){
 	}	
 	return true;
 };
+function myBookMoney_listUpload(list){
+	var bookMoneyList = list.bookMoneyList;
+	$.each(bookMoneyList, function(index, item) {
+		var tr = $('<tr>').appendTo('#table-myBookMoney tbody');
+		var td = $('<td>');
+		var money_idx = item.money_idx;
+		var money_update_day = item.bookMoney_update_day;
+		var money_type = '';
+		var transMoney = item.transMoney;
+		var money = item.bookMoney;
+		
+		
+		$('<td>').text(index+1).appendTo(tr);
+		$('<td>').text(money_update_day).appendTo(tr);
+		if (item.money_type === 0) {
+			$('<td>').text("입금").css('color', 'green').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'green').appendTo(tr);
+		}
+		else if (item.money_type === 1) { 
+			$('<td>').text("출금").css('color', 'red').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'red').appendTo(tr);
+		}
+		else if (item.money_type === 2) {
+			$('<td>').text("충전").css('color', 'blue').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'blue').appendTo(tr);
+		}
+		$('<td>').text(money+'원').appendTo(tr);
+
+	});
+}

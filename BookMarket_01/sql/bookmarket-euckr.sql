@@ -5,7 +5,7 @@ CREATE TABLE member(
 mem_id INT NOT NULL AUTO_INCREMENT,
 email varchar(25) default null,
 pwd varchar(18),
-name varchar(18),
+name varchar(18),  
 money INT default 10000,
 join_date DATE,
 PRIMARY KEY (mem_id)
@@ -71,9 +71,15 @@ CREATE TABLE money(
 money_idx INT AUTO_INCREMENT,
 mem_id	int,
 money	int,
+money_type int,
+trans_money int,
 money_update_day DATE,
 PRIMARY KEY (money_idx)
 );
+
+
+
+	
 
 INSERT INTO member VALUES ('0','a1@gmail.com','111','a1A1',10000,'1980-12-17');
 INSERT INTO member VALUES ('0','a2@gmail.com','222','a2A2',10000,'1980-12-17');
@@ -118,5 +124,11 @@ sysdate(),
 'not yet'
 );
 # KeepBook DATA
-insert into keepBook values(0, 16, 2, '2017-11-12');
-insert into keepBook values(0, 16, 3, '2017-11-12');
+insert into keepBook values(0, 2, 2, '2017-11-12');
+insert into keepBook values(0, 2, 3, '2017-11-12');
+
+# BookMoney DATA
+# INSERT INTO money VALUES(0, 2, 10500, 2, 500, '2017-11-13');
+# INSERT INTO money VALUES(0, 2, 5500, 1, 5000, '2017-11-13');
+# INSERT INTO money VALUES(0, 1, 10500, 2, 500, '2017-11-13');
+# INSERT INTO money VALUES(0, 1, 15500, 2, 5000, '2017-11-13');

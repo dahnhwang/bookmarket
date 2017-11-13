@@ -13,6 +13,7 @@ import javax.websocket.Session;
 
 import dao.BookDao;
 import dto.Book;
+import dto.Member;
 
 public class CartAddAction implements Action {
 
@@ -27,7 +28,20 @@ public class CartAddAction implements Action {
 		String text = null;
 		HttpSession session = request.getSession();
 		PrintWriter pw = response.getWriter();
-
+ 
+		Member member = (Member) session.getAttribute("loginUser");
+		if(member.getMem_id()== book.getSeller()) {
+		
+			text = "본인이 판매하는 책은 장바구니에 담을 수 없습니다!";
+			pw.println(text);
+			pw.flush();
+			return;
+			
+			
+		}
+		
+	
+		
 		if (session.getAttribute("cartList") == null) {
 			cartList.add(book);
 			session.setAttribute("cartList", cartList);
