@@ -46,8 +46,8 @@ public class BookMoneyDao implements IBookMoneyDao {
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, money.getMem_id());
 					pstmt.setInt(2, money.getBookMoney());
-					pstmt.setInt(2, money.getMoney_type());
-					pstmt.setInt(2, money.getTransMoney());
+					pstmt.setInt(3, money.getMoney_type());
+					pstmt.setInt(4, money.getTransMoney());
 					
 					result = pstmt.executeUpdate();
 
