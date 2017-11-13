@@ -18,6 +18,7 @@
 								.on(
 										'click',
 										function() {
+											
 											$
 													.ajax({
 														type : "POST",
@@ -42,7 +43,15 @@
 															price : $(
 																	'input[name=price]',
 																	'#price_input')
+																	.val(),
+															due_date : ($(
+																	'input[type=date]',
+																	'#price_date')
+																	.val() != "") ? $(
+																	'input[type=date]',
+																	'#price_date')
 																	.val()
+																	: "0"
 														},
 														success : function(data) {
 															if (data.result == "0") {

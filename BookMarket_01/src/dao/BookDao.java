@@ -159,7 +159,7 @@ public class BookDao implements IBookDao {
 			// 요 담에 sysdate
 			pstmt.setInt(14, book.getPrice_type());
 			pstmt.setString(15, book.getComment());
-			pstmt.setDate(16, (Date) book.getDue_date());
+			pstmt.setDate(16, new Date(book.getDue_date().getTime()));
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -306,7 +306,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-				
+
 				bookList.add(book);
 
 			}
