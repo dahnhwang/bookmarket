@@ -30,7 +30,7 @@ public class MyBookMoneyAction implements Action {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		int mem_id = loginUser.getMem_id();
-		System.out.println("MyBookMoneyAction/mem_id"+ mem_id);
+		System.out.println("MyBookMoneyAction/mem_id: "+ mem_id);
 		
 		IMemberDao mDao = MemberDao.getInstance();
 		IBookMoneyDao bmDao = BookMoneyDao.getInstance();

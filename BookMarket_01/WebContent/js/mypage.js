@@ -108,28 +108,39 @@ function myKeepBook_listUpload(list) {
 		$('<td>').text("["+ISBN+"]").appendTo(tr);
 		$('<td>').append(titleTag).appendTo(tr);
 		$('<td>').text(seller_email).appendTo(tr);
+		
 		if(price_type == '1')
 			$('<td>').text('[경매] '+price+'원').appendTo(tr);
 		else if(price_type=='0')
 			$('<td>').text('[일반] '+price+'원').appendTo(tr);
+		
+		
+		
 		if(sold_state == '1'){
 			$('<td>').text('판매완료').appendTo(tr);
-			tr.attr({
-				'background': 'pink'
-			});
+			tr.css('background', 'pink');
+			var deleteBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('delete_btn').css({
+				'margin' : '5px'
+			}).val('delete');
+			$('<td>').text(keep_date).appendTo(tr);
+			$('<td>').append(deleteBtn).appendTo(tr);
 		}
-		else if(sold_state == '0')
+		else if(sold_state == '0'){
 			$('<td>').text('판매중').appendTo(tr);
-		$('<td>').text(keep_date).appendTo(tr);
-		var purchaseBtn = $('<input>').attr('type', 'button')
+			var purchaseBtn = $('<input>').attr('type', 'button')
 			.attr('data-id',book_id).addClass('purchase_btn').css('margin', '5px')
-			.val('purchase').append('/');
-		var deleteBtn = $('<input>').attr('type', 'button')
-		.attr('data-id',book_id).addClass('delete_btn').css({
-			'margin' : '5px'
-		}).val('delete');
-	
-		$('<td>').append(purchaseBtn).append(deleteBtn).appendTo(tr);
+			.val('purchase');
+			var deleteBtn = $('<input>').attr('type', 'button')
+			.attr('data-id',book_id).addClass('delete_btn').css({
+				'margin' : '5px'
+			}).val('delete');
+			$('<td>').text(keep_date).appendTo(tr);
+			$('<td>').append(purchaseBtn).append(deleteBtn).appendTo(tr);
+			
+		}
+		
+		
 	}
 }
 /* myBookMoney	*/
@@ -172,22 +183,16 @@ function myBookMoney_listUpload(list){
 		$('<td>').text(index+1).appendTo(tr);
 		$('<td>').text(money_update_day).appendTo(tr);
 		if (item.money_type === 0) {
-			$('<td>').text("입금").appendTo(tr);
-			$('<td>').text(transMoney +'원').attr({
-				'color': 'green' 
-			}).appendTo(tr);
+			$('<td>').text("입금").css('color', 'green').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'green').appendTo(tr);
 		}
 		else if (item.money_type === 1) { 
-			$('<td>').text("출금").appendTo(tr);
-			$('<td>').text(transMoney +'원').attr({
-				'color': 'red' 
-			}).appendTo(tr);
+			$('<td>').text("출금").css('color', 'red').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'red').appendTo(tr);
 		}
 		else if (item.money_type === 2) {
-			$('<td>').text("충전").appendTo(tr);
-			$('<td>').text(transMoney +'원').attr({
-				'color': 'yellow' 
-			}).appendTo(tr);
+			$('<td>').text("충전").css('color', 'blue').appendTo(tr);
+			$('<td>').text(transMoney +'원').css('color', 'blue').appendTo(tr);
 		}
 		$('<td>').text(money+'원').appendTo(tr);
 

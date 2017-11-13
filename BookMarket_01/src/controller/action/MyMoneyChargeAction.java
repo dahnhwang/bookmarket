@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.BookMoneyDao;
+import dao.IBookMoneyDao;
+import dao.IMemberDao;
 import dao.MemberDao;
+import dto.BookMoney;
 import dto.Member;
 
 public class MyMoneyChargeAction implements Action {
@@ -19,20 +23,32 @@ public class MyMoneyChargeAction implements Action {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		System.out.println("MyMoneyChargeAction/loginUser: "+loginUser);
-	    MemberDao mDao = MemberDao.getInstance();
-	    int chargeBookMoney = Integer.parseInt(request.getParameter("charge"));
-	    loginUser.setMoney(loginUser.getMoney()+chargeBookMoney);
-		int result = mDao.updateMember(loginUser);
+		
+		
+		IBookMoneyDao bmDao = BookMoneyDao.getInstance();
+	    IMemberDao mDao = MemberDao.getInstance();
+	    int charging = Integer.parseInt(request.getParameter("charge"));
+	    System.out.println("MyMoneyChargeAction/charging: "+charging);
+	    
+	    
+	    BookMoney bm = new BookMoney();
+	    bm.setMem_id(loginUser.getMem_id());
+	    bm.setBookMoney(loginUser.getMoney()+charging);
+	    bm.setMoney_type(2);
+	    bm.setTransMoney(charging);
+		int result = bmDao.insertBookMoney(bm);
+		
 		System.out.println("MyMoneyChargeAction/result: "+result);
-//		new MyMoneyAction().execute(request, response);
 		if(result >0) {
+			loginUser.setMoney(bm.getBookMoney());
+			mDao.updateMember(loginUser);
 			PrintWriter pw = response.getWriter();
-			pw.println("true");
+			pw.println(result);
 			pw.flush();
 		}
 		else {
 			PrintWriter pw = response.getWriter();
-			pw.println("false");
+			pw.println(result);
 			pw.flush();
 		}
 	}
