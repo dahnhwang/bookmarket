@@ -27,7 +27,7 @@ public class MyKeepBookListAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 //		String url = "/mypage/myKeepBookList.jsp";
 
 		HttpSession session = request.getSession();
@@ -54,12 +54,12 @@ public class MyKeepBookListAction implements Action {
 		String send_memberList = gson.toJson(memberList);
 		String send_bookList= gson.toJson(bookList);
 		String send_kbList = gson.toJson(kbList);
-		String result = "{\"bookList\":" + send_bookList + 
+		String send = "{\"bookList\":" + send_bookList + 
 				",\"memberList\":"+send_memberList+
 				",\"keepBookList\":"+send_kbList+"}";
-		System.out.println(result);
+		System.out.println("MyKeepBookListAction/result: "+send);
 		PrintWriter pw = response.getWriter();
-		pw.println(result);
+		pw.println(send);
 		pw.flush();
 		return;
 	}

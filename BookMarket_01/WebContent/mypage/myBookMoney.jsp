@@ -61,18 +61,64 @@
 						</div>
 					</div>
 					<!-- Default panel contents2 -->
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$.ajax({
+								url : 'bookmarket?command=myBookMoney',
+								type : 'get',
+								dataType : 'json',
+								success : function(data) {
+									alert(data.bookMoneyList[0].bookMoney);
+									if (data) {
+										$('#table-myBookMoney tbody').empty();
+										myBookMoney_listUpload(data);
+
+									}
+								}
+							});
+							// 북머니
+							$('#btn-charge-submit').on('click', function(event){
+								event.preventDefault();
+								if(checkChargeBookMoney()){
+									var charge = $('#charge').val();
+									var params = "command="+$('#hidden').val()+"&charge=" + charge;
+									alert(params)
+									$.ajax({
+										url : 'bookmarket',
+										type : 'post',
+										data : params,
+										async: true,
+										success: function(data){
+											if(data.result == true){
+												alert('북머니 충전 성공: ${loginUser.money}');
+												document.reload();
+											}
+											else{
+												alert('충전에 실패하였습니다. 다시 시도해 주세요')
+												$('#charge').focus();
+											}
+										},
+										error: function(xhr, status, error){
+											alert('실패')
+										}
+									});
+								}
+							});
+						})
+					</script>
 					<div id="div-myBookMoneyTable" class="panel panel-default">
 						<!-- 북머니기록조회 -->
 <!-- 						<div class="panel-heading">BookMoney Info</div> -->
 						<div class="panel-body" align="right" style="padding-bottom: 0px">
 							<table id="table-myBookMoney" class="table">
 								<thead style="text-align:center">
-									<td>#</td><td>DATE</td><td>충전금액</td><td>사용금액</td>
+									<td>#</td><td>DATE</td><td>[입금/출금/충전]</td><td>사용금액</td><td>북머니</td>
 								</thead>
 								<tbody style="text-align:center">
 									<tr>
-										<td>-</td>
+										<td>(test)</td>
 										<td>2017/11/10</td>
+										<td>-</td>
 										<td>-</td>
 										<td>-</td>
 									</tr>

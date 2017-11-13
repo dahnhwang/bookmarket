@@ -70,7 +70,7 @@ public class BookMoneyDao implements IBookMoneyDao {
 				List<BookMoney> list = new ArrayList<>();
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				String sql = "SELECT * FROM money WHERE mem_id=?";
+				String sql = "SELECT * FROM money WHERE mem_id=? ORDER BY money_idx DESC";
 
 				try {
 					pstmt = conn.prepareStatement(sql);
