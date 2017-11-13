@@ -29,6 +29,7 @@ image VARCHAR(1000),
 submit_date DATE, 
 price_type INT default 0,
 comment VARCHAR(5000),
+due_date DATE,
 PRIMARY KEY (book_id)
 );
 
