@@ -608,4 +608,26 @@ public class BookDao implements IBookDao {
 		return result;
 	}
 
+	@Override
+	public int updateSoldType(int book_id) {
+		String sql = "UPDATE book SET isSold = 1 where book_id = ?";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 }
