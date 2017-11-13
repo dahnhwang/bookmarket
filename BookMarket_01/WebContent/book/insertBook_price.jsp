@@ -28,7 +28,6 @@
 												var output2 = "<div>경매는 선택일자까지만 진행되며, 유찰된 경우에는 판매종료상태로 변경됩니다.";
 												output2 += "<form><input type=\"date\" name=\"due_date\"></form>까지";
 												$('#price_date').html(output2);
-
 											}
 										});
 

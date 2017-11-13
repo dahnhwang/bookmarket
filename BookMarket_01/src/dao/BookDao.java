@@ -306,7 +306,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				
 				bookList.add(book);
 
 			}
@@ -610,24 +610,8 @@ public class BookDao implements IBookDao {
 
 	@Override
 	public int updateSoldType(int book_id) {
-		String sql = "UPDATE book SET isSold = 1 where book_id = ?";
-		PreparedStatement pstmt = null;
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, book_id);
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
