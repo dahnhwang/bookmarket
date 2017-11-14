@@ -39,13 +39,12 @@ public class MemberDao implements IMemberDao {
 	public int memberCheck(String email, String pwd) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		String sql = "SELECT * FROM member WHERE email=? AND pwd = ?";
+		String sql = "SELECT * FROM member WHERE email=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
-			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("pwd") != null && rs.getString("pwd").equals(pwd)) {
