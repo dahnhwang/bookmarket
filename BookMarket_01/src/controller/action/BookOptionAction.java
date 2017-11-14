@@ -21,6 +21,7 @@ public class BookOptionAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
+		
 		String option = request.getParameter("option");
 		int genre = Integer.parseInt(request.getParameter("genre"));
 		System.out.println(option+genre);

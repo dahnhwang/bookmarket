@@ -194,8 +194,7 @@
 				})
 
 				$('#optionSel').on('change',function() {
-							var params = "option=" + this.value
-									+ "&command=book_option&genre";
+							var params = "option=" + this.value+"&command=book_option&genre="+current_page_genre;
 							$.ajax({
 								url : 'bookmarket',
 								type : 'get',
@@ -237,7 +236,7 @@
 				
 				$(document).on('click', '.book_navigation_a', function() {
 					var genre_id = $(this).attr('data-id');
-					var params = "option=only_genre&command=book_option&genre="+genre_id;
+					var params = "option=only_genre&command=book_option&genre="+current_page_genre;
 					$.ajax({
 						url : 'bookmarket',
 						type : 'get',
@@ -248,6 +247,7 @@
 								current_page_genre= genre_id;
 								$('#listTable tbody').empty();
 								listUpload(data);
+								alert( current_page_genre);
 
 							}
 						}
