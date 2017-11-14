@@ -6,20 +6,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert Book Button</title>
 <script>
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-		$('#btn_reset').on('click', function() {
-			$('#summernote').summernote('reset');
-		});
+				$('#btn_reset').on(
+						'click',
+						function() {
+							$('#stars li').parent().children('li.star')
+									.removeClass('selected');
 
-		$('#btn_fin').on('click', function() {
-			if (formCheck()) {
-				sendData();
-			}
+							$('#summernote').summernote('reset');
 
-		});
+							$('#auction_price', '#price_input').remove();
+							$('#stn_price', '#price_input').remove();
+						});
 
-	});
+				$('#btn_fin').on('click', function() {
+					if (formCheck()) {
+						sendData();
+					}
+
+				});
+
+			});
 </script>
 <style>
 .condition_info_wrapper {

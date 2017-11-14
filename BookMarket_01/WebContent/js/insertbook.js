@@ -31,7 +31,7 @@ function formCheck() {
 			return false;
 		}
 
-		if ($('input[type=date]', '#price_input').val() == "") {
+		if ($('input[type=date]', '#price_date').val() == "") {
 			alert('경매기간을 입력해주세요');
 			return false;
 		}

@@ -26,9 +26,9 @@
 											} else if (priceType == 1) {
 												$('#stn_price', '#price_input')
 														.remove();
-												var output2 = "<div id=\"auction_price\"><div>원하는 경매최소가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
-												output2 += "<div id=\"price_date\">경매는 선택일자까지만 진행되며, 유찰된 경우에는 판매종료상태로 변경됩니다.";
-												output2 += "<form><input type=\"date\" name=\"due_date\"></form>까지</div></div>";
+												var output2 = "<label for=\"formGroupExampleInput\"><div id=\"auction_price\">원하는 경매최소가격(시작가)를 입력해주세요</label><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"경매가격으로 판매 시, 경매 중 상품정보수정이 불가합니다.\"></div>";
+												output2 += "<hr><div id=\"price_date\">경매 종료일자를 선택해주세요 (낙찰시 자동종료, 유찰시 종료일자 기준 종료)";
+												output2 += "<hr><i class=\"fa fa-calendar-check-o\" aria-hidden=\"true\"></i>&nbsp;<input type=\"date\" class=\"form-control\" name=\"due_date\"></div>";
 												$('#price_input').html(output2);
 											}
 										});
@@ -112,18 +112,11 @@ div.panel {
 				<div class='clearfix'></div>
 				<form>
 					<div class="form-group" id="price_input"></div>
-				</form>
 			</div>
-			<div class='clearfix'></div>
-		</center>
 	</div>
-
-
-
-
-
-
-
+	</form>
+	<div class='clearfix'></div>
+	</center>
 	</section>
 </body>
 </html>
