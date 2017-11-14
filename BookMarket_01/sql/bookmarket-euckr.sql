@@ -128,7 +128,9 @@ insert into keepBook values(0, 2, 2, '2017-11-12');
 insert into keepBook values(0, 2, 3, '2017-11-12');
 
 # BookMoney DATA
-# INSERT INTO money VALUES(0, 2, 10500, 2, 500, '2017-11-13');
-# INSERT INTO money VALUES(0, 2, 5500, 1, 5000, '2017-11-13');
-# INSERT INTO money VALUES(0, 1, 10500, 2, 500, '2017-11-13');
-# INSERT INTO money VALUES(0, 1, 15500, 2, 5000, '2017-11-13');
+INSERT INTO money VALUES(0, 2, 10500, 2, 500, '2017-11-13');
+INSERT INTO money VALUES(0, 2, 5500, 1, 5000, '2017-11-13');
+UPDATE member SET money = 5500 WHERE mem_id = 2;
+INSERT INTO money VALUES(0, 1, 10500, 2, 500, '2017-11-13');
+INSERT INTO money VALUES(0, 1, 15500, 2, 5000, '2017-11-13');
+UPDATE member SET money = 15500 WHERE mem_id = 1;
