@@ -26,12 +26,12 @@ function formCheck() {
 	}
 
 	if (price_type == 1) {
-		if ($('input[name=price]', '#price_input').val() != "") {
+		if ($('input[name=price]', '#price_input').val() == "") {
 			alert('경매가격을 입력해주세요');
 			return false;
 		}
 
-		if ($('input[type=date]', '#price_date').val() != "") {
+		if ($('input[type=date]', '#price_date').val() == "") {
 			alert('경매기간을 입력해주세요');
 			return false;
 		}
