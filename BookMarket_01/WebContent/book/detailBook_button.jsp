@@ -8,10 +8,9 @@
 <script>
 	$(document).ready(function() {
 
-		$(document).on('click', '.cart_btn', function() {
+		$('#cart_btn').on('click', function() {
 			var book_id = '${book.book_id}';
 			var params = "command=cart_add&book_id=" + book_id;
-			alert(params);
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
@@ -23,7 +22,7 @@
 
 		})
 
-		$(document).on('click', '.keep_btn', function() {
+		$('#keep_btn').on('click', function() {
 
 			var book_id = '${book.book_id}';
 			var params = "command=keepBook_add&book_id=" + book_id;

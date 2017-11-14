@@ -38,7 +38,7 @@ public class KeepBookDao implements IKeepBookDao {
 	@Override
 	public int insertKeepBook(KeepBook keepBook) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO keepbook VALUES(0,?,?,sysdate())";
+		String sql = "INSERT INTO keepBook VALUES(0,?,?,sysdate())";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
@@ -66,7 +66,7 @@ public class KeepBookDao implements IKeepBookDao {
 		List<KeepBook> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM keepbook WHERE mem_id=?";
+		String sql = "SELECT * FROM keepBook WHERE mem_id=?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);

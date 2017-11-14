@@ -6,21 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-
+	function responseMessage(msg) {
+		$('.success-box').fadeIn(200);
+		$('.success-box div.text-message').html("<span>" + msg + "</span>");
+	}
 	$(document).ready(function() {
-		var acc = document.getElementsByClassName("accordion");
-		var i;
-		for (i = 0; i < acc.length; i++) {
-			acc[i].onclick = function() {
-				this.classList.toggle("active");
-				var panel = this.nextElementSibling;
-				if (panel.style.display === "block") {
-					panel.style.display = "none";
-				} else {
-					panel.style.display = "block";
-				}
-			}
-		}
 
 		//별점 정보 가져와서 보여주기
 		var onStar = '${book.book_condition}';
@@ -33,13 +23,26 @@
 			$(stars[i]).addClass('selected');
 		}
 
+		var msg = "";
+		if (onStar == 1) {
+			msg = "일부 페이지가 없고 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+		} else if (onStar == 2) {
+			msg = "페이지 소실은 없지만 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+		} else if (onStar == 3) {
+			msg = "5군데 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+		} else if (onStar == 4) {
+			msg = "5군데 이하의 얼룩, 필기 등의 흔적이 남아있고 전체적으로 깨끗합니다.";
+		} else if (onStar == 5) {
+			msg = "사용흔적이 거의 없어 새 책에 가깝습니다.";
+		}
+		responseMessage(msg);
+
 	});
 </script>
 <style>
 button.accordion {
 	background-color: #eee;
 	color: #444;
-	cursor: pointer;
 	padding: 18px;
 	width: 100%;
 	text-align: left;
@@ -58,18 +61,6 @@ div.panel {
 	display: block;
 	margin-left: 10px;
 	margin-top: 30px;
-}
-
-button.accordion:after {
-	content: '\02795'; /* Unicode character for "plus" sign (+) */
-	font-size: 13px;
-	color: #777;
-	float: right;
-	margin-left: 5px;
-}
-
-button.accordion.active:after {
-	content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 .condition_info_wrapper {
@@ -108,6 +99,21 @@ button.accordion.active:after {
 .rating-stars ul>li.star.selected>i.fa {
 	color: #FF912C;
 }
+
+.success-box {
+	margin: 20px 0;
+	padding: 10px 10px;
+	border: 1px solid #eee;
+	background: #f9f9f9;
+	width: 500px;
+	text-align: center;
+}
+
+.success-box>div {
+	vertical-align: top;
+	display: inline-block;
+	color: #888;
+}
 </style>
 </head>
 <body>
@@ -122,7 +128,7 @@ button.accordion.active:after {
 		<br>
 		<div class="star_condition">
 			<h4>책의 상태는 5점 만점에 ${book.book_condition } 점입니다</h4>
-			북마켓이 제시하는 중고책 별점기준을 보시려면 별에 마우스를 올려주세요
+			북마켓이 제시하는 중고책 별점기준에 따라 판매자가 평가한 점수입니다.
 		</div>
 		<br>
 		<section class='rating-widget'> <!-- Rating Stars Box -->
@@ -139,6 +145,13 @@ button.accordion.active:after {
 				<li class='star' title='사용흔적이 거의 없어 새 책에 가깝습니다.' data-value='5'><i
 					class='fa fa-star fa-fw'></i></li>
 			</ul>
+			<center>
+				<div class='success-box'>
+					<div class='clearfix'></div>
+					<div class='text-message'></div>
+					<div class='clearfix'></div>
+				</div>
+			</center>
 		</div>
 
 
