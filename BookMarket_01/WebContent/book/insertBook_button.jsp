@@ -6,69 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert Book Button</title>
 <script>
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
 
-						$('#btn_reset').on('click', function() {
-							$('#summernote').summernote('reset');
-						});
+		$('#btn_reset').on('click', function() {
+			$('#summernote').summernote('reset');
+		});
 
-						$('#btn_fin')
-								.on(
-										'click',
-										function() {
-											$
-													.ajax({
-														type : "POST",
-														dataType : "json",
-														url : "bookmarket?command=book_insert",
-														data : {
-															comment : $(
-																	'#summernote')
-																	.summernote(
-																			'code'),
-															condition : parseInt(
-																	$(
-																			'#stars li.selected')
-																			.last()
-																			.data(
-																					'value'),
-																	10),
-															price_type : $(
-																	'input[name=price_type]:checked',
-																	'#price_frm')
-																	.val(),
-															price : $(
-																	'input[name=price]',
-																	'#price_input')
-																	.val(),
-															due_date : ($(
-																	'input[type=date]',
-																	'#price_date')
-																	.val() != "") ? $(
-																	'input[type=date]',
-																	'#price_date')
-																	.val()
-																	: "0"
-														},
-														success : function(data) {
-															if (data.result == "0") {
-																alert('정보가 제대로 저장되지 못했습니다. 개발자를 불러주세요....--;');
-															} else {
-																alert('판매를 개시합니다!');
-																var book_id = data.book_id;
-																var url = "bookmarket?command=detail_book&book_id=";
-																$(location)
-																		.attr(
-																				'href',
-																				url
-																						+ book_id);
-															}
-														}
-													});
-										});
-					});
+		$('#btn_fin').on('click', function() {
+			if (formCheck()) {
+				sendData();
+			}
+			/* alert($('#summernote').summernote('code')); */
+		});
+
+	});
 </script>
 <style>
 .condition_info_wrapper {
