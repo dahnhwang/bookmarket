@@ -563,7 +563,7 @@ public class BookDao implements IBookDao {
 				book.setDue_date(rs.getDate("due_date"));
 
 				bookList.add(book);
-
+ 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -31,7 +31,7 @@ public class BookOptionAction implements Action {
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
 		
-		if(option.equals("only_genre")) {
+		if(option.equals("only_genre")) { 
 			bookList = bdo.selectBookByGenre(genre);
 		}
 		

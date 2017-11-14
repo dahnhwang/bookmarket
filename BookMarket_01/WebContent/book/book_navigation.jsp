@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 
-
+ 
 <body> 
 
 	<div class="col-md-2">
