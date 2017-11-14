@@ -139,20 +139,11 @@ button.accordion.active:after {
 			</ul>
 		</div>
 
-		<div class='success-box'>
-			<div class='clearfix'></div>
-			<img alt='tick image' width='32'
-				src='https://i.imgur.com/3C3apOp.png' />
-			<div class='text-message'></div>
-			<div class='clearfix'></div>
-		</div>
-
-
 
 		</section>
 
 		<div class="summer_note_comment">${book.comment }</div>
-
+		<br>
 	</div>
 	</section>
 </body>
