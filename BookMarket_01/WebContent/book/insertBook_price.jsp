@@ -21,7 +21,7 @@
 												$('#auction_price',
 														'#price_input')
 														.remove();
-												var output = "<div id=\"stn_price\">원하는 판매가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
+												var output = "<label for=\"formGroupExampleInput\"><div id=\"stn_price\">원하는 판매가격을 입력해주세요</label><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"지정가격으로 판매 시, 정해진 가격으로만 상품거래가 가능합니다.\"></div>";
 												$('#price_input').html(output);
 											} else if (priceType == 1) {
 												$('#stn_price', '#price_input')
@@ -62,24 +62,68 @@ div.panel {
 .panel_price {
 	padding: 30px;
 }
+
+#price_frm {
+	text-size: 30px;
+	text-align: center;
+}
+
+.form-control {
+	width: 400px;
+	display: inline;
+}
+
+.form-group {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.success-box {
+	margin: 20px 0;
+	padding: 10px 10px;
+	border: 1px solid #eee;
+	background: #f9f9f9;
+	width: 500px;
+	text-align: center;
+}
+
+.success-box>div {
+	vertical-align: top;
+	display: inline-block;
+	color: #888;
+}
 </style>
 </head>
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<div class="accordion ">
-		<b>STEP 2</b> &nbsp; 원하는 도서판매가격을 입력해 주세요.
+		<b>STEP 2</b> &nbsp; 원하는 도서판매방식과 가격정보를 입력해 주세요.
 	</div>
 	<div class="panel panel_price">
 		<form id="price_frm">
-			<label class="container"> <input type="radio"
-				name="price_type" value="0"> 지정가격
-			</label> <label class="container"> <input type="radio"
-				name="price_type" value="1"> 경매가격
+			<label class="radio-inline"> <input type="radio"
+				name="price_type" value="0"> <b>지정가격</b>
+			</label> <label class="radio-inline"> <input type="radio"
+				name="price_type" value="1"> <b>경매가격</b>
 			</label>
 		</form>
-		<div id="price_input"></div>
-
+		<center>
+			<div class='success-box'>
+				<div class='clearfix'></div>
+				<form>
+					<div class="form-group" id="price_input"></div>
+				</form>
+			</div>
+			<div class='clearfix'></div>
+		</center>
 	</div>
+
+
+
+
+
+
+
 	</section>
 </body>
 </html>
