@@ -39,6 +39,9 @@
 					<div class="book_price_info">
 						<jsp:include page="detailBook_price.jsp" />
 					</div>
+					<div class="book_button">
+						<jsp:include page="detailBook_button.jsp" />
+					</div>
 				</div>
 
 			</div>

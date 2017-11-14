@@ -30,7 +30,6 @@ public class BookInsertAction implements Action {
 		int price = Integer.parseInt(request.getParameter("price"));
 		int price_type = Integer.parseInt(request.getParameter("price_type"));
 		String due_date = request.getParameter("due_date");
-		System.out.println("let me see " + due_date);
 		System.out.println("price_type: " + price_type + " price: " + price + " due_date: " + due_date);
 		Book book = new Book();
 		HttpSession session = request.getSession();
