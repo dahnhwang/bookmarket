@@ -47,7 +47,7 @@ function loginCheck(returnUri){
 	var loginUser = "${loginUser}";
 	$('#hidden-returnUrl').attr('value', returnUri);
 // 	alert(loginUser)
-	alert(returnUri)
+// 	alert(returnUri)
 // 	alert(document.location.href);
 	if( loginUser == "" ){
 		alert('로그인을 해주세요')
