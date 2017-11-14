@@ -8,6 +8,17 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		$('#isbn_search').on('click', function() {
+			var regExp = /^\d{10,13}$/;
+			if(!regExp.test($('#isbn').val())){
+				alert('잘못된 ISBN 형식입니다.');
+				return false;
+			}
+		});
+	});
+</script>
 <style>
 .search_body {
 	border: 10px solid #eaeaea;
@@ -80,7 +91,7 @@ button:focus {
 				<h2 class="title">판매도서 ISBN으로 검색하기</h2>
 				<div class="search-input">
 					<form method="post" action="bookmarket">
-					<input type="hidden" name="command" value="book_insert_form">
+						<input type="hidden" name="command" value="book_insert_form">
 						<input type="text" placeholder="예) 9788937473135" id="isbn"
 							name="isbn">
 						<button class="btn-search" id="isbn_search" type="submit">검색</button>

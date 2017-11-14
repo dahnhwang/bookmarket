@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
+
 	$(document).ready(function() {
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -112,7 +113,8 @@ button.accordion.active:after {
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<button class="accordion ">
-		<b>판매자 ${book.seller }</b>님이 작성하신 <b>별점 및 도서상태</b> 정보입니다.
+		<b>판매자 ${book.seller }</b>님이 <b>${book.submit_date }</b>에 작성하신 <b>별점
+			및 도서상태</b> 정보입니다.
 	</button>
 	<div class="panel">
 
@@ -120,7 +122,7 @@ button.accordion.active:after {
 		<br>
 		<div class="star_condition">
 			<h4>책의 상태는 5점 만점에 ${book.book_condition } 점입니다</h4>
-			북마켓이 제시하는 별점기준을 보시려면 별에 마우스를 올려주세요
+			북마켓이 제시하는 중고책 별점기준을 보시려면 별에 마우스를 올려주세요
 		</div>
 		<br>
 		<section class='rating-widget'> <!-- Rating Stars Box -->

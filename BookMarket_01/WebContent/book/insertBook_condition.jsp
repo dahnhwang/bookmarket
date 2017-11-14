@@ -21,12 +21,12 @@
 					function() {
 						$('#summernote').summernote({
 							lang : 'ko_KR',
-							height : 200,
+							height : 150,
 							width : '100%',
 							minHeight : null,
 							maxHeight : null,
 							focus : false,
-							placeholder : '책의 상태를 자세하게 알려주세요'
+							placeholder : '책의 상태를 자세하게 알려주세요(필수입력 항목)'
 						});
 
 						/* 1. Visualizing things on Hover - See next part for action on click */
@@ -82,14 +82,16 @@
 													'#stars li.selected')
 													.last().data('value'), 10);
 											var msg = "";
-											if (ratingValue > 1) {
-												msg = "Thanks! You rated this "
-														+ ratingValue
-														+ " stars.";
-											} else {
-												msg = "We will improve ourselves. You rated this "
-														+ ratingValue
-														+ " stars.";
+											if (ratingValue == 1) {
+												msg = "일부 페이지가 없고 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+											} else if (ratingValue == 2) {
+												msg = "페이지 소실은 없지만 10개 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+											} else if (ratingValue == 3) {
+												msg = "5군데 이상의 얼룩, 필기 등의 흔적이 남아있습니다.";
+											} else if (ratingValue == 4) {
+												msg = "5군데 이하의 얼룩, 필기 등의 흔적이 남아있고 전체적으로 깨끗합니다.";
+											} else if (ratingValue == 5) {
+												msg = "사용흔적이 거의 없어 새 책에 가깝습니다.";
 											}
 											responseMessage(msg);
 
@@ -112,7 +114,6 @@ div.panel {
 	background-color: white;
 }
 
-
 .condition_info_wrapper {
 	border-top: 1px solid #ddd;
 	margin-left: 40px;
@@ -120,10 +121,12 @@ div.panel {
 }
 
 .success-box {
-	margin: 50px 0;
+	margin: 20px 0;
 	padding: 10px 10px;
 	border: 1px solid #eee;
 	background: #f9f9f9;
+	width: 500px;
+	text-align: center;
 }
 
 .success-box img {
@@ -174,13 +177,15 @@ div.panel {
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<div class="accordion ">
-		<b>STEP 1</b> &nbsp; 도서상태를 별점과 글 또는 사진으로 알려주세요.
+		<b>STEP 1</b> &nbsp; 도서상태를 별점과 글 또는 사진으로 알려주세요. <span
+			style="display: none;"><img alt='tick image' width='32'
+			src='https://i.imgur.com/3C3apOp.png' /></span>
 	</div>
 	<div class="panel">
 		<br>
 		<div class="star_condition">
 			<h4>책의 상태는 5점 만점에 몇 점인가요?</h4>
-			북마켓이 제시하는 별점기준을 보시려면 별에 마우스를 올려주세요
+			북마켓이 제시하는 중고책 별점기준에 따라 객관적인 평가를 내려주세요
 		</div>
 		<br>
 		<section class='rating-widget'> <!-- Rating Stars Box -->
@@ -197,15 +202,15 @@ div.panel {
 				<li class='star' title='사용흔적이 거의 없어 새 책에 가깝습니다.' data-value='5'><i
 					class='fa fa-star fa-fw'></i></li>
 			</ul>
+			<center>
+				<div class='success-box'>
+					<div class='clearfix'></div>
+					<div class='text-message'></div>
+					<div class='clearfix'></div>
+				</div>
+			</center>
 		</div>
 
-		<div class='success-box'>
-			<div class='clearfix'></div>
-			<img alt='tick image' width='32'
-				src='https://i.imgur.com/3C3apOp.png' />
-			<div class='text-message'></div>
-			<div class='clearfix'></div>
-		</div>
 
 
 
