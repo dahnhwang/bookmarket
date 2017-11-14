@@ -9,14 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>로그인</title>
 	<link href="css/login.css" rel="stylesheet" />
-</head>
+</head> 
 <body>
 	<!-- Modal -->	     
 	<div id="login" class="modal fade" role="dialog">                                                                               
 		<div id="modal-login" class="modal-dialog " role="document">                                 
 			<div class="modal-content">                                                            
 		      <div class="modal-body">    
-		      <%= request.getRequestURI() %>       
 		        <form class="form-signin" method="post" action="bookmarket">
 					<input id="hidden-command" type="hidden" name="command" value="login">
 					<input id="hidden-returnUrl" type="hidden" name="returnUrl" value="">

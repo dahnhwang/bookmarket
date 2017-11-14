@@ -52,7 +52,7 @@ function loginCheck(returnUri){
 	if( loginUser == "" ){
 		alert('로그인을 해주세요')
 		
-		$('#anchor-login-navi').click();
+		$('#anchor-login-navi').click(); 
 
 	}
 	else{

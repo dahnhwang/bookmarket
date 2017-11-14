@@ -30,7 +30,7 @@ public class LoginAction implements Action {
 			url="main.jsp";
 			if(!request.getParameter("returnUrl").equals("")) {
 				url = request.getParameter("returnUrl");
-				System.out.println(url);
+				System.out.println(url); 
 			}
 			
 		}else if (mem_id == 0) {
