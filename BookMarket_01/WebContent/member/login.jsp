@@ -8,17 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>로그인</title>
-
-	<link href="css/login.css" rel="stylesheet" />	
+	<link href="css/login.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Modal -->	     
 	<div id="login" class="modal fade" role="dialog">                                                                               
 		<div id="modal-login" class="modal-dialog " role="document">                                 
 			<div class="modal-content">                                                            
-		      <div class="modal-body">                                                              
+		      <div class="modal-body">    
+		      <%= request.getRequestURI() %>       
 		        <form class="form-signin" method="post" action="bookmarket">
 					<input id="hidden-command" type="hidden" name="command" value="login">
+					<input id="hidden-returnUrl" type="hidden" name="returnUrl" value="">
 			        <button id="btn-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 		        	</button>                                                                  

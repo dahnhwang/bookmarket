@@ -43,7 +43,29 @@ outline:none!important
 
 
 <script type="text/javascript">
+function loginCheck(returnUri){
+	var loginUser = "${loginUser}";
+	$('#hidden-returnUrl').attr('value', returnUri);
+// 	alert(loginUser)
+// 	alert(returnUri)
+// 	alert(document.location.href);
+	if( loginUser == "" ){
+		alert('로그인을 해주세요')
+		
+		$('#anchor-login-navi').click();
 
+	}
+	else{
+ 		location.href=returnUri;
+	}
+};
+function getUri(){
+	var currentUrl = document.location.href;
+	var currentUri = currentUrl.substring(36,currentUrl.length);
+// 	var currentUri;
+	alert(currentUri);
+	return currentUri;
+}
 </script>
 
 </head>
@@ -101,7 +123,8 @@ outline:none!important
 							<li class="divider"></li>
 							<li><a href="#">해외도서</a></li>
 						</ul></li>
-					<li><a href="bookmarket?command=book_insert_search">판매하기</a></li>
+					<li><a id="anchor-insertBook-navi" onclick="loginCheck('bookmarket?command=book_insert_search')">판매하기</a></li>
+<!-- 					<li><a href ="bookmarket?command=book_insert_search">판매하기</a></li> -->
 			 	</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -109,7 +132,7 @@ outline:none!important
 
 					<c:choose>
 						<c:when test="${empty loginUser}">
-							<li><a class="loginBtn" data-toggle="modal" data-target="#login">로그인</a></li>
+							<li><a id="anchor-login-navi" class="loginBtn" data-toggle="modal" data-target="#login">로그인</a></li>
 <!-- 							<li><a href="bookmarket?command=login_form">로그인</a></li> -->
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
 						</c:when>

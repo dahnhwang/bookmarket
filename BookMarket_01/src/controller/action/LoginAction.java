@@ -28,6 +28,10 @@ public class LoginAction implements Action {
 			member = mDao.getMember(mem_id);
 			session.setAttribute("loginUser", member);
 			url="main.jsp";
+			if(!request.getParameter("returnUrl").equals("")) {
+				url = request.getParameter("returnUrl");
+				System.out.println(url);
+			}
 			
 		}else if (mem_id == 0) {
 			request.setAttribute("message", "비밀번호가 틀렸습니다");
