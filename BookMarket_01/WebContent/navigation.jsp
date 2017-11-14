@@ -47,7 +47,7 @@ function loginCheck(returnUri){
 	var loginUser = "${loginUser}";
 	$('#hidden-returnUrl').attr('value', returnUri);
 // 	alert(loginUser)
-// 	alert(returnUri)
+	alert(returnUri)
 // 	alert(document.location.href);
 	if( loginUser == "" ){
 		alert('로그인을 해주세요')
@@ -117,7 +117,6 @@ function loginCheck(returnUri){
 							<li><a href="#">해외도서</a></li>
 						</ul></li>
 					<li><a id="anchor-insertBook-navi" onclick="loginCheck('bookmarket?command=book_insert_search')">판매하기</a></li>
-<!-- 					<li><a href ="bookmarket?command=book_insert_search">판매하기</a></li> -->
 			 	</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -147,7 +146,7 @@ function loginCheck(returnUri){
 	</div>
 
 <jsp:include page="member/cart.jsp"/>
-<%-- <jsp:include page="member/login.jsp"/> --%>
+<jsp:include page="member/login.jsp"/>
   
 
 
