@@ -59,13 +59,6 @@ function loginCheck(returnUri){
  		location.href=returnUri;
 	}
 };
-function getUri(){
-	var currentUrl = document.location.href;
-	var currentUri = currentUrl.substring(36,currentUrl.length);
-// 	var currentUri;
-	alert(currentUri);
-	return currentUri;
-}
 </script>
 
 </head>
