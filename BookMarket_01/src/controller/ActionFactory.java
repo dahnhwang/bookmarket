@@ -151,7 +151,7 @@ public class ActionFactory {
 			action = new PaymentAction();
 		} else if (command.equals("bookMoney_check")) {
 			action = new BookMoneyCheckAction();
-		} else if (command.equals("payment_check_ pass")) {
+		} else if (command.equals("payment_check_pass")) {
 			action = new PaymentCheckPassAction();
 		} else if (command.equals("bidding_form")) {
 			action = new BiddingFormAction();

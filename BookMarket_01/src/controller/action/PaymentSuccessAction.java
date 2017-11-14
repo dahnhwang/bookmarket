@@ -1,15 +1,18 @@
 package controller.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
 import dao.BookMoneyDao;
 import dao.MemberDao;
 import dao.SoldDao;
+import dto.Book;
 import dto.BookMoney;
 import dto.Sold;
 
@@ -25,7 +28,7 @@ public class PaymentSuccessAction implements Action {
 	    int buyer_id = Integer.parseInt(request.getParameter("buyer_id"));
 	    int book_id = Integer.parseInt(request.getParameter("book_id"));
 	    int book_price= Integer.parseInt(request.getParameter("book_price"));
-	    
+	    HttpSession session = request.getSession();
 	   BookMoney s_bm = new BookMoney();
 	   BookMoney b_bm = new BookMoney();
    
@@ -70,9 +73,20 @@ public class PaymentSuccessAction implements Action {
 	    sdo.insertSold(sold);
 	    
 	   
-	    //book 판매여부 변경ㅇ
+	    //book 판매여부 isSold 값 -> 1 로 변경ㅇ
 	    BookDao bdo = BookDao.getInstance();
 	    bdo.updateSoldType(book_id);
+	    
+	    
+	    //장바구니에서 삭제 
+	    List<Book> cartList = (List<Book>) session.getAttribute("cartList");
+	    for(int i=0 ; i< cartList.size(); i++) {
+	    	Book book = cartList.get(i);
+	    	if(book.getBook_id() ==book_id ) {
+	    		cartList.remove(i);
+	    	}
+	    }
+	    
 	    
 	    request.getRequestDispatcher(url).forward(request, response);
 	}

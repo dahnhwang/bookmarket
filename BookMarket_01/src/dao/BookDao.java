@@ -230,7 +230,7 @@ public class BookDao implements IBookDao {
 	public List<Book> selectBookByGenre(int genre) {
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
-		String sql = "SELECT * FROM book where genre= ?";
+		String sql = "SELECT * FROM book where genre= ? order by submit_date";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -610,8 +610,26 @@ public class BookDao implements IBookDao {
 
 	@Override
 	public int updateSoldType(int book_id) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+		String sql = "UPDATE book SET isSold = 1 where book_id = ?  ";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+		
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
 }

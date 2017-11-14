@@ -126,7 +126,7 @@
 				var params =  $('#paymentFrm').serialize();
 	        window.location.href = 'bookmarket?'+params;
 			}
-		})
+		}) 
 	});
 </script>
 

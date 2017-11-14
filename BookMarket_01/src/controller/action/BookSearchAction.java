@@ -34,39 +34,48 @@ public class BookSearchAction implements Action {
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
 
-		if(selectSel.equals("all")) {
+		if (selectSel.equals("all")) {
 			bookList = bdo.selectAllBookList();
 		}
-		
-		else if  (selectSel.equals("title")) {
+
+		else if (selectSel.equals("title")) {
 			bookList = bdo.selectBookByTitle(searchInput);
 
 		} else if (selectSel.equals("author")) {
-			
+
 			bookList = bdo.selectBookByAuthor(searchInput);
-	
+
 		} else if (selectSel.equals("publisher")) {
-			
+
 			bookList = bdo.selectBookByPublisher(searchInput);
 
 		} else if (selectSel.equals("seller_email")) {
-			
-			bookList= bdo.selectBookBySellerEmail(searchInput);
+
+			bookList = bdo.selectBookBySellerEmail(searchInput);
 
 		}
 
+		StringBuffer sb = new StringBuffer();
 
 		for (int i = 0; i < bookList.size(); i++) {
-
+			/*sb.append(bookList.get(i).getTitle());
+			System.out.println(sb);
+			
+			if(sb.length()>15) {
+			sb.insert(10, '\n'); } 
+			System.out.println(sb);
+			
+			bookList.get(i).setTitle(sb.toString());
+			sb.setLength(0);*/
+			
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
 		}
-		
-		
+
 		Gson gson = new Gson();
-		String send_bookLIst= gson.toJson(bookList);
+		String send_bookLIst = gson.toJson(bookList);
 		String send_memberList = gson.toJson(memberList);
-		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+"}";
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":" + send_memberList + "}";
 		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.println(result);

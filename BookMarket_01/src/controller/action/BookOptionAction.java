@@ -22,14 +22,19 @@ public class BookOptionAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		String option = request.getParameter("option");
-	  
 		int genre = Integer.parseInt(request.getParameter("genre"));
+		System.out.println(option+genre);
 		MemberDao mdo = MemberDao.getInstance();
 		BookDao bdo = BookDao.getInstance();
 		List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
-		if (option.equals("fixedPrice")) {
+		
+		if(option.equals("only_genre")) {
+			bookList = bdo.selectBookByGenre(genre);
+		}
+		
+		else if (option.equals("fixedPrice")) {
 			bookList = bdo.selectBookByPriceType(genre, 0);
     
 		}

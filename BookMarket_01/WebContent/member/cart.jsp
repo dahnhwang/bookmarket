@@ -47,10 +47,20 @@
 					
 				}
 			});
-// 			
+			
 
 		})
-
+		
+		
+		
+		$('#cart_purchase_btn').on('click', function() {
+		 
+			var book_id = $(this).attr('data-id');
+		   if(book_id) {
+            window.location.href = 'bookmarket?command=payment&book_id='+book_id; 
+		   }
+            });
+				
 	});
 </script>
 
@@ -81,20 +91,24 @@
 						<tbody>
 							<c:forEach var="book" items="${cartList }" varStatus="status">
 								<tr>
+		
 									<td>${status.count }</td>
 									<td><img id="book_image" src=${book.image } /></td>
 									<td>${book.title }</td>
 									<td>${book.price }</td>
 									<c:choose>
-									<c:when test="${book.isSold==0 }">
-									<td><button type='button' class='btn btn-primary btn-sm'>구매하기</button></td>
-									</c:when>
-									<c:otherwise>
-									<td><button type='button' class='btn btn-danger btn-sm' disabled="disabled">판매완료 </button></td>
-									</c:otherwise>
+										<c:when test="${book.isSold==0 }">
+											<td><button  type='button' data-id=${book.book_id }
+										  class='btn btn-primary btn-sm' id='cart_purchase_btn'>구매하기</button></td>
+										</c:when>
+										<c:otherwise>
+											<td><button type='button' class='btn btn-danger btn-sm'
+													disabled="disabled" >판매완료</button></td>
+										</c:otherwise>
 									</c:choose>
 									<td><button type='button'
-											class='btn btn-danger btn-sm cart_delete' data-id=${book.book_id }>삭제하기</button></td>
+											class='btn btn-danger btn-sm cart_delete'
+											data-id=${book.book_id }>삭제하기</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -124,7 +124,7 @@
 			var titleTag = $('<a>').attr('href',
 					'bookmarket?command=detail_book&book_id=' + book_id)
 					.addClass("bookTitle").text(title);
-			var img = "<img src="+image+" width='100' height ='137' style ='border : 1px solid #cccccc'/>";
+			var img = "<img src="+image+" width='80' height ='110' style ='border : 1px solid #cccccc'/>";
 
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').append(titleTag).appendTo(tr);
@@ -136,9 +136,8 @@
 			$('<td>').text(price + '원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
 
-			var cartBtn = $('<input>').attr('type', 'button').attr('data-id',
-					book_id).addClass('cart_btn').css({
-				'margin' : '5px'
+			var cartBtn = $('<input>').attr('type', 'button').attr('data-id',book_id)
+			.addClass('cart_btn').css({'margin' : '5px'
 			}).val('Cart');
 
 			var keepBtn = $('<input>').attr('type', 'button').attr('data-id',
@@ -169,9 +168,11 @@
 	}
 
 	$(document).ready(
+			
+			var current_page_genre= 0;
 			function() {
 
-				var params = "searchSel=all&command=book_search";
+			   var params = "searchSel=all&command=book_search";
 				$.ajax({
 					url : 'bookmarket',
 					type : 'get',
@@ -190,12 +191,10 @@
 				$('#searchForm').submit(function() {
 					return false;
 				})
-
-				$('#optionSel').on(
-						'change',
-						function() {
+current_page_genre
+				$('#optionSel').on('change',function() {
 							var params = "option=" + this.value
-									+ "&command=book_option&genre=1";
+									+ "&command=book_option&genre";
 							$.ajax({
 								url : 'bookmarket',
 								type : 'get',
@@ -232,9 +231,33 @@
 
 				});
 
+				
+				
+				
+				$(document).on('click', '.book_navigation_a', function() {
+					var genre_id = $(this).attr('data-id');
+					var params = "option=only_genre&command=book_option&genre="+genre_id;
+					$.ajax({
+						url : 'bookmarket',
+						type : 'get',
+						data : params,
+						dataType : 'json',
+						success : function(data) {
+							if (data) {
+								current_page_genre= genre_id;
+								$('#listTable tbody').empty();
+								listUpload(data);
+
+							}
+						}
+					});
+
+				});
+				
+				
 				$(document).on('click', '.cart_btn', function() {
 					var book_id = $(this).attr('data-id');
-					var params = "command=cart_add&book_id=" + book_id;
+					var params = "command=cart_add&book_id="+ book_id;
 					$.ajax({
 						url : 'bookmarket',
 						type : 'get',
@@ -264,21 +287,37 @@
 				
 				$(document).on('click', '.purchase_btn', function() {
 					var seller_email= $(this).attr('email');
-					var buyer_email =$('#loginUser').attr('email');
-					if(seller_email===buyer_email) {
-						alert('본인이 판매하는 책은 구매할 수 없습니다!');
-					}
-					else{
 					var book_id = $(this).attr('data-id');
-					window.location.href = 'bookmarket?command=payment&book_id='+book_id; }
+					//판매자와 구매자가 같은 사람인지 판별하기 
+					var params ="command=payment_check_pass&seller_email="+seller_email;
+				$.ajax({
+					url : 'bookmarket',
+					type : 'get',
+					data : params,
+					success : function(data) {
+						
+						if (data == 0) {
+							alert('본인이 판매하는 상품은 구매할 수 없습니다!');
+						} else if (data == 1) {
+						
+						window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
+				
 
-				});
+						}
+					}
+				})
 
 			});
+					
+					
+
+				}); 
+
+		
 </script>
 </head>
 <body>
-<input id="loginUser" type="hidden" email= "${loginUser.email}"/>
+
 	<div id="wrap">
 		<div id="navigation">
 			<jsp:include page="../navigation.jsp" />

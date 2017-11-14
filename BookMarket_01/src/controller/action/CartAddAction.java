@@ -22,30 +22,36 @@ public class CartAddAction implements Action {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		int book_id = Integer.parseInt(request.getParameter("book_id"));
+		System.out.println(book_id);
+		String text = null;
+
+		PrintWriter pw = response.getWriter();
+
 		BookDao bdo = BookDao.getInstance();
 		Book book = bdo.getBook(book_id);
 		List<Book> cartList = new ArrayList<Book>();
-		String text = null;
+
 		HttpSession session = request.getSession();
-		PrintWriter pw = response.getWriter();
- 
-		Member member = (Member) session.getAttribute("loginUser");
-		if(member.getMem_id()== book.getSeller()) {
-		
-			text = "본인이 판매하는 책은 장바구니에 담을 수 없습니다!";
-			pw.println(text);
-			pw.flush();
-			return;
-			
-			
+
+		Member member = null;
+
+		if (session.getAttribute("loginUser") != null) { // loginUser가 존재하면
+			member = (Member) session.getAttribute("loginUser");
+			if (member.getMem_id() == book.getSeller()) {
+
+				text = "본인이 판매하는 책은 장바구니에 담을 수 없습니다!";
+				pw.println(text);
+				pw.flush();
+				return;
+			}
+
 		}
-		
-	
-		
+
+
 		if (session.getAttribute("cartList") == null) {
 			cartList.add(book);
 			session.setAttribute("cartList", cartList);
-			
+
 		}
 
 		else {
@@ -61,11 +67,12 @@ public class CartAddAction implements Action {
 				}
 
 			}
-			
+
 			exist_cartList.add(book);
 			session.setAttribute("cartList", exist_cartList);
 
 		}
+
 		text = "장바구니에 담았습니다!";
 		pw.println(text);
 		pw.flush();
