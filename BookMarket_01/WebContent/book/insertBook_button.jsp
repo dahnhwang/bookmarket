@@ -16,7 +16,7 @@
 			if (formCheck()) {
 				sendData();
 			}
-			/* alert($('#summernote').summernote('code')); */
+
 		});
 
 	});

@@ -18,16 +18,18 @@
 													'input[name=price_type]:checked',
 													'#price_frm').val();
 											if (priceType == 0) {
-												var output = "";
-												output += "<div>원하는 판매가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
+												$('#auction_price',
+														'#price_input')
+														.remove();
+												var output = "<div id=\"stn_price\">원하는 판매가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
 												$('#price_input').html(output);
-											} else {
-												var output = "";
-												output += "<div>원하는 경매최소가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
-												$('#price_input').html(output);
-												var output2 = "<div>경매는 선택일자까지만 진행되며, 유찰된 경우에는 판매종료상태로 변경됩니다.";
-												output2 += "<form><input type=\"date\" name=\"due_date\"></form>까지";
-												$('#price_date').html(output2);
+											} else if (priceType == 1) {
+												$('#stn_price', '#price_input')
+														.remove();
+												var output2 = "<div id=\"auction_price\"><div>원하는 경매최소가격을 입력해주세요 : <input type=\"text\" name=\"price\">원</div>";
+												output2 += "<div id=\"price_date\">경매는 선택일자까지만 진행되며, 유찰된 경우에는 판매종료상태로 변경됩니다.";
+												output2 += "<form><input type=\"date\" name=\"due_date\"></form>까지</div></div>";
+												$('#price_input').html(output2);
 											}
 										});
 
@@ -76,7 +78,7 @@ div.panel {
 			</label>
 		</form>
 		<div id="price_input"></div>
-		<div id="price_date"></div>
+
 	</div>
 	</section>
 </body>
