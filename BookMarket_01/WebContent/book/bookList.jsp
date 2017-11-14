@@ -168,10 +168,11 @@
 	}
 
 	$(document).ready(
-			
-			var current_page_genre= 0;
+	
 			function() {
 
+				var current_page_genre	= 0;
+				
 			   var params = "searchSel=all&command=book_search";
 				$.ajax({
 					url : 'bookmarket',
@@ -191,7 +192,7 @@
 				$('#searchForm').submit(function() {
 					return false;
 				})
-current_page_genre
+
 				$('#optionSel').on('change',function() {
 							var params = "option=" + this.value
 									+ "&command=book_option&genre";
