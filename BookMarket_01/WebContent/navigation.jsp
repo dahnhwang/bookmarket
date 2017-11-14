@@ -154,7 +154,7 @@ function getUri(){
 	</div>
 
 <jsp:include page="member/cart.jsp"/>
-<jsp:include page="member/login.jsp"/>
+<%-- <jsp:include page="member/login.jsp"/> --%>
   
 
 
