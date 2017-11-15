@@ -22,14 +22,14 @@ public class BiddingFormAction implements Action {
 
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginUser");
-		System.out.println("요기까지 왔니?");
 
 		if (member != null) {
 			url = "/payment/bidding.jsp";
 			int book_id = Integer.parseInt(request.getParameter("book_id"));
+			int bidding_price = Integer.parseInt(request.getParameter("bidding_price"));
 			BookDao bdo = BookDao.getInstance();
 			Book book = bdo.getBook(book_id);
-			System.out.println("아님 요기까지 왔니?");
+			
 
 			MemberDao mdo = MemberDao.getInstance();
 

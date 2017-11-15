@@ -10,7 +10,8 @@
 	$(document)
 			.ready(
 					function() {
-
+				
+						
 						var typeStr = "";
 						var priceStr = "";
 						var due_date = "";
@@ -36,7 +37,14 @@
 													+ retail_price
 													+ "</font><p><font style='font-size:30px'><b>경매 시작가 : ￦"
 													+ priceStr
-													+ "</b></font><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"bidding_price\" placeholder=\"희망하는 경매 입찰가를 제시해주세요.\"></div>");
+													+ "</b></font><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"biddingPriceInput\" name=\"bidding_price\" placeholder=\"희망하는 경매 입찰가를 제시해주세요.\"></div>");
+							$('input[name=bidding_price]','p.price_info').blur(function(){
+								var input_price = $('input[name=bidding_price]').val();
+								if(input_price < ${book.price}){
+									alert('경매 시작금액보다 적은 금액은 제시할 수 없습니다.');
+									return false;
+								}
+							});
 						}
 						if ('${book.isSold}' == 0) {
 							isSoldStr = "판매 중인";
