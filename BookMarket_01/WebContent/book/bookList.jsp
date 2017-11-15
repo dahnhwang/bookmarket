@@ -181,7 +181,7 @@
 					dataType : 'json',
 					success : function(data) {
 						if (data) {
-
+							current_page_genre	= 0;
 							$('#listTable tbody').empty();
 							listUpload(data);
 
@@ -236,7 +236,8 @@
 				
 				$(document).on('click', '.book_navigation_a', function() {
 					var genre_id = $(this).attr('data-id');
-					var params = "option=only_genre&command=book_option&genre="+current_page_genre;
+					var params = "option=only_genre&command=book_option&sel=1&genre="+genre_id;
+					  current_page_genre= genre_id;
 					$.ajax({
 						url : 'bookmarket',
 						type : 'get',
@@ -244,10 +245,8 @@
 						dataType : 'json',
 						success : function(data) {
 							if (data) {
-								current_page_genre= genre_id;
-								$('#listTable tbody').empty();
+		                  	$('#listTable tbody').empty();
 								listUpload(data);
-								alert( current_page_genre);
 
 							}
 						}
@@ -303,7 +302,7 @@
 						
 						window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
 				
-
+ 
 						}
 					}
 				})

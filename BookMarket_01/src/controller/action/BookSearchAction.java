@@ -44,7 +44,7 @@ public class BookSearchAction implements Action {
 		} else if (selectSel.equals("author")) {
 
 			bookList = bdo.selectBookByAuthor(searchInput);
-
+ 
 		} else if (selectSel.equals("publisher")) {
 
 			bookList = bdo.selectBookByPublisher(searchInput);

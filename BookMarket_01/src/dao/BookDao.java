@@ -306,7 +306,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-				
+
 				bookList.add(book);
 
 			}
@@ -479,14 +479,20 @@ public class BookDao implements IBookDao {
 	public List<Book> selectBookOrderBy(int genre, String order, String seq) {
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
-		String sql = "SELECT * FROM book where genre= ? order by " + order + " " + seq;
-		System.out.println(sql);
+		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, genre);
+			if (genre == 0) {
+				sql = "SELECT * FROM book order by " + order + " " + seq;
+				pstmt = conn.prepareStatement(sql);
+			} else {
+				sql = "SELECT * FROM book where genre= ? order by " + order + " " + seq;
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, genre);
+			}
+			
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
@@ -532,14 +538,26 @@ public class BookDao implements IBookDao {
 	public List<Book> selectBookByPriceType(int genre, int price_type) {
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
-		String sql = "SELECT * FROM book where genre= ? and price_type = ? ";
+		String sql = "";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+
 		try {
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, genre);
-			pstmt.setInt(2, price_type);
+			if (genre == 0) {
+				sql = "SELECT * FROM book where price_type = ? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, price_type);
+
+			} else {
+				sql = "SELECT * FROM book where genre= ? and price_type = ? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, genre);
+				pstmt.setInt(2, price_type);
+
+			}
+
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
@@ -563,10 +581,10 @@ public class BookDao implements IBookDao {
 				book.setDue_date(rs.getDate("due_date"));
 
 				bookList.add(book);
- 
+
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		} finally {
 			try {
 				if (rs != null)
@@ -610,14 +628,14 @@ public class BookDao implements IBookDao {
 
 	@Override
 	public int updateSoldType(int book_id) {
-	
+
 		String sql = "UPDATE book SET isSold = 1 where book_id = ?  ";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
-		
+
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

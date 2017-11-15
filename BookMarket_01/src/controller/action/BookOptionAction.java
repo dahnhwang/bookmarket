@@ -24,12 +24,14 @@ public class BookOptionAction implements Action {
 		
 		String option = request.getParameter("option");
 		int genre = Integer.parseInt(request.getParameter("genre"));
-		System.out.println(option+genre);
+	     System.out.println(option+genre);
 		MemberDao mdo = MemberDao.getInstance();
 		BookDao bdo = BookDao.getInstance();
 		List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
+		
+		
 		
 		if(option.equals("only_genre")) { 
 			bookList = bdo.selectBookByGenre(genre);
@@ -46,7 +48,7 @@ public class BookOptionAction implements Action {
 		}
 
 		else if (option.equals("Condition")) {
-          bookList = bdo.selectBookOrderBy(genre, "book_condition", "asc");
+          bookList = bdo.selectBookOrderBy(genre, "book_condition", "desc");
 		}
 
 		else if (option.equals("lower")) {
