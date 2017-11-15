@@ -106,7 +106,7 @@
 			var submit_date = item.submit_date;
 			var price = item.price;
 			var isSold = item.isSold;
-
+            var retail_price= item.retail_price;
 			var condition = '';
 			if (item.book_condition === 5) {
 				condition = "A";
@@ -135,7 +135,7 @@
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').append(titleTag).appendTo(tr);
 			$('<td>').text(genre).appendTo(tr);
-			$('<td>').text(author + "  " + publisher).appendTo(tr);
+			$('<td>').html(author + '<br>' + publisher).appendTo(tr);
 			$('<td>').text(condition).appendTo(tr);
 			$('<td>').text(seller).appendTo(tr);
 			$('<td>').text(submit_date).appendTo(tr);
@@ -145,25 +145,40 @@
 			var cartBtn = $('<input>').attr('type', 'button').attr('data-id', book_id)
 				.addClass('cart_btn').css({
 				'margin' : '5px'
-			}).val('Cart');
+			}).val('Cart').addClass('btn btn-light btn-sm');
 
 			var keepBtn = $('<input>').attr('type', 'button').attr('data-id',
 				book_id).addClass('keep_btn').css({
-				'margin' : '5px'
-			}).val('Keep');
-
+				'margin' : '1px'
+			}).val('Keep').addClass('btn btn-light btn-sm');
+			
 			var purchaseBtn = $('<input>').attr('type', 'button').attr(
 				'data-id', book_id).attr("email", seller).addClass('purchase_btn').css('margin',
-				'5px').val('Purchase!');
+				'5px').val('구매하기').addClass('btn btn-primary ');
+			
+			var biddingBtn = $('<input>').attr('type', 'button').addClass('btn btn-warning')
+			.attr('data-id', book_id).attr('retail_price',retail_price)
+			.attr("email", seller).addClass('bidding_btn').css('margin',
+					'5px').val('경매 참여하기');
 
-			var soldOutBtn = $('<input>').attr('type', 'button')
+			var soldOutBtn = $('<input>').attr('type', 'button').addClass('btn btn-danger')
 				.addClass('soldOut_btn').css('margin', '5px').val('SoldOut!').attr("disabled", 'disabled');
 
 
-
+            
+			
 			if (isSold === 0) {
-				$('<td>').append(purchaseBtn).append(keepBtn).append(cartBtn)
+				if (item.price_type === 0) {
+					//지정 
+					$('<td>').append(purchaseBtn).append('<br>').append(keepBtn).append(cartBtn)
 					.appendTo(tr);
+					
+				} else if (item.price_type === 1) {
+					$('<td>').append(biddingBtn).append('<br>').append(keepBtn).append(cartBtn)
+					.appendTo(tr);
+				}
+				
+				
 			} else if (isSold === 1) {
 				$('<td>').append(soldOutBtn).appendTo(tr);
 			}
@@ -319,6 +334,34 @@
 
 		});
 
+		
+		$(document).on('click', '.bidding_btn', function() {
+			var seller_email = $(this).attr('email');
+			var book_id = $(this).attr('data-id');
+			//판매자와 구매자가 같은 사람인지 판별하기 
+			var params = "command=payment_check_pass&seller_email=" + seller_email;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+
+					if (data == 0) {
+						alert('본인이 경매하는 상품은 참여할 수 없습니다 !');
+					} else if (data == 1) {
+
+						window.location.href = 'bookmarket?command=bidding_form&book_id='+ book_id;
+
+
+					}else if (data == -1) {
+						alert('로그인 후 경매에 참여하실 수 있습니다.')
+					}
+				}
+			})
+
+		});
+
+		
 
 
 
