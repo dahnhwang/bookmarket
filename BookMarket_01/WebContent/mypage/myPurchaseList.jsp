@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Book Market</title>
 </head>
 <body>
 	<div class="wrap">
@@ -33,6 +33,10 @@
 									$('#table-myPurchaseBookList tbody').empty();
 									myPurchaseBook_listUpload(data);
 								}
+								else{
+									$('#table-myPurchaseBookList tbody').empty();
+									$('<td>').attr('colspan',9).text('구매하신 상품이 없습니다.').appendTo('#table-myPurchaseBookList tbody');
+								}
 							},
 							error: function(xhr, status, error){
 								alert('error')
@@ -58,13 +62,13 @@
 									<thead style="text-align:center">
 											<th>[거래번호/상품번호]</th>
 											<th>이미지</th>
-											<th>[ISBN]title</th>
+											<th>Title</th>
 											<th>판매자</th>
 											<th>지정/판매</th>
 											<th>가격</th>
 											<th>판매상태</th>
 											<th>거래 날짜</th>
-											<th>수정/삭제</th>
+											<th>버튼</th>
 									</thead>
 									<tbody style="text-align:center">
 									</tbody>

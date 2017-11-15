@@ -65,7 +65,7 @@
 											<th>경매종료일자</th>
 											<th>등록일자</th>
 											<th>[판매일자]판매상태</th>
-											<th>수정/삭제</th>
+											<th>버튼</th>
 									</thead>
 									<tbody style="text-align:center">
 										<tr></tr>
