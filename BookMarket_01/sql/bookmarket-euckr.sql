@@ -91,21 +91,6 @@ INSERT INTO member VALUES ('0','a6@gmail.com','666','a6A6',10000,'1980-12-17');
 INSERT INTO member VALUES ('0','a7@gmail.com','777','a7A7',10000,'1980-12-17');
 INSERT INTO member VALUES ('0','a8@gmail.com','888','a8A8',10000,'1980-12-17');
 
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (1,'9791187165286','Carol Dweck', 'Mind Set', 5, 9900);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (1,'9791187165286','Carol Dweck', 'Mind Set', 4, 5900);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (2,'9791187165286','Carol Dweck', 'Mind Set', 1, 3000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (3,'9788959894826','커넥팅 랩', '모바일 트렌드 2018', 4, 8000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (4,'9788959894826','커넥팅 랩', '모바일 트렌드 2018', 2, 5000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (5,'9788925561776','주홍식', '스타벅스, 공간을 팝니다 하워드 슐츠가 감탄한 스타벅스커피 코리아 1조 매출의 비밀 ', 5, 10000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (6,'9788950959227','데릭 톰슨', '히트 메이커스 세상을 사로잡은 히트작은 어떻게 만들어졌는가', 4, 14000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (7,'9788959894178','브렛 킹', '증강현실 현실 위의 현실, 슈퍼 리얼리티의 세계가 열린다,Life in the Smart Lane', 4, 18000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (8,'9791155323076','권광현, 박영훈', '디지털 노마드 직장 없이 자유롭게 돈 버는 사람들', 5, 10000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (9,'9788984373327','조엘 디케르', '볼티모어의 서', 5, 10000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (1,'9788984371231','더글라스 케네디', '리빙 더 월드', 3, 5000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (1,'9788984371224','안데르스 데 라 모테', '게임', 4, 7700);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (2,'9780062464316','HARARI, YUVAL NOAH', 'Homo Deus A History of Tomorrow', 5, 30000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (3,'0070856133','Rudin', 'Principles of Mathematical Analysis, 3/E International Series in Pure & Applied Mathematics', 5, 30000);
-INSERT INTO book (seller_id, isbn, author, title, book_condition, price) VALUES (4,'0684853949','Sacks, Oliver W.', 'The Man Who Mistook His Wife for a Hat And Other Clinical Tales', 3, 3000);
 INSERT INTO book VALUES(
 0,
 '9788937473135',
@@ -123,6 +108,7 @@ INSERT INTO book VALUES(
 sysdate(),
 0,
 'not yet',
+'2017-12-10',
 1000
 );
 # KeepBook DATA
