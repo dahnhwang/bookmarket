@@ -23,10 +23,12 @@
 }
 
 #content {
-	width: 400px;
+	width: 700px;
 	height: 1000px;
 	margin: 0 auto;
 	align: center;
+	
+
 }
 
 .strapline {
@@ -55,20 +57,39 @@
 .messageDiv {
 	margin-top: 10px;
 	width: 100%;
-	height: 400px;
+	height: 500px;
 	border-radius: 10px;
-	background-color: #cccccc;
+	background-color: #d5e1df;
 	padding: 20px;
 	width: 100%;
 	text-align: center;
-	vertical-align: middle;
+
 }
 
+.text { 
+margin-top : 120px;
+font-size:  20px;
+
+}
+
+#go_main_btn{ 
+width : 250px;
+height : 80px;
+font-size: 18px;
+}
 
 </style>
 
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+	$('#go_main_btn').on('click',function(){
+		window.location.href = 'bookmarket?command=main' ;
+	});
+});
+
+
 
 	
 </script>
@@ -89,11 +110,9 @@
 
 
               <div class="messageDiv">
-              <p class="text"> 결제가 완료 되었습니다 ! </p>
-              
-            <button type="button" class="btn btn-success" id="purchase_btn">메인으로 이동하기</button>
-             
-             </div>
+              <p class="text"> 결제가 완료 되었습니다 !</p>
+              <button type="button" class="btn btn-success" id="go_main_btn">메인으로 이동하기</button>
+            </div>
 			
 		</div>
 		<div id="footer">

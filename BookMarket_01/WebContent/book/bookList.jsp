@@ -14,12 +14,14 @@
 <link href="css/agency.css" rel="stylesheet">
 <link href="css/bootstrap-table.min.css" rel="stylesheet">
 
+
 <!-- jQuery -->
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <!--<script src="js/bootstrap.min.js"></script> 이걸지우자-->
+
 
 <script src="js/bootstrap-table.min.js"></script>
 
@@ -30,11 +32,12 @@
 
 #wrap {
 	width: 100%;
-	height: 900px;
+	
 }
 
 #contents {
-	height: 700px;
+  height : 1400px;
+
 }
 
 #searchBar {
@@ -167,9 +170,9 @@
 		});
 	}
 
-	$(document).ready(
+	$(document).ready(function() {
 	
-			function() {
+		
 
 				var current_page_genre	= 0;
 				
@@ -326,6 +329,8 @@
 			<div id="bookList_naviation">
 				<jsp:include page="book_navigation.jsp" />
 			</div>
+			
+			
 			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
 					<div id="search">
@@ -353,11 +358,7 @@
 
 					</div>
 				</div>
-				<table id="listTable" style="text-align: center" class="display"
-					cellspacing="0" width="100%" data-toggle="table"
-					data-show-refresh="true" data-show-toggle="true"
-					data-show-columns="true" data-search="true"
-					data-select-item-name="toolbar1" data-pagination="true">
+				<table id="listTable" style="text-align: center"  class="display" cellspacing="0" width="100%"  data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
 					<thead>
 						<tr>
 							<th>이미지</th>
@@ -372,10 +373,8 @@
 							<th>구매 버튼</th>
 						</tr>
 					</thead>
-
 					<tbody>
-
-
+					
 					</tbody>
 				</table>
 			</div>

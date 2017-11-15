@@ -78,7 +78,7 @@ public class PaymentSuccessAction implements Action {
 	    bdo.updateSoldType(book_id);
 	    
 	    
-	    //장바구니에서 삭제 
+	    if(session.getAttribute("cartList") != null) {
 	    List<Book> cartList = (List<Book>) session.getAttribute("cartList");
 	    for(int i=0 ; i< cartList.size(); i++) {
 	    	Book book = cartList.get(i);
@@ -86,7 +86,7 @@ public class PaymentSuccessAction implements Action {
 	    		cartList.remove(i);
 	    	}
 	    }
-	    
+	    }
 	    
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
