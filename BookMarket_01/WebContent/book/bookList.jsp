@@ -18,7 +18,7 @@
 <!-- jQuery -->
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+ 
 <!-- Bootstrap Core JavaScript -->
 <!--<script src="js/bootstrap.min.js"></script> 이걸지우자-->
 
