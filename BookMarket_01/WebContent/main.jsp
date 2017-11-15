@@ -22,6 +22,7 @@
 
 .wrap {
 	width: 100%;
+	height : 1300px;
 }
 
 #contents {
@@ -32,47 +33,69 @@
 
 #contents .section {
 	width: 100%;
-	height: 28%;
-	margin: 5px 0;
+	height: 30%;
+	margin: 20px 0 10px 0;
 }
 
 #contents .section ul {
-	margin: 20px 0;
+	margin: 40px 0 20px 35px;
 }
 
 #contents .section ul li {
 	display: inline-block;
 	float: left;
-	margin: 0 27px 0 0;
+	margin: 0 30px 0 0;
 	box-sizing: border-box;
 }
 
-#contents .section ul li img {
-	width: 110px;
-	height: 147px;
+.bookList {
+	position: relative;
+}
+
+.book_img {
+	width: 130px;
+	height: 176px;
 	box-shadow: 7px 7px 3px #cccccc;
+	opacity: 1;
+	display: block;
+	transition: .5s ease;
+	backface-visibility: hidden;
+	transition: .5s ease;
 }
 
-#contents .section ul li p {
-	margin: 20px 0 0 2px;
-	line-height: 130%;
+.middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
 }
 
-.book_title {
+.bookList:hover .book_img {
+	opacity: 0.8;
+}
+
+.bookList:hover .middle {
+	opacity: 1;
+}
+
+.text {
+	background-color: #006E51;
+	color: white;
 	font-size: 13px;
-	font-weight: bold;
-	color: #454140;
-}
-
-.book_price {
-	font-size: 12px;
-	color: #9896A4;
+	color: white;
+	width: 130px;
+	height: 80px;
+	text-align: center;
 }
 
 .strapline {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	
 }
 
 .title {
@@ -81,7 +104,8 @@
 	font-size: 25px;
 	color: #3c3c3c;
 	flex-grow: 0;
-	background-color: #e6e2d3;
+	background-color: #ffffff;
+	border :1px solid #9f9f9f;
 }
 
 .divider {
@@ -92,97 +116,116 @@
 
 #banner {
 	width: 100%;
-	height: 120px;
+	height: 150px;
 	background-color: #e6e2d3;
-    margin : 0 0 30px 0;
-    font-size: 24px;
-    font-weight: bold;
+	margin: 0 0 30px 0;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 #sideBar {
-    margin-left : 40px;
-	width : 250px;
+	margin-left: 40px;
+	width: 250px;
 	height: 400px;
-	border :1px solid #cccccc;
-
+	border: 1px solid #cccccc;
 }
 
-
+.shelf_img {
+	
+}
 </style>
 </head>
 <body>
 	<div class="wrap">
 		<div class="navigation">
-			<jsp:include page="navigation.jsp" />	
+			<jsp:include page="navigation.jsp" />
 		</div>
 
 		<div id="contents" class="col-md-10">
-			<div id="banner">
-               BANNER 
-               </div>
+			<div id="banner">BANNER</div>
 			<div class="section">
 				<div class="strapline">
-					<div class="title">오늘의 신간 도서 TOP 5</div>
+					<div class="title">&nbsp;오늘의 신간 도서 TOP 5&nbsp;</div>
 					<div class="divider"></div>
 				</div>
 				<ul>
 					<c:forEach begin="0" end="4">
-						<li><a href="#"><img
-								src='https://misc.ridibooks.com/cover/593000426/xxlarge' /></a>
-							<p>
-								<span class="book_title">나미야 잡화점의 기적</span><br> <span
-									class="book_price">33000원</span>
-							</p></li>
+						<li>
+							<div class="bookList">
+								<a href="#"> <img class="book_img"
+									src='http://bookthumb.phinf.naver.net/cover/126/697/12669774.jpg?type=m1&udate=20171103 ' /></a>
+								<div class="middle">
+									<div class="text">
+										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+									</div>
+								</div>
+							</div>
+
+						</li>
 					</c:forEach>
 				</ul>
+				<img class="shelf_img" alt="" src="img/shelf6.png" width="850px"
+					height="70px">
 			</div>
 
 
 			<div class="section">
 				<div class="strapline">
-					<div class="title">오늘의 입찰 도서 TOP 5</div>
+					<div class="title">&nbsp;오늘의 입찰 도서 TOP 5&nbsp;</div>
 					<div class="divider"></div>
 				</div>
 				<ul>
 					<c:forEach begin="0" end="4">
-						<li><a href="#"><img
-								src='https://misc.ridibooks.com/cover/593000426/xxlarge' /></a>
-							<p>
-								<span class="book_title">나미야 잡화점의 기적</span><br> <span
-									class="book_price">33000원</span>
-							</p></li>
+						<li>
+							<div class="bookList">
+								<a href="#"> <img class="book_img"
+									src='http://bookthumb.phinf.naver.net/cover/109/455/10945513.jpg?type=m1&udate=20170415' /></a>
+								<div class="middle">
+									<div class="text">
+										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+									</div>
+								</div>
+							</div>
+
+						</li>
 					</c:forEach>
 				</ul>
+				<img class="shelf_img" alt="" src="img/shelf6.png" width="850px"
+					height="70px">
 			</div>
 
 
- 
+
 
 			<div class="section">
 				<div class="strapline">
-					<div class="title">마감임박 도서 TOP 5</div>
+					<div class="title">&nbsp;마감임박 도서 TOP 5&nbsp;</div>
 					<div class="divider"></div>
 				</div>
 				<ul>
 					<c:forEach begin="0" end="4">
-						<li><a href="#"><img
-								src='https://misc.ridibooks.com/cover/593000426/xxlarge' /></a>
-							<p>
-								<span class="book_title">나미야 잡화점의 기적</span><br> <span
-									class="book_price">33000원</span>
-							</p></li>
+						<li>
+							<div class="bookList">
+								<a href="#"> <img class="book_img"
+									src='https://misc.ridibooks.com/cover/593000426/xxlarge' /></a>
+								<div class="middle">
+									<div class="text">
+										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+									</div>
+								</div>
+							</div>
+
+						</li>
 					</c:forEach>
 				</ul>
+				<img class="shelf_img" alt="" src="img/shelf6.png" width="850px"
+					height="70px">
 			</div>
-
 
 		</div>
 
-		<div id="sideBar" class="col-md-2">
-		
-		
-	    </div>
-           <jsp:include page="member/cart.jsp"/>
+		<div id="sideBar" class="col-md-2"></div>
+		<jsp:include page="member/cart.jsp" />
 		<div class="footer">
 			<jsp:include page="footer.jsp" />
 		</div>
