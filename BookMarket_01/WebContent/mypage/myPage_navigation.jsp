@@ -5,18 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="js/bootstrap-table.min.js"></script>
+<link href="css/bootstrap-table.min.css" rel="stylesheet">
 <script src="js/mypage.js"></script>
 </head>
 <body>
 	<div class="col-md-2">
 		<div class="list-group">
 			<a id="anchor-mypage" href="bookmarket?command=mypage"><h2>마이페이지</h2></a>
-<!-- 			<li class="list-group-item"><a id="anchor-updateMyInfo">회원정보수정</a></li>  -->
-<!-- 			<li class="list-group-item"><a id="anchor-viewMySellList">판매내역조회</a></li>     -->
-<!-- 			<li class="list-group-item"><a id="anchor-viewMyPurchaseList">구매내역조회</a></li>     -->
-<!-- 			<li class="list-group-item"><a id="anchor-viewMyKeepBookList">찜내역조회</a></li>          -->
-<!-- 			<li class="list-group-item"><a id="anchor-viewMyBookMoney">북머니조회</a></li>          -->
-<!-- 			<li class="list-group-item"><a id="anchor-dropMembership">회원탈퇴</a></li>           -->
 			<li class="list-group-item"><a href="bookmarket?command=myInfo_update_form">회원정보수정</a></li> 
 			<li class="list-group-item"><a href="bookmarket?command=mySell_list_form">판매내역조회</a></li>    
 			<li class="list-group-item"><a href="bookmarket?command=myPurchase_list">구매내역조회</a></li>    

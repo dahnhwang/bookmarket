@@ -32,6 +32,7 @@
 									mySellBook_listUpload(data);
 								}
 								else{
+									$('#table-mySellBookList tbody').empty();
 									$('<td>').attr('colspan',9).text('등록하신 상품이 없습니다.').appendTo('#table-mySellBookList tbody');
 								}
 							},

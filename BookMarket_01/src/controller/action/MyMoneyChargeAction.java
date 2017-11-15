@@ -30,7 +30,7 @@ public class MyMoneyChargeAction implements Action {
 	    int charging = Integer.parseInt(request.getParameter("charge"));
 	    System.out.println("MyMoneyChargeAction/charging: "+charging);
 	    
-	    
+	    // bookmoney update
 	    BookMoney bm = new BookMoney();
 	    bm.setMem_id(loginUser.getMem_id());
 	    bm.setBookMoney(loginUser.getMoney()+charging);
@@ -40,6 +40,8 @@ public class MyMoneyChargeAction implements Action {
 		
 		System.out.println("MyMoneyChargeAction/result: "+result);
 		if(result >0) {
+			// success
+			// member update
 			loginUser.setMoney(bm.getBookMoney());   
 			mDao.updateMember(loginUser);
 			PrintWriter pw = response.getWriter();
