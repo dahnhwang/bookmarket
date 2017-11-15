@@ -5,10 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import dto.Book;
 import dto.Member;
 
 public class MemberDao implements IMemberDao {
@@ -68,11 +65,6 @@ public class MemberDao implements IMemberDao {
 			}
 		}
 		return result;
-	}
-
-	private Connection getConnection() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

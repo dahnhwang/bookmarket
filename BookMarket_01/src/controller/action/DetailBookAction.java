@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BookDao;
+import dao.MemberDao;
 import dto.Book;
+import dto.Member;
 import util.GenreParser;
 
 public class DetailBookAction implements Action {
@@ -20,6 +22,10 @@ public class DetailBookAction implements Action {
 		BookDao dao = BookDao.getInstance();
 		Book book = dao.getBook(book_id);
 		request.setAttribute("book", book);
+		
+		MemberDao mDao = MemberDao.getInstance();
+		Member member =  mDao.getMember(dao.getBook(book_id).getSeller());
+		request.setAttribute("member", member);
 
 		GenreParser parser = new GenreParser();
 		String genre = parser.getGenreStr(book.getGenre());

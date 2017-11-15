@@ -7,9 +7,27 @@
 <title>Insert Book Button</title>
 <script>
 	$(document).ready(function() {
-
+		var book_id = '${book.book_id}';
+		var seller_email = '${member.email}';
+		
+		$('#buy_btn').on('click', function() {
+			//판매자와 구매자가 같은 사람인지 판별하기 
+			var params ="command=payment_check_pass&seller_email="+seller_email;
+		$.ajax({
+			url : 'bookmarket',
+			type : 'get',
+			data : params,
+			success : function(data) {
+				if (data == 0) {
+					alert('본인이 판매하는 상품은 구매할 수 없습니다!');
+				} else if (data == 1) {
+				window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
+				}
+			}
+		});
+		});
+		
 		$('#cart_btn').on('click', function() {
-			var book_id = '${book.book_id}';
 			var params = "command=cart_add&book_id=" + book_id;
 			$.ajax({
 				url : 'bookmarket',
@@ -23,8 +41,6 @@
 		})
 
 		$('#keep_btn').on('click', function() {
-
-			var book_id = '${book.book_id}';
 			var params = "command=keepBook_add&book_id=" + book_id;
 			$.ajax({
 				url : 'bookmarket',
@@ -36,11 +52,6 @@
 			});
 
 		})
-
-		$('#btn_cart').on('click', function() {
-
-		});
-
 	});
 </script>
 <style>
@@ -64,7 +75,7 @@
 	<section class="condition_info_wrapper row placeholders">
 	<div class="button_div button_large">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half" id="btn_buy">구매하기</button>
+			class="btn btn-primary btn-lg btn-block btn-half" id="buy_btn">구매하기</button>
 	</div>
 	<div class="button_div">
 		<button type="button"

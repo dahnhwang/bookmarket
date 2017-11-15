@@ -12,20 +12,50 @@
 		var priceStr = "";
 		var due_date = "";
 		var retail_price = "";
+		var isSoldStr = "";
 		if ('${book.price_type}' == 0) {
 			typeStr = "지정가격";
-			priceStr = "${book.price}원";
-			retail_price = "${book.retail_price}원";
+			priceStr = "${book.price}";
+			retail_price = "${book.retail_price}";
 		} else if ('${book.price_type}' == 1) {
 			typeStr = "경매가격";
-			priceStr = "${book.price}원";
+			priceStr = "${book.price}";
 			due_date = "${book.due_date}";
 		}
-		$('span.price_type').html("<b>" + typeStr + "</b>으로 판매하는 상품입니다.");
-		$('p.price_info').html(priceStr + due_date + '리테일가:' + retail_price);
+		if ('${book.isSold}' == 0){
+			isSoldStr = "판매 중인";
+		} else {
+			isSoldStr = "판매 완료된"
+		}
+		$('span.price_type').html("<b>" + typeStr + "</b>으로 <b>"+isSoldStr+ "</b> 상품입니다.");
+		$('p.price_info').html('<font style="text-decoration:line-through; color:gray">도서 정가 : ￦' + retail_price +"</font><p>"+ priceStr + due_date );
 	});
 </script>
 <style>
+.form-control {
+	width: 400px;
+	display: inline;
+}
+
+.form-group {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.success-box {
+	margin: 20px 0;
+	padding: 10px 10px;
+	border: 1px solid #eee;
+	background: #f9f9f9;
+	width: 500px;
+	text-align: center;
+}
+
+.success-box>div {
+	vertical-align: top;
+	display: inline-block;
+	color: #888;
+}
 </style>
 </head>
 <body>
@@ -34,7 +64,17 @@
 		<span class="price_type">${book.price_type }</span>
 	</button>
 	<div class="panel">
-		<p class="price_info"></p>
+		<center>
+			<div class='success-box'>
+				<div class='clearfix'></div>
+				<form>
+					<div class="form-group" id="price_input">
+						<p class="price_info"></p>
+					</div>
+				</form>
+			</div>
+			<div class='clearfix'></div>
+		</center>
 	</div>
 	</section>
 </body>
