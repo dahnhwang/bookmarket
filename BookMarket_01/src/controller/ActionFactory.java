@@ -46,7 +46,6 @@ import controller.action.MySellListFormAction;
 import controller.action.NavigationAction;
 import controller.action.PaymentAction;
 import controller.action.PaymentCheckPassAction;
-import controller.action.PaymentCompleteAction;
 import controller.action.PaymentSuccessAction;
 import controller.action.SearchAction;
 import controller.action.bookListPageNationAction;
@@ -164,9 +163,7 @@ public class ActionFactory {
 			action = new BiddingChoiceAction();
 		} else if (command.equals("payment_success")) {
 			action = new PaymentSuccessAction();
-		} else if (command.equals("payment_complete")) {
-			action = new PaymentCompleteAction();
-		}else if (command.equals("booklist_pagenation")) {
+		} else if (command.equals("booklist_pagenation")) {
 			action = new bookListPageNationAction();
 		}
 

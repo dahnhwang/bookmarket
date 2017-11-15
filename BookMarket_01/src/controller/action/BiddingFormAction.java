@@ -12,6 +12,7 @@ import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class BiddingFormAction implements Action {
 
@@ -35,6 +36,11 @@ public class BiddingFormAction implements Action {
 			MemberDao mDao = MemberDao.getInstance();
 			Member seller = mDao.getMember(book.getSeller());
 			Member participant = mDao.getMember(member.getMem_id());
+			
+			GenreParser parser = new GenreParser();
+			String genre = parser.getGenreStr(book.getGenre());
+			System.out.println(genre);
+			request.setAttribute("genre", genre);
 
 			request.setAttribute("book", book);
 			request.setAttribute("participant", participant);
