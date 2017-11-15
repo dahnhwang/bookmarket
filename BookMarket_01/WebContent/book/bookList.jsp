@@ -59,6 +59,10 @@
 	margin-right: 20px;
 }
 
+#listTableDiv{
+ margin-top : 30px;
+}
+
 #listTable th {
 	text-align: center;
 	vertical-align: middle;
@@ -74,16 +78,14 @@
 	border-radius: 5px;
 }
 
-.paginationDiv{ 
-width:95% ;
-text-align : right;
-
+.paginationDiv {
+	width: 95%;
+	text-align: right;
 }
 
-.pagination{
-border : 1px solid black;
+.pagination {
+	border: 1px solid #92a8d1;
 }
-
 </style>
 
 <script>
@@ -174,10 +176,9 @@ border : 1px solid black;
 	$(document).ready(function() {
 
 
-
+		$('.paginationDiv').css('visibility','visible');
 		var current_page_genre = 0;
-
-		var params = "searchSel=all&command=book_search";
+		var params = "command=booklist_pagenation&page_num=" + 1;
 		$.ajax({
 			url : 'bookmarket',
 			type : 'get',
@@ -185,13 +186,12 @@ border : 1px solid black;
 			dataType : 'json',
 			success : function(data) {
 				if (data) {
-					current_page_genre = 0;
 					$('#listTable tbody').empty();
 					listUpload(data);
-
 				}
+
 			}
-		});
+		})
 
 		$('#searchForm').submit(function() {
 			return false;
@@ -199,6 +199,7 @@ border : 1px solid black;
 
 		$('#optionSel').on('change', function() {
 			var params = "option=" + this.value + "&command=book_option&genre=" + current_page_genre;
+			$('.paginationDiv').css('visibility','hidden');
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
@@ -217,7 +218,7 @@ border : 1px solid black;
 		});
 
 		$('#searchBtn').on('click', function() {
-
+			$('.paginationDiv').css('visibility','hidden');
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
@@ -239,9 +240,11 @@ border : 1px solid black;
 
 
 		$(document).on('click', '.book_navigation_a', function() {
+			$('.paginationDiv').css('visibility','hidden');
 			var genre_id = $(this).attr('data-id');
 			var params = "option=only_genre&command=book_option&sel=1&genre=" + genre_id;
 			current_page_genre = genre_id;
+			console.log(current_page_genre);
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
@@ -260,6 +263,7 @@ border : 1px solid black;
 
 
 		$(document).on('click', '.cart_btn', function() {
+			
 			var book_id = $(this).attr('data-id');
 			var params = "command=cart_add&book_id=" + book_id;
 			$.ajax({
@@ -314,29 +318,28 @@ border : 1px solid black;
 		});
 
 
-		
-		
+
+
 
 		$(document).on('click', '.page_num', function() {
 
 			var page_num = $(this).attr('data-id');
-			alert(page_num);
-			/* $(this).closest('tr').remove();
+			var params = "command=booklist_pagenation&page_num=" + page_num;
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
 				data : params,
+				dataType : 'json',
 				success : function(data) {
-			
-					
-				}*/
-			
-			
+					if (data) {
+						$('#listTable tbody').empty();
+						listUpload(data);
+					}
 
-		})
-		
-		
-		
+				}
+			})
+
+		});
 
 	});
 </script>
@@ -380,11 +383,10 @@ border : 1px solid black;
 
 					</div>
 				</div>
+				<div id="listTableDiv">
 				<table id="listTable" style="text-align: center" class="display"
 					cellspacing="0" width="100%" data-toggle="table"
-					data-show-refresh="true" data-show-toggle="true"
-					data-show-columns="true" data-search="true"
-					data-select-item-name="toolbar1" data-pagination="true">
+					 data-select-item-name="toolbar1" data-pagination="true">
 					<thead>
 						<tr>
 							<th>이미지</th>
@@ -403,14 +405,15 @@ border : 1px solid black;
 
 					</tbody>
 				</table>
+				</div>
 			</div>
 
 			<div class="paginationDiv">
 
 				<ul class="pagination">
-					<li><a href="#" data-id="1" class="page_num">1</a></li>
-					<li><a href="#" data-id="2" class="page_num">2</a></li>
-					<li><a href="#" data-id="3" class="page_num">3</a></li>
+				<c:forEach begin="1" end="${page_num }" varStatus="status">
+					<li><a href="#" data-id="${status.count }" class="page_num">${status.count }</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

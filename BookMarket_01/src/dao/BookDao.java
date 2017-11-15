@@ -232,13 +232,14 @@ public class BookDao implements IBookDao {
 	public List<Book> selectBookByGenre(int genre) {
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
-		String sql = "SELECT * FROM book where genre= ? order by submit_date";
+		String sql = "SELECT * FROM book where genre= ? order by submit_date ";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, genre);
+
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
@@ -260,7 +261,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-				book.setRetail_price(rs.getInt("retail_price"));
+
 				bookList.add(book);
 
 			}
@@ -650,5 +651,90 @@ public class BookDao implements IBookDao {
 		}
 		return result;
 	}
+
+	@Override
+	public int countAllbook() {
+		// TODO Auto-generated method stub
+
+		int countAll = 0;
+		String sql = "SELECT count(*) as count from book";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+
+				countAll = rs.getInt("count");
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return countAll;
+	}
+
+	public List<Book> selectbookByPagenation(int num) {
+		// TODO Auto-generated method stub
+
+		List<Book> bookList = new ArrayList<Book>();
+		Book book = null;
+
+		String sql = "SELECT * from book limit ? , 3";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				book = new Book();
+				book.setBook_id(rs.getInt("book_id"));
+				book.setIsbn(rs.getString("isbn"));
+				book.setAuthor(rs.getString("author"));
+				book.setTitle(rs.getString("title"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublished_date(rs.getString("published_date"));
+				book.setDescription(rs.getString("description"));
+				book.setGenre(rs.getInt("genre"));
+				book.setBook_condition(rs.getInt("book_condition"));
+				book.setIsSold(rs.getInt("isSold"));
+				book.setPrice(rs.getInt("price"));
+				book.setSeller(rs.getInt("seller_id"));
+				book.setImage(rs.getString("image"));
+				book.setSubmit_date(rs.getDate("submit_date"));
+				book.setPrice_type(rs.getInt("price_type"));
+				book.setComment(rs.getString("comment"));
+				book.setDue_date(rs.getDate("due_date"));
+				bookList.add(book);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;
+	}
+
+	
 
 }

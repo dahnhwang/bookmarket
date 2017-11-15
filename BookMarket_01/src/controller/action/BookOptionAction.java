@@ -32,7 +32,7 @@ public class BookOptionAction implements Action {
 		Member member = null;
 		
 		
-		
+		//처음으로 북navigation을 누르는 거라 page 0 
 		if(option.equals("only_genre")) { 
 			bookList = bdo.selectBookByGenre(genre);
 		}
