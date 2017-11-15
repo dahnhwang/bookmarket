@@ -125,7 +125,7 @@
 				price_type = '지정';
 			} else if (item.price_type === 1) {
 				price_type = '경매';
-			}
+			} 
 
 			var titleTag = $('<a>').attr('href',
 				'bookmarket?command=detail_book&book_id=' + book_id)
