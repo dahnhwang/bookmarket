@@ -32,12 +32,10 @@
 
 #wrap {
 	width: 100%;
-	
 }
 
 #contents {
-  height : 1400px;
-
+	height: 1400px;
 }
 
 #searchBar {
@@ -75,6 +73,17 @@
 	border: 1px solid #968d8d;
 	border-radius: 5px;
 }
+
+.paginationDiv{ 
+width:95% ;
+text-align : right;
+
+}
+
+.pagination{
+border : 1px solid black;
+}
+
 </style>
 
 <script>
@@ -94,26 +103,18 @@
 			var seller = memberList[index].email;
 			var submit_date = item.submit_date;
 			var price = item.price;
-            var isSold = item.isSold;
-            
+			var isSold = item.isSold;
+
 			var condition = '';
 			if (item.book_condition === 5) {
 				condition = "A";
-			}
-
-			else if (item.book_condition === 4) {
+			} else if (item.book_condition === 4) {
 				condition = "B";
-			}
-
-			else if (item.book_condition === 3) {
+			} else if (item.book_condition === 3) {
 				condition = "C";
-			}
-
-			else if (item.book_condition === 2) {
+			} else if (item.book_condition === 2) {
 				condition = "D";
-			}
-
-			else if (item.book_condition === 1) {
+			} else if (item.book_condition === 1) {
 				condition = "D";
 			}
 
@@ -125,9 +126,9 @@
 			}
 
 			var titleTag = $('<a>').attr('href',
-					'bookmarket?command=detail_book&book_id=' + book_id)
-					.addClass("bookTitle").text(title);
-			var img = "<img src="+image+" width='80' height ='110' style ='border : 1px solid #cccccc'/>";
+				'bookmarket?command=detail_book&book_id=' + book_id)
+				.addClass("bookTitle").text(title);
+			var img = "<img src=" + image + " width='80' height ='110' style ='border : 1px solid #cccccc'/>";
 
 			$('<td>').html(img).appendTo(tr);
 			$('<td>').append(titleTag).appendTo(tr);
@@ -139,184 +140,205 @@
 			$('<td>').text(price + '원').appendTo(tr);
 			$('<td>').text(price_type).appendTo(tr);
 
-			var cartBtn = $('<input>').attr('type', 'button').attr('data-id',book_id)
-			.addClass('cart_btn').css({'margin' : '5px'
+			var cartBtn = $('<input>').attr('type', 'button').attr('data-id', book_id)
+				.addClass('cart_btn').css({
+				'margin' : '5px'
 			}).val('Cart');
 
 			var keepBtn = $('<input>').attr('type', 'button').attr('data-id',
-					book_id).addClass('keep_btn').css({
+				book_id).addClass('keep_btn').css({
 				'margin' : '5px'
 			}).val('Keep');
 
 			var purchaseBtn = $('<input>').attr('type', 'button').attr(
-					'data-id', book_id).attr("email",seller).addClass('purchase_btn').css('margin',
-					'5px').val('Purchase!');
-			
-			var soldOutBtn = $('<input>').attr('type', 'button')
-			.addClass('soldOut_btn').css('margin','5px').val('SoldOut!').attr("disabled", 'disabled');
-			
+				'data-id', book_id).attr("email", seller).addClass('purchase_btn').css('margin',
+				'5px').val('Purchase!');
 
-		
-			if(isSold===0) {
-			$('<td>').append(purchaseBtn).append(keepBtn).append(cartBtn)
-					.appendTo(tr);  }
-			
-		     
-			else if(isSold===1) {
-				$('<td>').append(soldOutBtn).appendTo(tr);  }
-		
-		
+			var soldOutBtn = $('<input>').attr('type', 'button')
+				.addClass('soldOut_btn').css('margin', '5px').val('SoldOut!').attr("disabled", 'disabled');
+
+
+
+			if (isSold === 0) {
+				$('<td>').append(purchaseBtn).append(keepBtn).append(cartBtn)
+					.appendTo(tr);
+			} else if (isSold === 1) {
+				$('<td>').append(soldOutBtn).appendTo(tr);
+			}
+
+
 
 		});
 	}
 
 	$(document).ready(function() {
-	
-		
 
-				var current_page_genre	= 0;
-				
-			   var params = "searchSel=all&command=book_search";
-				$.ajax({
-					url : 'bookmarket',
-					type : 'get',
-					data : params,
-					dataType : 'json',
-					success : function(data) {
-						if (data) {
-							current_page_genre	= 0;
-							$('#listTable tbody').empty();
-							listUpload(data);
 
-						}
+
+		var current_page_genre = 0;
+
+		var params = "searchSel=all&command=book_search";
+		$.ajax({
+			url : 'bookmarket',
+			type : 'get',
+			data : params,
+			dataType : 'json',
+			success : function(data) {
+				if (data) {
+					current_page_genre = 0;
+					$('#listTable tbody').empty();
+					listUpload(data);
+
+				}
+			}
+		});
+
+		$('#searchForm').submit(function() {
+			return false;
+		})
+
+		$('#optionSel').on('change', function() {
+			var params = "option=" + this.value + "&command=book_option&genre=" + current_page_genre;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				dataType : 'json',
+				success : function(data) {
+					if (data) {
+
+						$('#listTable tbody').empty();
+						listUpload(data);
+
 					}
-				});
-
-				$('#searchForm').submit(function() {
-					return false;
-				})
-
-				$('#optionSel').on('change',function() {
-							var params = "option=" + this.value+"&command=book_option&genre="+current_page_genre;
-							$.ajax({
-								url : 'bookmarket',
-								type : 'get',
-								data : params,
-								dataType : 'json',
-								success : function(data) {
-									if (data) {
-
-										$('#listTable tbody').empty();
-										listUpload(data);
-
-									}
-								}
-							});
-
-						});
-
-				$('#searchBtn').on('click', function() {
-
-					$.ajax({
-						url : 'bookmarket',
-						type : 'get',
-						data : $('#searchForm').serialize(),
-						dataType : 'json',
-						success : function(data) {
-							if (data) {
-
-								$('#listTable tbody').empty();
-								listUpload(data);
-
-							}
-						}
-					});
-
-				});
-
-				
-				
-				
-				$(document).on('click', '.book_navigation_a', function() {
-					var genre_id = $(this).attr('data-id');
-					var params = "option=only_genre&command=book_option&sel=1&genre="+genre_id;
-					  current_page_genre= genre_id;
-					$.ajax({
-						url : 'bookmarket',
-						type : 'get',
-						data : params,
-						dataType : 'json',
-						success : function(data) {
-							if (data) {
-		                  	$('#listTable tbody').empty();
-								listUpload(data);
-
-							}
-						}
-					});
-
-				});
-				
-				
-				$(document).on('click', '.cart_btn', function() {
-					var book_id = $(this).attr('data-id');
-					var params = "command=cart_add&book_id="+ book_id;
-					$.ajax({
-						url : 'bookmarket',
-						type : 'get',
-						data : params,
-						success : function(data) {
-							alert(data);
-						}
-					});
-
-				})
-
-				$(document).on('click', '.keep_btn', function() {
-
-					var book_id = $(this).attr('data-id');
-					var params = "command=keepBook_add&book_id=" + book_id;
-					$.ajax({
-						url : 'bookmarket',
-						type : 'get',
-						data : params,
-						success : function(data) {
-							alert(data);
-						}
-					});
-
-				})
-
-				
-				$(document).on('click', '.purchase_btn', function() {
-					var seller_email= $(this).attr('email');
-					var book_id = $(this).attr('data-id');
-					//판매자와 구매자가 같은 사람인지 판별하기 
-					var params ="command=payment_check_pass&seller_email="+seller_email;
-				$.ajax({
-					url : 'bookmarket',
-					type : 'get',
-					data : params,
-					success : function(data) {
-						
-						if (data == 0) {
-							alert('본인이 판매하는 상품은 구매할 수 없습니다!');
-						} else if (data == 1) {
-						
-						window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
-				
- 
-						}
-					}
-				})
-
+				}
 			});
-					
-					
 
-				}); 
+		});
+
+		$('#searchBtn').on('click', function() {
+
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : $('#searchForm').serialize(),
+				dataType : 'json',
+				success : function(data) {
+					if (data) {
+
+						$('#listTable tbody').empty();
+						listUpload(data);
+
+					}
+				}
+			});
+
+		});
+
+
+
+
+		$(document).on('click', '.book_navigation_a', function() {
+			var genre_id = $(this).attr('data-id');
+			var params = "option=only_genre&command=book_option&sel=1&genre=" + genre_id;
+			current_page_genre = genre_id;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				dataType : 'json',
+				success : function(data) {
+					if (data) {
+						$('#listTable tbody').empty();
+						listUpload(data);
+
+					}
+				}
+			});
+
+		});
+
+
+		$(document).on('click', '.cart_btn', function() {
+			var book_id = $(this).attr('data-id');
+			var params = "command=cart_add&book_id=" + book_id;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+					alert(data);
+				}
+			});
+
+		})
+
+		$(document).on('click', '.keep_btn', function() {
+
+			var book_id = $(this).attr('data-id');
+			var params = "command=keepBook_add&book_id=" + book_id;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+					alert(data);
+				}
+			});
+
+		})
+
+
+		$(document).on('click', '.purchase_btn', function() {
+			var seller_email = $(this).attr('email');
+			var book_id = $(this).attr('data-id');
+			//판매자와 구매자가 같은 사람인지 판별하기 
+			var params = "command=payment_check_pass&seller_email=" + seller_email;
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+
+					if (data == 0) {
+						alert('본인이 판매하는 상품은 구매할 수 없습니다!');
+					} else if (data == 1) {
+
+						window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
+
+
+					}
+				}
+			})
+
+		});
+
 
 		
+		
+
+		$(document).on('click', '.page_num', function() {
+
+			var page_num = $(this).attr('data-id');
+			alert(page_num);
+			/* $(this).closest('tr').remove();
+			$.ajax({
+				url : 'bookmarket',
+				type : 'get',
+				data : params,
+				success : function(data) {
+			
+					
+				}*/
+			
+			
+
+		})
+		
+		
+		
+
+	});
 </script>
 </head>
 <body>
@@ -329,8 +351,8 @@
 			<div id="bookList_naviation">
 				<jsp:include page="book_navigation.jsp" />
 			</div>
-			
-			
+
+
 			<div id="listWrap" class="col-md-10">
 				<div id="searchBar">
 					<div id="search">
@@ -358,7 +380,11 @@
 
 					</div>
 				</div>
-				<table id="listTable" style="text-align: center"  class="display" cellspacing="0" width="100%"  data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true">
+				<table id="listTable" style="text-align: center" class="display"
+					cellspacing="0" width="100%" data-toggle="table"
+					data-show-refresh="true" data-show-toggle="true"
+					data-show-columns="true" data-search="true"
+					data-select-item-name="toolbar1" data-pagination="true">
 					<thead>
 						<tr>
 							<th>이미지</th>
@@ -374,9 +400,18 @@
 						</tr>
 					</thead>
 					<tbody>
-					
+
 					</tbody>
 				</table>
+			</div>
+
+			<div class="paginationDiv">
+
+				<ul class="pagination">
+					<li><a href="#" data-id="1" class="page_num">1</a></li>
+					<li><a href="#" data-id="2" class="page_num">2</a></li>
+					<li><a href="#" data-id="3" class="page_num">3</a></li>
+				</ul>
 			</div>
 		</div>
 		<div id="footer">
