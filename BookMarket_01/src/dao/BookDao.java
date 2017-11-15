@@ -69,6 +69,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -261,7 +262,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -310,9 +311,9 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
-
+ 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -359,7 +360,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -408,7 +409,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -459,7 +460,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -517,7 +518,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -581,7 +582,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
-
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -717,6 +718,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
