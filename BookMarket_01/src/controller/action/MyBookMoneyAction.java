@@ -14,7 +14,11 @@ import com.google.gson.Gson;
 
 import dao.BookMoneyDao;
 import dao.IBookMoneyDao;
+import dao.IMemberDao;
+import dao.MemberDao;
+import dto.Book;
 import dto.BookMoney;
+import dto.KeepBook;
 import dto.Member;
 
 public class MyBookMoneyAction implements Action {
@@ -28,8 +32,10 @@ public class MyBookMoneyAction implements Action {
 		int mem_id = loginUser.getMem_id();
 		System.out.println("MyBookMoneyAction/mem_id: "+ mem_id);
 		
+		IMemberDao mDao = MemberDao.getInstance();
 		IBookMoneyDao bmDao = BookMoneyDao.getInstance();
 		
+		List<Member> memberList = new ArrayList<Member>();
 		List<BookMoney> bmList = new ArrayList<BookMoney>();
 		
 		bmList = bmDao.selectBookMoneyList(mem_id);   

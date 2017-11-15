@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="js/bootstrap-table.min.js"></script>
-<!-- <link href="css/agency.css" rel="stylesheet"> -->
-<link href="css/bootstrap-table.min.css" rel="stylesheet">
 <script src="js/mypage.js"></script>
 </head>
 <body>
