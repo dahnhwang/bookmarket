@@ -13,16 +13,21 @@
 						var typeStr = "";
 						var priceStr = "";
 						var due_date = "";
-						var retail_price = "";
+						var retail_price = "${book.retail_price}";
 						var isSoldStr = "";
+						var buttonStr = "";
 						if ('${book.price_type}' == 0) {
 							typeStr = "지정가격";
 							priceStr = "${book.price}";
-							retail_price = "${book.retail_price}";
+							buttonStr = "구매하기";
+							$('#buy_btn').text(buttonStr);
 						} else if ('${book.price_type}' == 1) {
 							typeStr = "경매가격";
 							priceStr = "${book.price}";
-							due_date = "${book.due_date}";
+							due_date = "(경매종료일자 : ${book.due_date} )";
+							buttonStr = "경매 참여하기";
+							$('#buy_btn').text(buttonStr);
+							$('#cart_btn').attr("disabled", true);
 						}
 						if ('${book.isSold}' == 0) {
 							isSoldStr = "판매 중인";
@@ -31,14 +36,13 @@
 						}
 						$('span.price_type').html(
 								"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
-										+ "</b> 상품입니다.");
+										+ "</b> 상품입니다. " + due_date);
 						$('p.price_info')
 								.html(
 										'<font style="text-decoration:line-through; color:gray">도서 정가 : ￦'
 												+ retail_price
 												+ "</font><p><font style='font-size:30px'><b>도서 판매가 : ￦"
-												+ priceStr + due_date
-												+ "</b></font>");
+												+ priceStr + "</b></font>");
 					});
 </script>
 <style>

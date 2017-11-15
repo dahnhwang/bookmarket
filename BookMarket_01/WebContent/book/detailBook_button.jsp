@@ -10,6 +10,8 @@
 		var book_id = '${book.book_id}';
 		var seller_email = '${member.email}';
 		
+	
+		
 		$('#buy_btn').on('click', function() {
 			//판매자와 구매자가 같은 사람인지 판별하기 
 			var params ="command=payment_check_pass&seller_email="+seller_email;
@@ -75,7 +77,7 @@
 	<section class="condition_info_wrapper row placeholders">
 	<div class="button_div button_large">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half" id="buy_btn">구매하기</button>
+			class="btn btn-primary btn-lg btn-block btn-half" id="buy_btn"></button>
 	</div>
 	<div class="button_div">
 		<button type="button"
