@@ -33,7 +33,10 @@
 						if ('${book.isSold}' == 0) {
 							isSoldStr = "판매 중인";
 						} else {
-							isSoldStr = "판매 완료된"
+							isSoldStr = "판매 완료된";
+							$('#buy_btn').attr("disabled", true);
+							$('#cart_btn').attr("disabled", true);
+							$('#keep_btn').attr("disabled", true);
 						}
 						$('span.price_type').html(
 								"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
