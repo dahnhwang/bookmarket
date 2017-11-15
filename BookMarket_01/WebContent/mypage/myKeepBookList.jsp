@@ -22,7 +22,6 @@
 				<script type="text/javascript">
 					$(document).ready(function() {
 						// 찜상품
-						
 						$.ajax({
 							url : 'bookmarket?command=myKeep_list',
 							type : 'get',
@@ -32,6 +31,9 @@
 								if (data) {
 									$('#table-myKeepBookList tbody').empty();
 									myKeepBook_listUpload(data);
+								}else{
+									$('#table-myKeepBookList tbody').empty();
+									$('<td>').attr('colspan',8).text('찜하신 상품이 없습니다.').appendTo('#table-myKeepBookList tbody');
 								}
 							},
 							error: function(xhr, status, error){
@@ -57,6 +59,7 @@
 									data-select-item-name="toolbar1" data-pagination="true">
 									<thead style="text-align:center">
 											<th>[#]</th>
+											<th>이미지</th>
 											<th>Title(ISBN)</th>
 											<th>판매자</th>
 											<th>가격</th>
@@ -65,6 +68,7 @@
 											<th>구매/삭제</th>
 									</thead>
 									<tbody style="text-align:center">
+										<tr></tr>
 									</tbody>
 								</table>
 							</div>

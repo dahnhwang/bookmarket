@@ -45,20 +45,25 @@ public class MyKeepBookListAction implements Action {
 		kbList = kbDao.selectKeepBookList(mem_id);
 		for (int i = 0; i < kbList.size(); i++) {
 			Book book = bDao.getBook(kbList.get(i).getBook_id());
-			Member seller = mDao.getMember(book.getSeller());
-			memberList.add(seller);
-			bookList.add(book);
+			if(book.getIsSold()==0) {
+				Member seller = mDao.getMember(book.getSeller());
+				memberList.add(seller);
+				bookList.add(book);
+			}
 		}
 		
-		Gson gson = new Gson();
-		String send_memberList = gson.toJson(memberList);
-		String send_bookList= gson.toJson(bookList);
-		String send_kbList = gson.toJson(kbList);
-		String send = "{\"bookList\":" + send_bookList + 
-				",\"memberList\":"+send_memberList+
-				",\"keepBookList\":"+send_kbList+"}";
-		System.out.println("MyKeepBookListAction/result: "+send);
 		PrintWriter pw = response.getWriter();
+		Gson gson = new Gson();
+		String send = null;
+		if(kbList.size()>0) {
+			String send_memberList = gson.toJson(memberList);
+			String send_bookList= gson.toJson(bookList);
+			String send_kbList = gson.toJson(kbList);
+			send = "{\"bookList\":" + send_bookList + 
+					",\"memberList\":"+send_memberList+
+					",\"keepBookList\":"+send_kbList+"}";
+		}
+		System.out.println("MyKeepBookListAction/result: "+send);
 		pw.println(send);
 		pw.flush();
 		return;

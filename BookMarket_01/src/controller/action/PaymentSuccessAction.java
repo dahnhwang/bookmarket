@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
 import dao.BookMoneyDao;
+import dao.KeepBookDao;
 import dao.MemberDao;
 import dao.SoldDao;
 import dto.Book;
@@ -29,9 +30,9 @@ public class PaymentSuccessAction implements Action {
 	    int book_id = Integer.parseInt(request.getParameter("book_id"));
 	    int book_price= Integer.parseInt(request.getParameter("book_price"));
 	    HttpSession session = request.getSession();
-	   BookMoney s_bm = new BookMoney();
-	   BookMoney b_bm = new BookMoney();
-   
+	    BookMoney s_bm = new BookMoney();
+	    BookMoney b_bm = new BookMoney();
+	    
 	    
 	    MemberDao mdo = MemberDao.getInstance();
 	    BookMoneyDao bmd = BookMoneyDao.getInstance();
@@ -62,6 +63,9 @@ public class PaymentSuccessAction implements Action {
 	    
 	    bmd.insertBookMoney(b_bm);
 	    
+	    // Member&LoginUser update
+	    session.setAttribute("loginUser", mdo.getMember(buyer_id));
+	    
 	    //soldDao 추가ㅇ
 	    
 	    SoldDao sdo = SoldDao.getInstance();
@@ -77,15 +81,20 @@ public class PaymentSuccessAction implements Action {
 	    BookDao bdo = BookDao.getInstance();
 	    bdo.updateSoldType(book_id);
 	    
+	    //isSold==1일때 --> 전체 KeepBook db에서 해당 book_id인 record 제거 
+	    if(bdo.getBook(book_id).getIsSold()==1) {
+	    	int result = KeepBookDao.getInstance().deleteKeepBook(book_id);
+	    	System.out.println("KeepBook: "+result+"개 제거 ");
+	    }
 	    
 	    if(session.getAttribute("cartList") != null) {
-	    List<Book> cartList = (List<Book>) session.getAttribute("cartList");
-	    for(int i=0 ; i< cartList.size(); i++) {
-	    	Book book = cartList.get(i);
-	    	if(book.getBook_id() ==book_id ) {
-	    		cartList.remove(i);
-	    	}
-	    }
+	    	List<Book> cartList = (List<Book>) session.getAttribute("cartList");
+		    for(int i=0 ; i< cartList.size(); i++) {
+		    	Book book = cartList.get(i);
+		    	if(book.getBook_id() ==book_id ) {
+		    		cartList.remove(i);
+		    	}
+		    }
 	    }
 	    
 	    request.getRequestDispatcher(url).forward(request, response);

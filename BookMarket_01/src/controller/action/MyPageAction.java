@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.MemberDao;
 import dto.Member;
 
 public class MyPageAction implements Action {
@@ -19,8 +20,9 @@ public class MyPageAction implements Action {
 		HttpSession session =request.getSession();
 		if(session.getAttribute("loginUser") != null) {
 			url = "/mypage/myPage.jsp";
-			Member mb = (Member) session.getAttribute("loginUser");
-			System.out.println("mypage/loginUser: "+mb);
+			Member loginUser = (Member) session.getAttribute("loginUser");
+			session.setAttribute("loginUser", MemberDao.getInstance().getMember(loginUser.getMem_id()));
+			System.out.println("mypage/loginUser: "+loginUser);
 		}
 		RequestDispatcher disp = request.getRequestDispatcher(url);
 		disp.forward(request, response);
