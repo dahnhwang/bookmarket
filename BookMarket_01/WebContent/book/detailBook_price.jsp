@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(document) 
+	$(document)
 			.ready(
 					function() {
 
@@ -19,29 +19,38 @@
 						if ('${book.price_type}' == 0) {
 							typeStr = "지정가격";
 							priceStr = "${book.price}";
+							$('p.price_info')
+									.html(
+											'<font style="text-decoration:line-through; color:gray">도서 정가 : ￦'
+													+ retail_price
+													+ "</font><p><font style='font-size:30px'><b>도서 판매가 : ￦"
+													+ priceStr + "</b></font>");
 						} else if ('${book.price_type}' == 1) {
 							typeStr = "경매가격";
 							priceStr = "${book.price}";
 							due_date = "(경매종료일자 : ${book.due_date} )";
 							$('#cart_btn').attr("disabled", true);
+							$('p.price_info')
+									.html(
+											'<font style="text-decoration:line-through; color:gray">도서 정가 : ￦'
+													+ retail_price
+													+ "</font><p><font style='font-size:30px'><b>경매 시작가 : ￦"
+													+ priceStr
+													+ "</b></font><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"bidding_price\" placeholder=\"희망하는 경매 입찰가를 제시해주세요.\"></div>");
 						}
 						if ('${book.isSold}' == 0) {
 							isSoldStr = "판매 중인";
 						} else {
 							isSoldStr = "판매 완료된";
 							$('#buy_btn').attr("disabled", true);
+							$('#auction_btn').attr("disabled", true);
 							$('#cart_btn').attr("disabled", true);
 							$('#keep_btn').attr("disabled", true);
 						}
 						$('span.price_type').html(
 								"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
 										+ "</b> 상품입니다. " + due_date);
-						$('p.price_info')
-								.html(
-										'<font style="text-decoration:line-through; color:gray">도서 정가 : ￦'
-												+ retail_price
-												+ "</font><p><font style='font-size:30px'><b>도서 판매가 : ￦"
-												+ priceStr + "</b></font>");
+
 					});
 </script>
 <style>

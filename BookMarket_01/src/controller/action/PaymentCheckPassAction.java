@@ -42,10 +42,11 @@ public class PaymentCheckPassAction implements Action {
 			}
 		}
 
-		else //비로그인 일때 
-		   {
-			result = 1;
+		else // 비로그인 일때
+		{
+			result = -1;
 			pw.println(result);
+			System.out.println("login yet"+result);
 			pw.flush();
 			return;
 

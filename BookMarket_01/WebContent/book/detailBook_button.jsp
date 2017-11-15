@@ -14,9 +14,11 @@
 						var seller_email = '${member.email}';
 
 						if ('${book.price_type}' == 0) {
-							$('#btn-change > button').attr("id", "buy_btn").text("구매하기");
+							$('#btn-change > button').attr("id", "buy_btn")
+									.text("구매하기");
 						} else if ('${book.price_type}' == 1) {
-							$('#btn-change > button').attr("id", "auction_btn").text("경매 참여하기");
+							$('#btn-change > button').attr("id", "auction_btn")
+									.text("경매 참여하기");
 						}
 
 						$('#buy_btn')
@@ -37,6 +39,33 @@
 															} else if (data == 1) {
 																window.location.href = 'bookmarket?command=payment&book_id='
 																		+ book_id;
+															} else if (data == -1) {
+																alert('로그인 후 구매하실 수 있습니다.')
+															}
+														}
+													});
+										});
+
+						$('#auction_btn')
+								.on(
+										'click',
+										function() {
+											//판매자와 구매자가 같은 사람인지 판별하기 
+											var params = "command=payment_check_pass&seller_email="
+													+ seller_email;
+											$
+													.ajax({
+														url : 'bookmarket',
+														type : 'get',
+														data : params,
+														success : function(data) {
+															if (data == 0) {
+																alert('본인이 판매하는 상품은 구매할 수 없습니다!');
+															} else if (data == 1) {
+																window.location.href = 'bookmarket?command=bidding_form&book_id='
+																		+ book_id;
+															} else if (data == -1) {
+																alert('로그인 후 경매에 참여하실 수 있습니다.')
 															}
 														}
 													});

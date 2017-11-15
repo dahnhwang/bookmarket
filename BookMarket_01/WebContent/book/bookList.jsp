@@ -311,6 +311,8 @@
 						window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
 
 
+					}else if (data == -1) {
+						alert('로그인 후 구매하실 수 있습니다.')
 					}
 				}
 			})
