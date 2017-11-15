@@ -118,6 +118,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
+				book.setRetail_price(rs.getInt("retail_price"));
 
 			}
 		} catch (Exception e) {
@@ -138,7 +139,7 @@ public class BookDao implements IBookDao {
 	// ddddff
 	@Override
 	public int insertBook(Book book) {
-		String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?)";
+		String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate(),?,?,?,?)";
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
@@ -160,6 +161,7 @@ public class BookDao implements IBookDao {
 			pstmt.setInt(14, book.getPrice_type());
 			pstmt.setString(15, book.getComment());
 			pstmt.setDate(16, new Date(book.getDue_date().getTime()));
+			pstmt.setInt(17, book.getRetail_price());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -258,6 +260,7 @@ public class BookDao implements IBookDao {
 				book.setPrice_type(rs.getInt("price_type"));
 				book.setComment(rs.getString("comment"));
 				book.setDue_date(rs.getDate("due_date"));
+				book.setRetail_price(rs.getInt("retail_price"));
 				bookList.add(book);
 
 			}
@@ -491,8 +494,7 @@ public class BookDao implements IBookDao {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, genre);
 			}
-			
-			
+
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
@@ -557,7 +559,6 @@ public class BookDao implements IBookDao {
 
 			}
 
-			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
@@ -584,7 +585,7 @@ public class BookDao implements IBookDao {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace(); 
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)

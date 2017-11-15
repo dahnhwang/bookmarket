@@ -21,6 +21,7 @@ public class Book {
 	private int price_type;
 	private String comment;
 	private Date due_date;
+	private int retail_price;
 
 	public int getBook_id() {
 		return book_id;
@@ -165,6 +166,14 @@ public class Book {
 				+ ", genre=" + genre + ", book_condition=" + book_condition + ", isSold=" + isSold + ", price=" + price
 				+ ", seller=" + seller + ", image=" + image + ", submit_date=" + submit_date + ", price_type="
 				+ price_type + ", comment=" + comment + ", due_date=" + due_date + "]";
+	}
+
+	public int getRetail_price() {
+		return retail_price;
+	}
+
+	public void setRetail_price(int retail_price) {
+		this.retail_price = retail_price;
 	}
 
 }

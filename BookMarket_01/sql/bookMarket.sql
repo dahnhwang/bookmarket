@@ -32,6 +32,7 @@ submit_date DATE,
 price_type INT default 0,
 comment VARCHAR(10000),
 due_date DATE,
+retail_price INT,
 PRIMARY KEY (book_id)
 );
 
@@ -117,5 +118,6 @@ INSERT INTO book VALUES(
 sysdate(),
 0,
 'not yet',
-null
+null,
+1000
 );

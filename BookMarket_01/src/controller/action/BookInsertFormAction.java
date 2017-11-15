@@ -34,6 +34,7 @@ public class BookInsertFormAction implements Action {
 		while (iter.hasNext()) {
 			Map<String, Object> map = (HashMap<String, Object>) iter.next();
 			String address = (String) map.get("link");
+			int retail_price = Integer.parseInt((String) map.get("price"));
 			WebPageParser pageParser = new WebPageParser();
 			int genre = pageParser.getBookGenre(address);
 			book = new Book();
@@ -47,8 +48,9 @@ public class BookInsertFormAction implements Action {
 			book.setBook_id(book_id);
 			book.setIsSold(0);
 			book.setGenre(genre);
+			book.setRetail_price(retail_price);
 		}
-		
+
 		System.out.println(book.toString());
 
 		GenreParser parser = new GenreParser();

@@ -21,7 +21,7 @@
 												$('#auction_price',
 														'#price_input')
 														.remove();
-												var output = "<label for=\"formGroupExampleInput\"><div id=\"stn_price\">원하는 판매가격을 입력해주세요</label><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"지정가격으로 판매 시, 정해진 가격으로만 상품거래가 가능합니다.\"></div>";
+												var output = "<label for=\"formGroupExampleInput\"><div id=\"stn_price\">원하는 판매가격을 입력해주세요</label><br><div style='color:DarkGray;'>- 도서정가 ${book.retail_price}원 -</div><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"지정가격으로 판매 시, 정해진 가격으로만 상품거래가 가능합니다.\"></div>";
 												$('#price_input').html(output);
 											} else if (priceType == 1) {
 												$('#stn_price', '#price_input')
@@ -112,11 +112,11 @@ div.panel {
 				<div class='clearfix'></div>
 				<form>
 					<div class="form-group" id="price_input"></div>
+				</form>
 			</div>
+			<div class='clearfix'></div>
+		</center>
 	</div>
-	</form>
-	<div class='clearfix'></div>
-	</center>
 	</section>
 </body>
 </html>

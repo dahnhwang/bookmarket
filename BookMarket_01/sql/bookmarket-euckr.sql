@@ -30,6 +30,7 @@ submit_date DATE,
 price_type INT default 0,
 comment VARCHAR(10000),
 due_date DATE,
+retail_price INT,
 PRIMARY KEY (book_id)
 );
 
@@ -121,7 +122,8 @@ INSERT INTO book VALUES(
 'http://bookthumb.phinf.naver.net/cover/112/111/11211133.jpg?type=m140&amp;udate=20170921',
 sysdate(),
 0,
-'not yet'
+'not yet',
+1000
 );
 # KeepBook DATA
 insert into keepBook values(0, 2, 2, '2017-11-12');
