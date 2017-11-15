@@ -6,30 +6,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		var typeStr = "";
-		var priceStr = "";
-		var due_date = "";
-		var retail_price = "";
-		var isSoldStr = "";
-		if ('${book.price_type}' == 0) {
-			typeStr = "지정가격";
-			priceStr = "${book.price}";
-			retail_price = "${book.retail_price}";
-		} else if ('${book.price_type}' == 1) {
-			typeStr = "경매가격";
-			priceStr = "${book.price}";
-			due_date = "${book.due_date}";
-		}
-		if ('${book.isSold}' == 0){
-			isSoldStr = "판매 중인";
-		} else {
-			isSoldStr = "판매 완료된"
-		}
-		$('span.price_type').html("<b>" + typeStr + "</b>으로 <b>"+isSoldStr+ "</b> 상품입니다.");
-		$('p.price_info').html('<font style="text-decoration:line-through; color:gray">도서 정가 : ￦' + retail_price +"</font><p>"+ priceStr + due_date );
-	});
+						var typeStr = "";
+						var priceStr = "";
+						var due_date = "";
+						var retail_price = "";
+						var isSoldStr = "";
+						if ('${book.price_type}' == 0) {
+							typeStr = "지정가격";
+							priceStr = "${book.price}";
+							retail_price = "${book.retail_price}";
+						} else if ('${book.price_type}' == 1) {
+							typeStr = "경매가격";
+							priceStr = "${book.price}";
+							due_date = "${book.due_date}";
+						}
+						if ('${book.isSold}' == 0) {
+							isSoldStr = "판매 중인";
+						} else {
+							isSoldStr = "판매 완료된"
+						}
+						$('span.price_type').html(
+								"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
+										+ "</b> 상품입니다.");
+						$('p.price_info')
+								.html(
+										'<font style="text-decoration:line-through; color:gray">도서 정가 : ￦'
+												+ retail_price
+												+ "</font><p><font style='font-size:30px'><b>도서 판매가 : ￦"
+												+ priceStr + due_date
+												+ "</b></font>");
+					});
 </script>
 <style>
 .form-control {
