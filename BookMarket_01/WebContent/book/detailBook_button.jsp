@@ -7,55 +7,71 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert Book Button</title>
 <script>
-	$(document).ready(function() {
-		var book_id = '${book.book_id}';
-		var seller_email = '${member.email}';
-		
-	
-		
-		$('#buy_btn').on('click', function() {
-			//판매자와 구매자가 같은 사람인지 판별하기 
-			var params ="command=payment_check_pass&seller_email="+seller_email;
-		$.ajax({
-			url : 'bookmarket',
-			type : 'get',
-			data : params,
-			success : function(data) {
-				if (data == 0) {
-					alert('본인이 판매하는 상품은 구매할 수 없습니다!');
-				} else if (data == 1) {
-				window.location.href = 'bookmarket?command=payment&book_id=' + book_id;
-				}
-			}
-		});
-		});
-		
-		$('#cart_btn').on('click', function() {
-			var params = "command=cart_add&book_id=" + book_id;
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : params,
-				success : function(data) {
-					alert(data);
-				}
-			});
+	$(document)
+			.ready(
+					function() {
+						var book_id = '${book.book_id}';
+						var seller_email = '${member.email}';
 
-		})
+						if ('${book.price_type}' == 0) {
+							$('#btn-change > button').attr("id", "buy_btn").text("구매하기");
+						} else if ('${book.price_type}' == 1) {
+							$('#btn-change > button').attr("id", "auction_btn").text("경매 참여하기");
+						}
 
-		$('#keep_btn').on('click', function() {
-			var params = "command=keepBook_add&book_id=" + book_id;
-			$.ajax({
-				url : 'bookmarket',
-				type : 'get',
-				data : params,
-				success : function(data) {
-					alert(data);
-				}
-			});
+						$('#buy_btn')
+								.on(
+										'click',
+										function() {
+											//판매자와 구매자가 같은 사람인지 판별하기 
+											var params = "command=payment_check_pass&seller_email="
+													+ seller_email;
+											$
+													.ajax({
+														url : 'bookmarket',
+														type : 'get',
+														data : params,
+														success : function(data) {
+															if (data == 0) {
+																alert('본인이 판매하는 상품은 구매할 수 없습니다!');
+															} else if (data == 1) {
+																window.location.href = 'bookmarket?command=payment&book_id='
+																		+ book_id;
+															}
+														}
+													});
+										});
 
-		})
-	});
+						$('#cart_btn').on('click', function() {
+							var params = "command=cart_add&book_id=" + book_id;
+							$.ajax({
+								url : 'bookmarket',
+								type : 'get',
+								data : params,
+								success : function(data) {
+									alert(data);
+								}
+							});
+
+						})
+
+						$('#keep_btn')
+								.on(
+										'click',
+										function() {
+											var params = "command=keepBook_add&book_id="
+													+ book_id;
+											$.ajax({
+												url : 'bookmarket',
+												type : 'get',
+												data : params,
+												success : function(data) {
+													alert(data);
+												}
+											});
+
+										})
+					});
 </script>
 <style>
 .condition_info_wrapper {
@@ -76,9 +92,9 @@
 </head>
 <body>
 	<section class="condition_info_wrapper row placeholders">
-	<div class="button_div button_large">
+	<div class="button_div button_large" id="btn-change">
 		<button type="button"
-			class="btn btn-primary btn-lg btn-block btn-half" id="buy_btn"></button>
+			class="btn btn-primary btn-lg btn-block btn-half"></button>
 	</div>
 	<div class="button_div">
 		<button type="button"

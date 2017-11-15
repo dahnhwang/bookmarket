@@ -16,18 +16,13 @@
 						var due_date = "";
 						var retail_price = "${book.retail_price}";
 						var isSoldStr = "";
-						var buttonStr = "";
 						if ('${book.price_type}' == 0) {
 							typeStr = "지정가격";
 							priceStr = "${book.price}";
-							buttonStr = "구매하기";
-							$('#buy_btn').text(buttonStr);
 						} else if ('${book.price_type}' == 1) {
 							typeStr = "경매가격";
 							priceStr = "${book.price}";
 							due_date = "(경매종료일자 : ${book.due_date} )";
-							buttonStr = "경매 참여하기";
-							$('#buy_btn').text(buttonStr);
 							$('#cart_btn').attr("disabled", true);
 						}
 						if ('${book.isSold}' == 0) {
