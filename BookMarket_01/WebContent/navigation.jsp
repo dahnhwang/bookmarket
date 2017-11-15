@@ -43,12 +43,22 @@ outline:none!important
 
 
 <script type="text/javascript">
+$(document).ready(function(){
+	$('#anchor-login-navi').on('click',function(){
+		$('#hidden-returnUrl').attr('value', getUri());
+	});
+	
+})
+function getUri(){
+	var currentUrl = document.location.href;
+	var currentUri = currentUrl.substring(36,currentUrl.length);
+// 	var currentUri;
+// 	alert(currentUri);
+	return currentUri;
+}
 function loginCheck(returnUri){
 	var loginUser = "${loginUser}";
 	$('#hidden-returnUrl').attr('value', returnUri);
-// 	alert(loginUser)
-// 	alert(returnUri)
-// 	alert(document.location.href);
 	if( loginUser == "" ){
 		alert('로그인을 해주세요')
 		

@@ -39,9 +39,10 @@
 				data : params,
 //				async: true,
 				success : function(data) {
-// 					alert(data);
+					alert(data);
 					
-					if(data == 1){
+					if(data > 0){
+						alert('성공')
 						location.href=returnUrl;
 					}
 					else if(data == -1){

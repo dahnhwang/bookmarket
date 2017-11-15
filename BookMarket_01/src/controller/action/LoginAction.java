@@ -20,6 +20,7 @@ public class LoginAction implements Action {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("password");
+//		System.out.println(email);
 		IMemberDao mDao = MemberDao.getInstance();
 		int mem_id = mDao.memberCheck(email, pwd);
 		Member member = null;
