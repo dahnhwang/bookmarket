@@ -49,6 +49,7 @@ import controller.action.PaymentCheckPassAction;
 import controller.action.PaymentCompleteAction;
 import controller.action.PaymentSuccessAction;
 import controller.action.SearchAction;
+import controller.action.bookListPageNationAction;
 
 public class ActionFactory {
 
@@ -165,6 +166,8 @@ public class ActionFactory {
 			action = new PaymentSuccessAction();
 		} else if (command.equals("payment_complete")) {
 			action = new PaymentCompleteAction();
+		}else if (command.equals("booklist_pagenation")) {
+			action = new bookListPageNationAction();
 		}
 
 		System.out.println("ActionFactory: " + command);
