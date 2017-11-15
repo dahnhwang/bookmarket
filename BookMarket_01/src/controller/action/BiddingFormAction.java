@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
+import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
@@ -27,18 +28,18 @@ public class BiddingFormAction implements Action {
 			url = "/payment/bidding.jsp";
 			int book_id = Integer.parseInt(request.getParameter("book_id"));
 			int bidding_price = Integer.parseInt(request.getParameter("bidding_price"));
-			BookDao bdo = BookDao.getInstance();
-			Book book = bdo.getBook(book_id);
 			
+			BookDao bDao = BookDao.getInstance();
+			Book book = bDao.getBook(book_id);
+			
+			MemberDao mDao = MemberDao.getInstance();
+			Member seller = mDao.getMember(book.getSeller());
+			Member participant = mDao.getMember(member.getMem_id());
 
-			MemberDao mdo = MemberDao.getInstance();
-
-			Member seller = mdo.getMember(book.getSeller());
-			Member bidder = mdo.getMember(member.getMem_id());
-
-			request.setAttribute("biddingBook", book);
-			request.setAttribute("bidder", bidder);
+			request.setAttribute("book", book);
+			request.setAttribute("participant", participant);
 			request.setAttribute("seller", seller);
+			request.setAttribute("bidding_price", bidding_price);
 
 		}
 

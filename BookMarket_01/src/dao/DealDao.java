@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,12 +14,26 @@ import dto.Deal;
 public class DealDao implements IDealDao {
 	private Connection conn;
 
-	private static Deal instance;
+	private static DealDao instance;
 
-	public static Deal getInstance() {
+	public static DealDao getInstance() {
 		if (instance == null)
-			instance = new Deal();
+			instance = new DealDao();
 		return instance;
+	}
+
+	private DealDao() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
@@ -127,6 +142,33 @@ public class DealDao implements IDealDao {
 		return null;
 		// TODO Auto-generated method stub
 
+	}
+
+	public int getNewDealId() {
+		int result = 0;
+		String sql = "SELECT MAX(deal_idx) FROM deal";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("MAX(deal_idx)") + 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 
 }

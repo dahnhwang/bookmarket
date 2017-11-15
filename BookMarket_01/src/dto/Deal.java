@@ -10,6 +10,7 @@ public class Deal {
 	private Date deal_date;
 	private int deal_price;
 	private int sold_state;
+	
 	public int getDeal_idx() {
 		return deal_idx;
 	}
