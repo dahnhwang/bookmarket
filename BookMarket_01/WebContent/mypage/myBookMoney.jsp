@@ -89,7 +89,7 @@
 										data : params,
 										async: true,
 										success: function(data){
-// 											alert(data)
+// 											alert(data);
 											if(data > 0){
 												alert('북머니 충전 성공! 충전 금액: '+charge+'원');
 												$('#charge-btn-close').click();
