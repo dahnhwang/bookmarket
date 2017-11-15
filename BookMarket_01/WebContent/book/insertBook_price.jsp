@@ -21,12 +21,12 @@
 												$('#auction_price',
 														'#price_input')
 														.remove();
-												var output = "<label for=\"formGroupExampleInput\"><div id=\"stn_price\">원하는 판매가격을 입력해주세요</label><br><div style='color:DarkGray;'>- 도서정가 ${book.retail_price}원 -</div><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"지정가격으로 판매 시, 정해진 가격으로만 상품거래가 가능합니다.\"></div>";
+												var output = "<label for=\"formGroupExampleInput\"><div id=\"stn_price\">원하는 판매가격을 입력해주세요</label><br><div style='color:DodgerBlue;'>- 도서정가 ${book.retail_price}원 -</div><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"지정가격으로 판매 시, 정해진 가격으로만 상품거래가 가능합니다.\"></div>";
 												$('#price_input').html(output);
 											} else if (priceType == 1) {
 												$('#stn_price', '#price_input')
 														.remove();
-												var output2 = "<label for=\"formGroupExampleInput\"><div id=\"auction_price\">원하는 경매최소가격(시작가)를 입력해주세요</label><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"경매가격으로 판매 시, 경매 중 상품정보수정이 불가합니다.\"></div>";
+												var output2 = "<label for=\"formGroupExampleInput\"><div id=\"auction_price\">원하는 경매최소가격(시작가)를 입력해주세요</label><br><div style='color:DodgerBlue;'>- 도서정가 ${book.retail_price}원 -</div><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\" name=\"price\" placeholder=\"경매가격으로 판매 시, 경매 중 상품정보수정이 불가합니다.\"></div>";
 												output2 += "<hr><div id=\"price_date\">경매 종료일자를 선택해주세요 (낙찰시 자동종료, 유찰시 종료일자 기준 종료)";
 												output2 += "<hr><i class=\"fa fa-calendar-check-o\" aria-hidden=\"true\"></i>&nbsp;<input type=\"date\" class=\"form-control\" name=\"due_date\"></div>";
 												$('#price_input').html(output2);
