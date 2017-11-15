@@ -56,9 +56,8 @@
 									data-show-columns="true" data-search="true"
 									data-select-item-name="toolbar1" data-pagination="true">
 									<thead style="text-align:center">
-											<th>#</th>
-											<th>[ISBN]</th>
-											<th>title</th>
+											<th>[#]</th>
+											<th>Title(ISBN)</th>
 											<th>판매자</th>
 											<th>가격</th>
 											<th>판매상태</th>

@@ -51,6 +51,7 @@ public class MyMoneyChargeAction implements Action {
 			pw.println(result);
 			pw.flush();
 		}
+		return;
 	}
 
 }

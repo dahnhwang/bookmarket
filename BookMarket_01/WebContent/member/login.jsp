@@ -39,7 +39,7 @@
 				data : params,
 //				async: true,
 				success : function(data) {
-					alert(data);
+// 					alert(data);
 					
 					if(data > 0){
 						alert('성공')

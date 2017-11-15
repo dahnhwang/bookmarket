@@ -82,14 +82,14 @@
 								if(checkChargeBookMoney()){
 									var charge = $('#charge').val();
 									var params = "command="+$('#frm-charge #hidden-command').val()+"&charge=" + charge;
-									alert(params)
+// 									alert(params)
 									$.ajax({
 										url : 'bookmarket',
 										type : 'post',
 										data : params,
 										async: true,
 										success: function(data){
-											alert(data)
+// 											alert(data)
 											if(data > 0){
 												alert('북머니 충전 성공! 충전 금액: '+charge+'원');
 												$('#charge-btn-close').click();
@@ -103,7 +103,10 @@
 										error: function(xhr, status, error){
 											alert('실패')
 										}
+									});
 								}
+							});
+						});
 					</script>
 					<div id="div-myBookMoneyTable" class="panel panel-default">
 						<!-- 북머니기록조회 -->
