@@ -10,7 +10,24 @@ public class Deal {
 	private Date deal_date;
 	private int deal_price;
 	private int sold_state;
+	private String participant_name;
+	private String deal_date_string;
 	
+	
+	
+	
+	public String getDeal_date_string() {
+		return deal_date_string;
+	}
+	public void setDeal_date_string(String deal_date_string) {
+		this.deal_date_string = deal_date_string;
+	}
+	public String getParticipant_name() {
+		return participant_name;
+	}
+	public void setParticipant_name(String participant_name) {
+		this.participant_name = participant_name;
+	}
 	public int getDeal_idx() {
 		return deal_idx;
 	}

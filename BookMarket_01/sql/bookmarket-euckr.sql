@@ -51,7 +51,7 @@ CREATE TABLE deal(
 deal_idx INT AUTO_INCREMENT, 
 book_id INT, 
 participant_id INT,
-deal_date DATE,
+deal_date DATETIME,
 deal_price INT,
 sold_state INT DEFAULT 0,
 PRIMARY KEY (deal_idx)

@@ -1,6 +1,7 @@
 package controller.action;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class BiddingAction implements Action {
 			deal.setBook_id(book_id);
 			deal.setParticipant_id(participant_id);
 			deal.setDeal_price(bidding_price);
+			deal.setDeal_date(new java.util.Date());
 			int result = dDao.insertDeal(deal);
 			request.setAttribute("result", result);
 			System.out.println("Result of BiddingAction: "+result);

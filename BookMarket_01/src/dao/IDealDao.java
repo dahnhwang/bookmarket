@@ -13,7 +13,7 @@ public interface IDealDao {
 	public int selectBiddingPricebyBookId(int book_id);
 	public int countDealbyBookId(int book_id);
 	//book_id를 주면 해당 도서상품에 해당되는 입찰제시가 몇건있는지 카운트해서 돌려준다.
-	
+	public int averagePricebyBookId(int book_id);
 	
 	
 }

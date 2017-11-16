@@ -2,8 +2,6 @@ package controller;
 
 import controller.action.Action;
 import controller.action.BiddingAction;
-import controller.action.BiddingChoiceAction;
-import controller.action.BiddingChoiceFormAction;
 import controller.action.BiddingFormAction;
 import controller.action.BookDeleteAction;
 import controller.action.BookInsertAction;
@@ -157,10 +155,6 @@ public class ActionFactory {
 			action = new BiddingFormAction();
 		} else if (command.equals("bidding")) {
 			action = new BiddingAction();
-		} else if (command.equals("bidding_choice_form")) {
-			action = new BiddingChoiceFormAction();
-		} else if (command.equals("bidding_choice")) {
-			action = new BiddingChoiceAction();
 		} else if (command.equals("payment_success")) {
 			action = new PaymentSuccessAction();
 		} else if (command.equals("booklist_pagenation")) {

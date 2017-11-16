@@ -32,7 +32,7 @@
 </script>
 <style>
 .condition_info_wrapper {
-	border-top: 1px solid #ddd;
+	/* border-top: 1px solid #ddd; */
 	margin-left: 40px;
 }
 

@@ -65,7 +65,7 @@ div.panel {
 }
 
 .condition_info_wrapper {
-	border-top: 1px solid #ddd;
+	/* border-top: 1px solid #ddd; */
 	border-bottom: 1px solid #ddd;
 	margin-left: 40px;
 }
@@ -120,7 +120,7 @@ div.panel {
 <body>
 	<section class="condition_info_wrapper row placeholders">
 	<button class="accordion ">
-		<b>판매자 ${book.seller }</b>님이 <b>${book.submit_date }</b>에 작성하신 <b>별점
+		<b>판매자 ${member.name }(${member.email })</b>님이 <b>${book.submit_date }</b>에 작성하신 <b>별점
 			및 도서상태</b> 정보입니다.
 	</button>
 	<div class="panel">

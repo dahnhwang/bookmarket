@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert Book Button</title>
+<title>Detail Book Button</title>
 <script>
 	$(document)
 			.ready(
@@ -17,38 +17,40 @@
 						var seller_email = '${member.email}';
 						var isSold = '${book.isSold}';
 						var price_type = '${book.price_type}';
-						if(isSold == 0){
+						if (isSold == 0) {
 							if (loginUser == seller) {
 								//글작성자가 페이지보고 있는 본인일 경우 수정, 삭제할 수 있는 버튼 보여주기
-								$('#btn-change > button').attr("id", "delete_btn")
-										.text("삭제하기");
+								$('#btn-change > button').attr("id",
+										"delete_btn").text("삭제하기");
 							} else {
 								//아닐 경우 일반 버튼 보여주기
 								if ('${book.price_type}' == 0) {
-									$('#btn-change > button').attr("id", "buy_btn")
-											.text("구매하기");
+									$('#btn-change > button').attr("id",
+											"buy_btn").text("구매하기");
 								} else if ('${book.price_type}' == 1) {
 									$('#btn-change > button').attr("id",
 											"auction_btn").text("경매 참여하기");
 								}
 							}
 
-						} else if(isSold == 1){
+						} else if (isSold == 1) {
 							//판매완료된 상품일 경우 
 							$('#btn-change > button').attr("id", "soldout_btn")
-							.text("Sold Out");
+									.text("Sold Out");
 						}
-						
-						$('#soldout_btn').on('click',function(){
+
+						$('#soldout_btn').on('click', function() {
 							alert('다음 기회에!');
 						});
-						
+
 						$('#delete_btn')
 								.on(
 										'click',
 										function() {
 											window.location.href = 'bookmarket?command=book_update_form&book_id='
-													+ book_id + '&price_type='+price_type;
+													+ book_id
+													+ '&price_type='
+													+ price_type;
 										});
 
 						$('#buy_btn')
@@ -90,9 +92,7 @@
 											}
 
 											//판매자와 구매자가 같은 사람인지 판별하기 
-											var bidding_price = $(
-													'input[name=bidding_price]',
-													'p.price_info').val();
+											var bidding_price = $('input[name=bidding_price]','#price_input').val();
 											var params = "command=payment_check_pass&seller_email="
 													+ seller_email;
 											$
@@ -148,7 +148,7 @@
 </script>
 <style>
 .condition_info_wrapper {
-	border-top: 1px solid #ddd;
+	/* border-top: 1px solid #ddd; */
 	margin-left: 40px;
 }
 

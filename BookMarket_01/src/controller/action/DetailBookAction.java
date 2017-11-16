@@ -39,6 +39,9 @@ public class DetailBookAction implements Action {
 			request.setAttribute("dealList", dealList);
 			int dealCount = dDao.countDealbyBookId(book_id);
 			request.setAttribute("dealCount", dealCount);
+			int avgPrice = dDao.averagePricebyBookId(book_id);
+			request.setAttribute("avgPrice", avgPrice);
+			
 		}
 
 		HttpSession session = request.getSession();
