@@ -155,7 +155,7 @@ public class SoldDao implements ISoldDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement(sql); 
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			pstmt.setInt(1, mem_id);
 			rs = pstmt.executeQuery();
