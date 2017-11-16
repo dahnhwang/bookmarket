@@ -147,5 +147,45 @@ public class SoldDao implements ISoldDao{
  
 		return list;
 	}
+	public List<Sold> selectSoldListByLoginUser(int mem_id){
+		String sql = "select * from sold where seller_id = ? " + 
+				"UNION " + 
+				"select * from sold where buyer_id = ?";
+		List<Sold> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_id);
+			pstmt.setInt(1, mem_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Sold sd = new Sold();
+				
+				sd.setOrder_id(rs.getInt("order_id"));
+				sd.setSeller_id(rs.getInt("seller_id"));
+				sd.setBook_id(rs.getInt("book_id"));
+				sd.setSold_date(rs.getDate("sold_date"));
+				sd.setSold_price(rs.getInt("sold_price"));
+				sd.setBuyer_id(rs.getInt("buyer_id"));
+				
+				list.add(sd);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
  
+		return list;
+	}
 }
