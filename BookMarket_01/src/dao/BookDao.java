@@ -207,7 +207,7 @@ public class BookDao implements IBookDao {
 	@Override
 	public int deleteBook(int book_id) {
 		PreparedStatement pstmt = null;
-		String sql = "delete book where book_id= ?";
+		String sql = "DELETE FROM book WHERE book_id= ?";
 
 		int result = 0;
 		try {

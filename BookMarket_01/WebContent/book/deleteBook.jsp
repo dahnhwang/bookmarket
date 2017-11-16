@@ -5,17 +5,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>도서 삭제하기</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
+<script>
+
+</script>
+<style>
+.contents {
+	position: absolute;
+	overflow: hidden;
+}
+</style>
 </head>
 <body>
-	<div id="wrap">
-		<div id="navigation">
+	<div class="wrap">
+		<div class="navigation">
 			<jsp:include page="../navigation.jsp" />
 		</div>
-		<div id="contents">
-			<div id="contents">콘텐츠영역</div>
+		<div class="container">
+			<div class="row">
+
+				<div class="side-menu">
+					<jsp:include page="book_navigation.jsp" />
+				</div>
+				<div class="col-md-9 contents">
+					<div class="book_basic_info">
+						<jsp:include page="detailBook_basic.jsp" />
+					</div>
+					<br>
+					<div class="book_condition_info">
+						<jsp:include page="detailBook_condition.jsp" />
+					</div>
+					<br>
+					<div class="book_price_info">
+						<jsp:include page="detailBook_price.jsp" />
+					</div>
+					<div class="book_button">
+						<jsp:include page="deleteBook_button.jsp" />
+					</div>
+				</div>
+
+			</div>
+
 		</div>
-		<div id="footer">
+
+
+		<div class="footer">
 			<jsp:include page="../footer.jsp" />
 		</div>
 	</div>

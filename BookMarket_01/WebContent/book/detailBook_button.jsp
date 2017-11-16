@@ -16,11 +16,12 @@
 						var book_id = '${book.book_id}';
 						var seller_email = '${member.email}';
 						var isSold = '${book.isSold}';
+						var price_type = '${book.price_type}';
 						if(isSold == 0){
 							if (loginUser == seller) {
 								//글작성자가 페이지보고 있는 본인일 경우 수정, 삭제할 수 있는 버튼 보여주기
-								$('#btn-change > button').attr("id", "update_btn")
-										.text("수정하기");
+								$('#btn-change > button').attr("id", "delete_btn")
+										.text("삭제하기");
 							} else {
 								//아닐 경우 일반 버튼 보여주기
 								if ('${book.price_type}' == 0) {
@@ -34,16 +35,20 @@
 
 						} else if(isSold == 1){
 							//판매완료된 상품일 경우 
-							$('#btn-change > button').attr("id", "update_btn")
+							$('#btn-change > button').attr("id", "soldout_btn")
 							.text("Sold Out");
 						}
 						
-						$('#update_btn')
+						$('#soldout_btn').on('click',function(){
+							alert('다음 기회에!');
+						});
+						
+						$('#delete_btn')
 								.on(
 										'click',
 										function() {
 											window.location.href = 'bookmarket?command=book_update_form&book_id='
-													+ book_id;
+													+ book_id + '&price_type='+price_type;
 										});
 
 						$('#buy_btn')

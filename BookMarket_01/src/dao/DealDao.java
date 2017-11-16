@@ -170,9 +170,7 @@ public class DealDao implements IDealDao {
 		}
 		return result;
 	}
-	
-	
-	
+
 	public int selectBiddingPricebyBookId(int book_id) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT deal_price FROM deal WHERE book_id=?";
@@ -198,6 +196,36 @@ public class DealDao implements IDealDao {
 				e.printStackTrace();
 			}
 		}
+		return result;
+	}
+
+	@Override
+	public int countDealbyBookId(int book_id) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = -1;
+		String sql = "SELECT COUNT(deal_idx) FROM deal WHERE book_id=?";
+		try {
+			pstmt.setInt(1, book_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("COUNT(deal_idx)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		return result;
 	}
 
