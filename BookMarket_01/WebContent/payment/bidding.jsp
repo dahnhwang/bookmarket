@@ -165,6 +165,10 @@
 .rating-stars ul>li.star.selected>i.fa {
 	color: #FF912C;
 }
+.book_img{
+width:135px;
+height:194px;
+}
 </style>
 </head>
 <body>
@@ -183,7 +187,7 @@
 			<div class="formDiv">
 
 				<div class="col-md-3 bookImg">
-					<img src=${book.image}>
+					<img class="book_img" src=${book.image}>
 				</div>
 				<div class="col-md-9 bookDesc">
 					<p>

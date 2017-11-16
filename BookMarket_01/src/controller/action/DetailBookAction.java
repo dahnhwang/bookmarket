@@ -1,6 +1,8 @@
 package controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
+import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
+import dto.Deal;
 import dto.Member;
 import util.GenreParser;
 
@@ -27,6 +31,15 @@ public class DetailBookAction implements Action {
 		MemberDao mDao = MemberDao.getInstance();
 		Member member = mDao.getMember(dao.getBook(book_id).getSeller());
 		request.setAttribute("member", member);
+
+		if (book.getPrice_type() == 1) {
+			// 경매상품인 경우에 deal 데이터 쏘아줌
+			DealDao dDao = DealDao.getInstance();
+			List<Deal> dealList = dDao.selectDealListbyBookId(book_id);
+			request.setAttribute("dealList", dealList);
+			int dealCount = dDao.countDealbyBookId(book_id);
+			request.setAttribute("dealCount", dealCount);
+		}
 
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {

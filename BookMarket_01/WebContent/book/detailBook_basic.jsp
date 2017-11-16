@@ -13,7 +13,7 @@
 	padding-bottom: 30px;
 }
 
-td {
+.contents_table th, .contents_table td {
 	padding: 5px;
 }
 .book_img{
@@ -28,7 +28,7 @@ height:194px;
 		<img class="book_img" src="${book.image}">
 	</div>
 	<div class="col-sm-9 placeholder">
-		<table>
+		<table class="contents_table">
 			<tr>
 				<td colspan="4"><h3>[${genre}] ${book.title }</h3></td>
 			</tr>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -20,6 +22,7 @@
 						var isSoldStr = "";
 						var user_id = "${user_id}";
 						var seller_id = "${book.seller}";
+						$('#auction_tab').hide();  
 						if ('${book.price_type}' == 0) {
 							typeStr = "지정가격";
 							priceStr = "${book.price}";
@@ -44,6 +47,7 @@
 													+ "</font><p><font style='font-size:30px'><b>경매 시작가 : ￦"
 													+ priceStr
 													+ "</b></font>"+formStr);
+							$('#auction_tab').show();  
 							$('input[name=bidding_price]','p.price_info').blur(function(){
 								var input_price = $('input[name=bidding_price]').val();
 								if(input_price < ${book.price}){
@@ -92,6 +96,18 @@
 	display: inline-block;
 	color: #888;
 }
+
+.auction_table {
+	width: 400px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+
+.auction_table th, .auction_table td {
+	text-align: center;
+	padding: 15px;
+	border-bottom: 0.5px solid #ccc;
+}
 </style>
 </head>
 <body>
@@ -106,6 +122,29 @@
 				<form>
 					<div class="form-group" id="price_input">
 						<p class="price_info"></p>
+
+
+						<div id="auction_tab">
+							<hr>
+							<h4>구매현황 (총 ${dealCount }건의 입찰진행 중)</h4>
+							<div class="auction_table">
+								<table class="auction_table">
+									<tr>
+										<th>구매희망가</th>
+										<th>입찰자</th>
+										<th>입찰일시</th>
+									</tr>
+									<c:forEach var="deal" items="${dealList }">
+										<tr>
+											<td>${deal.deal_price }원</td>
+											<td>${deal.participant_id }님</td>
+											<td><fmt:formatDate pattern="MM월 dd일 hh시 mm분"
+													value="${deal.deal_date}"></fmt:formatDate></td>
+										</tr>
+									</c:forEach>
+								</table>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

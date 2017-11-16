@@ -87,8 +87,8 @@
 }
 
 .bimg {
-	width: 107px;
-	height: 147px;
+	width: 135px;
+	height: 194px;
 	border: 1px solid #cccccc;
 }
 
@@ -109,24 +109,22 @@
 
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
-	
+
 		$('#purchase_btn').on('click', function() {
 			var buyer_money = $('.bookmoney').attr('money');
 			var book_price = $('.bprice').attr('money');
-         
-			
-           if (Number(buyer_money) < Number(book_price))  {
+
+			if (Number(buyer_money) < Number(book_price)) {
 				alert("적립금이 부족하여 구매할 수 없습니다!");
-			} 
-           
-           else {
-				
-				var params =  $('#paymentFrm').serialize();
-	        window.location.href = 'bookmarket?'+params;
 			}
-		}) 
+
+			else {
+
+				var params = $('#paymentFrm').serialize();
+				window.location.href = 'bookmarket?' + params;
+			}
+		})
 	});
 </script>
 
@@ -145,48 +143,49 @@
 			</div>
 
 			<div class="formDiv">
-				
-					<div class="col-md-3 bookImg">
-						<img class="bimg" src=${purchaseBook.image}>
-					</div>
-					<div class="col-md-9 bookDesc">
-						<p>
-							<span class="btitle">${purchaseBook.title}</span><br> <span
-								class="author_pub">${purchaseBook.author} /
-								${purchaseBook.publisher}</span><br> <br> <span
-								class="condition">책상태 : ${book_condition}</span><br> <span
-								class="seller_email">판매자 이메일 : ${seller.email} </span><br>
-							<span class="price"> 가격 : ${purchaseBook.price} 원</span><br>
 
-						</p>
-					</div>
+				<div class="col-md-3 bookImg">
+					<img class="bimg" src=${purchaseBook.image}>
+				</div>
+				<div class="col-md-9 bookDesc">
+					<p>
+						<span class="btitle">${purchaseBook.title}</span><br> <span
+							class="author_pub">${purchaseBook.author} /
+							${purchaseBook.publisher}</span><br> <br> <span
+							class="condition">책상태 : ${book_condition}</span><br> <span
+							class="seller_email">판매자 이메일 : ${seller.email} </span><br> <span
+							class="price"> 가격 : ${purchaseBook.price} 원</span><br>
 
-					<div class="col-md-12 buyerDescc">
-						<div class="divider"></div>
-						<p>
-							<span class="buyer_email">구매자 이메일 : ${buyer.email }</span><br>
-							<span class="bookmoney" money="${buyer.money }"> 보유 적립금 :
-								${buyer.money }원 </span><br>
-						</p>
-					</div>
+					</p>
+				</div>
 
-					<div class="col-md-12 purchaseDescc">
-						<div class="divider"></div>
-						<p>
-							<span class="price bprice" money="${purchaseBook.price}">도서
-								가격 : ${purchaseBook.price}원</span><br> <span class="date">
-								구매 날짜 : <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분"
-									value="${now}"></fmt:formatDate>
-							</span><br>
-						</p>
-					</div>
-					<form id="paymentFrm">
+				<div class="col-md-12 buyerDescc">
+					<div class="divider"></div>
+					<p>
+						<span class="buyer_email">구매자 이메일 : ${buyer.email }</span><br>
+						<span class="bookmoney" money="${buyer.money }"> 보유 적립금 :
+							${buyer.money }원 </span><br>
+					</p>
+				</div>
+
+				<div class="col-md-12 purchaseDescc">
+					<div class="divider"></div>
+					<p>
+						<span class="price bprice" money="${purchaseBook.price}">도서
+							가격 : ${purchaseBook.price}원</span><br> <span class="date">
+							구매 날짜 : <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분"
+								value="${now}"></fmt:formatDate>
+						</span><br>
+					</p>
+				</div>
+				<form id="paymentFrm">
 					<input name="seller_id" type="hidden" value="${seller.mem_id }">
 					<input name="buyer_id" type="hidden" value="${buyer.mem_id }">
-					<input name="book_id" type="hidden"value="${purchaseBook.book_id}">
-				    <input name="book_price" type="hidden" value="${purchaseBook.price}">
-				    <input name="command" type="hidden" value="payment_success">
-				    
+					<input name="book_id" type="hidden" value="${purchaseBook.book_id}">
+					<input name="book_price" type="hidden"
+						value="${purchaseBook.price}"> <input name="command"
+						type="hidden" value="payment_success">
+
 					<div class="col-md-12 purchaseBtn">
 						<div class="divider"></div>
 						<button type="button" class="btn btn-primary" id="purchase_btn">구매하기</button>
