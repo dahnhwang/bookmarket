@@ -245,8 +245,92 @@ $(document).ready(function() {
 			</div>
 
 		</div>
-
-		<div id="sideBar" class="col-md-2"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#sideBar').hide(); 
+		setInterval(function(){ 
+			if("${loginUser}" != ""){
+				$('#sideBar').show();
+				loadLog();
+			}
+			else{ 
+				$('#sideBar').hide();
+			}
+		}, 1000);
+		
+	})
+	function loadLog(){
+		$.ajax({
+	 		url : 'bookmarket?command=myLog_list',
+	 		type : 'get',
+	 		dataType: 'json',
+	 		success : function(data) {
+//		 			alert(data) 
+	 			if (data) {
+	 				$('#table-myTradeLog tbody').empty();
+	 				var bookList = data.bookList;
+	 				var logList = data.logList;
+					
+	 				for(var i=0; i<logList.length; i++){
+	 					var order_id = logList[i].order_id
+	 					var book_id = logList[i].book_id;
+	 					var seller_id = logList[i].seller_id;
+	 					var buyer_id = logList[i].buyer_id;
+	 					var sold_date = logList[i].sold_date;
+	 					var sold_price = logList[i].sold_price;
+	 					var title = bookList[i].title;
+//		 					alert(title);
+	 					var price_type = bookList[i].price_type;
+	 					var titleTag =$('<a>').attr(
+	 							  'href', 'bookmarket?command=detail_book&book_id='+book_id)
+	 							  .addClass("bookTitle").text(title);
+						
+						
+	 					var tr = $('<tr>').appendTo('#table-myTradeLog tbody');
+	 					$('<td>').text(order_id).appendTo(tr);
+	 					$('<td>').text(sold_date).appendTo(tr);
+	 					$('<td>').append(titleTag).appendTo(tr);
+	 					if(price_type == 0)
+	 						$('<td>').text('일반').appendTo(tr);
+	 					else if(price_type == 1)
+	 						$('<td>').text('경매').appendTo(tr);
+						
+	 					if(seller_id == '${loginUser.mem_id}'){
+	 						// 판매자일때 
+	 						$('<td>').text(sold_price).css('color', 'blue').appendTo(tr);
+	 					}
+	 					else if(buyer_id == '${loginUser.mem_id}'){
+	 						// 구매자일때 
+	 						$('<td>').text(sold_price).css('color', 'red').appendTo(tr);
+	 					}
+	 				}
+	 			}
+	 			else{
+	 				$('#table-myTradeLog tbody').empty();
+	 				$('<td>').attr('colspan',5).text('no records').appendTo('#table-myTradeLog tbody');
+	 			}
+	 		}, 
+	 		error: function(xhr, status, error){
+//		 			alert('error')
+	 		}
+	 	});
+	}
+</script>
+		<div id="sideBar" class="col-md-2">
+			<table id="table-myTradeLog" class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>DATE</th>
+						<th>TITLE</th>
+						<th>TYPE</th>
+						<th>PRICE</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
 		<jsp:include page="member/cart.jsp" />
 		<div class="footer">
 			<jsp:include page="footer.jsp" />
