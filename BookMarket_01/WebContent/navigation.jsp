@@ -57,12 +57,24 @@ $(document).ready(function(){
 		$('#hidden-returnUrl').attr('value', getUri());
 	});
 	
+	$('#anchor-logout-navi').on('click', function(){
+		$.ajax({
+			url : 'bookmarket?command=logout',
+			type : 'get',
+			dataType: 'text',
+			success : function(data) {
+				location.href="bookmarket?command=main";
+			},
+			error: function(xhr, status, error){
+				alert('error')
+			}
+		});
+	})
 	
 	
 	$('.main_search_button').on('click', function() {
 		alert('잠시 기능 중단 -구매하기에서 검색해주세요! ')
 	});
-	
 	
 	
 })
@@ -156,7 +168,7 @@ function loginCheck(returnUri){
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="bookmarket?command=logout">로그아웃</a></li>
+							<li><a id="anchor-logout-navi" href="">로그아웃</a></li>
 							<li><a href="bookmarket?command=mypage">마이페이지</a></li>
 						</c:otherwise>
 					</c:choose>
