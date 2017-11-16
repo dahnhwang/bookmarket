@@ -14,7 +14,6 @@ import controller.action.BookMoneyCheckAction;
 import controller.action.BookNavigationAction;
 import controller.action.BookOptionAction;
 import controller.action.BookSearchAction;
-import controller.action.BookUpdateAction;
 import controller.action.BookUpdateFormAction;
 import controller.action.CartAction;
 import controller.action.CartAddAction;
@@ -100,8 +99,6 @@ public class ActionFactory {
 			action = new BookOptionAction();
 		} else if (command.equals("book_update_form")) {
 			action = new BookUpdateFormAction();
-		} else if (command.equals("book_update")) {
-			action = new BookUpdateAction();
 		} else if (command.equals("book_insert_form")) {
 			action = new BookInsertFormAction(); // 2. 사용자 추가 입력하게 하고
 		} else if (command.equals("book_insert")) {
