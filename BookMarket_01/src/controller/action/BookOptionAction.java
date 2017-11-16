@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import dao.BookDao;
+import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
@@ -29,12 +30,14 @@ public class BookOptionAction implements Action {
 	 
 	     MemberDao mdo = MemberDao.getInstance();
 		 BookDao bdo = BookDao.getInstance();
-		
+	
+		 
+		 
 		List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
 		List<String> genreList  =new ArrayList<>();
-	
+		
 		
 		
 		//처음으로 북navigation을 누르는 거라 page 0 

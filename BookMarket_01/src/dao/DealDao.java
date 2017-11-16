@@ -100,7 +100,7 @@ public class DealDao implements IDealDao {
 		return list;
 	}
 
-	@Override // 상품번호로 얻어오는 거래 내역,날짜순으로
+	@Override // 상품번호로 얻어오는 거래 내역
 	public List<Deal> selectDealListbyBookId(int book_id) {
 		// TODO Auto-generated method stub
 		List<Deal> list = new ArrayList<Deal>();
@@ -157,6 +157,36 @@ public class DealDao implements IDealDao {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	
+	
+	public int selectBiddingPricebyBookId(int book_id) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT deal_price FROM deal WHERE book_id=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("deal_price");
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {

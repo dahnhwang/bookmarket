@@ -10,5 +10,6 @@ public interface IDealDao {
 	public List<Deal> selectDealListbyBookId(int book_id); //상품번호로 얻어오는 거래 내역,날짜순으로
 	public int[] getDealPriceFigure(int book_id); //상품번호에 대한 리스트 배열로 평균 값,최소, 최대 구하기
 	public int getNewDealId();
+	public int selectBiddingPricebyBookId(int book_id);
 	
 }

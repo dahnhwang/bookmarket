@@ -176,8 +176,7 @@
 					.appendTo(tr);
 					
 				} else if (item.price_type === 1) {
-					$('<td>').append(biddingBtn).append('<br>').append(keepBtn).append(cartBtn)
-					.appendTo(tr);
+					$('<td>').append(biddingBtn).append('<br>').append(keepBtn).appendTo(tr);
 				}
 				
 				
@@ -303,7 +302,13 @@
 				type : 'get',
 				data : params,
 				success : function(data) {
+					if(data == 0 ) {
+						loginCheck('bookmarket?command=book_list');
+					}
+					
+					else {
 					alert(data);
+					}
 				}
 			});
 
@@ -320,7 +325,7 @@
 				type : 'get',
 				data : params,
 				success : function(data) {
-
+                 
 					if (data == 0) {
 						alert('본인이 판매하는 상품은 구매할 수 없습니다!');
 					} else if (data == 1) {
@@ -329,7 +334,7 @@
 
 
 					}else if (data == -1) {
-						alert('로그인 후 구매하실 수 있습니다.')
+						loginCheck('bookmarket?command=book_list');
 					}
 				}
 			})
@@ -341,22 +346,24 @@
 			var seller_email = $(this).attr('email');
 			var book_id = $(this).attr('data-id');
 			//판매자와 구매자가 같은 사람인지 판별하기 
-			var params = "command=payment_check_pass&seller_email=" + seller_email;
+			var params = "command=payment_check_pass&seller_email=" + seller_email
+			+"&book_id="+book_id ;
 			$.ajax({
 				url : 'bookmarket',
 				type : 'get',
 				data : params,
-				success : function(data) {
-
+		     	success : function(data) {
+			
 					if (data == 0) {
 						alert('본인이 경매하는 상품은 참여할 수 없습니다 !');
-					} else if (data == 1) {
+					} 
+					else if (data == 1) {
 
-						window.location.href = 'bookmarket?command=bidding_form&book_id='+ book_id;
+						window.location.href = 'bookmarket?command=detail_book&book_id='+ book_id;
 
 
 					}else if (data == -1) {
-						alert('로그인 후 경매에 참여하실 수 있습니다.')
+						loginCheck('bookmarket?command=book_list');
 					}
 				}
 			})

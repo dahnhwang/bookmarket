@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import dao.BookDao;
+import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
@@ -30,10 +32,12 @@ public class BookSearchAction implements Action {
 		String searchInput = request.getParameter("searchInput");
 		MemberDao mdo = MemberDao.getInstance();
 		BookDao bdo = BookDao.getInstance();
-
-		List<Book> bookList = new ArrayList<Book>();
+    
+        List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
 		List<String> genreList  =new ArrayList<>();
+		
+		
 		
 		Member member = null;
 
@@ -60,7 +64,7 @@ public class BookSearchAction implements Action {
 
 		 GenreParser gp = new GenreParser();
          String get_genre ="";
-
+     
 		for (int i = 0; i < bookList.size(); i++) {
 		
 			member = mdo.getMember(bookList.get(i).getSeller());
@@ -69,6 +73,7 @@ public class BookSearchAction implements Action {
 			get_genre = gp.getGenreStr(bookList.get(i).getGenre());
 			System.out.println(get_genre);
 			genreList.add(get_genre);
+		
 		
 		}
 

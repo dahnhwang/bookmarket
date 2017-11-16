@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import dao.BookDao;
+import dao.DealDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
@@ -29,13 +30,17 @@ public class bookListPageNationAction implements Action {
         System.out.println(page_num);
 		
 		BookDao bdo = BookDao.getInstance();
-		List<Book> bookList = new ArrayList<>();
 		
-		bookList = bdo.selectbookByPagenation(page_num);
-
 		MemberDao mdo = MemberDao.getInstance();
+		
+		
+		List<Book> bookList = new ArrayList<>();
+		bookList = bdo.selectbookByPagenation(page_num);
+		
 		List<Member> memberList = new ArrayList<Member>();
 		List<String> genreList  =new ArrayList<>();
+
+		
 		
 		Member member = null;
 		GenreParser gp = new GenreParser();

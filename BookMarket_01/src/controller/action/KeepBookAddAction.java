@@ -29,14 +29,14 @@ public class KeepBookAddAction implements Action {
 		int book_id = Integer.parseInt(request.getParameter("book_id"));
         BookDao bdo =BookDao.getInstance();
         Book book = bdo.getBook(book_id);
-        
+        int none = 0 ;
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginUser");
 	
 		
 		if (member == null) {
-			text = "로그인 후 이용가능합니다!";
-			pw.println(text);
+		    none = 0;
+			pw.println(none);
 			pw.flush();
 			return;
 		}
