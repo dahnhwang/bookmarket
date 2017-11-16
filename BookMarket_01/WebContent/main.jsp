@@ -88,7 +88,7 @@
 	font-size: 13px;
 	color: white;
 	width: 130px;
-	height: 80px;
+	height: 120px;
 	text-align: center;
 }
 
@@ -174,7 +174,8 @@ $(document).ready(function() {
 									src='${book.image } ' />
 								<div class="middle" data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span> <span>${book.price }원</span>
+										<br> <span>${book.title }</span><br>
+										<span>${book.price }원</span>
 									</div>
 								</div>
 								
@@ -202,7 +203,7 @@ $(document).ready(function() {
 									src='${book.image } ' /></a>
 								<div class="middle"  data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span> <span>${book.price }원</span>
+										<br> <span>${book.title }</span><br><span>${book.price }원</span>
 									</div>
 								</div>
 							</div>
@@ -231,7 +232,7 @@ $(document).ready(function() {
 									src='${book.image } ' /></a>
 								<div class="middle"  data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span> <span>${book.price }원</span>
+										<br> <span>${book.title }</span><br><span>${book.price }원</span>
 									</div>
 								</div>
 							</div>

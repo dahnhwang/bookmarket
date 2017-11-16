@@ -37,16 +37,33 @@ body {
 outline:none!important
  }
 
-   
+ .search_input {
+ color : #ada397;
+ font-size: 15px;
+ }  
  
 </style>
 
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
+	$('.main_search_form').submit(function() {
+		return false;
+	})
+
 	$('#anchor-login-navi').on('click',function(){
 		$('#hidden-returnUrl').attr('value', getUri());
 	});
+	
+	
+	
+	$('.main_search_button').on('click', function() {
+		alert('잠시 기능 중단 -구매하기에서 검색해주세요! ')
+	});
+	
+	
 	
 })
 function getUri(){
@@ -145,9 +162,9 @@ function loginCheck(returnUri){
 					</c:choose>
 	</ul>
 
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search" /> <input
-						type="submit" class="form-control" placeholder="Submit" value="검색" />
+				<form class="navbar-form navbar-right main_search_form">
+					<input type="text" class="form-control main_search_input" placeholder="Search" /> <input
+						type="button" class="form-control main_search_button" placeholder="Submit" value="검색" />
 				</form>
 
 			</div>
