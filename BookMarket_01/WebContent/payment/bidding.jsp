@@ -23,7 +23,7 @@
 }
 
 #content {
-	width: 800px;
+	width: 900px;
 	height: 1000px;
 	margin: 0 auto;
 	align: center;
@@ -50,12 +50,13 @@
 	flex-grow: 1;
 	height: 1px;
 	background-color: #9f9f9f;
+	margin-bottom : 10px;
 }
 
 .formDiv {
 	margin-top: 10px;
 	width: 100%;
-	height: 600px;
+	height: 650px;
 	border-radius: 5px;
 	background-color: #f2f2f2;
 	padding: 20px;
@@ -105,6 +106,13 @@
 .divider {
 	margin: 20px 0;
 }
+
+.biddingBtn {
+
+width : 100%;
+text-align: center;
+}
+
 </style>
 
 
@@ -212,7 +220,7 @@ height:194px;
 					</div>
 					<br> <span class="seller_email">판매자 이메일 :
 						${seller.email} </span><br> <span class="price"> 경매 시작가격 :
-						${book.price} 원</span><br>
+						${book.price} 원</span><br><br><br>
 
 				</div>
 
