@@ -15,6 +15,7 @@ import dao.BookDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class BookOptionAction implements Action {
 
@@ -25,11 +26,15 @@ public class BookOptionAction implements Action {
 		String option = request.getParameter("option");
 		int genre = Integer.parseInt(request.getParameter("genre"));
 	     System.out.println(option+genre);
-		MemberDao mdo = MemberDao.getInstance();
-		BookDao bdo = BookDao.getInstance();
+	 
+	     MemberDao mdo = MemberDao.getInstance();
+		 BookDao bdo = BookDao.getInstance();
+		
 		List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
 		Member member = null;
+		List<String> genreList  =new ArrayList<>();
+	
 		
 		
 		//처음으로 북navigation을 누르는 거라 page 0 
@@ -60,18 +65,23 @@ public class BookOptionAction implements Action {
 			bookList = bdo.selectBookOrderBy(genre, "submit_date", "desc");
 		}
   
-		 
-
+		 GenreParser gp = new GenreParser();
+         String get_genre ="";
 		for (int i = 0; i < bookList.size(); i++) {
 
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
+			
+			get_genre = gp.getGenreStr(bookList.get(i).getGenre());
+			genreList.add(get_genre);
+			
 		}
-		
+	
 		Gson gson = new Gson();
 		String send_bookLIst= gson.toJson(bookList);
 		String send_memberList = gson.toJson(memberList);
-		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+"}";
+		String send_genreList = gson.toJson(genreList);
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+  ",\"genreList\":"+send_genreList +"}";
 		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.println(result);

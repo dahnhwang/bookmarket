@@ -17,13 +17,14 @@ import dao.BookDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class BookSearchAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
-		String url = "/book/bookList.jsp";
+	
 
 		String selectSel = request.getParameter("searchSel");
 		String searchInput = request.getParameter("searchInput");
@@ -32,6 +33,8 @@ public class BookSearchAction implements Action {
 
 		List<Book> bookList = new ArrayList<Book>();
 		List<Member> memberList = new ArrayList<Member>();
+		List<String> genreList  =new ArrayList<>();
+		
 		Member member = null;
 
 		if (selectSel.equals("all")) {
@@ -55,27 +58,25 @@ public class BookSearchAction implements Action {
 
 		}
 
-		StringBuffer sb = new StringBuffer();
+		 GenreParser gp = new GenreParser();
+         String get_genre ="";
 
 		for (int i = 0; i < bookList.size(); i++) {
-			/*sb.append(bookList.get(i).getTitle());
-			System.out.println(sb);
-			
-			if(sb.length()>15) {
-			sb.insert(10, '\n'); } 
-			System.out.println(sb);
-			
-			bookList.get(i).setTitle(sb.toString());
-			sb.setLength(0);*/
-			
+		
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
+			
+			get_genre = gp.getGenreStr(bookList.get(i).getGenre());
+			System.out.println(get_genre);
+			genreList.add(get_genre);
+		
 		}
 
 		Gson gson = new Gson();
-		String send_bookLIst = gson.toJson(bookList);
+		String send_bookLIst= gson.toJson(bookList);
 		String send_memberList = gson.toJson(memberList);
-		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":" + send_memberList + "}";
+		String send_genreList = gson.toJson(genreList);
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+  ",\"genreList\":"+send_genreList +"}";
 		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.println(result);

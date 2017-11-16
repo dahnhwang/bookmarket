@@ -12,6 +12,7 @@ import dao.BookDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class BookListAction implements Action {
 
@@ -23,7 +24,11 @@ public class BookListAction implements Action {
 	    Double  count =  (double) bdo.countAllbook();
 	    int page =  (int) (Math.ceil(count/3.0));
 	    request.setAttribute("page_num",page );
-		request.getRequestDispatcher(url).forward(request, response);		
+		request.getRequestDispatcher(url).forward(request, response);
+		
+		GenreParser gp = new GenreParser();
+		
+		
 	} 
  
 } 
