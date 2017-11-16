@@ -222,32 +222,32 @@ UPDATE member SET money = 15500 WHERE mem_id = 1;
 
 # Deal DATA
 INSERT INTO deal VALUES(
-0,28,
+0,1,
 2,sysdate(),
 10010,0
 );
 INSERT INTO deal VALUES(
-0,29,
+0,3,
 3,sysdate(),
-2010,0
+2050,0
 );
 INSERT INTO deal VALUES(
-0,29,
+0,4,
 4,sysdate(),
-2030,0
-);
-INSERT INTO deal VALUES(
-0,30,
-1,sysdate(),
 6000,0
 );
 INSERT INTO deal VALUES(
-0,30,
+0,6,
+1,sysdate(),
+2500,0
+);
+INSERT INTO deal VALUES(
+0,12,
 2,sysdate(),
 5500,0
 );
 INSERT INTO deal VALUES(
-0,31,
+0,11,
 2,sysdate(),
-3000,0
+28000,0
 );
