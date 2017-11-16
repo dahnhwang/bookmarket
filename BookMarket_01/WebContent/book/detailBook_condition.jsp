@@ -12,6 +12,7 @@
 	}
 	$(document).ready(function() {
 
+
 		//별점 정보 가져와서 보여주기
 		var onStar = '${book.book_condition}';
 		var stars = $('#stars li').parent().children('li.star');

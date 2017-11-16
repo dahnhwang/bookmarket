@@ -12,6 +12,7 @@
 	margin-left: 30px;
 	padding-bottom: 30px;
 }
+
 td {
 	padding: 5px;
 }
@@ -27,6 +28,7 @@ td {
 			<tr>
 				<td colspan="4"><h3>[${genre}] ${book.title }</h3></td>
 			</tr>
+
 			<tr>
 				<td width="15%"><b>저자</b></td>
 				<td width="35%">${book.author }</td>
