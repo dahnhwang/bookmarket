@@ -690,7 +690,7 @@ public class BookDao implements IBookDao {
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
 
-		String sql = "SELECT * from book limit ? , 3";
+		String sql = "SELECT * from book limit ? , 10";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
@@ -737,6 +737,79 @@ public class BookDao implements IBookDao {
 		return bookList;
 	}
 
+	
+	
+
+	public List<Book> selectbookByMain(int num) {
+		// TODO Auto-generated method stub
+
+		List<Book> bookList = new ArrayList<Book>();
+		Book book = null;
+        String sql = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+ 
+         if(num==1) {
+        	 
+        	 sql = "select * from book order by book_id desc limit 5 ";
+        	 
+         }
+			
+         else if(num==2) {
+        	 
+        	 sql = "select b.* from deal d, book b " + 
+        	 		"where b.book_id = d.book_id and d.deal_date = curdate() " + 
+        	 		"group by d.book_id order by count(d.book_id) desc limit 5";
+        	 		
+         }
+			
+         else if(num==3) {
+        	 
+        	 sql = " select * from book where due_date > sysdate() order by due_date limit 5 ";
+        	 
+         }
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				book = new Book();
+				book.setBook_id(rs.getInt("book_id"));
+				book.setIsbn(rs.getString("isbn"));
+				book.setAuthor(rs.getString("author"));
+				book.setTitle(rs.getString("title"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setPublished_date(rs.getString("published_date"));
+				book.setDescription(rs.getString("description"));
+				book.setGenre(rs.getInt("genre"));
+				book.setBook_condition(rs.getInt("book_condition"));
+				book.setIsSold(rs.getInt("isSold"));
+				book.setPrice(rs.getInt("price"));
+				book.setSeller(rs.getInt("seller_id"));
+				book.setImage(rs.getString("image"));
+				book.setSubmit_date(rs.getDate("submit_date"));
+				book.setPrice_type(rs.getInt("price_type"));
+				book.setComment(rs.getString("comment"));
+				book.setDue_date(rs.getDate("due_date"));
+				book.setRetail_price(rs.getInt("retail_price"));
+				bookList.add(book);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;
+	}
 	
 
 }

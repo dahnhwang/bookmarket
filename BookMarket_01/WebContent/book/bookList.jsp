@@ -35,7 +35,7 @@
 }
 
 #contents {
-	height: 1400px;
+	height: 1600px;
 }
 
 #searchBar {

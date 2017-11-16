@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Book Market</title>
 <style>
@@ -133,7 +134,24 @@
 .shelf_img {
 	
 }
+
 </style>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(document).on('click', '.middle', function() {
+		var book_id =$(this).attr('data-id');
+		window.location.href = 'bookmarket?command=detail_book&book_id='+ book_id;
+
+
+	});
+
+	
+});
+
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -149,16 +167,17 @@
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach begin="0" end="4">
+					<c:forEach var="book" items="${section1_list }" >
 						<li>
 							<div class="bookList">
-								<a href="#"> <img class="book_img"
-									src='http://bookthumb.phinf.naver.net/cover/126/697/12669774.jpg?type=m1&udate=20171103 ' /></a>
-								<div class="middle">
+								<img class="book_img"
+									src='${book.image } ' />
+								<div class="middle" data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+										<br> <span>${book.title }</span> <span>${book.price }원</span>
 									</div>
 								</div>
+								
 							</div>
 
 						</li>
@@ -175,14 +194,15 @@
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach begin="0" end="4">
+					<c:forEach var="book" items="${section2_list }" >
 						<li>
 							<div class="bookList">
-								<a href="#"> <img class="book_img"
-									src='http://bookthumb.phinf.naver.net/cover/109/455/10945513.jpg?type=m1&udate=20170415' /></a>
-								<div class="middle">
+								<a href="#"> 
+								<img class="book_img"
+									src='${book.image } ' /></a>
+								<div class="middle"  data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+										<br> <span>${book.title }</span> <span>${book.price }원</span>
 									</div>
 								</div>
 							</div>
@@ -203,14 +223,15 @@
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach begin="0" end="4">
+					<c:forEach var="book" items="${section3_list }" >
 						<li>
 							<div class="bookList">
-								<a href="#"> <img class="book_img"
-									src='https://misc.ridibooks.com/cover/593000426/xxlarge' /></a>
-								<div class="middle">
+								<a href="#"> 
+								<img class="book_img"
+									src='${book.image } ' /></a>
+								<div class="middle"  data-id ="${book.book_id }">
 									<div class="text">
-										<br> <span>나미야잡화점의 기적</span> <span>30000원</span>
+										<br> <span>${book.title }</span> <span>${book.price }원</span>
 									</div>
 								</div>
 							</div>

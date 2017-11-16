@@ -22,7 +22,7 @@ public class BookListAction implements Action {
 	    BookDao bdo = BookDao.getInstance();
 	    
 	    Double  count =  (double) bdo.countAllbook();
-	    int page =  (int) (Math.ceil(count/3.0));
+	    int page =  (int) (Math.ceil(count/10.0));
 	    request.setAttribute("page_num",page );
 		request.getRequestDispatcher(url).forward(request, response);
 		
