@@ -16,12 +16,16 @@
 td {
 	padding: 5px;
 }
+.book_img{
+width:135px;
+height:194px;
+}
 </style>
 </head>
 <body>
 	<section class="row placeholders contents_wrapper">
 	<div class="col-sm-3 placeholder">
-		<img src="${book.image}">
+		<img class="book_img" src="${book.image}">
 	</div>
 	<div class="col-sm-9 placeholder">
 		<table>
