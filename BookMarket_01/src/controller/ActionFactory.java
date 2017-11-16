@@ -40,6 +40,7 @@ import controller.action.MyKeepBookPurchaseAction;
 import controller.action.MyMoneyChargeAction;
 import controller.action.MyPageAction;
 import controller.action.MyPurchaseListAction;
+import controller.action.MyPurchaseListFormAction;
 import controller.action.MyPwdCheckAction;
 import controller.action.MySellListAction;
 import controller.action.MySellListFormAction;
@@ -129,6 +130,8 @@ public class ActionFactory {
 			action = new MyMoneyChargeAction();
 		} else if (command.equals("myPurchase_list")) {
 			action = new MyPurchaseListAction();
+		} else if (command.equals("myPurchase_list_form")) {
+			action = new MyPurchaseListFormAction();
 		} else if (command.equals("mySell_list")) {
 			action = new MySellListAction();
 		} else if (command.equals("mySell_list_form")) {

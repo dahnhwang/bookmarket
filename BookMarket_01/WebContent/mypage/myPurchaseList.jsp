@@ -24,7 +24,7 @@
 						// 구매내역
 						
 						$.ajax({
-							url : 'bookmarket?command=myPurchase_list',
+							url : 'bookmarket?command=myPurchase_list&from=sold',
 							type : 'get',
 							dataType: 'json',
 							success : function(data) {
@@ -35,7 +35,7 @@
 								}
 								else{
 									$('#table-myPurchaseBookList tbody').empty();
-									$('<td>').attr('colspan',9).text('구매하신 상품이 없습니다.').appendTo('#table-myPurchaseBookList tbody');
+									$('<td>').attr('colspan',6).text('구매하신 상품이 없습니다.').appendTo('#table-myPurchaseBookList tbody');
 								}
 							},
 							error: function(xhr, status, error){
@@ -46,9 +46,9 @@
 					});
 				</script>
 				<!-- 컨텐츠 영역 -->
-				<div id="contents-myPurchaseList" class="contents col-md-9">
+				<div id="contents-myPurchaseList" class="contents col-md-10">
 					<section class="content_wrapper row placeholders ">
-						<h1> 내가 찜한 도서 </h1>
+						<h1> 내가 구매한 도서 </h1>
 						<!-- Default panel contents1 -->
 						<div id="div-myPurchaseBook" class="panel panel-default">
 							<!-- 찜 도서 table -->
@@ -66,11 +66,10 @@
 											<th>판매자</th>
 											<th>지정/판매</th>
 											<th>가격</th>
-											<th>판매상태</th>
 											<th>거래 날짜</th>
-											<th>버튼</th>
 									</thead>
 									<tbody style="text-align:center">
+										<tr></tr>
 									</tbody>
 								</table>
 							</div>

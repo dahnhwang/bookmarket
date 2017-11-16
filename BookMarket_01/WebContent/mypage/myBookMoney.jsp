@@ -6,13 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- jQuery-min -->
-<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
-<!-- Bootstrap -->
-<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- <script src="js/bootstrap.min.js"></script> -->
-<!-- <script src="js/mypage.js"></script> -->
 <style type="text/css">
 .contents {
 	position: absolute;
@@ -42,7 +35,7 @@
 			</div>
 			<!-- 컨텐츠 영역 -->
 			
-			<div id="contents-mypage" class="contents col-md-9">
+			<div id="contents-mypage" class="contents col-md-10">
 				<section class="content_wrapper row placeholders ">
 					<h3>북 머니 조회 페이지</h3>
 					<!-- Default panel contents1 -->

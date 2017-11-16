@@ -28,7 +28,6 @@ public class MyKeepBookListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
-//		String url = "/mypage/myKeepBookList.jsp";
 
 		HttpSession session = request.getSession();
 		Member loginUser = (Member) session.getAttribute("loginUser");

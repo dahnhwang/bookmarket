@@ -62,8 +62,8 @@
 											<th>이미지</th>
 											<th>Title(ISBN)</th>
 											<th>판매자</th>
+											<th>[일반/경매(종료일자)]</th>
 											<th>가격</th>
-											<th>판매상태</th>
 											<th>찜 추가 날짜</th>
 											<th>구매/삭제</th>
 									</thead>

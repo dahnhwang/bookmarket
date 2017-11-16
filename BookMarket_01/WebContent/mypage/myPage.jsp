@@ -5,52 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-<script type="text/javascript">
-	function load() {
-		// 		console.log('load')
-		$.ajax({
-			url : 'myInfo.do',
-			type : 'get',
-			dataType : 'json',
-			success : function(data) {
-				$.each(data.bookList, function(index, item) {
-					var tr = $('<tr>').appendTo('#bookTable > tbody');
-					var book_id = item.book_id;
-					var title = item.title;
-					var publisher = item.publisher;
-					var year = item.year;
-					var price = item.price;
-					$('<td>').text(book_id).appendTo(tr);
-					$('<td>').text(title).appendTo(tr);
-					$('<td>').text(publisher).appendTo(tr);
-					$('<td>').text(year).appendTo(tr);
-					$('<td>').text(price).appendTo(tr);
-					var del_btn = $('<td>').appendTo(tr);
-					$('<input>').attr({
-						type : 'button',
-						id : book_id
-					}).val('del').addClass('btn_del').appendTo(del_btn);
-				})
-			},
-			error : function(xhr, status, error) {
-				alert('error')
-			}
-
-		});
-
-	}
-</script>
 <style type="text/css">
 .contents {
 	position: absolute;
 	overflow: hidden;
 }
-
 .content_wrapper {
 	padding-bottom: 30px;
-	padding-left: 70px;
+/* 	padding-left: 70px; */
 }
 /* body{ */
 /* 	margin-top: 100px; */
@@ -70,8 +32,32 @@
 				<div id="div-mypage-side-menu" class="side-menu">
 					<jsp:include page="myPage_navigation.jsp" />
 				</div>
+<!-- script -->
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url : 'bookmarket?command=myPurchase_list&from=deal',
+			type : 'get',
+			dataType: 'json',
+			success : function(data) {
+				alert(data)
+				if (data) {
+					$('#table-myBiddingList tbody').empty();
+					myBiddingBook_listUpload(data);
+				}
+				else{
+					$('#table-myBiddingList tbody').empty();
+					$('<td>').attr('colspan',8).text('경매 참여한 상품이 없습니다.').appendTo('#table-myPurchaseBookList tbody');
+				}
+			},
+			error: function(xhr, status, error){
+				alert('error')
+			}
+		});
+	})
+</script>
 			<!-- content 영역 -->
-				<div id="contents-mypage" class="contents col-md-9">
+				<div id="contents-mypage" class="contents col-md-10">
 					<section class="content_wrapper row placeholders ">
 					<h3>마이페이지</h3>
 					<div id="div-myInfo" class="panel panel-default">
@@ -97,43 +83,45 @@
 									<td style="border-bottom: 1px solid #dddddd">${loginUser.money}</td>
 								</tr>
 							</table>
-						</div>
-						<div class="panel-footer" align="right">
-								<p><button class="btn btn-secondary btn-sm" onclick="location.href='bookmarket?command=myInfo_update_form'">수정하기</button></p>
+							<div class="panel-footer" align="right">
+									<p><button class="btn btn-secondary btn-sm" onclick="location.href='bookmarket?command=myInfo_update_form'">수정하기</button></p>
+							</div>
 						</div>
 					</div>
-					<div id="div-mySell-list" class="panel panel-default">
+					<div id="div-myBidding-list" class="panel panel-default">
 						<!-- Default panel contents -->
-						<div class="panel-heading">My Sell Books</div>
+						<div class="panel-heading">My Bidding List</div>
 						<div class="panel-body">
-							<p>판매등록된 도서상품</p>
+							<p>최근 경매 입찰한 도서</p>
+							<!-- Table -->
+							<table id="table-myBiddingList" style="text-align: center" id="example"
+								class="display table" cellspacing="0" width="100%"
+								data-toggle="table">
+								<thead>
+									<tr>
+										<th>[거래번호/상품번호]</th>
+										<th>Image</th>
+										<th>Title</th>
+										<th>판매자</th>
+										<th>가격</th>
+										<th>내 입찰 가격</th>
+										<th>입찰일자</th>
+										<th>경매종료일자</th>
+									</tr>
+								</thead>
+							</table>
 						</div>
-						<!-- Table -->
-						<table id="table-mySell" style="text-align: center" id="example"
-							class="display table" cellspacing="0" width="100%"
-							data-toggle="table" data-show-refresh="true"
-							data-show-toggle="true" data-show-columns="true"
-							data-search="true" data-select-item-name="toolbar1"
-							data-pagination="true">
-							<tr>
-								<th>상품번호</th>
-								<th>Image</th>
-								<th>Title(ISBN)</th>
-								<th>Book Condition</th>
-								<th>Price</th>
-								<th>판매상태</th>
-								<th>등록일자</th>
-							</tr>
-						</table>
+						<div class="panel-footer" align="right">
+						</div>
 					</div>
 					<div id="div-myPurchase-list" class="panel panel-default">
 						<!-- Default panel contents -->
 						<div class="panel-heading">My Purchase Books</div>
 						<div class="panel-body">
-							<p>구매한 도서상품</p>
+							<p>최근 성사된 거래내역 </p>
 						</div>
 						<!-- Table -->
-						<table id="table-myPurchase" id="example" class="display table"
+						<table id="table-myBookList" id="example" class="display table"
 							cellspacing="0" width="100%" data-toggle="table"
 							data-show-refresh="true" data-show-toggle="true"
 							data-show-columns="true" data-search="true"

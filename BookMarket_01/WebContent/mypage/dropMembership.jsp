@@ -56,7 +56,7 @@
 				<jsp:include page="myPage_navigation.jsp" />
 			</div>
 			<!-- 컨텐츠 영역 -->
-			<div id="contents-mypage" class="contents col-md-9">
+			<div id="contents-mypage" class="contents col-md-10">
 				<section class="content_wrapper row placeholders ">
 					<!-- 비밀번호 체크	 -->
 					<jsp:include page="myPwdCheck.jsp"/>		
@@ -70,15 +70,15 @@
 									<form action="bookmarket" method="post" name="myInfo-delete" style="height: 350px">
 										<input type="hidden" name="command" value="drop_member">
 										<h3>정말 탈퇴하시겠습니까?</h3><br><br>
-											<table>
-												<tr>							
-												<td width="50%" style="padding: 5%">
-													<input id="btn-verify-yes" type="button" class="btn btn-danger" name="btn-varify" value="YES" >
-												</td>
-												<td width="50%" style="padding: 5%">
-													<input id="btn-verify-no"type="button" class="btn btn-success" name="btn-varify" value="NO" checked="checked">
-												</td>
-											</table>
+<!-- 											<table> -->
+<!-- 												<tr>							 -->
+<!-- 												<td width="50%" style="padding: 5%"> -->
+<!-- 													<input id="btn-verify-yes" type="button" class="btn btn-danger" name="btn-varify" value="YES" > -->
+<!-- 												</td> -->
+<!-- 												<td width="50%" style="padding: 5%"> -->
+<!-- 													<input id="btn-verify-no"type="button" class="btn btn-success" name="btn-varify" value="NO" checked="checked"> -->
+<!-- 												</td> -->
+<!-- 											</table> -->
 										<br><br><br>
 				<!-- 					<input type="submit" id="submit-myInfo-delete" value="VERIFY" class="btn btn-info" data-toggle="modal" data-target="#myModal"></td> -->
 										<input type="submit" id="submit-myInfo-delete" value="VERIFY" class="btn btn-primary"></td>

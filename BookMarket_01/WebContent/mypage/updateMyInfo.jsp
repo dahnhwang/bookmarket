@@ -39,7 +39,7 @@
 				<jsp:include page="myPage_navigation.jsp" />
 			</div>
 			<!-- 컨텐츠 영역 -->
-			<div id="contents-mypage" class="contents col-md-9">
+			<div id="contents-mypage" class="contents col-md-10">
 				<section class="content_wrapper row placeholders ">
 					<!-- 비밀번호 체크	 -->
 					<jsp:include page="myPwdCheck.jsp"/>	
