@@ -148,9 +148,7 @@ public class SoldDao implements ISoldDao{
 		return list;
 	}
 	public List<Sold> selectSoldListByLoginUser(int mem_id){
-		String sql = "select * from sold where seller_id = ? " + 
-				"UNION " + 
-				"select * from sold where buyer_id = ?";
+		String sql = "select * from (select * from sold where seller_id = ? UNION select * from sold where buyer_id = ?) j order by sold_date desc";
 		List<Sold> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
