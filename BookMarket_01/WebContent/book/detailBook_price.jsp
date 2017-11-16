@@ -15,8 +15,11 @@
 						var typeStr = "";
 						var priceStr = "";
 						var due_date = "";
+						var formStr = "";
 						var retail_price = "${book.retail_price}";
 						var isSoldStr = "";
+						var user_id = "${user_id}";
+						var seller_id = "${book.seller}";
 						if ('${book.price_type}' == 0) {
 							typeStr = "지정가격";
 							priceStr = "${book.price}";
@@ -30,6 +33,9 @@
 							typeStr = "경매가격";
 							priceStr = "${book.price}";
 							due_date = "(경매종료일자 : ${book.due_date} )";
+							if(seller_id != user_id){
+								formStr = "<hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"biddingPriceInput\" name=\"bidding_price\" placeholder=\"희망하는 경매 입찰가를 제시해주세요.\"></div>"
+							}
 							$('#cart_btn').attr("disabled", true);
 							$('p.price_info')
 									.html(
@@ -37,7 +43,7 @@
 													+ retail_price
 													+ "</font><p><font style='font-size:30px'><b>경매 시작가 : ￦"
 													+ priceStr
-													+ "</b></font><hr><i class=\"fa fa-krw\" aria-hidden=\"true\"></i>&nbsp;<input type=\"text\" class=\"form-control\" id=\"biddingPriceInput\" name=\"bidding_price\" placeholder=\"희망하는 경매 입찰가를 제시해주세요.\"></div>");
+													+ "</b></font>"+formStr);
 							$('input[name=bidding_price]','p.price_info').blur(function(){
 								var input_price = $('input[name=bidding_price]').val();
 								if(input_price < ${book.price}){

@@ -51,7 +51,7 @@
 					});
 				} else if (deal_count > 0) {
 					//삭제불가
-					console.log('경매참여자가 있어서 삭제가 불가함');
+					alert('경매참여자가 있어서 삭제가 불가합니다');
 				} else if (deal_count < 0) {
 					console.log('dao단에서 발생한 에러임');
 				}
