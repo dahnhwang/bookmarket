@@ -92,6 +92,7 @@
 	function listUpload(list) {
 		var bookList = list.bookList;
 		var memberList = list.memberList;
+		var genreList = list.genreList;
 		$.each(bookList, function(index, item) {
 
 			var tr = $('<tr>').appendTo('#listTable tbody');
@@ -99,7 +100,7 @@
 			var book_id = item.book_id;
 			var image = item.image;
 			var title = item.title;
-			var genre = item.genre;
+			var genre = genreList[index];
 			var author = item.author;
 			var publisher = item.publisher;
 			var seller = memberList[index].email;
@@ -127,6 +128,7 @@
 				price_type = '경매';
 			} 
 
+			
 			var titleTag = $('<a>').attr('href',
 				'bookmarket?command=detail_book&book_id=' + book_id)
 				.addClass("bookTitle").text(title);

@@ -15,6 +15,7 @@ import dao.BookDao;
 import dao.MemberDao;
 import dto.Book;
 import dto.Member;
+import util.GenreParser;
 
 public class bookListPageNationAction implements Action {
 
@@ -34,19 +35,26 @@ public class bookListPageNationAction implements Action {
 
 		MemberDao mdo = MemberDao.getInstance();
 		List<Member> memberList = new ArrayList<Member>();
-		
+		List<String> genreList  =new ArrayList<>();
 		
 		Member member = null;
+		GenreParser gp = new GenreParser();
+        String get_genre ="";
 		for (int i = 0; i < bookList.size(); i++) {
 
 			member = mdo.getMember(bookList.get(i).getSeller());
 			memberList.add(member);
+			
+			get_genre = gp.getGenreStr(bookList.get(i).getGenre());
+			genreList.add(get_genre);
+			
 		}
-
+	
 		Gson gson = new Gson();
-		String send_bookLIst = gson.toJson(bookList);
+		String send_bookLIst= gson.toJson(bookList);
 		String send_memberList = gson.toJson(memberList);
-		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":" + send_memberList + "}";
+		String send_genreList = gson.toJson(genreList);
+		String result = "{\"bookList\":" + send_bookLIst + ",\"memberList\":"+send_memberList+  ",\"genreList\":"+send_genreList +"}";
 		System.out.println(result);
 		PrintWriter pw = response.getWriter();
 		pw.println(result);
