@@ -30,23 +30,23 @@ public class MyLogListAction implements Action{
 			return;
 		}
 		List<Sold> logList = SoldDao.getInstance()
-				.selectSoldListByBuyer(loginUser.getMem_id());
+				.selectSoldListByLoginUser(loginUser.getMem_id());
+		List<Book> bookList = new ArrayList<>();
 		List<Book> allBook = new ArrayList<>();
 		allBook = BookDao.getInstance().selectAllBookList();
-		List<Book> bookList = new ArrayList<>();
 		
 		for(int i=0; i<logList.size();i++) {
 			int book_id = logList.get(i).getBook_id();
-			for(Book book : allBook) {
-				if(book.getBook_id() == book_id)
+			for(Book book : allBook	) {
+				System.out.println(book);
+				if(book.getBook_id() == book_id) {
 					bookList.add(book);
+				}
 			}
 		}
-		
-		PrintWriter pw = response.getWriter();
 		Gson gson = new Gson();
 		String send = null;
-		
+		PrintWriter pw = response.getWriter();
 		if(logList.size()>0) {
 			String send_bookList= gson.toJson(bookList);
 			String send_logList = gson.toJson(logList);
