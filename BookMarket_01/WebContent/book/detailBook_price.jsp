@@ -38,7 +38,7 @@
 								function() {
 									input_price = $(
 											'input[name=bidding_price]').val();
-									if (input_price < ${book.price}) {
+									if (input_price < '${book.price}') {
 										alert('경매 시작금액보다 적은 금액은 제시할 수 없습니다.');
 										return false;
 									} 
@@ -64,27 +64,25 @@
 								+ "</b> 상품입니다. " + due_date);
 				
 				$('#bidding_choice_btn').on('click',function(){
-					alert('asdf')
-					if(!confirm('경매 낙찰자로 선택하시겠습니까')){
-						return;
-					}
-					else{
-						var participant_id = $('#bidding_choice_btn').val()
-						var book_id = '${book.book_id }'';
-							alert(book_id);
-						$.ajax({
-								url:  'bookmarketcommand=bidding_choice&book_id='+book_id+'&participant_id='+participant_id,
-								type:  'get',
-							success:  function(data) {
-				 				alert('성공');
-				 				location.reload();
-				 				
-							},
-							error: function(xhr, status, error){
-								alert('error')
-							}
-						});
-					}
+						if(!confirm('경매 낙찰자로 선택하시겠습니까')){
+							return;
+						}
+						else{
+							var participant_id = $('#bidding_choice_btn').val()
+							var book_id = '${book.book_id }';
+							$.ajax({
+									url: 'bookmarketcommand=bidding_choice&book_id='+book_id+'&participant_id='+participant_id,
+									type: 'get',
+								success:  function(data) {
+					 				alert('성공');
+					 				location.reload();
+					 				
+								},
+								error: function(xhr, status, error){
+									alert('error')
+								}
+							});
+						}
 				});
 
 			});
@@ -187,7 +185,7 @@
 											<td>${deal.participant_name}님</td>
 											<td>${deal.deal_date_string}</td>
 											<td>
-												<button id=bidding_choice_btn value=${deal.participant_id } class=btn>선택</button>
+												<button id=bidding_choice_btn value="${deal.participant_id }" class=btn>선택</button>
 											</td>
 										</tr>
 									</c:forEach>
