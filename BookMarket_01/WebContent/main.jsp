@@ -134,9 +134,11 @@
 
 #sideBar {
 	margin-left: 20px;
-	width: 350px;
+	width: 300px;
 	height: 400px;
-	border: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	border-left: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
 	margin-right: 0px;
     padding: 5px;
 }
