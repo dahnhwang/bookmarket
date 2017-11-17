@@ -82,7 +82,7 @@ $(document).ready(function(){
 })
 function getUri(){
 	var currentUrl = document.location.href;
-	var currentUri = currentUrl.substring(36,currentUrl.length);
+	var currentUri = currentUrl.substring(39,currentUrl.length);
 // 	var currentUri;
 // 	alert(currentUri);
 	return currentUri;

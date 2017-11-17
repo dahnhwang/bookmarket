@@ -22,7 +22,7 @@ public class JoinAction implements Action {
 		member.setEmail(email); 
 		member.setName(name);
 		member.setPwd(pwd);
-		member.setMoney(10000);
+		member.setMoney(100000);
    
 	   int result = mDao.insertMember(member);
 	  

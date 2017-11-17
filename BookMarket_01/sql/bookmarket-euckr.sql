@@ -80,14 +80,14 @@ PRIMARY KEY (money_idx)
 
 
 # 회원 더미 데이터 추가
-INSERT INTO member VALUES ('0','a1@gmail.com','111','황다현',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a2@gmail.com','222','강지훈',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a3@gmail.com','333','최현정',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a4@gmail.com','444','문진용',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a5@gmail.com','555','홍승길',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a6@gmail.com','666','문재인',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a7@gmail.com','777','손정의',10000,'1980-12-17');
-INSERT INTO member VALUES ('0','a8@gmail.com','888','힐러리',10000,'1980-12-17');
+INSERT INTO member VALUES ('0','a1@gmail.com','111','황다현',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a2@gmail.com','222','강지훈',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a3@gmail.com','333','최현정',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a4@gmail.com','444','문진용',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a5@gmail.com','555','홍승길',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a6@gmail.com','666','문재인',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a7@gmail.com','777','손정의',100000,'1980-12-17');
+INSERT INTO member VALUES ('0','a8@gmail.com','888','힐러리',100000,'1980-12-17');
 
 
 # 지정가격 & 경매가격 도서판매데이터 더미 추가 (일부러 쿼리 순서 섞었음)

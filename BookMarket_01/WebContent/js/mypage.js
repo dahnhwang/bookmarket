@@ -227,7 +227,6 @@ function mySellBook_listUpload(list) {
 						'margin' : '5px'
 					}).val('ORDER');
 					$('<td>').append(viewSold).appendTo(tr);
-					
 				}
 			}
 		}
