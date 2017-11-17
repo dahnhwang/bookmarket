@@ -53,6 +53,8 @@ $(document).ready(function(){
 		return false;
 	})
 
+	
+	
 	$('#anchor-login-navi').on('click',function(){
 		$('#hidden-returnUrl').attr('value', getUri());
 	});
@@ -158,7 +160,7 @@ function loginCheck(returnUri){
 					<li><a id="anchor-insertBook-navi" onclick="loginCheck('bookmarket?command=book_insert_search')">판매하기</a></li>
 			 	</ul>
 
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right main_cart_btn">
 					<li><a class="cartBtn" href="#" data-toggle="modal" data-target="#cart">장바구니</a></li>
 
 					<c:choose>

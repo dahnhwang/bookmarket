@@ -292,7 +292,9 @@ margin-top : 50px;
 				type : 'get',
 				data : params,
 				success : function(data) {
+					location.reload();
 					alert(data);
+
 				}
 			});
 
