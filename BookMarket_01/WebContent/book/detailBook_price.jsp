@@ -18,7 +18,6 @@
 				var seller_id = "${book.seller}";
 				var due_date = "";
 				var input_price = "";
-							
 				if ('${book.price_type}' == 0) {
 					typeStr = "지정가격";
 					$('p.stn_price_info').appendTo('#price_input').show();
@@ -34,6 +33,7 @@
 					if (seller_id != user_id) {
 						$('#bidding_price_form').appendTo('#auction_tab')
 								.show();
+						$('#bidding_choice_btn').hide();
 						$('input[name=bidding_price]', '#price_input').blur(
 								function() {
 									input_price = $(
@@ -57,6 +57,7 @@
 					$('#auction_btn').attr("disabled", true);
 					$('#cart_btn').attr("disabled", true);
 					$('#keep_btn').attr("disabled", true);
+					$('#bidding_choice_btn').attr("disabled", true);
 				}
 				$('span.price_type').html(
 						"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
@@ -154,16 +155,20 @@
 										<th>구매희망가</th>
 										<th>입찰자</th>
 										<th>입찰일시</th>
+										<th>입찰</th>
 									</tr>
 									<c:forEach var="deal" items="${dealList }">
 										<tr>
 											<td>${deal.deal_price }원</td>
 											<td>${deal.participant_name}님</td>
 											<td>${deal.deal_date_string}</td>
+											<td>
+												<button id=bidding_choice_btn value=${deal.participant_id } class=btn>선택</button>
+											</td>
 										</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="3"><b>평균 구매희망가 ${avgPrice }원</b></td>
+										<td colspan="4"><b>평균 구매희망가 ${avgPrice }원</b></td>
 									</tr>
 								</table>
 							</div>
