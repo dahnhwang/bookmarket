@@ -28,7 +28,7 @@
 							type : 'get',
 							dataType: 'json',
 							success : function(data) {
-								alert(data)
+// 								alert(data)
 								if (data) {
 									$('#table-myPurchaseBookList tbody').empty();
 									myPurchaseBook_listUpload(data);
