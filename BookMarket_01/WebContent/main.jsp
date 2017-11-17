@@ -117,11 +117,19 @@
 
 #banner {
 	width: 100%;
-	height: 150px;
-	background-color: #e6e2d3;
-	margin: 0 0 30px 0;
-	font-size: 24px;
-	font-weight: bold;
+	height: 160px;
+    background-color : #bdcebe;
+	margin: 0 0 50px 0;
+	font-size: 30px;
+	font-weight: normal;
+	overflow: hidden;
+	text-align: center;
+	
+}
+
+#banner_img{
+
+
 }
 
 #sideBar {
@@ -160,7 +168,9 @@ $(document).ready(function() {
 		</div>
 
 		<div id="contents" class="col-md-10">
-			<div id="banner">BANNER</div>
+			<div id="banner">
+		     <img alt="" src="img/banner.png" id="banner_img">
+			</div>
 			<div class="section">
 				<div class="strapline">
 					<div class="title">&nbsp;오늘의 신간 도서 TOP 5&nbsp;</div>

@@ -24,7 +24,7 @@ public class bookListPageNationAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		int page_num = Integer.parseInt(request.getParameter("page_num"));
-		 
+		  
 		
 		page_num = (page_num - 1) * 10;
         System.out.println(page_num);
