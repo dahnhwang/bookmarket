@@ -114,7 +114,7 @@
 	height: 1px;
 	background-color: #9f9f9f;
 }
-
+  
 #banner {
 	width: 100%;
 	height: 160px;
