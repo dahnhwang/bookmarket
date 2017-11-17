@@ -56,7 +56,7 @@
 .formDiv {
 	margin-top: 10px;
 	width: 100%;
-	height: 650px;
+	height: 700px;
 	border-radius: 5px;
 	background-color: #f2f2f2;
 	padding: 20px;
@@ -70,7 +70,8 @@
 }
 
 .bookDesc {
-	height: 160px;
+	height: 240px;
+
 }
 
 .buyerDescc {
