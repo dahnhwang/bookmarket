@@ -675,7 +675,7 @@ public class BookDao implements IBookDao {
 			try {
 				if (rs != null)
 					rs.close();
-				if (pstmt != null)
+			 	if (pstmt != null)
 					pstmt.close();
 			} catch (Exception e) {
 				e.printStackTrace();

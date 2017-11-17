@@ -86,6 +86,11 @@
 .pagination {
 	border: 1px solid #92a8d1;
 }
+
+
+#footer{
+margin-top : 50px;
+}
 </style>
 
 <script>
