@@ -85,6 +85,7 @@ public class SoldDao implements ISoldDao{
 				sd.setSold_date(rs.getDate("sold_date"));
 				sd.setSold_price(rs.getInt("sold_price"));
 				sd.setBuyer_id(rs.getInt("buyer_id"));
+				sd.setSold_date_string(rs.getString("sold_date"));
 				
 				list.add(sd);
 			}
@@ -127,7 +128,7 @@ public class SoldDao implements ISoldDao{
 				sd.setSold_date(rs.getDate("sold_date"));
 				sd.setSold_price(rs.getInt("sold_price"));
 				sd.setBuyer_id(rs.getInt("buyer_id"));
-				
+				sd.setSold_date_string(rs.getString("sold_date"));
 				list.add(sd);
 			}
 		} catch (SQLException e) {
@@ -166,7 +167,7 @@ public class SoldDao implements ISoldDao{
 				sd.setSold_date(rs.getDate("sold_date"));
 				sd.setSold_price(rs.getInt("sold_price"));
 				sd.setBuyer_id(rs.getInt("buyer_id"));
-				
+				sd.setSold_date_string(rs.getString("sold_date"));
 				list.add(sd);
 			}
 		} catch (SQLException e) {

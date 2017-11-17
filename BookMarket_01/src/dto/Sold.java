@@ -8,9 +8,16 @@ public class Sold {
 	private int seller_id;
 	private int book_id;
 	private Date sold_date;
+	private String sold_date_string;
 	private int sold_price;
 	private int buyer_id;
 	
+	public String getSold_date_string() {
+		return sold_date_string;
+	}
+	public void setSold_date_string(String sold_date_string) {
+		this.sold_date_string = sold_date_string;
+	}
 	public int getOrder_id() {
 		return order_id;
 	}
@@ -49,8 +56,9 @@ public class Sold {
 	}
 	@Override
 	public String toString() {
-		return "Sold [order_id=" + order_id + ", seller_id=" + seller_id + ", book_id=" + book_id + ", sold_date=" + sold_date
-				+ ", sold_price=" + sold_price + ", buyer_id=" + buyer_id + "]";
+		return "Sold [order_id=" + order_id + ", seller_id=" + seller_id + ", book_id=" + book_id + ", sold_date="
+				+ sold_date + ", sold_date_string=" + sold_date_string + ", sold_price=" + sold_price + ", buyer_id="
+				+ buyer_id + "]";
 	}
 	
 	

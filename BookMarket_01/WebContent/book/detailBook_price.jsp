@@ -71,18 +71,19 @@
 							var participant_id = $('#bidding_choice_btn').val()
 							var book_id = '${book.book_id }';
 							$.ajax({
-									url: 'bookmarketcommand=bidding_choice&book_id='+book_id+'&participant_id='+participant_id,
+									url: 'bookmarket?command=bidding_choice&book_id='+book_id+'&participant_id='+participant_id,
 									type: 'get',
-								success:  function(data) {
-					 				alert('성공');
-					 				location.reload();
-					 				
+									dataType:'text',
+									success:  function(data) {
+						 				alert('성공');
+						 				location.reload();
 								},
 								error: function(xhr, status, error){
-									alert('error')
+									alert(error)
 								}
 							});
 						}
+						return false;
 				});
 
 			});
@@ -170,7 +171,12 @@
 
 						<div id="auction_tab">
 							<hr>
-							<h4>구매현황 (총 ${dealCount }건의 입찰진행 중)</h4>
+								<c:if test="${book.isSold eq 0}"> 
+									<h4>구매현황 (총 ${dealCount }건의 입찰진행 중)</h4>
+								</c:if>
+								<c:if test="${book.isSold eq 1 }">
+									<h3 style="color: blue">경매 종료</h3>
+								</c:if>
 							<div class="auction_table">
 								<table class="auction_table">
 									<tr>
@@ -180,14 +186,22 @@
 										<th>입찰</th>
 									</tr>
 									<c:forEach var="deal" items="${dealList }">
-										<tr>
-											<td>${deal.deal_price }원</td>
-											<td>${deal.participant_name}님</td>
-											<td>${deal.deal_date_string}</td>
-											<td>
-												<button id=bidding_choice_btn value="${deal.participant_id }" class=btn>선택</button>
-											</td>
-										</tr>
+										<c:if test="${deal.sold_state eq 0 }">
+											<tr>
+												<td>${deal.deal_price }원</td>
+												<td>${deal.participant_name}님</td>
+												<td>${deal.deal_date_string}</td>
+												<td>
+													<button id="bidding_choice_btn" value="${deal.participant_id }" class="btn">선택</button>
+												</td>
+											</tr>
+										</c:if>
+										<c:if test="${deal.sold_state eq 1 }">
+											<tr>
+												<td colspan="4"><h4 style="color: blue">낙찰 금액 : ${deal.deal_price }원</h4></td>
+											</tr>
+										</c:if>
+										
 									</c:forEach>
 									<tr>
 										<td colspan="4"><b>평균 구매희망가 ${avgPrice }원</b></td>
@@ -203,9 +217,6 @@
 								type="text" class="form-control" id="biddingPriceInput"
 								name="bidding_price" placeholder="희망하는 경매 입찰가를 제시해주세요.">
 						</div>
-
-
-
 
 					</div>
 				</form>

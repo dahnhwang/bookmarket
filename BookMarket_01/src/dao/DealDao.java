@@ -214,7 +214,7 @@ public class DealDao implements IDealDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = -1;
-		String sql = "SELECT COUNT(deal_idx) FROM deal WHERE book_id=?";
+		String sql = "SELECT COUNT(deal_idx) FROM deal d, book b WHERE d.book_id=? AND( b.book_id = d.book_id AND b.isSold=0)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
