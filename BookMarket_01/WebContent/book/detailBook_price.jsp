@@ -62,6 +62,30 @@
 				$('span.price_type').html(
 						"<b>" + typeStr + "</b>으로 <b>" + isSoldStr
 								+ "</b> 상품입니다. " + due_date);
+				
+				$('#bidding_choice_btn').on('click',function(){
+					alert('asdf')
+					if(!confirm('경매 낙찰자로 선택하시겠습니까')){
+						return;
+					}
+					else{
+						var participant_id = $('#bidding_choice_btn').val()
+						var book_id = '${book.book_id }'';
+							alert(book_id);
+						$.ajax({
+								url:  'bookmarketcommand=bidding_choice&book_id='+book_id+'&participant_id='+participant_id,
+								type:  'get',
+							success:  function(data) {
+				 				alert('성공');
+				 				location.reload();
+				 				
+							},
+							error: function(xhr, status, error){
+								alert('error')
+							}
+						});
+					}
+				});
 
 			});
 </script>
