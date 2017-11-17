@@ -133,12 +133,26 @@
 }
 
 #sideBar {
-	margin-left: 40px;
-	width: 250px;
+	margin-left: 20px;
+	width: 350px;
 	height: 400px;
 	border: 1px solid #cccccc;
+	margin-right: 0px;
+    padding: 5px;
 }
-
+#sideBar table{
+	text-align: center;
+	display: block;
+	paddind-bottom : 0;
+	
+}
+#sideBar td{
+	height: 40px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+/* 	display: block; */
+}
 .shelf_img {
 	
 }
@@ -286,32 +300,41 @@ $(document).ready(function() {
 	 					var book_id = logList[i].book_id;
 	 					var seller_id = logList[i].seller_id;
 	 					var buyer_id = logList[i].buyer_id;
-	 					var sold_date = logList[i].sold_date;
+	 					var sold_date = logList[i].sold_date_string;
 	 					var sold_price = logList[i].sold_price;
 	 					var title = bookList[i].title;
 //		 					alert(title);
 	 					var price_type = bookList[i].price_type;
 	 					var titleTag =$('<a>').attr(
 	 							  'href', 'bookmarket?command=detail_book&book_id='+book_id)
-	 							  .addClass("bookTitle").text(title);
+	 							  .addClass("bookTitle")
+	 							  .attr('display', 'block')
+	 							  .text(title);
 						
 						
 	 					var tr = $('<tr>').appendTo('#table-myTradeLog tbody');
-	 					$('<td>').text(order_id).appendTo(tr);
-	 					$('<td>').text(sold_date).appendTo(tr);
-	 					$('<td>').append(titleTag).appendTo(tr);
+	 					$('<td>').text(order_id).css('width', '5%').appendTo(tr);
+	 					$('<td>').text(sold_date).css('width', '25%').appendTo(tr);
+	 					$('<td>').append(titleTag).css({
+	 						'width': '100px',
+	 						'display': 'block',
+	 					    'white-space': 'nowrap',
+		 				    'overflow': 'hidden',
+		 				    'text-overflow': 'ellipsis',
+		 				    'display': 'block'
+	 						}).appendTo(tr);
 	 					if(price_type == 0)
-	 						$('<td>').text('일반').appendTo(tr);
+	 						$('<td>').text('일반').css('width', '5%').appendTo(tr);
 	 					else if(price_type == 1)
-	 						$('<td>').text('경매').appendTo(tr);
+	 						$('<td>').text('경매').css('width', '5%').appendTo(tr);
 						
 	 					if(seller_id == '${loginUser.mem_id}'){
 	 						// 판매자일때 
-	 						$('<td>').text(sold_price).css('color', 'blue').appendTo(tr);
+	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'blue').appendTo(tr);
 	 					}
 	 					else if(buyer_id == '${loginUser.mem_id}'){
 	 						// 구매자일때 
-	 						$('<td>').text(sold_price).css('color', 'red').appendTo(tr);
+	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'red').appendTo(tr);
 	 					}
 	 				}
 	 			}
@@ -328,13 +351,13 @@ $(document).ready(function() {
 </script>
 		<div id="sideBar" class="col-md-2">
 			<table id="table-myTradeLog" class="table">
-				<thead>
+				<thead >
 					<tr>
-						<th>#</th>
-						<th>DATE</th>
-						<th>TITLE</th>
-						<th>TYPE</th>
-						<th>PRICE</th>
+						<th width="5%">#</th>
+						<th width="25%" style="text-align: center">DATE</th>
+						<th width="100px" style="border-bottom:0px;text-align: center">TITLE</th>
+						<th width="5%" style="text-align: center">TYPE</th>
+						<th width="25" style="text-align: center">PRICE</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -345,6 +368,7 @@ $(document).ready(function() {
 		<div class="footer">
 			<jsp:include page="footer.jsp" />
 		</div>
+
 
 	</div>
 

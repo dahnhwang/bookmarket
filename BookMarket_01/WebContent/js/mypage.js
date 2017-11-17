@@ -122,6 +122,9 @@ $(document).on('click', '.delete_btn', function() {
 	});
 	
 });
+$(document).on('click', '.select_btn', function(){
+	location.href="bookmarket?command=detail_book&book_id="+$(this).val();
+});
 //$(document).on('click', '.modify_btn', function() {
 //
 //var book_id = $(this).attr('data-id');
@@ -232,13 +235,13 @@ function mySellBook_listUpload(list) {
 			$('<td>').text('판매중').appendTo(tr);
 			if(price_type == '1'){
 				//경매
-				var selectBtn = $('<input>').attr({
+				var selectBtn = $('<button>').text('select price!').attr({
 					'type': 'button',
-					'data-id':book_id,
-					'data-command':'mySellBook'
+					'value':book_id,
+					'data-command':'mySellBook',
 				}).addClass('select_btn').css({
 					'margin' : '5px'
-				}).val('select price!');
+				});
 				var deleteBtn = $('<input>').attr({
 					'type': 'button',
 					'data-id':book_id,

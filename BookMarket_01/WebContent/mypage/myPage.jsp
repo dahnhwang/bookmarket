@@ -40,7 +40,7 @@
 			type : 'get',
 			dataType: 'json',
 			success : function(data) {
-				alert(data)
+// 				alert(data)
 				if (data) {
 					$('#table-myBiddingList tbody').empty();
 					myBiddingBook_listUpload(data);
@@ -114,29 +114,29 @@
 						<div class="panel-footer" align="right">
 						</div>
 					</div>
-					<div id="div-myPurchase-list" class="panel panel-default">
-						<!-- Default panel contents -->
-						<div class="panel-heading">My Purchase Books</div>
-						<div class="panel-body">
-							<p>최근 성사된 거래내역 </p>
-						</div>
-						<!-- Table -->
-						<table id="table-myBookList" id="example" class="display table"
-							cellspacing="0" width="100%" data-toggle="table"
-							data-show-refresh="true" data-show-toggle="true"
-							data-show-columns="true" data-search="true"
-							data-select-item-name="toolbar1" data-pagination="true">
-							<tr>
-								<th>상품번호</th>
-								<th>Image</th>
-								<th>Title(ISBN)</th>
-								<th>Book Condition</th>
-								<th>Price</th>
-								<th>거래상태</th>
-								<th>등록일자</th>
-							</tr>
-						</table>
-					</div>
+<!-- 					<div id="div-myPurchase-list" class="panel panel-default"> -->
+<!-- 						Default panel contents -->
+<!-- 						<div class="panel-heading">My Purchase Books</div> -->
+<!-- 						<div class="panel-body"> -->
+<!-- 							<p>최근 성사된 거래내역 </p> -->
+<!-- 						</div> -->
+<!-- 						Table -->
+<!-- 						<table id="table-myBookList" id="example" class="display table" -->
+<!-- 							cellspacing="0" width="100%" data-toggle="table" -->
+<!-- 							data-show-refresh="true" data-show-toggle="true" -->
+<!-- 							data-show-columns="true" data-search="true" -->
+<!-- 							data-select-item-name="toolbar1" data-pagination="true"> -->
+<!-- 							<tr> -->
+<!-- 								<th>상품번호</th> -->
+<!-- 								<th>Image</th> -->
+<!-- 								<th>Title(ISBN)</th> -->
+<!-- 								<th>Book Condition</th> -->
+<!-- 								<th>Price</th> -->
+<!-- 								<th>거래상태</th> -->
+<!-- 								<th>등록일자</th> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
+<!-- 					</div> -->
 					</section>
 				</div>
 			</div>
