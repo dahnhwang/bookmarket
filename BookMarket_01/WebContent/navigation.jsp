@@ -82,9 +82,11 @@ $(document).ready(function(){
 })
 function getUri(){
 	var currentUrl = document.location.href;
-	var currentUri = currentUrl.substring(39,currentUrl.length);
-// 	var currentUri;
-// 	alert(currentUri);
+	var currentUri;
+	if(currentUrl.indexOf("8080")==20)
+		currentUri = currentUrl.substring(39,currentUrl.length);
+	else
+		currentUri = currentUrl.substring(36,currentUrl.length);
 	return currentUri;
 }
 function loginCheck(returnUri){

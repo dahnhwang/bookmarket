@@ -15,7 +15,7 @@
 .content_wrapper {
 	padding-bottom: 30px;
 	padding-left: 70px;
-}
+} 
 #btn-mypwd-check{
 	margin-top: 10px; 
 }
@@ -72,32 +72,32 @@
 							// 북머니
 							$('#btn-charge-submit').on('click', function(event){
 								event.preventDefault();
-// 								if(checkChargeBookMoney()){
-// 									var charge = $('#charge').val();
-// 									var params = "command="+$('#frm-charge #hidden-command').val()+"&charge=" + charge;
-// // 									alert(params)
-// 									$.ajax({
-// 										url : 'bookmarket',
-// 										type : 'post',
-// 										data : params,
-// 										async: true,
-// 										success: function(data){
-// // 											alert(data)
-// 											if(data > 0){
-// 												alert('북머니 충전 성공! 충전 금액: '+charge+'원');
-// 												$('#charge-btn-close').click();
-// 												location.reload();
-// 											}
-// 											else{
-// 												alert('충전에 실패하였습니다. 다시 시도해 주세요')
-// 												$('#charge').focus();
-// 											}
-// 										},
-// 										error: function(xhr, status, error){
-// 											alert('실패')
-// 										}
-// 									});
-// 								}
+								if(checkChargeBookMoney()){
+									var charge = $('#charge').val();
+									var params = "command="+$('#frm-charge #hidden-command').val()+"&charge=" + charge;
+// 									alert(params)
+									$.ajax({
+										url : 'bookmarket',
+										type : 'post',
+										data : params,
+										async: true,
+										success: function(data){
+// 											alert(data)
+											if(data > 0){
+												alert('북머니 충전 성공! 충전 금액: '+charge+'원');
+												$('#charge-btn-close').click();
+												location.reload();
+											}
+											else{
+												alert('충전에 실패하였습니다. 다시 시도해 주세요')
+												$('#charge').focus();
+											}
+										},
+										error: function(xhr, status, error){
+											alert('실패')
+										}
+									});
+								}
 							});
 						});
 					</script>
