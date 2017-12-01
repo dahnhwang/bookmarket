@@ -1,4 +1,4 @@
-package dao;
+package dao_ex;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 import dto.BookMoney;
 import dto.KeepBook;
@@ -28,23 +24,16 @@ public class BookMoneyDao implements IBookMoneyDao {
 	}
 
 	private BookMoneyDao() {
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	}
-	public Connection getConnection() throws Exception {
-		Context initContext = new InitialContext();
-		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
-		conn = ds.getConnection();
-		return conn;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -54,7 +43,6 @@ public class BookMoneyDao implements IBookMoneyDao {
 				PreparedStatement pstmt = null;
 				int result = 0;
 				try {
-					conn = getConnection();
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, money.getMem_id());
 					pstmt.setInt(2, money.getBookMoney());
@@ -83,8 +71,8 @@ public class BookMoneyDao implements IBookMoneyDao {
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = "SELECT * FROM money WHERE mem_id=? ORDER BY money_idx DESC";
+
 				try {
-					conn = getConnection();
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setInt(1, mem_id);
 					rs = pstmt.executeQuery();
@@ -100,9 +88,6 @@ public class BookMoneyDao implements IBookMoneyDao {
 						list.add(bm);
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} finally {

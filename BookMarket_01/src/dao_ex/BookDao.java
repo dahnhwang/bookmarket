@@ -1,4 +1,4 @@
-package dao;
+package dao_ex;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 import dto.Book;
 
@@ -26,26 +22,18 @@ public class BookDao implements IBookDao {
 			instance = new BookDao();
 		return instance;
 	}
-	public Connection getConnection() throws Exception {
-		Connection conn = null;
-		Context initContext = new InitialContext();
-		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
-		conn = ds.getConnection();
-		return conn;
-	}
 
 	private BookDao() {
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -54,12 +42,11 @@ public class BookDao implements IBookDao {
 
 		List<Book> bookList = new ArrayList<Book>();
 		Book book = null;
-		
+
 		String sql = "SELECT * from book;";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -94,8 +81,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -111,7 +96,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
@@ -146,8 +130,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -162,7 +144,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book.getBook_id());
 			pstmt.setString(2, book.getIsbn());
@@ -190,8 +171,6 @@ public class BookDao implements IBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -205,7 +184,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book.getIsSold());
 			pstmt.setInt(2, book.getPrice());
@@ -219,8 +197,6 @@ public class BookDao implements IBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -230,26 +206,21 @@ public class BookDao implements IBookDao {
 
 	@Override
 	public int deleteBook(int book_id) {
-		String sql = "DELETE FROM book WHERE book_id= ?";
 		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM book WHERE book_id= ?";
+
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -266,7 +237,7 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, genre);
 
@@ -303,8 +274,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -320,7 +289,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -355,8 +323,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -372,7 +338,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -407,8 +372,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -424,7 +387,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -459,8 +421,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -477,7 +437,7 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
+
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -512,8 +472,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -532,11 +490,9 @@ public class BookDao implements IBookDao {
 		try {
 			if (genre == 0) {
 				sql = "SELECT * FROM book order by " + order + " " + seq;
-				conn = getConnection();
 				pstmt = conn.prepareStatement(sql);
 			} else {
 				sql = "SELECT * FROM book where genre= ? order by " + order + " " + seq;
-				conn = getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, genre);
 			}
@@ -574,8 +530,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -596,7 +550,6 @@ public class BookDao implements IBookDao {
 
 			if (genre == 0) {
 				sql = "SELECT * FROM book where price_type = ? ";
-				conn = getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, price_type);
 
@@ -641,8 +594,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -657,7 +608,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -666,17 +616,12 @@ public class BookDao implements IBookDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -691,7 +636,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 
@@ -702,8 +646,6 @@ public class BookDao implements IBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -720,7 +662,6 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -736,8 +677,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 			 	if (pstmt != null)
 					pstmt.close();
-			 	if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -755,7 +694,7 @@ public class BookDao implements IBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			rs = pstmt.executeQuery();
@@ -791,8 +730,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -832,7 +769,7 @@ public class BookDao implements IBookDao {
         	 sql = " select * from book where due_date > sysdate() order by due_date limit 5 ";
         	 
          }
-         	conn = getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -867,8 +804,6 @@ public class BookDao implements IBookDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if( conn!= null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

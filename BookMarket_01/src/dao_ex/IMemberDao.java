@@ -1,4 +1,4 @@
-package dao2;
+package dao_ex;
 
 import dto.Member;
 

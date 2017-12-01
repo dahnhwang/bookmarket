@@ -1,4 +1,4 @@
-package dao2;
+package dao_ex;
  
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,11 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
+ 
 import dto.Sold;
  
 public class SoldDao implements ISoldDao{
@@ -26,26 +22,18 @@ public class SoldDao implements ISoldDao{
 	}
  
 	private SoldDao() {
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	public Connection getConnection() throws Exception {
-		Connection conn = null;
-		Context initContext = new InitialContext();
-		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
-		conn = ds.getConnection();
-		return conn;
-	}
-	
+ 
 	@Override
 	public int insertSold(Sold sold) {
 		// TODO Auto-generated method stub
@@ -53,7 +41,6 @@ public class SoldDao implements ISoldDao{
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sold.getSeller_id());
 			pstmt.setInt(2, sold.getBook_id());
@@ -69,8 +56,6 @@ public class SoldDao implements ISoldDao{
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -88,7 +73,6 @@ public class SoldDao implements ISoldDao{
 		String sql = "SELECT * FROM sold WHERE seller_id=?";
  
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, seller_id);
 			rs = pstmt.executeQuery();
@@ -108,17 +92,12 @@ public class SoldDao implements ISoldDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -137,7 +116,6 @@ public class SoldDao implements ISoldDao{
 		String sql = "SELECT * FROM sold WHERE buyer_id=?";
  
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, buyer_id);
 			rs = pstmt.executeQuery();
@@ -156,17 +134,12 @@ public class SoldDao implements ISoldDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -181,7 +154,6 @@ public class SoldDao implements ISoldDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			pstmt.setInt(2, mem_id);
@@ -201,17 +173,12 @@ public class SoldDao implements ISoldDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import dto.KeepBook;
 
 public class KeepBookDao implements IKeepBookDao {
@@ -21,20 +25,27 @@ public class KeepBookDao implements IKeepBookDao {
 			instance = new KeepBookDao();
 		return instance;
 	}
-
+	
 	private KeepBookDao() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
-
+	public Connection getConnection() throws Exception {
+		Connection conn = null;
+		Context initContext = new InitialContext();
+		Context envContext = (Context) initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
+		conn = ds.getConnection();
+		return conn;
+	}
 	@Override
 	public int insertKeepBook(KeepBook keepBook) {
 		// TODO Auto-generated method stub
@@ -42,6 +53,7 @@ public class KeepBookDao implements IKeepBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, keepBook.getBook_id());
 			pstmt.setInt(2, keepBook.getMem_id());
@@ -53,6 +65,8 @@ public class KeepBookDao implements IKeepBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -69,6 +83,7 @@ public class KeepBookDao implements IKeepBookDao {
 		String sql = "SELECT * FROM keepBook WHERE mem_id=?";
 
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			rs = pstmt.executeQuery();
@@ -85,12 +100,17 @@ public class KeepBookDao implements IKeepBookDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -107,6 +127,7 @@ public class KeepBookDao implements IKeepBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			result = pstmt.executeUpdate();
@@ -117,6 +138,8 @@ public class KeepBookDao implements IKeepBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -130,6 +153,7 @@ public class KeepBookDao implements IKeepBookDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			pstmt.setInt(2, mem_id);
@@ -141,6 +165,8 @@ public class KeepBookDao implements IKeepBookDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

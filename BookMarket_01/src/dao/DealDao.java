@@ -10,6 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import dto.Book;
 import dto.Deal;
 
@@ -24,20 +28,27 @@ public class DealDao implements IDealDao {
 		return instance;
 	}
 
-	private DealDao() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+//	private DealDao() {
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
+	public Connection getConnection() throws Exception {
+		Connection conn = null;
+		Context initContext = new InitialContext();
+		Context envContext = (Context) initContext.lookup("java:/comp/env");
+		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
+		conn = ds.getConnection();
+		return conn;
 	}
-
 	@Override
 	public int insertDeal(Deal deal) {
 		// TODO Auto-generated method stub
@@ -45,6 +56,7 @@ public class DealDao implements IDealDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, deal.getBook_id());
 			pstmt.setInt(2, deal.getParticipant_id());
@@ -60,6 +72,8 @@ public class DealDao implements IDealDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -76,6 +90,7 @@ public class DealDao implements IDealDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, participant_id);
 			rs = pstmt.executeQuery();
@@ -97,6 +112,8 @@ public class DealDao implements IDealDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -115,6 +132,7 @@ public class DealDao implements IDealDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
@@ -139,6 +157,8 @@ public class DealDao implements IDealDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -159,6 +179,7 @@ public class DealDao implements IDealDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -167,12 +188,17 @@ public class DealDao implements IDealDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -187,6 +213,7 @@ public class DealDao implements IDealDao {
 		ResultSet rs = null;
 		int result = 0;
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
@@ -201,6 +228,8 @@ public class DealDao implements IDealDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -216,6 +245,7 @@ public class DealDao implements IDealDao {
 		int result = -1;
 		String sql = "SELECT COUNT(deal_idx) FROM deal d, book b WHERE d.book_id=? AND( b.book_id = d.book_id AND b.isSold=0)";
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
@@ -225,12 +255,17 @@ public class DealDao implements IDealDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -247,6 +282,7 @@ public class DealDao implements IDealDao {
 		int result = -1;
 		String sql = "SELECT AVG(deal_price) FROM deal WHERE book_id=?";
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
@@ -256,12 +292,17 @@ public class DealDao implements IDealDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
+				if(conn !=null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

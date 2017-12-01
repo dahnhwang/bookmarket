@@ -1,14 +1,10 @@
-package dao2;
+package dao_ex;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 import dto.Member;
 
@@ -24,25 +20,18 @@ public class MemberDao implements IMemberDao {
 	}
 
 	private MemberDao() {
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookmarket_db", "root", "mysql");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	public Connection getConnection() throws Exception {
-		Connection conn = null;
-		Context initContext = new InitialContext();
-		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
-		conn = ds.getConnection();
-		return conn;
-	}
+
 	@Override
 	public int memberCheck(String email, String pwd) {
 		// TODO Auto-generated method stub
@@ -51,7 +40,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
@@ -72,8 +60,6 @@ public class MemberDao implements IMemberDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -89,7 +75,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			rs = pstmt.executeQuery();
@@ -110,8 +95,6 @@ public class MemberDao implements IMemberDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -127,7 +110,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPwd());
@@ -140,8 +122,6 @@ public class MemberDao implements IMemberDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -156,7 +136,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getEmail());
 			pstmt.setString(2, member.getPwd());
@@ -170,8 +149,6 @@ public class MemberDao implements IMemberDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -186,22 +163,16 @@ public class MemberDao implements IMemberDao {
 		String sql = "DELETE FROM member WHERE mem_id = ?";
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -218,7 +189,6 @@ public class MemberDao implements IMemberDao {
 		ResultSet rs = null;
 		int money = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mem_id);
 			rs = pstmt.executeQuery();
@@ -233,8 +203,6 @@ public class MemberDao implements IMemberDao {
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -249,7 +217,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
@@ -262,17 +229,12 @@ public class MemberDao implements IMemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}finally {
 			try {
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -288,7 +250,6 @@ public class MemberDao implements IMemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
-			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, money);
 			pstmt.setInt(2, mem_id);
@@ -299,8 +260,6 @@ public class MemberDao implements IMemberDao {
 			try {
 				if (pstmt != null)
 					pstmt.close();
-				if(conn !=null)
-					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
