@@ -134,11 +134,9 @@
 
 #sideBar {
 	margin-left: 20px;
-	width: 300px;
-	height: 400px;
-	border-top: 1px solid #cccccc;
-	border-left: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
+	width: 25%;
+	height: 280px;
+	border: 1px solid #cccccc;
 	margin-right: 0px;
     padding: 5px;
 }
@@ -291,12 +289,10 @@ $(document).ready(function() {
 	 		type : 'get',
 	 		dataType: 'json',
 	 		success : function(data) {
-//		 			alert(data) 
 	 			if (data) {
 	 				$('#table-myTradeLog tbody').empty();
 	 				var bookList = data.bookList;
 	 				var logList = data.logList;
-					
 	 				for(var i=0; i<logList.length; i++){
 	 					var order_id = logList[i].order_id
 	 					var book_id = logList[i].book_id;
@@ -305,14 +301,12 @@ $(document).ready(function() {
 	 					var sold_date = logList[i].sold_date_string;
 	 					var sold_price = logList[i].sold_price;
 	 					var title = bookList[i].title;
-//		 					alert(title);
 	 					var price_type = bookList[i].price_type;
 	 					var titleTag =$('<a>').attr(
 	 							  'href', 'bookmarket?command=detail_book&book_id='+book_id)
 	 							  .addClass("bookTitle")
 	 							  .attr('display', 'block')
 	 							  .text(title);
-						
 						
 	 					var tr = $('<tr>').appendTo('#table-myTradeLog tbody');
 	 					$('<td>').text(order_id).css('width', '5%').appendTo(tr);
@@ -329,13 +323,10 @@ $(document).ready(function() {
 	 						$('<td>').text('일반').css('width', '5%').appendTo(tr);
 	 					else if(price_type == 1)
 	 						$('<td>').text('경매').css('width', '5%').appendTo(tr);
-						
-	 					if(seller_id == '${loginUser.mem_id}'){
-	 						// 판매자일때 
+	 					if(seller_id == '${loginUser.mem_id}'){ // 판매자일때 
 	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'blue').appendTo(tr);
 	 					}
-	 					else if(buyer_id == '${loginUser.mem_id}'){
-	 						// 구매자일때 
+	 					else if(buyer_id == '${loginUser.mem_id}'){ // 구매자일때 
 	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'red').appendTo(tr);
 	 					}
 	 				}
@@ -344,10 +335,7 @@ $(document).ready(function() {
 	 				$('#table-myTradeLog tbody').empty();
 	 				$('<td>').attr('colspan',5).text('no records').appendTo('#table-myTradeLog tbody');
 	 			}
-	 		}, 
-	 		error: function(xhr, status, error){
-//		 			alert('error')
-	 		}
+	 		} 
 	 	});
 	}
 </script>

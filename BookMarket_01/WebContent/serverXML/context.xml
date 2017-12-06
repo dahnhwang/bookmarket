@@ -26,7 +26,7 @@
     <Manager pathname="" />
     -->
     <Resource 
-    	name="jdbc/BookMarketDB" 
+    	name="jdbc/bookmarket_db" 
     	auth="Container" 
     	type="javax.sql.DataSource"		
        	maxTotal="100" 
