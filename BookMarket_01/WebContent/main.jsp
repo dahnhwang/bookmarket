@@ -23,7 +23,7 @@
 
 .wrap {
 	width: 100%;
-	height: 1300px;
+	height : 1300px;
 }
 
 #contents {
