@@ -24,6 +24,7 @@ public class SoldDao implements ISoldDao{
 			instance = new SoldDao();
 		return instance;
 	}
+	
  
 	private SoldDao() {
 //		try {

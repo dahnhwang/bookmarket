@@ -34,6 +34,7 @@ public class MemberDao implements IMemberDao {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
 	}
 	public Connection getConnection() throws Exception {
 		Connection conn = null;

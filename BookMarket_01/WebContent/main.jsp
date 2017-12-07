@@ -10,7 +10,7 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-1
+
 * {
 	margin: 0;
 	padding: 0;

@@ -40,6 +40,7 @@ public class DealDao implements IDealDao {
 //			e.printStackTrace();
 //		}
 //
+	
 //	}
 	public Connection getConnection() throws Exception {
 		Connection conn = null;
