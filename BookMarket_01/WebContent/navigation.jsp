@@ -83,12 +83,19 @@ $(document).ready(function(){
 function getUri(){
 	var currentUrl = document.location.href;
 	var currentUri;
-	if(currentUrl.indexOf("8080")==20)
-		currentUri = currentUrl.substring(39,currentUrl.length);
+	if(currentUrl.indexOf("BookMarket_01")==32){
+		currentUri = currentUrl.substring(32,currentUrl.length);
+	}
+	else if(currentUrl.indexOf("BookMarket_01")==28){
+		currentUri = currentUrl.substring(28,currentUrl.length);
+	}
+	else if(currentUrl.indexOf("BookMarket_01")==25)
+		currentUri = currentUrl.substring(25,currentUrl.length);
 	else
-		currentUri = currentUrl.substring(36,currentUrl.length);
+		currentUri = currentUrl.substring(22,currentUrl.length);
 	return currentUri;
 }
+
 function loginCheck(returnUri){
 	var loginUser = "${loginUser}";
 	$('#hidden-returnUrl').attr('value', returnUri);
@@ -167,8 +174,9 @@ function loginCheck(returnUri){
 
 					<c:choose>
 						<c:when test="${empty loginUser}">
-							<li><a id="anchor-login-navi" class="loginBtn" data-toggle="modal" data-target="#login">로그인</a></li>
-<!-- 							<li><a href="bookmarket?command=login_form">로그인</a></li> -->
+							<li>
+								<a id="anchor-login-navi" class="loginBtn" data-toggle="modal" data-target="#login">로그인</a>
+							</li>
 							<li><a href="bookmarket?command=join_form">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
