@@ -23,7 +23,7 @@
 
 .wrap {
 	width: 100%;
-	height : 1300px;
+	height: 1300px;
 }
 
 #contents {
@@ -96,7 +96,6 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	
 }
 
 .title {
@@ -106,7 +105,7 @@
 	color: #3c3c3c;
 	flex-grow: 0;
 	background-color: #ffffff;
-	border :1px solid #9f9f9f;
+	border: 1px solid #9f9f9f;
 }
 
 .divider {
@@ -114,67 +113,68 @@
 	height: 1px;
 	background-color: #9f9f9f;
 }
-  
+
 #banner {
 	width: 100%;
 	height: 160px;
-    background-color : #bdcebe;
+	background-color: #bdcebe;
 	margin: 0 0 50px 0;
 	font-size: 30px;
 	font-weight: normal;
 	overflow: hidden;
 	text-align: center;
-	
 }
 
-#banner_img{
-
-
+#banner_img {
+	
 }
 
 #sideBar {
 	margin-left: 20px;
-	width: 300px;
-	height: 400px;
-	border-top: 1px solid #cccccc;
-	border-left: 1px solid #cccccc;
-	border-bottom: 1px solid #cccccc;
+	width: 25%;
+	height: 280px;
+	border: 1px solid #cccccc;
 	margin-right: 0px;
-    padding: 5px;
+	padding: 5px;
 }
-#sideBar table{
+
+#sideBar table {
 	text-align: center;
 	display: block;
-	paddind-bottom : 0;
-	
+	paddind-bottom: 0;
 }
-#sideBar td{
+
+#sideBar td {
 	height: 40px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-/* 	display: block; */
+	/* 	display: block; */
 }
+
 .shelf_img {
 	
 }
-
 </style>
 
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
 
-$(document).ready(function() {
-	
-	$(document).on('click', '.middle', function() {
-		var book_id =$(this).attr('data-id');
-		window.location.href = 'bookmarket?command=detail_book&book_id='+ book_id;
+						$(document)
+								.on(
+										'click',
+										'.middle',
+										function() {
+											var book_id = $(this).attr(
+													'data-id');
+											window.location.href = 'bookmarket?command=detail_book&book_id='
+													+ book_id;
 
+										});
 
-	});
-
-	
-});
-
+					});
 </script>
 </head>
 <body>
@@ -185,7 +185,7 @@ $(document).ready(function() {
 
 		<div id="contents" class="col-md-10">
 			<div id="banner">
-		     <img alt="" src="img/banner.png" id="banner_img">
+				<img alt="" src="img/banner.png" id="banner_img">
 			</div>
 			<div class="section">
 				<div class="strapline">
@@ -193,18 +193,16 @@ $(document).ready(function() {
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach var="book" items="${section1_list }" >
+					<c:forEach var="book" items="${section1_list }">
 						<li>
 							<div class="bookList">
-								<img class="book_img"
-									src='${book.image } ' />
-								<div class="middle" data-id ="${book.book_id }">
+								<img class="book_img" src='${book.image } ' />
+								<div class="middle" data-id="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span><br>
-										<span>${book.price }원</span>
+										<br> <span>${book.title }</span><br> <span>${book.price }원</span>
 									</div>
 								</div>
-								
+
 							</div>
 
 						</li>
@@ -221,15 +219,14 @@ $(document).ready(function() {
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach var="book" items="${section2_list }" >
+					<c:forEach var="book" items="${section2_list }">
 						<li>
 							<div class="bookList">
-								<a href="#"> 
-								<img class="book_img"
-									src='${book.image } ' /></a>
-								<div class="middle"  data-id ="${book.book_id }">
+								<a href="#"> <img class="book_img" src='${book.image } ' /></a>
+								<div class="middle" data-id="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span><br><span>${book.price }원</span>
+										<br> <span>${book.title }</span><br>
+										<span>${book.price }원</span>
 									</div>
 								</div>
 							</div>
@@ -250,15 +247,14 @@ $(document).ready(function() {
 					<div class="divider"></div>
 				</div>
 				<ul>
-					<c:forEach var="book" items="${section3_list }" >
+					<c:forEach var="book" items="${section3_list }">
 						<li>
 							<div class="bookList">
-								<a href="#"> 
-								<img class="book_img"
-									src='${book.image } ' /></a>
-								<div class="middle"  data-id ="${book.book_id }">
+								<a href="#"> <img class="book_img" src='${book.image } ' /></a>
+								<div class="middle" data-id="${book.book_id }">
 									<div class="text">
-										<br> <span>${book.title }</span><br><span>${book.price }원</span>
+										<br> <span>${book.title }</span><br>
+										<span>${book.price }원</span>
 									</div>
 								</div>
 							</div>
@@ -271,93 +267,100 @@ $(document).ready(function() {
 			</div>
 
 		</div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#sideBar').hide(); 
-		setInterval(function(){ 
-			if("${loginUser}" != ""){
-				$('#sideBar').show();
-				loadLog();
-			}
-			else{ 
+		<script type="text/javascript">
+			$(document).ready(function() {
 				$('#sideBar').hide();
+				setInterval(function() {
+					if ("${loginUser}" != "") {
+						$('#sideBar').show();
+						loadLog();
+					} else {
+						$('#sideBar').hide();
+					}
+				}, 1000);
+
+			})
+			function loadLog() {
+				$.ajax({
+					url : 'bookmarket?command=myLog_list',
+					type : 'get',
+					dataType : 'json',
+					success : function(data) {
+						//		 			alert(data) 
+						if (data) {
+							$('#table-myTradeLog tbody').empty();
+							var bookList = data.bookList;
+							var logList = data.logList;
+
+							for (var i = 0; i < logList.length; i++) {
+								var order_id = logList[i].order_id
+								var book_id = logList[i].book_id;
+								var seller_id = logList[i].seller_id;
+								var buyer_id = logList[i].buyer_id;
+								var sold_date = logList[i].sold_date_string;
+								var sold_price = logList[i].sold_price;
+								var title = bookList[i].title;
+								//		 					alert(title);
+								var price_type = bookList[i].price_type;
+								var titleTag = $('<a>').attr(
+										'href',
+										'bookmarket?command=detail_book&book_id='
+												+ book_id)
+										.addClass("bookTitle").attr('display',
+												'block').text(title);
+
+								var tr = $('<tr>').appendTo(
+										'#table-myTradeLog tbody');
+								$('<td>').text(order_id).css('width', '5%')
+										.appendTo(tr);
+								$('<td>').text(sold_date).css('width', '25%')
+										.appendTo(tr);
+								$('<td>').append(titleTag).css({
+									'width' : '100px',
+									'display' : 'block',
+									'white-space' : 'nowrap',
+									'overflow' : 'hidden',
+									'text-overflow' : 'ellipsis',
+									'display' : 'block'
+								}).appendTo(tr);
+								if (price_type == 0)
+									$('<td>').text('일반').css('width', '5%')
+											.appendTo(tr);
+								else if (price_type == 1)
+									$('<td>').text('경매').css('width', '5%')
+											.appendTo(tr);
+
+								if (seller_id == '${loginUser.mem_id}') {
+									// 판매자일때 
+									$('<td>').text(sold_price).css('width',
+											'25%').css('color', 'blue')
+											.appendTo(tr);
+								} else if (buyer_id == '${loginUser.mem_id}') {
+									// 구매자일때 
+									$('<td>').text(sold_price).css('width',
+											'25%').css('color', 'red')
+											.appendTo(tr);
+								}
+							}
+						} else {
+							$('#table-myTradeLog tbody').empty();
+							$('<td>').attr('colspan', 5).text('no records')
+									.appendTo('#table-myTradeLog tbody');
+						}
+					},
+					error : function(xhr, status, error) {
+						//		 			alert('error')
+					}
+				});
 			}
-		}, 1000);
-		
-	})
-	function loadLog(){
-		$.ajax({
-	 		url : 'bookmarket?command=myLog_list',
-	 		type : 'get',
-	 		dataType: 'json',
-	 		success : function(data) {
-//		 			alert(data) 
-	 			if (data) {
-	 				$('#table-myTradeLog tbody').empty();
-	 				var bookList = data.bookList;
-	 				var logList = data.logList;
-					
-	 				for(var i=0; i<logList.length; i++){
-	 					var order_id = logList[i].order_id
-	 					var book_id = logList[i].book_id;
-	 					var seller_id = logList[i].seller_id;
-	 					var buyer_id = logList[i].buyer_id;
-	 					var sold_date = logList[i].sold_date_string;
-	 					var sold_price = logList[i].sold_price;
-	 					var title = bookList[i].title;
-//		 					alert(title);
-	 					var price_type = bookList[i].price_type;
-	 					var titleTag =$('<a>').attr(
-	 							  'href', 'bookmarket?command=detail_book&book_id='+book_id)
-	 							  .addClass("bookTitle")
-	 							  .attr('display', 'block')
-	 							  .text(title);
-						
-						
-	 					var tr = $('<tr>').appendTo('#table-myTradeLog tbody');
-	 					$('<td>').text(order_id).css('width', '5%').appendTo(tr);
-	 					$('<td>').text(sold_date).css('width', '25%').appendTo(tr);
-	 					$('<td>').append(titleTag).css({
-	 						'width': '100px',
-	 						'display': 'block',
-	 					    'white-space': 'nowrap',
-		 				    'overflow': 'hidden',
-		 				    'text-overflow': 'ellipsis',
-		 				    'display': 'block'
-	 						}).appendTo(tr);
-	 					if(price_type == 0)
-	 						$('<td>').text('일반').css('width', '5%').appendTo(tr);
-	 					else if(price_type == 1)
-	 						$('<td>').text('경매').css('width', '5%').appendTo(tr);
-						
-	 					if(seller_id == '${loginUser.mem_id}'){
-	 						// 판매자일때 
-	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'blue').appendTo(tr);
-	 					}
-	 					else if(buyer_id == '${loginUser.mem_id}'){
-	 						// 구매자일때 
-	 						$('<td>').text(sold_price).css('width', '25%').css('color', 'red').appendTo(tr);
-	 					}
-	 				}
-	 			}
-	 			else{
-	 				$('#table-myTradeLog tbody').empty();
-	 				$('<td>').attr('colspan',5).text('no records').appendTo('#table-myTradeLog tbody');
-	 			}
-	 		}, 
-	 		error: function(xhr, status, error){
-//		 			alert('error')
-	 		}
-	 	});
-	}
-</script>
+		</script>
 		<div id="sideBar" class="col-md-2">
 			<table id="table-myTradeLog" class="table">
-				<thead >
+				<thead>
 					<tr>
 						<th width="5%">#</th>
 						<th width="25%" style="text-align: center">DATE</th>
-						<th width="100px" style="border-bottom:0px;text-align: center">TITLE</th>
+						<th width="100px" style="border-bottom: 0px; text-align: center">TITLE</th>
 						<th width="5%" style="text-align: center">TYPE</th>
 						<th width="25" style="text-align: center">PRICE</th>
 					</tr>

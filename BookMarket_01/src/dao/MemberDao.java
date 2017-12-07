@@ -39,7 +39,7 @@ public class MemberDao implements IMemberDao {
 		Connection conn = null;
 		Context initContext = new InitialContext();
 		Context envContext = (Context) initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource) envContext.lookup("jdbc/bookmarket_db");
+		DataSource ds = (DataSource) envContext.lookup("jdbc/greenerin");
 		conn = ds.getConnection();
 		return conn;
 	}
