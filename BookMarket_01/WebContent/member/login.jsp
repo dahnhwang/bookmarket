@@ -9,13 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>로그인</title>
 	<link href="css/login.css" rel="stylesheet" />
+	<script src="js/sha256.js"></script>
 </head> 
 <body>
 	<!-- Modal -->
 	<script type="text/javascript">
 	function loginPWDCheck(){
 		if($('#password').val().length == 0){
-// 			alert('비밀번호를 입력하세요')
 			$('#password').attr({
 				'title':"WRONG",
 				'data-content':
@@ -31,19 +31,18 @@
 			var returnUrl = $('#hidden-returnUrl').val();
 			var email = $('#email').val();
 			var password = $('#password').val();
+// 			var password = SHA256($('#password').val());
 			var params = "command=login&email="+email+"&password=" + password +"&returnUrl="+returnUrl;
-
+			
 			$.ajax({
 				url : 'bookmarket',
 				type : 'post',
 				data : params,
-//				async: true,
 				success : function(data) {
-// 					alert(data);
-					
 					if(data > 0){
-						alert('성공')
+// 						alert('성공')
 						location.href=returnUrl;
+// 						$('#btn-close').click();
 					}
 					else if(data == -1){
 						$('#password').attr({
@@ -82,12 +81,13 @@
 			          <span aria-hidden="true">&times;</span>
 		        	</button>                                                                  
 					<h2 class="form-signin-heading">Please login</h2>
-					<input type="email" class="form-control" id="email" name="email" data-toggle="popover" data-placement="right" placeholder="email" required="" autofocus="" /> 
-					<input type="password"	class="form-control" id="password" name="password" data-toggle="popover" data-placement="right" placeholder="Password"	required="" /> 
+					<input type="email" class="form-control" id="email" name="email" data-toggle="popover" 
+					data-placement="right" placeholder="email" required="" autofocus="" /> 
+					<input type="password"	class="form-control" id="password" name="password" 
+					data-toggle="popover" data-placement="right" placeholder="Password"	required="" /> 
 					<label for="rememberMe" class="checkbox"> Remember me</label>
 						<input id="rememberMe"	name="rememberMe" type="checkbox" value="remember-me" style="display:'inline'">
 					<button id="btn-login-submit" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		<!-- 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 				</form>
 		      </div>
 		    </div>
